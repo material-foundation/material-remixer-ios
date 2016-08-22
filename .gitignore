@@ -1,3 +1,6 @@
+# Jazzy
+docs/
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -32,6 +35,18 @@ xcuserdata/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+.build/
 
 # CocoaPods
 #
@@ -40,6 +55,7 @@ xcuserdata/
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
 Pods/
+*.xcworkspace
 
 # Carthage
 #
@@ -50,10 +66,12 @@ Carthage/Build
 
 # fastlane
 #
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the 
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
 # screenshots whenever they are needed.
 # For more information about the recommended setup visit:
-# https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
+# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
 fastlane/report.xml
+fastlane/Preview.html
 fastlane/screenshots
+fastlane/test_output

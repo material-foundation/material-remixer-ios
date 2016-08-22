@@ -1,0 +1,12 @@
+{
+  "load": [
+    "scripts/clang-format-linter",
+    "scripts/arc-jazzy-linter",
+    "scripts/arc-proselint",
+    "scripts/arc-regex-line-length-linter",
+    "scripts/arc-xcode-test-engine"
+  ],
+  "phabricator.uri": "http://codereview.cc/",
+  "arc.land.onto.default": "develop",
+  "arc.feature.start.default": "origin/develop"
+}
