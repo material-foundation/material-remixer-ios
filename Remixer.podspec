@@ -11,33 +11,33 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |ss|
-    ss.source_files = 'framework/src/core/**/*.{h,m}'
+    ss.source_files = 'src/core/**/*.{h,m}'
     ss.resource_bundles = {
-      'Remixer' => [ 'framework/src/core/resources/Remixer.bundle/*' ]
+      'Remixer' => [ 'src/core/resources/Remixer.bundle/*' ]
     }
   end
 
   s.subspec 'Firebase' do |ss|
-    ss.source_files = 'framework/src/firebase/*.{h,m}'
+    ss.source_files = 'src/firebase/*.{h,m}'
     ss.dependency 'Remixer/Core'
     ss.dependency 'Firebase'
     ss.dependency 'Firebase/Database'
     ss.dependency 'Firebase/Auth'
     ss.dependency 'Firebase/Storage'
-    ss.resource = 'framework/src/firebase/GoogleService-Info.plist'
+    ss.resource = 'src/firebase/GoogleService-Info.plist'
     ss.xcconfig = {
       'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/Firebase/Headers',
       'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_HOST_FIREBASE=1'
     }
   end
 
-  s.subspec 'Subnet' do |ss|
-    ss.source_files = 'framework/src/subnet/*.{h,m}'
-    ss.dependency 'Remixer/Core'
-    ss.dependency 'GCDWebServer', '~> 3.0'
-    ss.xcconfig = {
-      'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_HOST_SUBNET=1'
-    }
-  end
+  # s.subspec 'Subnet' do |ss|
+  #   ss.source_files = 'src/subnet/*.{h,m}'
+  #   ss.dependency 'Remixer/Core'
+  #   ss.dependency 'GCDWebServer', '~> 3.0'
+  #   ss.xcconfig = {
+  #     'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_HOST_SUBNET=1'
+  #   }
+  # end
 
 end
