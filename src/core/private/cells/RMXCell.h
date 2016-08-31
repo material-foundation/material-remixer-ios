@@ -16,9 +16,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RMXOverlayResources.h"
 #import "RMXRemix.h"
 #import "RMXRemixDelegate.h"
-#import "RMXResources.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
