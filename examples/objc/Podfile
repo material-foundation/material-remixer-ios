@@ -1,0 +1,13 @@
+platform :ios, '8.0'
+
+target 'RemixerExample' do
+	pod 'Remixer/Firebase', :path => '../../'
+end
+
+target 'RemixerExampleTests' do
+
+end
+
+target 'RemixerExampleUITests' do
+
+end

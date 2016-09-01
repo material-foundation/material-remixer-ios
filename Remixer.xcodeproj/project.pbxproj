@@ -1,0 +1,770 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D14B2F71D6B996800795A0D /* RMXControlButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D14B2F51D6B996800795A0D /* RMXControlButton.h */; };
+		5D14B2F81D6B996800795A0D /* RMXControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D14B2F61D6B996800795A0D /* RMXControlButton.m */; };
+		5D14B2FB1D6B9CFB00795A0D /* RMXNoteViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D14B2F91D6B9CFB00795A0D /* RMXNoteViewController.h */; };
+		5D14B2FC1D6B9CFB00795A0D /* RMXNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D14B2FA1D6B9CFB00795A0D /* RMXNoteViewController.m */; };
+		5D14B2FF1D6C9ACC00795A0D /* RMXCellButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D14B2FD1D6C9ACC00795A0D /* RMXCellButton.h */; };
+		5D14B3001D6C9ACC00795A0D /* RMXCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D14B2FE1D6C9ACC00795A0D /* RMXCellButton.m */; };
+		5D983A971D6B8E72003F2287 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D983A961D6B8E72003F2287 /* Info.plist */; };
+		5D983A981D6B90EF003F2287 /* RemixerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109FF1D3EC8EA00D67886 /* RemixerTests.m */; };
+		5DD5B2AE1CF36C2C003F6543 /* Remixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD5B2A31CF36C2C003F6543 /* Remixer.framework */; };
+		5DE109C81D3EC8B800D67886 /* RMXControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE1098E1D3EC8B800D67886 /* RMXControl.h */; };
+		5DE109C91D3EC8B800D67886 /* RMXControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1098F1D3EC8B800D67886 /* RMXControl.m */; };
+		5DE109CA1D3EC8B800D67886 /* RMXControlColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109901D3EC8B800D67886 /* RMXControlColorPicker.h */; };
+		5DE109CB1D3EC8B800D67886 /* RMXControlColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109911D3EC8B800D67886 /* RMXControlColorPicker.m */; };
+		5DE109CC1D3EC8B800D67886 /* RMXControlling.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109921D3EC8B800D67886 /* RMXControlling.h */; };
+		5DE109CD1D3EC8B800D67886 /* RMXControlSegmented.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109931D3EC8B800D67886 /* RMXControlSegmented.h */; };
+		5DE109CE1D3EC8B800D67886 /* RMXControlSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109941D3EC8B800D67886 /* RMXControlSegmented.m */; };
+		5DE109CF1D3EC8B800D67886 /* RMXControlSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109951D3EC8B800D67886 /* RMXControlSlider.h */; };
+		5DE109D01D3EC8B800D67886 /* RMXControlSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109961D3EC8B800D67886 /* RMXControlSlider.m */; };
+		5DE109D11D3EC8B800D67886 /* RMXControlStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109971D3EC8B800D67886 /* RMXControlStepper.h */; };
+		5DE109D21D3EC8B800D67886 /* RMXControlStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109981D3EC8B800D67886 /* RMXControlStepper.m */; };
+		5DE109D31D3EC8B800D67886 /* RMXControlSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109991D3EC8B800D67886 /* RMXControlSwitch.h */; };
+		5DE109D41D3EC8B800D67886 /* RMXControlSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1099A1D3EC8B800D67886 /* RMXControlSwitch.m */; };
+		5DE109D51D3EC8B800D67886 /* RMXControlTextPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE1099B1D3EC8B800D67886 /* RMXControlTextPicker.h */; };
+		5DE109D61D3EC8B800D67886 /* RMXControlTextPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1099C1D3EC8B800D67886 /* RMXControlTextPicker.m */; };
+		5DE109D71D3EC8B800D67886 /* RMXCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE1099F1D3EC8B800D67886 /* RMXCell.h */; };
+		5DE109D81D3EC8B800D67886 /* RMXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A01D3EC8B800D67886 /* RMXCell.m */; };
+		5DE109D91D3EC8B800D67886 /* RMXCellColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A11D3EC8B800D67886 /* RMXCellColorPicker.h */; };
+		5DE109DA1D3EC8B800D67886 /* RMXCellColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A21D3EC8B800D67886 /* RMXCellColorPicker.m */; };
+		5DE109DB1D3EC8B800D67886 /* RMXCellSegmented.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A31D3EC8B800D67886 /* RMXCellSegmented.h */; };
+		5DE109DC1D3EC8B800D67886 /* RMXCellSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A41D3EC8B800D67886 /* RMXCellSegmented.m */; };
+		5DE109DD1D3EC8B800D67886 /* RMXCellSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A51D3EC8B800D67886 /* RMXCellSlider.h */; };
+		5DE109DE1D3EC8B800D67886 /* RMXCellSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A61D3EC8B800D67886 /* RMXCellSlider.m */; };
+		5DE109DF1D3EC8B800D67886 /* RMXCellStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A71D3EC8B800D67886 /* RMXCellStepper.h */; };
+		5DE109E01D3EC8B800D67886 /* RMXCellStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A81D3EC8B800D67886 /* RMXCellStepper.m */; };
+		5DE109E11D3EC8B800D67886 /* RMXCellSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A91D3EC8B800D67886 /* RMXCellSwitch.h */; };
+		5DE109E21D3EC8B800D67886 /* RMXCellSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109AA1D3EC8B800D67886 /* RMXCellSwitch.m */; };
+		5DE109E31D3EC8B800D67886 /* RMXCellTextPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109AB1D3EC8B800D67886 /* RMXCellTextPicker.h */; };
+		5DE109E41D3EC8B800D67886 /* RMXCellTextPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109AC1D3EC8B800D67886 /* RMXCellTextPicker.m */; };
+		5DE109E51D3EC8B800D67886 /* RMXOverlayController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109AD1D3EC8B800D67886 /* RMXOverlayController.h */; };
+		5DE109E61D3EC8B800D67886 /* RMXOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109AE1D3EC8B800D67886 /* RMXOverlayController.m */; };
+		5DE109E71D3EC8B800D67886 /* RMXOverlayNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109AF1D3EC8B800D67886 /* RMXOverlayNavigationBar.h */; };
+		5DE109E81D3EC8B800D67886 /* RMXOverlayNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109B01D3EC8B800D67886 /* RMXOverlayNavigationBar.m */; };
+		5DE109EB1D3EC8B800D67886 /* RMXResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109B31D3EC8B800D67886 /* RMXResources.h */; };
+		5DE109EC1D3EC8B800D67886 /* RMXResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109B41D3EC8B800D67886 /* RMXResources.m */; };
+		5DE109ED1D3EC8B800D67886 /* RMXSnapshotController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109B51D3EC8B800D67886 /* RMXSnapshotController.h */; };
+		5DE109EE1D3EC8B800D67886 /* RMXSnapshotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109B61D3EC8B800D67886 /* RMXSnapshotController.m */; };
+		5DE109EF1D3EC8B800D67886 /* Remixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109B71D3EC8B800D67886 /* Remixer.h */; };
+		5DE109F01D3EC8B800D67886 /* Remixer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DE109B91D3EC8B800D67886 /* Remixer.bundle */; };
+		5DE109F11D3EC8B800D67886 /* RMXApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109BA1D3EC8B800D67886 /* RMXApp.h */; };
+		5DE109F21D3EC8B800D67886 /* RMXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109BB1D3EC8B800D67886 /* RMXApp.m */; };
+		5DE109F31D3EC8B800D67886 /* RMXComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109BC1D3EC8B800D67886 /* RMXComment.h */; };
+		5DE109F41D3EC8B800D67886 /* RMXComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109BD1D3EC8B800D67886 /* RMXComment.m */; };
+		5DE109F51D3EC8B800D67886 /* RMXRemix.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109BE1D3EC8B800D67886 /* RMXRemix.h */; };
+		5DE109F61D3EC8B800D67886 /* RMXRemix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109BF1D3EC8B800D67886 /* RMXRemix.m */; };
+		5DE109F71D3EC8B800D67886 /* RMXRemixDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109C01D3EC8B800D67886 /* RMXRemixDelegate.h */; };
+		5DE109F81D3EC8B800D67886 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DE109C21D3EC8B800D67886 /* GoogleService-Info.plist */; };
+		5DE109F91D3EC8B800D67886 /* TMGFirebaseHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109C31D3EC8B800D67886 /* TMGFirebaseHost.h */; };
+		5DE109FA1D3EC8B800D67886 /* TMGFirebaseHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109C41D3EC8B800D67886 /* TMGFirebaseHost.m */; };
+		5DE10A001D3EC8EA00D67886 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DE109FE1D3EC8EA00D67886 /* Info.plist */; };
+		75C89C564D4157C60B1CE247 /* libPods-Remixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F04E58C256B9C1E9B799F681 /* libPods-Remixer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5DD5B2AF1CF36C2C003F6543 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DD5B29A1CF36C2C003F6543 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DD5B2A21CF36C2C003F6543;
+			remoteInfo = Transmogrifier;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0366905CBBF920978449EAB4 /* Pods-Remixer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remixer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Remixer/Pods-Remixer.debug.xcconfig"; sourceTree = "<group>"; };
+		3B0A2FC430845A04D794A86B /* Pods-Remixer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remixer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Remixer/Pods-Remixer.release.xcconfig"; sourceTree = "<group>"; };
+		5D14B2F51D6B996800795A0D /* RMXControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlButton.h; sourceTree = "<group>"; };
+		5D14B2F61D6B996800795A0D /* RMXControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlButton.m; sourceTree = "<group>"; };
+		5D14B2F91D6B9CFB00795A0D /* RMXNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMXNoteViewController.h; path = src/core/private/RMXNoteViewController.h; sourceTree = SOURCE_ROOT; };
+		5D14B2FA1D6B9CFB00795A0D /* RMXNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMXNoteViewController.m; path = src/core/private/RMXNoteViewController.m; sourceTree = SOURCE_ROOT; };
+		5D14B2FD1D6C9ACC00795A0D /* RMXCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellButton.h; sourceTree = "<group>"; };
+		5D14B2FE1D6C9ACC00795A0D /* RMXCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellButton.m; sourceTree = "<group>"; };
+		5D983A961D6B8E72003F2287 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/core/Info.plist; sourceTree = SOURCE_ROOT; };
+		5DD5B2A31CF36C2C003F6543 /* Remixer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Remixer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DD5B2AD1CF36C2C003F6543 /* Remixer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Remixer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DE1098E1D3EC8B800D67886 /* RMXControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControl.h; sourceTree = "<group>"; };
+		5DE1098F1D3EC8B800D67886 /* RMXControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControl.m; sourceTree = "<group>"; };
+		5DE109901D3EC8B800D67886 /* RMXControlColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlColorPicker.h; sourceTree = "<group>"; };
+		5DE109911D3EC8B800D67886 /* RMXControlColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlColorPicker.m; sourceTree = "<group>"; };
+		5DE109921D3EC8B800D67886 /* RMXControlling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlling.h; sourceTree = "<group>"; };
+		5DE109931D3EC8B800D67886 /* RMXControlSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlSegmented.h; sourceTree = "<group>"; };
+		5DE109941D3EC8B800D67886 /* RMXControlSegmented.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlSegmented.m; sourceTree = "<group>"; };
+		5DE109951D3EC8B800D67886 /* RMXControlSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlSlider.h; sourceTree = "<group>"; };
+		5DE109961D3EC8B800D67886 /* RMXControlSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlSlider.m; sourceTree = "<group>"; };
+		5DE109971D3EC8B800D67886 /* RMXControlStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlStepper.h; sourceTree = "<group>"; };
+		5DE109981D3EC8B800D67886 /* RMXControlStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlStepper.m; sourceTree = "<group>"; };
+		5DE109991D3EC8B800D67886 /* RMXControlSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlSwitch.h; sourceTree = "<group>"; };
+		5DE1099A1D3EC8B800D67886 /* RMXControlSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlSwitch.m; sourceTree = "<group>"; };
+		5DE1099B1D3EC8B800D67886 /* RMXControlTextPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlTextPicker.h; sourceTree = "<group>"; };
+		5DE1099C1D3EC8B800D67886 /* RMXControlTextPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlTextPicker.m; sourceTree = "<group>"; };
+		5DE1099F1D3EC8B800D67886 /* RMXCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCell.h; sourceTree = "<group>"; };
+		5DE109A01D3EC8B800D67886 /* RMXCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCell.m; sourceTree = "<group>"; };
+		5DE109A11D3EC8B800D67886 /* RMXCellColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellColorPicker.h; sourceTree = "<group>"; };
+		5DE109A21D3EC8B800D67886 /* RMXCellColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellColorPicker.m; sourceTree = "<group>"; };
+		5DE109A31D3EC8B800D67886 /* RMXCellSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSegmented.h; sourceTree = "<group>"; };
+		5DE109A41D3EC8B800D67886 /* RMXCellSegmented.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSegmented.m; sourceTree = "<group>"; };
+		5DE109A51D3EC8B800D67886 /* RMXCellSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSlider.h; sourceTree = "<group>"; };
+		5DE109A61D3EC8B800D67886 /* RMXCellSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSlider.m; sourceTree = "<group>"; };
+		5DE109A71D3EC8B800D67886 /* RMXCellStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellStepper.h; sourceTree = "<group>"; };
+		5DE109A81D3EC8B800D67886 /* RMXCellStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellStepper.m; sourceTree = "<group>"; };
+		5DE109A91D3EC8B800D67886 /* RMXCellSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSwitch.h; sourceTree = "<group>"; };
+		5DE109AA1D3EC8B800D67886 /* RMXCellSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSwitch.m; sourceTree = "<group>"; };
+		5DE109AB1D3EC8B800D67886 /* RMXCellTextPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellTextPicker.h; sourceTree = "<group>"; };
+		5DE109AC1D3EC8B800D67886 /* RMXCellTextPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellTextPicker.m; sourceTree = "<group>"; };
+		5DE109AD1D3EC8B800D67886 /* RMXOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXOverlayController.h; sourceTree = "<group>"; };
+		5DE109AE1D3EC8B800D67886 /* RMXOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXOverlayController.m; sourceTree = "<group>"; };
+		5DE109AF1D3EC8B800D67886 /* RMXOverlayNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXOverlayNavigationBar.h; sourceTree = "<group>"; };
+		5DE109B01D3EC8B800D67886 /* RMXOverlayNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXOverlayNavigationBar.m; sourceTree = "<group>"; };
+		5DE109B31D3EC8B800D67886 /* RMXResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXResources.h; sourceTree = "<group>"; };
+		5DE109B41D3EC8B800D67886 /* RMXResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXResources.m; sourceTree = "<group>"; };
+		5DE109B51D3EC8B800D67886 /* RMXSnapshotController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXSnapshotController.h; sourceTree = "<group>"; };
+		5DE109B61D3EC8B800D67886 /* RMXSnapshotController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXSnapshotController.m; sourceTree = "<group>"; };
+		5DE109B71D3EC8B800D67886 /* Remixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Remixer.h; sourceTree = "<group>"; };
+		5DE109B91D3EC8B800D67886 /* Remixer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Remixer.bundle; sourceTree = "<group>"; };
+		5DE109BA1D3EC8B800D67886 /* RMXApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXApp.h; sourceTree = "<group>"; };
+		5DE109BB1D3EC8B800D67886 /* RMXApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXApp.m; sourceTree = "<group>"; };
+		5DE109BC1D3EC8B800D67886 /* RMXComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXComment.h; sourceTree = "<group>"; };
+		5DE109BD1D3EC8B800D67886 /* RMXComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXComment.m; sourceTree = "<group>"; };
+		5DE109BE1D3EC8B800D67886 /* RMXRemix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXRemix.h; sourceTree = "<group>"; };
+		5DE109BF1D3EC8B800D67886 /* RMXRemix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXRemix.m; sourceTree = "<group>"; };
+		5DE109C01D3EC8B800D67886 /* RMXRemixDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXRemixDelegate.h; sourceTree = "<group>"; };
+		5DE109C21D3EC8B800D67886 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5DE109C31D3EC8B800D67886 /* TMGFirebaseHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMGFirebaseHost.h; sourceTree = "<group>"; };
+		5DE109C41D3EC8B800D67886 /* TMGFirebaseHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMGFirebaseHost.m; sourceTree = "<group>"; };
+		5DE109FE1D3EC8EA00D67886 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DE109FF1D3EC8EA00D67886 /* RemixerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemixerTests.m; sourceTree = "<group>"; };
+		F04E58C256B9C1E9B799F681 /* libPods-Remixer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Remixer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5DD5B29F1CF36C2C003F6543 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75C89C564D4157C60B1CE247 /* libPods-Remixer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DD5B2AA1CF36C2C003F6543 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DD5B2AE1CF36C2C003F6543 /* Remixer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5DD5B2991CF36C2C003F6543 = {
+			isa = PBXGroup;
+			children = (
+				5DE1098B1D3EC8B800D67886 /* src */,
+				5DE109FD1D3EC8EA00D67886 /* RemixerTests */,
+				5DD5B2A41CF36C2C003F6543 /* Products */,
+				C9319B5305B13DB07E275A50 /* Pods */,
+				A343EF24DD4393D8C07627F6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5DD5B2A41CF36C2C003F6543 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DD5B2A31CF36C2C003F6543 /* Remixer.framework */,
+				5DD5B2AD1CF36C2C003F6543 /* Remixer.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5DE1098B1D3EC8B800D67886 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5DE1098C1D3EC8B800D67886 /* core */,
+				5DE109C11D3EC8B800D67886 /* firebase */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		5DE1098C1D3EC8B800D67886 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				5DE1098D1D3EC8B800D67886 /* controls */,
+				5DE1099D1D3EC8B800D67886 /* private */,
+				5D983A961D6B8E72003F2287 /* Info.plist */,
+				5DE109B71D3EC8B800D67886 /* Remixer.h */,
+				5DE109B81D3EC8B800D67886 /* resources */,
+				5DE109BA1D3EC8B800D67886 /* RMXApp.h */,
+				5DE109BB1D3EC8B800D67886 /* RMXApp.m */,
+				5DE109BC1D3EC8B800D67886 /* RMXComment.h */,
+				5DE109BD1D3EC8B800D67886 /* RMXComment.m */,
+				5DE109BE1D3EC8B800D67886 /* RMXRemix.h */,
+				5DE109BF1D3EC8B800D67886 /* RMXRemix.m */,
+				5DE109C01D3EC8B800D67886 /* RMXRemixDelegate.h */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		5DE1098D1D3EC8B800D67886 /* controls */ = {
+			isa = PBXGroup;
+			children = (
+				5DE1098E1D3EC8B800D67886 /* RMXControl.h */,
+				5DE1098F1D3EC8B800D67886 /* RMXControl.m */,
+				5D14B2F51D6B996800795A0D /* RMXControlButton.h */,
+				5D14B2F61D6B996800795A0D /* RMXControlButton.m */,
+				5DE109901D3EC8B800D67886 /* RMXControlColorPicker.h */,
+				5DE109911D3EC8B800D67886 /* RMXControlColorPicker.m */,
+				5DE109921D3EC8B800D67886 /* RMXControlling.h */,
+				5DE109931D3EC8B800D67886 /* RMXControlSegmented.h */,
+				5DE109941D3EC8B800D67886 /* RMXControlSegmented.m */,
+				5DE109951D3EC8B800D67886 /* RMXControlSlider.h */,
+				5DE109961D3EC8B800D67886 /* RMXControlSlider.m */,
+				5DE109971D3EC8B800D67886 /* RMXControlStepper.h */,
+				5DE109981D3EC8B800D67886 /* RMXControlStepper.m */,
+				5DE109991D3EC8B800D67886 /* RMXControlSwitch.h */,
+				5DE1099A1D3EC8B800D67886 /* RMXControlSwitch.m */,
+				5DE1099B1D3EC8B800D67886 /* RMXControlTextPicker.h */,
+				5DE1099C1D3EC8B800D67886 /* RMXControlTextPicker.m */,
+			);
+			path = controls;
+			sourceTree = "<group>";
+		};
+		5DE1099D1D3EC8B800D67886 /* private */ = {
+			isa = PBXGroup;
+			children = (
+				5DE1099E1D3EC8B800D67886 /* cells */,
+				5D14B2F91D6B9CFB00795A0D /* RMXNoteViewController.h */,
+				5D14B2FA1D6B9CFB00795A0D /* RMXNoteViewController.m */,
+				5DE109AD1D3EC8B800D67886 /* RMXOverlayController.h */,
+				5DE109AE1D3EC8B800D67886 /* RMXOverlayController.m */,
+				5DE109AF1D3EC8B800D67886 /* RMXOverlayNavigationBar.h */,
+				5DE109B01D3EC8B800D67886 /* RMXOverlayNavigationBar.m */,
+				5DE109B31D3EC8B800D67886 /* RMXResources.h */,
+				5DE109B41D3EC8B800D67886 /* RMXResources.m */,
+				5DE109B51D3EC8B800D67886 /* RMXSnapshotController.h */,
+				5DE109B61D3EC8B800D67886 /* RMXSnapshotController.m */,
+			);
+			path = private;
+			sourceTree = "<group>";
+		};
+		5DE1099E1D3EC8B800D67886 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				5DE1099F1D3EC8B800D67886 /* RMXCell.h */,
+				5DE109A01D3EC8B800D67886 /* RMXCell.m */,
+				5D14B2FD1D6C9ACC00795A0D /* RMXCellButton.h */,
+				5D14B2FE1D6C9ACC00795A0D /* RMXCellButton.m */,
+				5DE109A11D3EC8B800D67886 /* RMXCellColorPicker.h */,
+				5DE109A21D3EC8B800D67886 /* RMXCellColorPicker.m */,
+				5DE109A31D3EC8B800D67886 /* RMXCellSegmented.h */,
+				5DE109A41D3EC8B800D67886 /* RMXCellSegmented.m */,
+				5DE109A51D3EC8B800D67886 /* RMXCellSlider.h */,
+				5DE109A61D3EC8B800D67886 /* RMXCellSlider.m */,
+				5DE109A71D3EC8B800D67886 /* RMXCellStepper.h */,
+				5DE109A81D3EC8B800D67886 /* RMXCellStepper.m */,
+				5DE109A91D3EC8B800D67886 /* RMXCellSwitch.h */,
+				5DE109AA1D3EC8B800D67886 /* RMXCellSwitch.m */,
+				5DE109AB1D3EC8B800D67886 /* RMXCellTextPicker.h */,
+				5DE109AC1D3EC8B800D67886 /* RMXCellTextPicker.m */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		5DE109B81D3EC8B800D67886 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				5DE109B91D3EC8B800D67886 /* Remixer.bundle */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		5DE109C11D3EC8B800D67886 /* firebase */ = {
+			isa = PBXGroup;
+			children = (
+				5DE109C21D3EC8B800D67886 /* GoogleService-Info.plist */,
+				5DE109C31D3EC8B800D67886 /* TMGFirebaseHost.h */,
+				5DE109C41D3EC8B800D67886 /* TMGFirebaseHost.m */,
+			);
+			path = firebase;
+			sourceTree = "<group>";
+		};
+		5DE109FD1D3EC8EA00D67886 /* RemixerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5DE109FE1D3EC8EA00D67886 /* Info.plist */,
+				5DE109FF1D3EC8EA00D67886 /* RemixerTests.m */,
+			);
+			path = RemixerTests;
+			sourceTree = "<group>";
+		};
+		A343EF24DD4393D8C07627F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F04E58C256B9C1E9B799F681 /* libPods-Remixer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9319B5305B13DB07E275A50 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0366905CBBF920978449EAB4 /* Pods-Remixer.debug.xcconfig */,
+				3B0A2FC430845A04D794A86B /* Pods-Remixer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5DD5B2A01CF36C2C003F6543 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D14B2FF1D6C9ACC00795A0D /* RMXCellButton.h in Headers */,
+				5DE109F51D3EC8B800D67886 /* RMXRemix.h in Headers */,
+				5DE109D31D3EC8B800D67886 /* RMXControlSwitch.h in Headers */,
+				5DE109C81D3EC8B800D67886 /* RMXControl.h in Headers */,
+				5DE109DD1D3EC8B800D67886 /* RMXCellSlider.h in Headers */,
+				5DE109CA1D3EC8B800D67886 /* RMXControlColorPicker.h in Headers */,
+				5DE109E31D3EC8B800D67886 /* RMXCellTextPicker.h in Headers */,
+				5DE109CC1D3EC8B800D67886 /* RMXControlling.h in Headers */,
+				5DE109EB1D3EC8B800D67886 /* RMXResources.h in Headers */,
+				5DE109F91D3EC8B800D67886 /* TMGFirebaseHost.h in Headers */,
+				5DE109E51D3EC8B800D67886 /* RMXOverlayController.h in Headers */,
+				5DE109ED1D3EC8B800D67886 /* RMXSnapshotController.h in Headers */,
+				5DE109D11D3EC8B800D67886 /* RMXControlStepper.h in Headers */,
+				5DE109DF1D3EC8B800D67886 /* RMXCellStepper.h in Headers */,
+				5DE109D91D3EC8B800D67886 /* RMXCellColorPicker.h in Headers */,
+				5DE109D71D3EC8B800D67886 /* RMXCell.h in Headers */,
+				5DE109D51D3EC8B800D67886 /* RMXControlTextPicker.h in Headers */,
+				5DE109CD1D3EC8B800D67886 /* RMXControlSegmented.h in Headers */,
+				5DE109E71D3EC8B800D67886 /* RMXOverlayNavigationBar.h in Headers */,
+				5D14B2F71D6B996800795A0D /* RMXControlButton.h in Headers */,
+				5DE109EF1D3EC8B800D67886 /* Remixer.h in Headers */,
+				5DE109CF1D3EC8B800D67886 /* RMXControlSlider.h in Headers */,
+				5D14B2FB1D6B9CFB00795A0D /* RMXNoteViewController.h in Headers */,
+				5DE109F31D3EC8B800D67886 /* RMXComment.h in Headers */,
+				5DE109E11D3EC8B800D67886 /* RMXCellSwitch.h in Headers */,
+				5DE109F11D3EC8B800D67886 /* RMXApp.h in Headers */,
+				5DE109F71D3EC8B800D67886 /* RMXRemixDelegate.h in Headers */,
+				5DE109DB1D3EC8B800D67886 /* RMXCellSegmented.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5DD5B2A21CF36C2C003F6543 /* Remixer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DD5B2B71CF36C2C003F6543 /* Build configuration list for PBXNativeTarget "Remixer" */;
+			buildPhases = (
+				740AAD8E26984A50FBF9365A /* [CP] Check Pods Manifest.lock */,
+				5DD5B29E1CF36C2C003F6543 /* Sources */,
+				5DD5B29F1CF36C2C003F6543 /* Frameworks */,
+				5DD5B2A01CF36C2C003F6543 /* Headers */,
+				5DD5B2A11CF36C2C003F6543 /* Resources */,
+				09B2C456E2EA022522D96369 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Remixer;
+			productName = Transmogrifier;
+			productReference = 5DD5B2A31CF36C2C003F6543 /* Remixer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5DD5B2AC1CF36C2C003F6543 /* RemixerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DD5B2BA1CF36C2C003F6543 /* Build configuration list for PBXNativeTarget "RemixerTests" */;
+			buildPhases = (
+				143052ECAB24CC46B9A8D9FC /* [CP] Check Pods Manifest.lock */,
+				5DD5B2A91CF36C2C003F6543 /* Sources */,
+				5DD5B2AA1CF36C2C003F6543 /* Frameworks */,
+				5DD5B2AB1CF36C2C003F6543 /* Resources */,
+				AD21CC659344CB9B7E6163D7 /* [CP] Embed Pods Frameworks */,
+				0D67175A050B5B578A2926A2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DD5B2B01CF36C2C003F6543 /* PBXTargetDependency */,
+			);
+			name = RemixerTests;
+			productName = TransmogrifierTests;
+			productReference = 5DD5B2AD1CF36C2C003F6543 /* Remixer.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5DD5B29A1CF36C2C003F6543 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Google Inc";
+				TargetAttributes = {
+					5DD5B2A21CF36C2C003F6543 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					5DD5B2AC1CF36C2C003F6543 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 5DD5B29D1CF36C2C003F6543 /* Build configuration list for PBXProject "Remixer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5DD5B2991CF36C2C003F6543;
+			productRefGroup = 5DD5B2A41CF36C2C003F6543 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5DD5B2A21CF36C2C003F6543 /* Remixer */,
+				5DD5B2AC1CF36C2C003F6543 /* RemixerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5DD5B2A11CF36C2C003F6543 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D983A971D6B8E72003F2287 /* Info.plist in Resources */,
+				5DE109F81D3EC8B800D67886 /* GoogleService-Info.plist in Resources */,
+				5DE109F01D3EC8B800D67886 /* Remixer.bundle in Resources */,
+				5DE10A001D3EC8EA00D67886 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DD5B2AB1CF36C2C003F6543 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09B2C456E2EA022522D96369 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Remixer/Pods-Remixer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0D67175A050B5B578A2926A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerTests/Pods-RemixerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		143052ECAB24CC46B9A8D9FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		740AAD8E26984A50FBF9365A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AD21CC659344CB9B7E6163D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerTests/Pods-RemixerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5DD5B29E1CF36C2C003F6543 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DE109DC1D3EC8B800D67886 /* RMXCellSegmented.m in Sources */,
+				5DE109F61D3EC8B800D67886 /* RMXRemix.m in Sources */,
+				5DE109CE1D3EC8B800D67886 /* RMXControlSegmented.m in Sources */,
+				5DE109FA1D3EC8B800D67886 /* TMGFirebaseHost.m in Sources */,
+				5DE109CB1D3EC8B800D67886 /* RMXControlColorPicker.m in Sources */,
+				5DE109D41D3EC8B800D67886 /* RMXControlSwitch.m in Sources */,
+				5D14B2FC1D6B9CFB00795A0D /* RMXNoteViewController.m in Sources */,
+				5DE109D61D3EC8B800D67886 /* RMXControlTextPicker.m in Sources */,
+				5D14B3001D6C9ACC00795A0D /* RMXCellButton.m in Sources */,
+				5DE109E81D3EC8B800D67886 /* RMXOverlayNavigationBar.m in Sources */,
+				5DE109DA1D3EC8B800D67886 /* RMXCellColorPicker.m in Sources */,
+				5DE109EC1D3EC8B800D67886 /* RMXResources.m in Sources */,
+				5DE109D21D3EC8B800D67886 /* RMXControlStepper.m in Sources */,
+				5DE109DE1D3EC8B800D67886 /* RMXCellSlider.m in Sources */,
+				5DE109D01D3EC8B800D67886 /* RMXControlSlider.m in Sources */,
+				5DE109E01D3EC8B800D67886 /* RMXCellStepper.m in Sources */,
+				5DE109E41D3EC8B800D67886 /* RMXCellTextPicker.m in Sources */,
+				5DE109C91D3EC8B800D67886 /* RMXControl.m in Sources */,
+				5DE109D81D3EC8B800D67886 /* RMXCell.m in Sources */,
+				5DE109F21D3EC8B800D67886 /* RMXApp.m in Sources */,
+				5DE109EE1D3EC8B800D67886 /* RMXSnapshotController.m in Sources */,
+				5DE109E61D3EC8B800D67886 /* RMXOverlayController.m in Sources */,
+				5DE109E21D3EC8B800D67886 /* RMXCellSwitch.m in Sources */,
+				5D14B2F81D6B996800795A0D /* RMXControlButton.m in Sources */,
+				5DE109F41D3EC8B800D67886 /* RMXComment.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DD5B2A91CF36C2C003F6543 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D983A981D6B90EF003F2287 /* RemixerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5DD5B2B01CF36C2C003F6543 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5DD5B2A21CF36C2C003F6543 /* Remixer */;
+			targetProxy = 5DD5B2AF1CF36C2C003F6543 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5DD5B2B51CF36C2C003F6543 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5DD5B2B61CF36C2C003F6543 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5DD5B2B81CF36C2C003F6543 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0366905CBBF920978449EAB4 /* Pods-Remixer.debug.xcconfig */;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = src/core/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.Remixer;
+				PRODUCT_NAME = Remixer;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5DD5B2B91CF36C2C003F6543 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B0A2FC430845A04D794A86B /* Pods-Remixer.release.xcconfig */;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = src/core/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.Remixer;
+				PRODUCT_NAME = Remixer;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5DD5B2BB1CF36C2C003F6543 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TransmogrifierTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.TransmogrifierTests;
+				PRODUCT_NAME = Remixer;
+			};
+			name = Debug;
+		};
+		5DD5B2BC1CF36C2C003F6543 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TransmogrifierTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.TransmogrifierTests;
+				PRODUCT_NAME = Remixer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5DD5B29D1CF36C2C003F6543 /* Build configuration list for PBXProject "Remixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DD5B2B51CF36C2C003F6543 /* Debug */,
+				5DD5B2B61CF36C2C003F6543 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DD5B2B71CF36C2C003F6543 /* Build configuration list for PBXNativeTarget "Remixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DD5B2B81CF36C2C003F6543 /* Debug */,
+				5DD5B2B91CF36C2C003F6543 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DD5B2BA1CF36C2C003F6543 /* Build configuration list for PBXNativeTarget "RemixerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DD5B2BB1CF36C2C003F6543 /* Debug */,
+				5DD5B2BC1CF36C2C003F6543 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5DD5B29A1CF36C2C003F6543 /* Project object */;
+}
