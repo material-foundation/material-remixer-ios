@@ -96,18 +96,18 @@ Now you can add Remixer components in your view controller classes as follows:
   [super viewDidLoad];
 
   _box = [[UIView alloc] initWithFrame:CGRectMake(50, 150, 80, 80)];
+  _box.backgroundColor = [UIColor redColor];
   [self.view addSubview:_box];
-
-  // Add color picker.
-  NSArray *colorOptions = @[ [UIColor blueColor], [UIColor redColor], [UIColor greenColor] ];
-  RMXControlColorPicker *colorPickerControl =
-      [RMXControlColorPicker controlWithTitle:@"Color Picker" array:colorOptions selectedIndex:1];
-  [RMXRemix addRemixWithKey:@"colorPicker"
-               usingControl:colorPickerControl
-                updateBlock:^(RMXControl *control) {
-
-                  // Now set the box background color.
-                  _box.backgroundColor = [(RMXControlColorPicker *)control selectedColor];
+  
+  // Add slider remix.
+  RMXSlider *sliderControl = [RMXSlider controlWithTitle:@"Alpha" minimumValue:0 maximumValue:1];
+  [RMXRemix addRemixWithKey:@"alpha"
+               usingControl:sliderControl
+              selectedValue:@(1)
+                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
+                
+                  // Now set the box alpha to slider selected value.
+                  _box.alpha = [selectedValue floatValue];
                 }];
 }
 
