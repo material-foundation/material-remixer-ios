@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol RMXRemixDelegate;
 
 /** RMXUpdateBlock is a block that will be invoked when a remix control is updated. */
-typedef void (^RMXUpdateBlock)(RMXRemix *remix, NSNumber *selectedValue);
+typedef void (^RMXUpdateBlock)(RMXRemix *remix, NSNumber *_Nullable selectedValue);
 
 /**
  The RMXRemix class provides an interface to create and store confgurable remixes for the app.

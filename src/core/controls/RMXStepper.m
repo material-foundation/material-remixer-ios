@@ -22,12 +22,12 @@
 
 @implementation RMXStepper
 
-@synthesize title;
-@synthesize defaultValue;
-@synthesize minimumValue;
-@synthesize maximumValue;
-@synthesize stepValue;
-@synthesize delaysCommit;
+@synthesize title = _title;
+@synthesize defaultValue = _defaultValue;
+@synthesize minimumValue = _minimumValue;
+@synthesize maximumValue = _maximumValue;
+@synthesize stepValue = _stepValue;
+@synthesize delaysCommit = _delaysCommit;
 
 - (instancetype)initWithTitle:(NSString *)title
                  minimumValue:(CGFloat)minimumValue
@@ -35,11 +35,11 @@
                     stepValue:(CGFloat)stepValue {
   self = [super init];
   if (self) {
-    self.title = title;
-    self.minimumValue = minimumValue;
-    self.maximumValue = maximumValue;
-    self.stepValue = stepValue;
-    self.delaysCommit = NO;
+    _title = title;
+    _minimumValue = minimumValue;
+    _maximumValue = maximumValue;
+    _stepValue = stepValue;
+    _delaysCommit = NO;
   }
   return self;
 }

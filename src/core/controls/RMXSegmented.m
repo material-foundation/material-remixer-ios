@@ -22,17 +22,17 @@
 
 @implementation RMXSegmented
 
-@synthesize title;
-@synthesize defaultValue;
-@synthesize itemList;
-@synthesize delaysCommit;
+@synthesize title = _title;
+@synthesize defaultValue = _defaultValue;
+@synthesize itemList = _itemList;
+@synthesize delaysCommit = _delaysCommit;
 
 - (instancetype)initWithTitle:(NSString *)title itemList:(NSArray<NSString *> *)itemList {
   self = [super init];
   if (self) {
-    self.title = title;
-    self.itemList = itemList;
-    self.delaysCommit = NO;
+    _title = title;
+    _itemList = itemList;
+    _delaysCommit = NO;
   }
   return self;
 }

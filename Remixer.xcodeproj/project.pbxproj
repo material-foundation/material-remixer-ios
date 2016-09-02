@@ -7,65 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D14B2F71D6B996800795A0D /* RMXControlButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D14B2F51D6B996800795A0D /* RMXControlButton.h */; };
-		5D14B2F81D6B996800795A0D /* RMXControlButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D14B2F61D6B996800795A0D /* RMXControlButton.m */; };
-		5D14B2FB1D6B9CFB00795A0D /* RMXNoteViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D14B2F91D6B9CFB00795A0D /* RMXNoteViewController.h */; };
-		5D14B2FC1D6B9CFB00795A0D /* RMXNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D14B2FA1D6B9CFB00795A0D /* RMXNoteViewController.m */; };
-		5D14B2FF1D6C9ACC00795A0D /* RMXCellButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D14B2FD1D6C9ACC00795A0D /* RMXCellButton.h */; };
-		5D14B3001D6C9ACC00795A0D /* RMXCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D14B2FE1D6C9ACC00795A0D /* RMXCellButton.m */; };
-		5D983A971D6B8E72003F2287 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D983A961D6B8E72003F2287 /* Info.plist */; };
-		5D983A981D6B90EF003F2287 /* RemixerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109FF1D3EC8EA00D67886 /* RemixerTests.m */; };
+		5D39B45B1D79D682008F0158 /* RemixerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4591D79D682008F0158 /* RemixerTests.m */; };
+		5D39B4921D79D8F9008F0158 /* RMXButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B45F1D79D8F9008F0158 /* RMXButton.h */; };
+		5D39B4931D79D8F9008F0158 /* RMXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4601D79D8F9008F0158 /* RMXButton.m */; };
+		5D39B4941D79D8F9008F0158 /* RMXColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4611D79D8F9008F0158 /* RMXColorPicker.h */; };
+		5D39B4951D79D8F9008F0158 /* RMXColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4621D79D8F9008F0158 /* RMXColorPicker.m */; };
+		5D39B4961D79D8F9008F0158 /* RMXModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4631D79D8F9008F0158 /* RMXModel.h */; };
+		5D39B4971D79D8F9008F0158 /* RMXSegmented.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4641D79D8F9008F0158 /* RMXSegmented.h */; };
+		5D39B4981D79D8F9008F0158 /* RMXSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4651D79D8F9008F0158 /* RMXSegmented.m */; };
+		5D39B4991D79D8F9008F0158 /* RMXSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4661D79D8F9008F0158 /* RMXSlider.h */; };
+		5D39B49A1D79D8F9008F0158 /* RMXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4671D79D8F9008F0158 /* RMXSlider.m */; };
+		5D39B49B1D79D8F9008F0158 /* RMXStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4681D79D8F9008F0158 /* RMXStepper.h */; };
+		5D39B49C1D79D8F9008F0158 /* RMXStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4691D79D8F9008F0158 /* RMXStepper.m */; };
+		5D39B49D1D79D8F9008F0158 /* RMXSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B46A1D79D8F9008F0158 /* RMXSwitch.h */; };
+		5D39B49E1D79D8F9008F0158 /* RMXSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B46B1D79D8F9008F0158 /* RMXSwitch.m */; };
+		5D39B49F1D79D8F9008F0158 /* RMXTextPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B46C1D79D8F9008F0158 /* RMXTextPicker.h */; };
+		5D39B4A01D79D8F9008F0158 /* RMXTextPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B46D1D79D8F9008F0158 /* RMXTextPicker.m */; };
+		5D39B4A21D79D8F9008F0158 /* RMXCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4711D79D8F9008F0158 /* RMXCell.h */; };
+		5D39B4A31D79D8F9008F0158 /* RMXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4721D79D8F9008F0158 /* RMXCell.m */; };
+		5D39B4A41D79D8F9008F0158 /* RMXCellButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4731D79D8F9008F0158 /* RMXCellButton.h */; };
+		5D39B4A51D79D8F9008F0158 /* RMXCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4741D79D8F9008F0158 /* RMXCellButton.m */; };
+		5D39B4A61D79D8F9008F0158 /* RMXCellColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4751D79D8F9008F0158 /* RMXCellColorPicker.h */; };
+		5D39B4A71D79D8F9008F0158 /* RMXCellColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4761D79D8F9008F0158 /* RMXCellColorPicker.m */; };
+		5D39B4A81D79D8F9008F0158 /* RMXCellSegmented.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4771D79D8F9008F0158 /* RMXCellSegmented.h */; };
+		5D39B4A91D79D8F9008F0158 /* RMXCellSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4781D79D8F9008F0158 /* RMXCellSegmented.m */; };
+		5D39B4AA1D79D8F9008F0158 /* RMXCellSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4791D79D8F9008F0158 /* RMXCellSlider.h */; };
+		5D39B4AB1D79D8F9008F0158 /* RMXCellSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B47A1D79D8F9008F0158 /* RMXCellSlider.m */; };
+		5D39B4AC1D79D8F9008F0158 /* RMXCellStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B47B1D79D8F9008F0158 /* RMXCellStepper.h */; };
+		5D39B4AD1D79D8F9008F0158 /* RMXCellStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B47C1D79D8F9008F0158 /* RMXCellStepper.m */; };
+		5D39B4AE1D79D8F9008F0158 /* RMXCellSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B47D1D79D8F9008F0158 /* RMXCellSwitch.h */; };
+		5D39B4AF1D79D8F9008F0158 /* RMXCellSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B47E1D79D8F9008F0158 /* RMXCellSwitch.m */; };
+		5D39B4B01D79D8F9008F0158 /* RMXCellTextPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B47F1D79D8F9008F0158 /* RMXCellTextPicker.h */; };
+		5D39B4B11D79D8F9008F0158 /* RMXCellTextPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4801D79D8F9008F0158 /* RMXCellTextPicker.m */; };
+		5D39B4B21D79D8F9008F0158 /* RMXOverlayController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4811D79D8F9008F0158 /* RMXOverlayController.h */; };
+		5D39B4B31D79D8F9008F0158 /* RMXOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4821D79D8F9008F0158 /* RMXOverlayController.m */; };
+		5D39B4B41D79D8F9008F0158 /* RMXOverlayNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4831D79D8F9008F0158 /* RMXOverlayNavigationBar.h */; };
+		5D39B4B51D79D8F9008F0158 /* RMXOverlayNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4841D79D8F9008F0158 /* RMXOverlayNavigationBar.m */; };
+		5D39B4B61D79D8F9008F0158 /* RMXOverlayResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4851D79D8F9008F0158 /* RMXOverlayResources.h */; };
+		5D39B4B71D79D8F9008F0158 /* RMXOverlayResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4861D79D8F9008F0158 /* RMXOverlayResources.m */; };
+		5D39B4B81D79D8F9008F0158 /* Remixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4871D79D8F9008F0158 /* Remixer.h */; };
+		5D39B4B91D79D8F9008F0158 /* Remixer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5D39B4891D79D8F9008F0158 /* Remixer.bundle */; };
+		5D39B4BA1D79D8F9008F0158 /* RMXApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B48A1D79D8F9008F0158 /* RMXApp.h */; };
+		5D39B4BB1D79D8F9008F0158 /* RMXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B48B1D79D8F9008F0158 /* RMXApp.m */; };
+		5D39B4BC1D79D8F9008F0158 /* RMXRemix.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B48C1D79D8F9008F0158 /* RMXRemix.h */; };
+		5D39B4BD1D79D8F9008F0158 /* RMXRemix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B48D1D79D8F9008F0158 /* RMXRemix.m */; };
+		5D39B4BE1D79D8F9008F0158 /* RMXRemixDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B48E1D79D8F9008F0158 /* RMXRemixDelegate.h */; };
+		5D39B4BF1D79D8F9008F0158 /* RMXFirebaseHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4901D79D8F9008F0158 /* RMXFirebaseHost.h */; };
+		5D39B4C01D79D8F9008F0158 /* RMXFirebaseHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4911D79D8F9008F0158 /* RMXFirebaseHost.m */; };
 		5DD5B2AE1CF36C2C003F6543 /* Remixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD5B2A31CF36C2C003F6543 /* Remixer.framework */; };
-		5DE109C81D3EC8B800D67886 /* RMXControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE1098E1D3EC8B800D67886 /* RMXControl.h */; };
-		5DE109C91D3EC8B800D67886 /* RMXControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1098F1D3EC8B800D67886 /* RMXControl.m */; };
-		5DE109CA1D3EC8B800D67886 /* RMXControlColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109901D3EC8B800D67886 /* RMXControlColorPicker.h */; };
-		5DE109CB1D3EC8B800D67886 /* RMXControlColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109911D3EC8B800D67886 /* RMXControlColorPicker.m */; };
-		5DE109CC1D3EC8B800D67886 /* RMXControlling.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109921D3EC8B800D67886 /* RMXControlling.h */; };
-		5DE109CD1D3EC8B800D67886 /* RMXControlSegmented.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109931D3EC8B800D67886 /* RMXControlSegmented.h */; };
-		5DE109CE1D3EC8B800D67886 /* RMXControlSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109941D3EC8B800D67886 /* RMXControlSegmented.m */; };
-		5DE109CF1D3EC8B800D67886 /* RMXControlSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109951D3EC8B800D67886 /* RMXControlSlider.h */; };
-		5DE109D01D3EC8B800D67886 /* RMXControlSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109961D3EC8B800D67886 /* RMXControlSlider.m */; };
-		5DE109D11D3EC8B800D67886 /* RMXControlStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109971D3EC8B800D67886 /* RMXControlStepper.h */; };
-		5DE109D21D3EC8B800D67886 /* RMXControlStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109981D3EC8B800D67886 /* RMXControlStepper.m */; };
-		5DE109D31D3EC8B800D67886 /* RMXControlSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109991D3EC8B800D67886 /* RMXControlSwitch.h */; };
-		5DE109D41D3EC8B800D67886 /* RMXControlSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1099A1D3EC8B800D67886 /* RMXControlSwitch.m */; };
-		5DE109D51D3EC8B800D67886 /* RMXControlTextPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE1099B1D3EC8B800D67886 /* RMXControlTextPicker.h */; };
-		5DE109D61D3EC8B800D67886 /* RMXControlTextPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE1099C1D3EC8B800D67886 /* RMXControlTextPicker.m */; };
-		5DE109D71D3EC8B800D67886 /* RMXCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE1099F1D3EC8B800D67886 /* RMXCell.h */; };
-		5DE109D81D3EC8B800D67886 /* RMXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A01D3EC8B800D67886 /* RMXCell.m */; };
-		5DE109D91D3EC8B800D67886 /* RMXCellColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A11D3EC8B800D67886 /* RMXCellColorPicker.h */; };
-		5DE109DA1D3EC8B800D67886 /* RMXCellColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A21D3EC8B800D67886 /* RMXCellColorPicker.m */; };
-		5DE109DB1D3EC8B800D67886 /* RMXCellSegmented.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A31D3EC8B800D67886 /* RMXCellSegmented.h */; };
-		5DE109DC1D3EC8B800D67886 /* RMXCellSegmented.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A41D3EC8B800D67886 /* RMXCellSegmented.m */; };
-		5DE109DD1D3EC8B800D67886 /* RMXCellSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A51D3EC8B800D67886 /* RMXCellSlider.h */; };
-		5DE109DE1D3EC8B800D67886 /* RMXCellSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A61D3EC8B800D67886 /* RMXCellSlider.m */; };
-		5DE109DF1D3EC8B800D67886 /* RMXCellStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A71D3EC8B800D67886 /* RMXCellStepper.h */; };
-		5DE109E01D3EC8B800D67886 /* RMXCellStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109A81D3EC8B800D67886 /* RMXCellStepper.m */; };
-		5DE109E11D3EC8B800D67886 /* RMXCellSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109A91D3EC8B800D67886 /* RMXCellSwitch.h */; };
-		5DE109E21D3EC8B800D67886 /* RMXCellSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109AA1D3EC8B800D67886 /* RMXCellSwitch.m */; };
-		5DE109E31D3EC8B800D67886 /* RMXCellTextPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109AB1D3EC8B800D67886 /* RMXCellTextPicker.h */; };
-		5DE109E41D3EC8B800D67886 /* RMXCellTextPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109AC1D3EC8B800D67886 /* RMXCellTextPicker.m */; };
-		5DE109E51D3EC8B800D67886 /* RMXOverlayController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109AD1D3EC8B800D67886 /* RMXOverlayController.h */; };
-		5DE109E61D3EC8B800D67886 /* RMXOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109AE1D3EC8B800D67886 /* RMXOverlayController.m */; };
-		5DE109E71D3EC8B800D67886 /* RMXOverlayNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109AF1D3EC8B800D67886 /* RMXOverlayNavigationBar.h */; };
-		5DE109E81D3EC8B800D67886 /* RMXOverlayNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109B01D3EC8B800D67886 /* RMXOverlayNavigationBar.m */; };
-		5DE109EB1D3EC8B800D67886 /* RMXResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109B31D3EC8B800D67886 /* RMXResources.h */; };
-		5DE109EC1D3EC8B800D67886 /* RMXResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109B41D3EC8B800D67886 /* RMXResources.m */; };
-		5DE109ED1D3EC8B800D67886 /* RMXSnapshotController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109B51D3EC8B800D67886 /* RMXSnapshotController.h */; };
-		5DE109EE1D3EC8B800D67886 /* RMXSnapshotController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109B61D3EC8B800D67886 /* RMXSnapshotController.m */; };
-		5DE109EF1D3EC8B800D67886 /* Remixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109B71D3EC8B800D67886 /* Remixer.h */; };
-		5DE109F01D3EC8B800D67886 /* Remixer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DE109B91D3EC8B800D67886 /* Remixer.bundle */; };
-		5DE109F11D3EC8B800D67886 /* RMXApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109BA1D3EC8B800D67886 /* RMXApp.h */; };
-		5DE109F21D3EC8B800D67886 /* RMXApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109BB1D3EC8B800D67886 /* RMXApp.m */; };
-		5DE109F31D3EC8B800D67886 /* RMXComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109BC1D3EC8B800D67886 /* RMXComment.h */; };
-		5DE109F41D3EC8B800D67886 /* RMXComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109BD1D3EC8B800D67886 /* RMXComment.m */; };
-		5DE109F51D3EC8B800D67886 /* RMXRemix.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109BE1D3EC8B800D67886 /* RMXRemix.h */; };
-		5DE109F61D3EC8B800D67886 /* RMXRemix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109BF1D3EC8B800D67886 /* RMXRemix.m */; };
-		5DE109F71D3EC8B800D67886 /* RMXRemixDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109C01D3EC8B800D67886 /* RMXRemixDelegate.h */; };
-		5DE109F81D3EC8B800D67886 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DE109C21D3EC8B800D67886 /* GoogleService-Info.plist */; };
-		5DE109F91D3EC8B800D67886 /* TMGFirebaseHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DE109C31D3EC8B800D67886 /* TMGFirebaseHost.h */; };
-		5DE109FA1D3EC8B800D67886 /* TMGFirebaseHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE109C41D3EC8B800D67886 /* TMGFirebaseHost.m */; };
-		5DE10A001D3EC8EA00D67886 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DE109FE1D3EC8EA00D67886 /* Info.plist */; };
 		75C89C564D4157C60B1CE247 /* libPods-Remixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F04E58C256B9C1E9B799F681 /* libPods-Remixer.a */; };
 /* End PBXBuildFile section */
 
@@ -82,66 +71,57 @@
 /* Begin PBXFileReference section */
 		0366905CBBF920978449EAB4 /* Pods-Remixer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remixer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Remixer/Pods-Remixer.debug.xcconfig"; sourceTree = "<group>"; };
 		3B0A2FC430845A04D794A86B /* Pods-Remixer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Remixer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Remixer/Pods-Remixer.release.xcconfig"; sourceTree = "<group>"; };
-		5D14B2F51D6B996800795A0D /* RMXControlButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlButton.h; sourceTree = "<group>"; };
-		5D14B2F61D6B996800795A0D /* RMXControlButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlButton.m; sourceTree = "<group>"; };
-		5D14B2F91D6B9CFB00795A0D /* RMXNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMXNoteViewController.h; path = src/core/private/RMXNoteViewController.h; sourceTree = SOURCE_ROOT; };
-		5D14B2FA1D6B9CFB00795A0D /* RMXNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMXNoteViewController.m; path = src/core/private/RMXNoteViewController.m; sourceTree = SOURCE_ROOT; };
-		5D14B2FD1D6C9ACC00795A0D /* RMXCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellButton.h; sourceTree = "<group>"; };
-		5D14B2FE1D6C9ACC00795A0D /* RMXCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellButton.m; sourceTree = "<group>"; };
-		5D983A961D6B8E72003F2287 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = src/core/Info.plist; sourceTree = SOURCE_ROOT; };
+		5D39B4581D79D682008F0158 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D39B4591D79D682008F0158 /* RemixerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemixerTests.m; sourceTree = "<group>"; };
+		5D39B45F1D79D8F9008F0158 /* RMXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXButton.h; sourceTree = "<group>"; };
+		5D39B4601D79D8F9008F0158 /* RMXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXButton.m; sourceTree = "<group>"; };
+		5D39B4611D79D8F9008F0158 /* RMXColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXColorPicker.h; sourceTree = "<group>"; };
+		5D39B4621D79D8F9008F0158 /* RMXColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXColorPicker.m; sourceTree = "<group>"; };
+		5D39B4631D79D8F9008F0158 /* RMXModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXModel.h; sourceTree = "<group>"; };
+		5D39B4641D79D8F9008F0158 /* RMXSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXSegmented.h; sourceTree = "<group>"; };
+		5D39B4651D79D8F9008F0158 /* RMXSegmented.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXSegmented.m; sourceTree = "<group>"; };
+		5D39B4661D79D8F9008F0158 /* RMXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXSlider.h; sourceTree = "<group>"; };
+		5D39B4671D79D8F9008F0158 /* RMXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXSlider.m; sourceTree = "<group>"; };
+		5D39B4681D79D8F9008F0158 /* RMXStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXStepper.h; sourceTree = "<group>"; };
+		5D39B4691D79D8F9008F0158 /* RMXStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXStepper.m; sourceTree = "<group>"; };
+		5D39B46A1D79D8F9008F0158 /* RMXSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXSwitch.h; sourceTree = "<group>"; };
+		5D39B46B1D79D8F9008F0158 /* RMXSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXSwitch.m; sourceTree = "<group>"; };
+		5D39B46C1D79D8F9008F0158 /* RMXTextPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXTextPicker.h; sourceTree = "<group>"; };
+		5D39B46D1D79D8F9008F0158 /* RMXTextPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXTextPicker.m; sourceTree = "<group>"; };
+		5D39B46E1D79D8F9008F0158 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D39B4711D79D8F9008F0158 /* RMXCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCell.h; sourceTree = "<group>"; };
+		5D39B4721D79D8F9008F0158 /* RMXCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCell.m; sourceTree = "<group>"; };
+		5D39B4731D79D8F9008F0158 /* RMXCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellButton.h; sourceTree = "<group>"; };
+		5D39B4741D79D8F9008F0158 /* RMXCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellButton.m; sourceTree = "<group>"; };
+		5D39B4751D79D8F9008F0158 /* RMXCellColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellColorPicker.h; sourceTree = "<group>"; };
+		5D39B4761D79D8F9008F0158 /* RMXCellColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellColorPicker.m; sourceTree = "<group>"; };
+		5D39B4771D79D8F9008F0158 /* RMXCellSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSegmented.h; sourceTree = "<group>"; };
+		5D39B4781D79D8F9008F0158 /* RMXCellSegmented.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSegmented.m; sourceTree = "<group>"; };
+		5D39B4791D79D8F9008F0158 /* RMXCellSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSlider.h; sourceTree = "<group>"; };
+		5D39B47A1D79D8F9008F0158 /* RMXCellSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSlider.m; sourceTree = "<group>"; };
+		5D39B47B1D79D8F9008F0158 /* RMXCellStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellStepper.h; sourceTree = "<group>"; };
+		5D39B47C1D79D8F9008F0158 /* RMXCellStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellStepper.m; sourceTree = "<group>"; };
+		5D39B47D1D79D8F9008F0158 /* RMXCellSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSwitch.h; sourceTree = "<group>"; };
+		5D39B47E1D79D8F9008F0158 /* RMXCellSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSwitch.m; sourceTree = "<group>"; };
+		5D39B47F1D79D8F9008F0158 /* RMXCellTextPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellTextPicker.h; sourceTree = "<group>"; };
+		5D39B4801D79D8F9008F0158 /* RMXCellTextPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellTextPicker.m; sourceTree = "<group>"; };
+		5D39B4811D79D8F9008F0158 /* RMXOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXOverlayController.h; sourceTree = "<group>"; };
+		5D39B4821D79D8F9008F0158 /* RMXOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXOverlayController.m; sourceTree = "<group>"; };
+		5D39B4831D79D8F9008F0158 /* RMXOverlayNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXOverlayNavigationBar.h; sourceTree = "<group>"; };
+		5D39B4841D79D8F9008F0158 /* RMXOverlayNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXOverlayNavigationBar.m; sourceTree = "<group>"; };
+		5D39B4851D79D8F9008F0158 /* RMXOverlayResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXOverlayResources.h; sourceTree = "<group>"; };
+		5D39B4861D79D8F9008F0158 /* RMXOverlayResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXOverlayResources.m; sourceTree = "<group>"; };
+		5D39B4871D79D8F9008F0158 /* Remixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Remixer.h; sourceTree = "<group>"; };
+		5D39B4891D79D8F9008F0158 /* Remixer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Remixer.bundle; sourceTree = "<group>"; };
+		5D39B48A1D79D8F9008F0158 /* RMXApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXApp.h; sourceTree = "<group>"; };
+		5D39B48B1D79D8F9008F0158 /* RMXApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXApp.m; sourceTree = "<group>"; };
+		5D39B48C1D79D8F9008F0158 /* RMXRemix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXRemix.h; sourceTree = "<group>"; };
+		5D39B48D1D79D8F9008F0158 /* RMXRemix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXRemix.m; sourceTree = "<group>"; };
+		5D39B48E1D79D8F9008F0158 /* RMXRemixDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXRemixDelegate.h; sourceTree = "<group>"; };
+		5D39B4901D79D8F9008F0158 /* RMXFirebaseHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXFirebaseHost.h; sourceTree = "<group>"; };
+		5D39B4911D79D8F9008F0158 /* RMXFirebaseHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXFirebaseHost.m; sourceTree = "<group>"; };
 		5DD5B2A31CF36C2C003F6543 /* Remixer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Remixer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD5B2AD1CF36C2C003F6543 /* Remixer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Remixer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DE1098E1D3EC8B800D67886 /* RMXControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControl.h; sourceTree = "<group>"; };
-		5DE1098F1D3EC8B800D67886 /* RMXControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControl.m; sourceTree = "<group>"; };
-		5DE109901D3EC8B800D67886 /* RMXControlColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlColorPicker.h; sourceTree = "<group>"; };
-		5DE109911D3EC8B800D67886 /* RMXControlColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlColorPicker.m; sourceTree = "<group>"; };
-		5DE109921D3EC8B800D67886 /* RMXControlling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlling.h; sourceTree = "<group>"; };
-		5DE109931D3EC8B800D67886 /* RMXControlSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlSegmented.h; sourceTree = "<group>"; };
-		5DE109941D3EC8B800D67886 /* RMXControlSegmented.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlSegmented.m; sourceTree = "<group>"; };
-		5DE109951D3EC8B800D67886 /* RMXControlSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlSlider.h; sourceTree = "<group>"; };
-		5DE109961D3EC8B800D67886 /* RMXControlSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlSlider.m; sourceTree = "<group>"; };
-		5DE109971D3EC8B800D67886 /* RMXControlStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlStepper.h; sourceTree = "<group>"; };
-		5DE109981D3EC8B800D67886 /* RMXControlStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlStepper.m; sourceTree = "<group>"; };
-		5DE109991D3EC8B800D67886 /* RMXControlSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlSwitch.h; sourceTree = "<group>"; };
-		5DE1099A1D3EC8B800D67886 /* RMXControlSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlSwitch.m; sourceTree = "<group>"; };
-		5DE1099B1D3EC8B800D67886 /* RMXControlTextPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXControlTextPicker.h; sourceTree = "<group>"; };
-		5DE1099C1D3EC8B800D67886 /* RMXControlTextPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXControlTextPicker.m; sourceTree = "<group>"; };
-		5DE1099F1D3EC8B800D67886 /* RMXCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCell.h; sourceTree = "<group>"; };
-		5DE109A01D3EC8B800D67886 /* RMXCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCell.m; sourceTree = "<group>"; };
-		5DE109A11D3EC8B800D67886 /* RMXCellColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellColorPicker.h; sourceTree = "<group>"; };
-		5DE109A21D3EC8B800D67886 /* RMXCellColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellColorPicker.m; sourceTree = "<group>"; };
-		5DE109A31D3EC8B800D67886 /* RMXCellSegmented.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSegmented.h; sourceTree = "<group>"; };
-		5DE109A41D3EC8B800D67886 /* RMXCellSegmented.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSegmented.m; sourceTree = "<group>"; };
-		5DE109A51D3EC8B800D67886 /* RMXCellSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSlider.h; sourceTree = "<group>"; };
-		5DE109A61D3EC8B800D67886 /* RMXCellSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSlider.m; sourceTree = "<group>"; };
-		5DE109A71D3EC8B800D67886 /* RMXCellStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellStepper.h; sourceTree = "<group>"; };
-		5DE109A81D3EC8B800D67886 /* RMXCellStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellStepper.m; sourceTree = "<group>"; };
-		5DE109A91D3EC8B800D67886 /* RMXCellSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellSwitch.h; sourceTree = "<group>"; };
-		5DE109AA1D3EC8B800D67886 /* RMXCellSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellSwitch.m; sourceTree = "<group>"; };
-		5DE109AB1D3EC8B800D67886 /* RMXCellTextPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXCellTextPicker.h; sourceTree = "<group>"; };
-		5DE109AC1D3EC8B800D67886 /* RMXCellTextPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXCellTextPicker.m; sourceTree = "<group>"; };
-		5DE109AD1D3EC8B800D67886 /* RMXOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXOverlayController.h; sourceTree = "<group>"; };
-		5DE109AE1D3EC8B800D67886 /* RMXOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXOverlayController.m; sourceTree = "<group>"; };
-		5DE109AF1D3EC8B800D67886 /* RMXOverlayNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXOverlayNavigationBar.h; sourceTree = "<group>"; };
-		5DE109B01D3EC8B800D67886 /* RMXOverlayNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXOverlayNavigationBar.m; sourceTree = "<group>"; };
-		5DE109B31D3EC8B800D67886 /* RMXResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXResources.h; sourceTree = "<group>"; };
-		5DE109B41D3EC8B800D67886 /* RMXResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXResources.m; sourceTree = "<group>"; };
-		5DE109B51D3EC8B800D67886 /* RMXSnapshotController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXSnapshotController.h; sourceTree = "<group>"; };
-		5DE109B61D3EC8B800D67886 /* RMXSnapshotController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXSnapshotController.m; sourceTree = "<group>"; };
-		5DE109B71D3EC8B800D67886 /* Remixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Remixer.h; sourceTree = "<group>"; };
-		5DE109B91D3EC8B800D67886 /* Remixer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Remixer.bundle; sourceTree = "<group>"; };
-		5DE109BA1D3EC8B800D67886 /* RMXApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXApp.h; sourceTree = "<group>"; };
-		5DE109BB1D3EC8B800D67886 /* RMXApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXApp.m; sourceTree = "<group>"; };
-		5DE109BC1D3EC8B800D67886 /* RMXComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXComment.h; sourceTree = "<group>"; };
-		5DE109BD1D3EC8B800D67886 /* RMXComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXComment.m; sourceTree = "<group>"; };
-		5DE109BE1D3EC8B800D67886 /* RMXRemix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXRemix.h; sourceTree = "<group>"; };
-		5DE109BF1D3EC8B800D67886 /* RMXRemix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXRemix.m; sourceTree = "<group>"; };
-		5DE109C01D3EC8B800D67886 /* RMXRemixDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXRemixDelegate.h; sourceTree = "<group>"; };
-		5DE109C21D3EC8B800D67886 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5DE109C31D3EC8B800D67886 /* TMGFirebaseHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMGFirebaseHost.h; sourceTree = "<group>"; };
-		5DE109C41D3EC8B800D67886 /* TMGFirebaseHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMGFirebaseHost.m; sourceTree = "<group>"; };
-		5DE109FE1D3EC8EA00D67886 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DE109FF1D3EC8EA00D67886 /* RemixerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemixerTests.m; sourceTree = "<group>"; };
 		F04E58C256B9C1E9B799F681 /* libPods-Remixer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Remixer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -165,11 +145,122 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D39B4571D79D682008F0158 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				5D39B4581D79D682008F0158 /* Info.plist */,
+				5D39B4591D79D682008F0158 /* RemixerTests.m */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+		5D39B45C1D79D8F9008F0158 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5D39B45D1D79D8F9008F0158 /* core */,
+				5D39B48F1D79D8F9008F0158 /* firebase */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		5D39B45D1D79D8F9008F0158 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				5D39B45E1D79D8F9008F0158 /* controls */,
+				5D39B46E1D79D8F9008F0158 /* Info.plist */,
+				5D39B46F1D79D8F9008F0158 /* private */,
+				5D39B4871D79D8F9008F0158 /* Remixer.h */,
+				5D39B4881D79D8F9008F0158 /* resources */,
+				5D39B48A1D79D8F9008F0158 /* RMXApp.h */,
+				5D39B48B1D79D8F9008F0158 /* RMXApp.m */,
+				5D39B48C1D79D8F9008F0158 /* RMXRemix.h */,
+				5D39B48D1D79D8F9008F0158 /* RMXRemix.m */,
+				5D39B48E1D79D8F9008F0158 /* RMXRemixDelegate.h */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		5D39B45E1D79D8F9008F0158 /* controls */ = {
+			isa = PBXGroup;
+			children = (
+				5D39B45F1D79D8F9008F0158 /* RMXButton.h */,
+				5D39B4601D79D8F9008F0158 /* RMXButton.m */,
+				5D39B4611D79D8F9008F0158 /* RMXColorPicker.h */,
+				5D39B4621D79D8F9008F0158 /* RMXColorPicker.m */,
+				5D39B4631D79D8F9008F0158 /* RMXModel.h */,
+				5D39B4641D79D8F9008F0158 /* RMXSegmented.h */,
+				5D39B4651D79D8F9008F0158 /* RMXSegmented.m */,
+				5D39B4661D79D8F9008F0158 /* RMXSlider.h */,
+				5D39B4671D79D8F9008F0158 /* RMXSlider.m */,
+				5D39B4681D79D8F9008F0158 /* RMXStepper.h */,
+				5D39B4691D79D8F9008F0158 /* RMXStepper.m */,
+				5D39B46A1D79D8F9008F0158 /* RMXSwitch.h */,
+				5D39B46B1D79D8F9008F0158 /* RMXSwitch.m */,
+				5D39B46C1D79D8F9008F0158 /* RMXTextPicker.h */,
+				5D39B46D1D79D8F9008F0158 /* RMXTextPicker.m */,
+			);
+			path = controls;
+			sourceTree = "<group>";
+		};
+		5D39B46F1D79D8F9008F0158 /* private */ = {
+			isa = PBXGroup;
+			children = (
+				5D39B4701D79D8F9008F0158 /* cells */,
+				5D39B4811D79D8F9008F0158 /* RMXOverlayController.h */,
+				5D39B4821D79D8F9008F0158 /* RMXOverlayController.m */,
+				5D39B4831D79D8F9008F0158 /* RMXOverlayNavigationBar.h */,
+				5D39B4841D79D8F9008F0158 /* RMXOverlayNavigationBar.m */,
+				5D39B4851D79D8F9008F0158 /* RMXOverlayResources.h */,
+				5D39B4861D79D8F9008F0158 /* RMXOverlayResources.m */,
+			);
+			path = private;
+			sourceTree = "<group>";
+		};
+		5D39B4701D79D8F9008F0158 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				5D39B4711D79D8F9008F0158 /* RMXCell.h */,
+				5D39B4721D79D8F9008F0158 /* RMXCell.m */,
+				5D39B4731D79D8F9008F0158 /* RMXCellButton.h */,
+				5D39B4741D79D8F9008F0158 /* RMXCellButton.m */,
+				5D39B4751D79D8F9008F0158 /* RMXCellColorPicker.h */,
+				5D39B4761D79D8F9008F0158 /* RMXCellColorPicker.m */,
+				5D39B4771D79D8F9008F0158 /* RMXCellSegmented.h */,
+				5D39B4781D79D8F9008F0158 /* RMXCellSegmented.m */,
+				5D39B4791D79D8F9008F0158 /* RMXCellSlider.h */,
+				5D39B47A1D79D8F9008F0158 /* RMXCellSlider.m */,
+				5D39B47B1D79D8F9008F0158 /* RMXCellStepper.h */,
+				5D39B47C1D79D8F9008F0158 /* RMXCellStepper.m */,
+				5D39B47D1D79D8F9008F0158 /* RMXCellSwitch.h */,
+				5D39B47E1D79D8F9008F0158 /* RMXCellSwitch.m */,
+				5D39B47F1D79D8F9008F0158 /* RMXCellTextPicker.h */,
+				5D39B4801D79D8F9008F0158 /* RMXCellTextPicker.m */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		5D39B4881D79D8F9008F0158 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				5D39B4891D79D8F9008F0158 /* Remixer.bundle */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		5D39B48F1D79D8F9008F0158 /* firebase */ = {
+			isa = PBXGroup;
+			children = (
+				5D39B4901D79D8F9008F0158 /* RMXFirebaseHost.h */,
+				5D39B4911D79D8F9008F0158 /* RMXFirebaseHost.m */,
+			);
+			path = firebase;
+			sourceTree = "<group>";
+		};
 		5DD5B2991CF36C2C003F6543 = {
 			isa = PBXGroup;
 			children = (
-				5DE1098B1D3EC8B800D67886 /* src */,
-				5DE109FD1D3EC8EA00D67886 /* RemixerTests */,
+				5D39B45C1D79D8F9008F0158 /* src */,
+				5D39B4571D79D682008F0158 /* tests */,
 				5DD5B2A41CF36C2C003F6543 /* Products */,
 				C9319B5305B13DB07E275A50 /* Pods */,
 				A343EF24DD4393D8C07627F6 /* Frameworks */,
@@ -183,126 +274,6 @@
 				5DD5B2AD1CF36C2C003F6543 /* Remixer.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5DE1098B1D3EC8B800D67886 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				5DE1098C1D3EC8B800D67886 /* core */,
-				5DE109C11D3EC8B800D67886 /* firebase */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		5DE1098C1D3EC8B800D67886 /* core */ = {
-			isa = PBXGroup;
-			children = (
-				5DE1098D1D3EC8B800D67886 /* controls */,
-				5DE1099D1D3EC8B800D67886 /* private */,
-				5D983A961D6B8E72003F2287 /* Info.plist */,
-				5DE109B71D3EC8B800D67886 /* Remixer.h */,
-				5DE109B81D3EC8B800D67886 /* resources */,
-				5DE109BA1D3EC8B800D67886 /* RMXApp.h */,
-				5DE109BB1D3EC8B800D67886 /* RMXApp.m */,
-				5DE109BC1D3EC8B800D67886 /* RMXComment.h */,
-				5DE109BD1D3EC8B800D67886 /* RMXComment.m */,
-				5DE109BE1D3EC8B800D67886 /* RMXRemix.h */,
-				5DE109BF1D3EC8B800D67886 /* RMXRemix.m */,
-				5DE109C01D3EC8B800D67886 /* RMXRemixDelegate.h */,
-			);
-			path = core;
-			sourceTree = "<group>";
-		};
-		5DE1098D1D3EC8B800D67886 /* controls */ = {
-			isa = PBXGroup;
-			children = (
-				5DE1098E1D3EC8B800D67886 /* RMXControl.h */,
-				5DE1098F1D3EC8B800D67886 /* RMXControl.m */,
-				5D14B2F51D6B996800795A0D /* RMXControlButton.h */,
-				5D14B2F61D6B996800795A0D /* RMXControlButton.m */,
-				5DE109901D3EC8B800D67886 /* RMXControlColorPicker.h */,
-				5DE109911D3EC8B800D67886 /* RMXControlColorPicker.m */,
-				5DE109921D3EC8B800D67886 /* RMXControlling.h */,
-				5DE109931D3EC8B800D67886 /* RMXControlSegmented.h */,
-				5DE109941D3EC8B800D67886 /* RMXControlSegmented.m */,
-				5DE109951D3EC8B800D67886 /* RMXControlSlider.h */,
-				5DE109961D3EC8B800D67886 /* RMXControlSlider.m */,
-				5DE109971D3EC8B800D67886 /* RMXControlStepper.h */,
-				5DE109981D3EC8B800D67886 /* RMXControlStepper.m */,
-				5DE109991D3EC8B800D67886 /* RMXControlSwitch.h */,
-				5DE1099A1D3EC8B800D67886 /* RMXControlSwitch.m */,
-				5DE1099B1D3EC8B800D67886 /* RMXControlTextPicker.h */,
-				5DE1099C1D3EC8B800D67886 /* RMXControlTextPicker.m */,
-			);
-			path = controls;
-			sourceTree = "<group>";
-		};
-		5DE1099D1D3EC8B800D67886 /* private */ = {
-			isa = PBXGroup;
-			children = (
-				5DE1099E1D3EC8B800D67886 /* cells */,
-				5D14B2F91D6B9CFB00795A0D /* RMXNoteViewController.h */,
-				5D14B2FA1D6B9CFB00795A0D /* RMXNoteViewController.m */,
-				5DE109AD1D3EC8B800D67886 /* RMXOverlayController.h */,
-				5DE109AE1D3EC8B800D67886 /* RMXOverlayController.m */,
-				5DE109AF1D3EC8B800D67886 /* RMXOverlayNavigationBar.h */,
-				5DE109B01D3EC8B800D67886 /* RMXOverlayNavigationBar.m */,
-				5DE109B31D3EC8B800D67886 /* RMXResources.h */,
-				5DE109B41D3EC8B800D67886 /* RMXResources.m */,
-				5DE109B51D3EC8B800D67886 /* RMXSnapshotController.h */,
-				5DE109B61D3EC8B800D67886 /* RMXSnapshotController.m */,
-			);
-			path = private;
-			sourceTree = "<group>";
-		};
-		5DE1099E1D3EC8B800D67886 /* cells */ = {
-			isa = PBXGroup;
-			children = (
-				5DE1099F1D3EC8B800D67886 /* RMXCell.h */,
-				5DE109A01D3EC8B800D67886 /* RMXCell.m */,
-				5D14B2FD1D6C9ACC00795A0D /* RMXCellButton.h */,
-				5D14B2FE1D6C9ACC00795A0D /* RMXCellButton.m */,
-				5DE109A11D3EC8B800D67886 /* RMXCellColorPicker.h */,
-				5DE109A21D3EC8B800D67886 /* RMXCellColorPicker.m */,
-				5DE109A31D3EC8B800D67886 /* RMXCellSegmented.h */,
-				5DE109A41D3EC8B800D67886 /* RMXCellSegmented.m */,
-				5DE109A51D3EC8B800D67886 /* RMXCellSlider.h */,
-				5DE109A61D3EC8B800D67886 /* RMXCellSlider.m */,
-				5DE109A71D3EC8B800D67886 /* RMXCellStepper.h */,
-				5DE109A81D3EC8B800D67886 /* RMXCellStepper.m */,
-				5DE109A91D3EC8B800D67886 /* RMXCellSwitch.h */,
-				5DE109AA1D3EC8B800D67886 /* RMXCellSwitch.m */,
-				5DE109AB1D3EC8B800D67886 /* RMXCellTextPicker.h */,
-				5DE109AC1D3EC8B800D67886 /* RMXCellTextPicker.m */,
-			);
-			path = cells;
-			sourceTree = "<group>";
-		};
-		5DE109B81D3EC8B800D67886 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				5DE109B91D3EC8B800D67886 /* Remixer.bundle */,
-			);
-			path = resources;
-			sourceTree = "<group>";
-		};
-		5DE109C11D3EC8B800D67886 /* firebase */ = {
-			isa = PBXGroup;
-			children = (
-				5DE109C21D3EC8B800D67886 /* GoogleService-Info.plist */,
-				5DE109C31D3EC8B800D67886 /* TMGFirebaseHost.h */,
-				5DE109C41D3EC8B800D67886 /* TMGFirebaseHost.m */,
-			);
-			path = firebase;
-			sourceTree = "<group>";
-		};
-		5DE109FD1D3EC8EA00D67886 /* RemixerTests */ = {
-			isa = PBXGroup;
-			children = (
-				5DE109FE1D3EC8EA00D67886 /* Info.plist */,
-				5DE109FF1D3EC8EA00D67886 /* RemixerTests.m */,
-			);
-			path = RemixerTests;
 			sourceTree = "<group>";
 		};
 		A343EF24DD4393D8C07627F6 /* Frameworks */ = {
@@ -329,34 +300,30 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D14B2FF1D6C9ACC00795A0D /* RMXCellButton.h in Headers */,
-				5DE109F51D3EC8B800D67886 /* RMXRemix.h in Headers */,
-				5DE109D31D3EC8B800D67886 /* RMXControlSwitch.h in Headers */,
-				5DE109C81D3EC8B800D67886 /* RMXControl.h in Headers */,
-				5DE109DD1D3EC8B800D67886 /* RMXCellSlider.h in Headers */,
-				5DE109CA1D3EC8B800D67886 /* RMXControlColorPicker.h in Headers */,
-				5DE109E31D3EC8B800D67886 /* RMXCellTextPicker.h in Headers */,
-				5DE109CC1D3EC8B800D67886 /* RMXControlling.h in Headers */,
-				5DE109EB1D3EC8B800D67886 /* RMXResources.h in Headers */,
-				5DE109F91D3EC8B800D67886 /* TMGFirebaseHost.h in Headers */,
-				5DE109E51D3EC8B800D67886 /* RMXOverlayController.h in Headers */,
-				5DE109ED1D3EC8B800D67886 /* RMXSnapshotController.h in Headers */,
-				5DE109D11D3EC8B800D67886 /* RMXControlStepper.h in Headers */,
-				5DE109DF1D3EC8B800D67886 /* RMXCellStepper.h in Headers */,
-				5DE109D91D3EC8B800D67886 /* RMXCellColorPicker.h in Headers */,
-				5DE109D71D3EC8B800D67886 /* RMXCell.h in Headers */,
-				5DE109D51D3EC8B800D67886 /* RMXControlTextPicker.h in Headers */,
-				5DE109CD1D3EC8B800D67886 /* RMXControlSegmented.h in Headers */,
-				5DE109E71D3EC8B800D67886 /* RMXOverlayNavigationBar.h in Headers */,
-				5D14B2F71D6B996800795A0D /* RMXControlButton.h in Headers */,
-				5DE109EF1D3EC8B800D67886 /* Remixer.h in Headers */,
-				5DE109CF1D3EC8B800D67886 /* RMXControlSlider.h in Headers */,
-				5D14B2FB1D6B9CFB00795A0D /* RMXNoteViewController.h in Headers */,
-				5DE109F31D3EC8B800D67886 /* RMXComment.h in Headers */,
-				5DE109E11D3EC8B800D67886 /* RMXCellSwitch.h in Headers */,
-				5DE109F11D3EC8B800D67886 /* RMXApp.h in Headers */,
-				5DE109F71D3EC8B800D67886 /* RMXRemixDelegate.h in Headers */,
-				5DE109DB1D3EC8B800D67886 /* RMXCellSegmented.h in Headers */,
+				5D39B49B1D79D8F9008F0158 /* RMXStepper.h in Headers */,
+				5D39B4B41D79D8F9008F0158 /* RMXOverlayNavigationBar.h in Headers */,
+				5D39B4991D79D8F9008F0158 /* RMXSlider.h in Headers */,
+				5D39B4B81D79D8F9008F0158 /* Remixer.h in Headers */,
+				5D39B49D1D79D8F9008F0158 /* RMXSwitch.h in Headers */,
+				5D39B4BF1D79D8F9008F0158 /* RMXFirebaseHost.h in Headers */,
+				5D39B4B01D79D8F9008F0158 /* RMXCellTextPicker.h in Headers */,
+				5D39B4A81D79D8F9008F0158 /* RMXCellSegmented.h in Headers */,
+				5D39B4941D79D8F9008F0158 /* RMXColorPicker.h in Headers */,
+				5D39B4921D79D8F9008F0158 /* RMXButton.h in Headers */,
+				5D39B4961D79D8F9008F0158 /* RMXModel.h in Headers */,
+				5D39B4AA1D79D8F9008F0158 /* RMXCellSlider.h in Headers */,
+				5D39B4AC1D79D8F9008F0158 /* RMXCellStepper.h in Headers */,
+				5D39B4BE1D79D8F9008F0158 /* RMXRemixDelegate.h in Headers */,
+				5D39B4971D79D8F9008F0158 /* RMXSegmented.h in Headers */,
+				5D39B4BA1D79D8F9008F0158 /* RMXApp.h in Headers */,
+				5D39B49F1D79D8F9008F0158 /* RMXTextPicker.h in Headers */,
+				5D39B4B21D79D8F9008F0158 /* RMXOverlayController.h in Headers */,
+				5D39B4A41D79D8F9008F0158 /* RMXCellButton.h in Headers */,
+				5D39B4B61D79D8F9008F0158 /* RMXOverlayResources.h in Headers */,
+				5D39B4AE1D79D8F9008F0158 /* RMXCellSwitch.h in Headers */,
+				5D39B4A21D79D8F9008F0158 /* RMXCell.h in Headers */,
+				5D39B4BC1D79D8F9008F0158 /* RMXRemix.h in Headers */,
+				5D39B4A61D79D8F9008F0158 /* RMXCellColorPicker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,10 +411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D983A971D6B8E72003F2287 /* Info.plist in Resources */,
-				5DE109F81D3EC8B800D67886 /* GoogleService-Info.plist in Resources */,
-				5DE109F01D3EC8B800D67886 /* Remixer.bundle in Resources */,
-				5DE10A001D3EC8EA00D67886 /* Info.plist in Resources */,
+				5D39B4B91D79D8F9008F0158 /* Remixer.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,31 +507,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DE109DC1D3EC8B800D67886 /* RMXCellSegmented.m in Sources */,
-				5DE109F61D3EC8B800D67886 /* RMXRemix.m in Sources */,
-				5DE109CE1D3EC8B800D67886 /* RMXControlSegmented.m in Sources */,
-				5DE109FA1D3EC8B800D67886 /* TMGFirebaseHost.m in Sources */,
-				5DE109CB1D3EC8B800D67886 /* RMXControlColorPicker.m in Sources */,
-				5DE109D41D3EC8B800D67886 /* RMXControlSwitch.m in Sources */,
-				5D14B2FC1D6B9CFB00795A0D /* RMXNoteViewController.m in Sources */,
-				5DE109D61D3EC8B800D67886 /* RMXControlTextPicker.m in Sources */,
-				5D14B3001D6C9ACC00795A0D /* RMXCellButton.m in Sources */,
-				5DE109E81D3EC8B800D67886 /* RMXOverlayNavigationBar.m in Sources */,
-				5DE109DA1D3EC8B800D67886 /* RMXCellColorPicker.m in Sources */,
-				5DE109EC1D3EC8B800D67886 /* RMXResources.m in Sources */,
-				5DE109D21D3EC8B800D67886 /* RMXControlStepper.m in Sources */,
-				5DE109DE1D3EC8B800D67886 /* RMXCellSlider.m in Sources */,
-				5DE109D01D3EC8B800D67886 /* RMXControlSlider.m in Sources */,
-				5DE109E01D3EC8B800D67886 /* RMXCellStepper.m in Sources */,
-				5DE109E41D3EC8B800D67886 /* RMXCellTextPicker.m in Sources */,
-				5DE109C91D3EC8B800D67886 /* RMXControl.m in Sources */,
-				5DE109D81D3EC8B800D67886 /* RMXCell.m in Sources */,
-				5DE109F21D3EC8B800D67886 /* RMXApp.m in Sources */,
-				5DE109EE1D3EC8B800D67886 /* RMXSnapshotController.m in Sources */,
-				5DE109E61D3EC8B800D67886 /* RMXOverlayController.m in Sources */,
-				5DE109E21D3EC8B800D67886 /* RMXCellSwitch.m in Sources */,
-				5D14B2F81D6B996800795A0D /* RMXControlButton.m in Sources */,
-				5DE109F41D3EC8B800D67886 /* RMXComment.m in Sources */,
+				5D39B4A91D79D8F9008F0158 /* RMXCellSegmented.m in Sources */,
+				5D39B49A1D79D8F9008F0158 /* RMXSlider.m in Sources */,
+				5D39B49E1D79D8F9008F0158 /* RMXSwitch.m in Sources */,
+				5D39B4A51D79D8F9008F0158 /* RMXCellButton.m in Sources */,
+				5D39B4931D79D8F9008F0158 /* RMXButton.m in Sources */,
+				5D39B4A31D79D8F9008F0158 /* RMXCell.m in Sources */,
+				5D39B4B71D79D8F9008F0158 /* RMXOverlayResources.m in Sources */,
+				5D39B4B51D79D8F9008F0158 /* RMXOverlayNavigationBar.m in Sources */,
+				5D39B4C01D79D8F9008F0158 /* RMXFirebaseHost.m in Sources */,
+				5D39B4A71D79D8F9008F0158 /* RMXCellColorPicker.m in Sources */,
+				5D39B4981D79D8F9008F0158 /* RMXSegmented.m in Sources */,
+				5D39B4AB1D79D8F9008F0158 /* RMXCellSlider.m in Sources */,
+				5D39B4951D79D8F9008F0158 /* RMXColorPicker.m in Sources */,
+				5D39B4AD1D79D8F9008F0158 /* RMXCellStepper.m in Sources */,
+				5D39B4BB1D79D8F9008F0158 /* RMXApp.m in Sources */,
+				5D39B4B11D79D8F9008F0158 /* RMXCellTextPicker.m in Sources */,
+				5D39B4A01D79D8F9008F0158 /* RMXTextPicker.m in Sources */,
+				5D39B49C1D79D8F9008F0158 /* RMXStepper.m in Sources */,
+				5D39B4BD1D79D8F9008F0158 /* RMXRemix.m in Sources */,
+				5D39B4B31D79D8F9008F0158 /* RMXOverlayController.m in Sources */,
+				5D39B4AF1D79D8F9008F0158 /* RMXCellSwitch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,7 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D983A981D6B90EF003F2287 /* RemixerTests.m in Sources */,
+				5D39B45B1D79D682008F0158 /* RemixerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,9 +677,9 @@
 		5DD5B2BB1CF36C2C003F6543 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = TransmogrifierTests/Info.plist;
+				INFOPLIST_FILE = tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.TransmogrifierTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.RemixerTests;
 				PRODUCT_NAME = Remixer;
 			};
 			name = Debug;
@@ -727,9 +687,9 @@
 		5DD5B2BC1CF36C2C003F6543 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = TransmogrifierTests/Info.plist;
+				INFOPLIST_FILE = tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.TransmogrifierTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.RemixerTests;
 				PRODUCT_NAME = Remixer;
 			};
 			name = Release;

@@ -22,21 +22,21 @@
 
 @implementation RMXSlider
 
-@synthesize title;
-@synthesize defaultValue;
-@synthesize minimumValue;
-@synthesize maximumValue;
-@synthesize delaysCommit;
+@synthesize title = _title;
+@synthesize defaultValue = _defaultValue;
+@synthesize minimumValue = _minimumValue;
+@synthesize maximumValue = _maximumValue;
+@synthesize delaysCommit = _delaysCommit;
 
 - (instancetype)initWithTitle:(NSString *)title
                  minimumValue:(CGFloat)minimumValue
                  maximumValue:(CGFloat)maximumValue {
   self = [super init];
   if (self) {
-    self.title = title;
-    self.minimumValue = minimumValue;
-    self.maximumValue = maximumValue;
-    self.delaysCommit = YES;
+    _title = title;
+    _minimumValue = minimumValue;
+    _maximumValue = maximumValue;
+    _delaysCommit = YES;
   }
   return self;
 }

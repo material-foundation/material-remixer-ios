@@ -22,15 +22,15 @@
 
 @implementation RMXSwitch
 
-@synthesize title;
-@synthesize defaultValue;
-@synthesize delaysCommit;
+@synthesize title = _title;
+@synthesize defaultValue = _defaultValue;
+@synthesize delaysCommit = _delaysCommit;
 
 - (instancetype)initWithTitle:(NSString *)title {
   self = [super init];
   if (self) {
-    self.title = title;
-    self.delaysCommit = NO;
+    _title = title;
+    _delaysCommit = NO;
   }
   return self;
 }

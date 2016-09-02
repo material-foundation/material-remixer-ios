@@ -50,7 +50,7 @@ static CGFloat kToolbarHeight = 44.0f;
 @implementation RMXOverlayController {
   UIView *_optionsView;
   UITableView *_tableView;
-  NSMutableArray<RMXRemix *> *_content;
+  NSArray<RMXRemix *> *_content;
 }
 
 - (void)viewDidLoad {
@@ -179,6 +179,7 @@ static CGFloat kToolbarHeight = 44.0f;
   } else if (modelType == kRMXModelTypeTextPicker) {
     return kCellTextPicker;
   }
+  return nil;
 }
 
 #pragma mark - <UITableViewDataSource>
