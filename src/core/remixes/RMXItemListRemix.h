@@ -14,16 +14,22 @@
  limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
+#import "RMXRemix.h"
 
-#import <Remixer/RMXApp.h>
-#import <Remixer/RMXBooleanRemix.h>
-#import <Remixer/RMXItemListRemix.h>
-#import <Remixer/RMXRangeRemix.h>
-#import <Remixer/RMXRemixer.h>
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version number for Remixer.
-FOUNDATION_EXPORT double RemixerVersionNumber;
+/** A type of Remix for variables that have a limited set of options. */
+@interface RMXItemListRemix : RMXRemix
 
-//! Project version string for Remixer.
-FOUNDATION_EXPORT const unsigned char RemixerVersionString[];
+/** The array of items for this remix. */
+@property(nonatomic, strong) NSArray<id> *itemList;
+
+/** Designated initializer */
++ (instancetype)addItemListRemixWithKey:(NSString *)key
+                           defaultValue:(id)defaultValue
+                               itemList:(NSArray<id> *)itemList
+                            updateBlock:(RMXUpdateBlock)updateBlock;
+
+@end
+
+NS_ASSUME_NONNULL_END

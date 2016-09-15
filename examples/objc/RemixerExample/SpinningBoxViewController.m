@@ -43,46 +43,45 @@
   animation.toValue = [NSNumber numberWithFloat:(M_PI * 2)];
   animation.repeatCount = HUGE_VALF;
 
-  RMXSlider *controlSlider =
-      [RMXSlider controlWithTitle:@"Box 1 Animation Speed" minimumValue:0.5 maximumValue:2.0];
-  [RMXRemix addRemixWithKey:@"box1Animation"
-               usingControl:controlSlider
-              selectedValue:@(1)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
+  [RMXRangeRemix
+      addRangeRemixWithKey:@"box1Animation"
+              defaultValue:1
+                  minValue:0.5
+                  maxValue:2.0
+                 increment:0
+               updateBlock:^(RMXRemix *_Nonnull remix, CGFloat selectedValue) {
+                 // Set box 1 animation.
+                 CALayer *presentationLayer = _box1.layer.presentationLayer;
+                 CGFloat angle =
+                     [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
+                 animation.fromValue = [NSNumber numberWithFloat:angle];
+                 animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
+                 animation.duration = MAX(2.0 - selectedValue, 0.1);
+                 [_box1.layer addAnimation:animation forKey:@"spinning"];
 
-                  // Set box 1 animation.
-                  CALayer *presentationLayer = _box1.layer.presentationLayer;
-                  CGFloat angle =
-                      [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
-                  animation.fromValue = [NSNumber numberWithFloat:angle];
-                  animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
-                  animation.duration = MAX(2.0 - [selectedValue floatValue], 0.1);
-                  [_box1.layer addAnimation:animation forKey:@"spinning"];
+                 // Set box2 animation to be twice as fast.
+                 presentationLayer = _box2.layer.presentationLayer;
+                 angle = [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
+                 animation.fromValue = [NSNumber numberWithFloat:angle];
+                 animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
+                 animation.duration = MAX(2.0 - (selectedValue * 2), 0.1);
+                 [_box2.layer addAnimation:animation forKey:@"spinning"];
+               }];
 
-                  // Set box2 animation to be twice as fast.
-                  presentationLayer = _box2.layer.presentationLayer;
-                  angle = [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
-                  animation.fromValue = [NSNumber numberWithFloat:angle];
-                  animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
-                  animation.duration = MAX(2.0 - ([selectedValue floatValue] * 2), 0.1);
-                  [_box2.layer addAnimation:animation forKey:@"spinning"];
-                }];
-
-  [RMXRemix addRemixWithKey:@"animationSpeed"
-               usingControl:[RMXSwitch controlWithTitle:@"Slow All Animations"]
-              selectedValue:@(NO)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                  CALayer *layer = self.view.layer;
-                  layer.timeOffset = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
-                  layer.beginTime = CACurrentMediaTime();
-                  layer.speed = [selectedValue boolValue] ? 0.2 : 1;
-
-                }];
+  [RMXBooleanRemix addBooleanRemixWithKey:@"slowAnimations"
+                             defaultValue:NO
+                              updateBlock:^(RMXRemix *remix, BOOL selectedValue) {
+                                CALayer *layer = self.view.layer;
+                                layer.timeOffset =
+                                    [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+                                layer.beginTime = CACurrentMediaTime();
+                                layer.speed = selectedValue ? 0.2 : 1;
+                              }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-  [RMXRemix removeAllRemixes];
+  [RMXRemixer removeAllRemixes];
 }
 
 @end

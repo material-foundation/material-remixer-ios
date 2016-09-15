@@ -14,16 +14,17 @@
  limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
+#import "RMXCell.h"
 
-#import <Remixer/RMXApp.h>
-#import <Remixer/RMXBooleanRemix.h>
-#import <Remixer/RMXItemListRemix.h>
-#import <Remixer/RMXRangeRemix.h>
-#import <Remixer/RMXRemixer.h>
+@class RMXItemListRemix;
 
-//! Project version number for Remixer.
-FOUNDATION_EXPORT double RemixerVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for Remixer.
-FOUNDATION_EXPORT const unsigned char RemixerVersionString[];
+/** Provides a table view cell that has a color picker control. */
+@interface RMXCellColorPicker : RMXCell
+
+@property(nonatomic, weak) RMXItemListRemix *remix;
+
+@end
+
+NS_ASSUME_NONNULL_END

@@ -22,6 +22,7 @@
 
 #import "Firebase.h"
 #import "RMXApp.h"
+#import "RMXRemixer.h"
 
 static NSString *const kKeyRemixes = @"remixes";
 static NSString *const kKeySelectedValue = @"selectedValue";
@@ -50,15 +51,14 @@ static NSString *const kKeySelectedValue = @"selectedValue";
   _ref = [[FIRDatabase database] referenceWithPath:[[RMXApp sharedInstance] sessionId]];
 
   // Update remixes with changes from firebase.
-  [[_ref child:kKeyRemixes]
-      observeEventType:FIRDataEventTypeChildChanged
-             withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-               RMXRemix *remix = [RMXRemix remixForKey:snapshot.key];
-               if (remix) {
-                 id value = snapshot.value[kKeySelectedValue];
-                 [RMXRemix updateSelectedValue:value forRemix:remix shouldSync:NO];
-               }
-             }];
+  [[_ref child:kKeyRemixes] observeEventType:FIRDataEventTypeChildChanged
+                                   withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+                                     RMXRemix *remix = [RMXRemixer remixForKey:snapshot.key];
+                                     if (remix) {
+                                       id value = snapshot.value[kKeySelectedValue];
+                                       [remix setSelectedValue:value fromOverlay:NO];
+                                     }
+                                   }];
 
   // Remove remixes when disconnected.
   [[_ref child:kKeyRemixes] onDisconnectRemoveValue];
@@ -68,7 +68,7 @@ static NSString *const kKeySelectedValue = @"selectedValue";
 }
 
 - (void)saveRemix:(RMXRemix *)remix {
-  [[[_ref child:kKeyRemixes] child:remix.key] setValue:[remix.model toJSON]];
+  [[[_ref child:kKeyRemixes] child:remix.key] setValue:[remix toJSON]];
 }
 
 - (void)removeRemixWithKey:(NSString *)key {

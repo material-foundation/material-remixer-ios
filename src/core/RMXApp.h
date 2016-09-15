@@ -16,7 +16,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RMXRemixDelegate.h"
+#import "RMXRemix.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

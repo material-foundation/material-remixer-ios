@@ -36,68 +36,59 @@
 
   // Add color picker.
   NSArray *colorOptions = @[ [UIColor blueColor], [UIColor redColor], [UIColor greenColor] ];
-  RMXColorPicker *colorPickerControl =
-      [RMXColorPicker controlWithTitle:@"Color Picker" itemList:colorOptions];
-  [RMXRemix addRemixWithKey:@"colorPicker"
-               usingControl:colorPickerControl
-              selectedValue:@(1)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                  _box.backgroundColor = colorOptions[[selectedValue integerValue]];
-                }];
+  [RMXItemListRemix addItemListRemixWithKey:@"colorPicker"
+                               defaultValue:colorOptions[0]
+                                   itemList:colorOptions
+                                updateBlock:^(RMXRemix *_Nonnull remix, id selectedValue) {
+                                  _box.backgroundColor = selectedValue;
+                                }];
 
   // Add segment control.
-  RMXSegmented *segmentControl =
-      [RMXSegmented controlWithTitle:@"Theme" itemList:@[ @"Light", @"Dark" ]];
-  [RMXRemix addRemixWithKey:@"theme"
-               usingControl:segmentControl
-              selectedValue:@(0)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                  self.view.backgroundColor = ([selectedValue integerValue] == 0)
-                                                  ? [UIColor whiteColor]
-                                                  : [UIColor darkGrayColor];
-                }];
+  NSArray *themesOptions = @[ @"Light", @"Dark" ];
+  [RMXItemListRemix addItemListRemixWithKey:@"theme"
+                               defaultValue:themesOptions[0]
+                                   itemList:themesOptions
+                                updateBlock:^(RMXRemix *_Nonnull remix, id selectedValue) {
+                                  self.view.backgroundColor =
+                                      ([selectedValue isEqualToString:@"Light"])
+                                          ? [UIColor whiteColor]
+                                          : [UIColor darkGrayColor];
+                                }];
 
   // Add slider control.
-  RMXSlider *sliderControl = [RMXSlider controlWithTitle:@"Alpha" minimumValue:0 maximumValue:1];
-  [RMXRemix addRemixWithKey:@"alpha"
-               usingControl:sliderControl
-              selectedValue:@(1)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                  _box.alpha = [selectedValue floatValue];
-                }];
+  [RMXRangeRemix addRangeRemixWithKey:@"alpha"
+                         defaultValue:1
+                             minValue:0
+                             maxValue:1
+                          updateBlock:^(RMXRemix *_Nonnull remix, CGFloat selectedValue) {
+                            _box.alpha = selectedValue;
+                          }];
 
   // Add stepper control.
-  RMXStepper *stepper =
-      [RMXStepper controlWithTitle:@"Box Width" minimumValue:40 maximumValue:200 stepValue:20];
-  [RMXRemix addRemixWithKey:@"width"
-               usingControl:stepper
-              selectedValue:@(80)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                  CGRect frame = _box.frame;
-                  frame.size.width = [selectedValue floatValue];
-                  _box.frame = frame;
-                }];
+  [RMXRangeRemix addRangeRemixWithKey:@"width"
+                         defaultValue:80
+                             minValue:40
+                             maxValue:200
+                            increment:20
+                          updateBlock:^(RMXRemix *_Nonnull remix, CGFloat selectedValue) {
+                            CGRect frame = _box.frame;
+                            frame.size.width = selectedValue;
+                            _box.frame = frame;
+                          }];
 
   // Add switch control.
-  [RMXRemix addRemixWithKey:@"show"
-               usingControl:[RMXSwitch controlWithTitle:@"Show Box"]
-              selectedValue:@(YES)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                  _box.hidden = ![selectedValue boolValue];
-                }];
+  [RMXBooleanRemix addBooleanRemixWithKey:@"show"
+                             defaultValue:YES
+                              updateBlock:^(RMXRemix *remix, BOOL selectedValue) {
+                                _box.hidden = !selectedValue;
+                              }];
 
-  // Add button control.
-  [RMXRemix addRemixWithKey:@"print"
-               usingControl:[RMXButton controlWithTitle:@"Print Session ID"]
-              selectedValue:@(YES)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                  NSLog(@"Session id: %@", [[RMXApp sharedInstance] sessionId]);
-                }];
+  // TODO(chuga): Add a Trigger Remix for printing the session ID.
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-  [RMXRemix removeAllRemixes];
+  [RMXRemixer removeAllRemixes];
 }
 
 @end

@@ -21,16 +21,8 @@
 #import "RMXApp.h"
 
 #import "RMXRemix.h"
-#import "RMXRemixDelegate.h"
-#import "private/RMXOverlayController.h"
+#import "UI/RMXOverlayController.h"
 
-#if REMIXER_HOST_SUBNET
-#import "TMGSubnetHost.h"
-#elif REMIXER_HOST_FIREBASE
-#import "RMXFirebaseHost.h"
-#endif
-
-/** Differentiate swipe touch count for simulator and device. */
 #if TARGET_OS_SIMULATOR
 #define SWIPE_GESTURE_REQUIRED_TOUCHES 2
 #else
@@ -38,20 +30,11 @@
 #endif
 
 @interface RMXApp () <UIGestureRecognizerDelegate>
-@property(nonatomic, strong) NSMutableDictionary *remixes;
 @property(nonatomic, strong) RMXOverlayController *overlayController;
 @end
 
 @implementation RMXApp {
   UISwipeGestureRecognizer *_swipeUpGesture;
-}
-
-- (instancetype)init {
-  self = [super init];
-  if (self) {
-    _remixes = [NSMutableDictionary dictionary];
-  }
-  return self;
 }
 
 + (instancetype)sharedInstance {
@@ -71,20 +54,6 @@
   _swipeUpGesture.numberOfTouchesRequired = SWIPE_GESTURE_REQUIRED_TOUCHES;
   _swipeUpGesture.delegate = self;
   [window addGestureRecognizer:_swipeUpGesture];
-
-#if REMIXER_HOST_SUBNET
-  [[TMGSubnetHost sharedInstance] start];
-#elif REMIXER_HOST_FIREBASE
-  [[RMXFirebaseHost sharedInstance] start];
-#endif
-}
-
-- (void)stop {
-#if REMIXER_HOST_SUBNET
-  [[TMGSubnetHost sharedInstance] stop];
-#elif REMIXER_HOST_FIREBASE
-  [[RMXFirebaseHost sharedInstance] stop];
-#endif
 }
 
 - (NSString *)sessionId {
@@ -137,36 +106,6 @@
   NSString *mailTo = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", subject, body];
   NSString *url = [mailTo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-}
-
-#pragma mark - <RMXRemixDelegate>
-
-- (void)didAddRemix:(RMXRemix *)remix {
-  [self syncRemix:remix];
-}
-
-- (void)didRemoveRemixWithKey:(NSString *)key {
-#if REMIXER_HOST_FIREBASE
-  [[RMXFirebaseHost sharedInstance] removeRemixWithKey:key];
-#endif
-}
-
-- (void)didRemoveAllRemixes {
-#if REMIXER_HOST_FIREBASE
-  [[RMXFirebaseHost sharedInstance] removeAllRemixes];
-#endif
-}
-
-- (void)syncRemix:(RMXRemix *)remix {
-#if REMIXER_HOST_FIREBASE
-  [[RMXFirebaseHost sharedInstance] saveRemix:remix];
-#endif
-}
-
-- (void)remix:(RMXRemix *)remix didSelectValue:(NSNumber *)selectedValue {
-  if (!remix.isSynced) {
-    [self syncRemix:remix];
-  }
 }
 
 @end
