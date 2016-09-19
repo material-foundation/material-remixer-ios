@@ -56,16 +56,6 @@
   [window addGestureRecognizer:_swipeUpGesture];
 }
 
-- (NSString *)sessionId {
-  // Store unique session id if doesn't exist.
-  NSString *_sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"];
-  if (!_sessionId) {
-    _sessionId = [[[NSUUID UUID] UUIDString] substringToIndex:8];
-    [[NSUserDefaults standardUserDefaults] setObject:_sessionId forKey:@"sessionId"];
-  }
-  return _sessionId;
-}
-
 #pragma mark - Swipe gesture
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
@@ -90,22 +80,6 @@
     }
     [root presentViewController:_overlayController animated:YES completion:nil];
   }
-}
-
-#pragma mark - Email
-
-+ (void)sendEmailInvite {
-  // Genrates a mailto: URL string.
-  NSString *sessionId = [[self sharedInstance] sessionId];
-  NSString *remixerURL =
-      [NSString stringWithFormat:@"https://remix-4d1f9.firebaseapp.com/#/composer/%@", sessionId];
-  NSString *subject = [NSString stringWithFormat:@"Invitation to Remixer session %@", sessionId];
-  NSString *body = [NSString stringWithFormat:@"You have been invited to a Remixer session. \n\n"
-                                              @"Follow this link to log in: <a href='%@'>%@</a>",
-                                              remixerURL, sessionId];
-  NSString *mailTo = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", subject, body];
-  NSString *url = [mailTo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 @end

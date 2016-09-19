@@ -171,8 +171,19 @@ static CGFloat kToolbarHeight = 44.0f;
   [_tableView reloadData];
 }
 
+#pragma mark - Email
+
 - (void)sendEmailInvite:(id)sender {
-  [RMXApp sendEmailInvite];
+  NSString *sessionId = @"sessionID"; //TODO(chuga): [[self sharedInstance] sessionId];
+  NSString *remixerURL =
+  [NSString stringWithFormat:@"https://remix-4d1f9.firebaseapp.com/#/composer/%@", sessionId];
+  NSString *subject = [NSString stringWithFormat:@"Invitation to Remixer session %@", sessionId];
+  NSString *body = [NSString stringWithFormat:@"You have been invited to a Remixer session. \n\n"
+                    @"Follow this link to log in: <a href='%@'>%@</a>",
+                    remixerURL, sessionId];
+  NSString *mailTo = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", subject, body];
+  NSString *url = [mailTo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 #pragma mark - <UITableViewDataSource>
