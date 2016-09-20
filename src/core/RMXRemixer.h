@@ -28,11 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RMXRemixer : NSObject <RMXRemixDelegate>
 
-/**
- Getter for the UIWindow used by the overlay.
- @return The UIWindow.
- */+ (RMXOverlayWindow *)overlayWindow;
-
 /** Starts Remixer. */
 + (void)start;
 
@@ -41,6 +36,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Sends an invitation to the web dashboard. */
 + (void)sendEmailInvite;
+
+/** A unique session id. */
++ (NSString *)sessionId;
+
+/**
+ Getter for the UIWindow used by the overlay.
+ @return The UIWindow.
+ */
++ (RMXOverlayWindow *)overlayWindow;
 
 /**
  Returns a remix with the given key from the dictionary of remixes.

@@ -21,7 +21,6 @@
 #import "RMXFirebaseHost.h"
 
 #import "Firebase.h"
-#import "RMXApp.h"
 #import "RMXRemixer.h"
 
 static NSString *const kKeyRemixes = @"remixes";
@@ -48,7 +47,7 @@ static NSString *const kKeySelectedValue = @"selectedValue";
 
   }];
 
-  _ref = [[FIRDatabase database] referenceWithPath:[[RMXApp sharedInstance] sessionId]];
+  _ref = [[FIRDatabase database] referenceWithPath:[RMXRemixer sessionId]];
 
   // Update remixes with changes from firebase.
   [[_ref child:kKeyRemixes] observeEventType:FIRDataEventTypeChildChanged
