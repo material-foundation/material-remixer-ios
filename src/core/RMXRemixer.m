@@ -30,7 +30,7 @@
 @property(nonatomic, strong) NSMutableDictionary *remixes;
 @property(nonatomic, strong) RMXOverlayViewController *overlayController;
 @property(nonatomic, strong) UISwipeGestureRecognizer *swipeUpGesture;
-@property(nonatomic, strong) UIWindow *window;
+@property(nonatomic, strong) RMXOverlayWindow *overlayWindow;
 @end
 
 @implementation RMXRemixer
@@ -62,10 +62,10 @@
   instance.swipeUpGesture.delegate = [self sharedInstance];
   [keyWindow addGestureRecognizer:instance.swipeUpGesture];
   
-  instance.window = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
+  instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
-  instance.window.rootViewController = instance.overlayController;
-  [instance.window setHidden:NO];
+  instance.overlayWindow.rootViewController = instance.overlayController;
+  [instance.overlayWindow setHidden:NO];
 }
 
 + (NSString *)sessionId {
@@ -76,6 +76,11 @@
     [[NSUserDefaults standardUserDefaults] setObject:sessionId forKey:@"sessionId"];
   }
   return sessionId;
+}
+
++ (RMXOverlayWindow *)overlayWindow {
+  RMXRemixer *sharedInstance = [self sharedInstance];
+  return sharedInstance.overlayWindow;
 }
 
 #pragma mark - Swipe gesture

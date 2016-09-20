@@ -18,6 +18,8 @@
 
 #import "RMXRemix.h"
 
+@class RMXOverlayWindow;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -25,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
  saving/syncing its values.
  */
 @interface RMXRemixer : NSObject <RMXRemixDelegate>
+
++ (RMXOverlayWindow *)overlayWindow;
 
 /** Starts a new session of Remixer. */
 + (void)start;

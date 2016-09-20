@@ -24,7 +24,9 @@
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
   BOOL pointInside = NO;
   if (self.rootViewController.presentedViewController) {
-    pointInside = [self.rootViewController.presentedViewController.view pointInside:point withEvent:event];
+    UIView *presentedView = self.rootViewController.presentedViewController.view;
+    CGPoint adjustedPoint = [presentedView convertPoint:point fromView:self];
+    pointInside = [presentedView pointInside:adjustedPoint withEvent:event];
   } else {
     pointInside = [self.rootViewController.view pointInside:point withEvent:event];
   }

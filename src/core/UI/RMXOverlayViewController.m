@@ -216,7 +216,7 @@ static CGFloat kInitialSpeed = 0.4f;
 }
 
 - (BOOL)shouldCapturePointOutsidePanel:(CGPoint)point {
-  return NO;
+  return self.presentedViewController;
 }
 
 #pragma mark - Private

@@ -20,7 +20,7 @@
 
 #import "RMXCellSwitch.h"
 
-#import "RMXRemix.h"
+#import "RMXBooleanRemix.h"
 
 @implementation RMXCellSwitch {
   UISwitch *_switchControl;
@@ -35,7 +35,7 @@
   _switchControl = nil;
 }
 
-- (void)setRemix:(RMXRemix *)remix {
+- (void)setRemix:(RMXBooleanRemix *)remix {
   [super setRemix:remix];
   if (!remix) {
     return;
@@ -49,7 +49,7 @@
     self.accessoryView = _switchControl;
   }
 
-  _switchControl.on = remix.selectedValue;
+  _switchControl.on = [remix.selectedValue boolValue];
   self.textLabel.text = remix.title;
 }
 
