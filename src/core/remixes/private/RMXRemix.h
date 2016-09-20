@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, RMXControlType) {
 typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 
 /**
- The RMXRemix class provides the core infrastructure for creating different types of remixes.
+ * The RMXRemix class provides the core infrastructure for creating different types of remixes.
  */
 @interface RMXRemix : NSObject
 

@@ -22,7 +22,7 @@ typedef void (^RMXBooleanUpdateBlock)(RMXRemix *remix, BOOL selectedValue);
 /** A type of Remix for boolean values. */
 @interface RMXBooleanRemix : RMXRemix
 
-/** The selected value of a boolean remix. */
+/** The selected value of a boolean remix. This is an NSNumber that encapsulates a boolean. */
 @property(nonatomic, readonly) NSNumber *selectedValue;
 
 /** Designated initializer */

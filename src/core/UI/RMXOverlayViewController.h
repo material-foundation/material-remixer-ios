@@ -16,9 +16,13 @@
 
 #import <UIKit/UIKit.h>
 
+/** A view controller that shows the controls for refining the values of the Remixes. */
 @interface RMXOverlayViewController : UIViewController
 
+/** Shows the overlay panel. */
 - (void)showPanel;
+
+/** Forces a reload of the Remixer controls. */
 - (void)reloadData;
 
 @end

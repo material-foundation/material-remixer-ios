@@ -28,9 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RMXRemixer : NSObject <RMXRemixDelegate>
 
-+ (RMXOverlayWindow *)overlayWindow;
+/**
+ Getter for the UIWindow used by the overlay.
+ @return The UIWindow.
+ */+ (RMXOverlayWindow *)overlayWindow;
 
-/** Starts a new session of Remixer. */
+/** Starts Remixer. */
 + (void)start;
 
 /** Stops the current Remixer session. */

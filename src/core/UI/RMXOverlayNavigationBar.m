@@ -26,6 +26,8 @@
 
 static CGFloat kButtonWidth = 110.0f;
 static CGFloat kButtonHeight = 40.0f;
+NSString *const kButtonTitleRemixer = @"Remixer";
+NSString *const kButtonTitleNearby = @"NEARBY";
 
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
@@ -44,7 +46,7 @@ static CGFloat kButtonHeight = 40.0f;
     [_closeButton setFrame:CGRectMake(0, 0, kButtonWidth, kButtonHeight)];
     [_closeButton setTintColor:[[UIColor blackColor] colorWithAlphaComponent:0.4]];
     [_closeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_closeButton setTitle:@"Remixer" forState:UIControlStateNormal];
+    [_closeButton setTitle:kButtonTitleRemixer forState:UIControlStateNormal];
     [_closeButton setImage:RMXResources(RMXIconClose) forState:UIControlStateNormal];
     [_closeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
 
@@ -56,7 +58,7 @@ static CGFloat kButtonHeight = 40.0f;
     [_remoteButton setTitleColor:
         [UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8] // #2869FC
                      forState:UIControlStateNormal];
-    [_remoteButton setTitle:@"NEARBY" forState:UIControlStateNormal];
+    [_remoteButton setTitle:kButtonTitleNearby forState:UIControlStateNormal];
     [_remoteButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [_remoteButton setImage:RMXResources(RMXIconWifi) forState:UIControlStateNormal];
     // Flip image to right.
