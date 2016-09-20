@@ -24,10 +24,8 @@
 
 @implementation RMXOverlayNavigationBar
 
-NSString *const kButtonTitleRemixer = @"Remixer";
-NSString *const kButtonTitleNearby = @"NEARBY";
-
 static CGFloat kButtonWidth = 110.0f;
+static CGFloat kButtonHeight = 40.0f;
 
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
@@ -38,50 +36,46 @@ static CGFloat kButtonWidth = 110.0f;
     self.backgroundColor = [UIColor whiteColor];
     self.layer.shadowRadius = 5;
     self.layer.shadowOpacity = 0.25;
-    self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
 
     UINavigationItem *item = [[UINavigationItem alloc] init];
     [self pushNavigationItem:item animated:NO];
 
-    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeButton setFrame:CGRectMake(0, 0, kButtonWidth, frame.size.height)];
-    [closeButton setTintColor:[[UIColor blackColor] colorWithAlphaComponent:0.4]];
-    [closeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [closeButton setTitle:kButtonTitleRemixer forState:UIControlStateNormal];
-    [closeButton setImage:RMXResources(RMXIconClose) forState:UIControlStateNormal];
-    [closeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
+    _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_closeButton setFrame:CGRectMake(0, 0, kButtonWidth, kButtonHeight)];
+    [_closeButton setTintColor:[[UIColor blackColor] colorWithAlphaComponent:0.4]];
+    [_closeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_closeButton setTitle:@"Remixer" forState:UIControlStateNormal];
+    [_closeButton setImage:RMXResources(RMXIconClose) forState:UIControlStateNormal];
+    [_closeButton setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
 
-    UIButton *remoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [remoteButton setFrame:CGRectMake(0, 0, kButtonWidth, frame.size.height)];
-    [remoteButton
-        setTintColor:[UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8]];  // #2869FC
-    [remoteButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
-    [remoteButton
-        setTitleColor:[UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8]  // #2869FC
-             forState:UIControlStateNormal];
-    [remoteButton setTitle:kButtonTitleNearby forState:UIControlStateNormal];
-    [remoteButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [remoteButton setImage:RMXResources(RMXIconWifi) forState:UIControlStateNormal];
+    _remoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_remoteButton setFrame:CGRectMake(0, 0, kButtonWidth, kButtonHeight)];
+    [_remoteButton setTintColor:
+        [UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8]]; // #2869FC
+    [_remoteButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+    [_remoteButton setTitleColor:
+        [UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8] // #2869FC
+                     forState:UIControlStateNormal];
+    [_remoteButton setTitle:@"NEARBY" forState:UIControlStateNormal];
+    [_remoteButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [_remoteButton setImage:RMXResources(RMXIconWifi) forState:UIControlStateNormal];
     // Flip image to right.
-    remoteButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
-    remoteButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
-    remoteButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    _remoteButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    _remoteButton.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    _remoteButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
 
-    item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
-    item.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:remoteButton];
+    item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_closeButton];
+    item.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_remoteButton];
   }
   return self;
 }
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-
-  // Center buttons vertically.
-  for (UIButton *button in self.subviews) {
-    if ([button isKindOfClass:[UIButton class]]) {
-      button.center = CGPointMake(button.center.x, self.center.y);
-    }
-  }
+  
+  self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
+  _closeButton.center = CGPointMake(_closeButton.center.x, self.center.y);
+  _remoteButton.center = CGPointMake(_remoteButton.center.x, self.center.y);
 }
 
 @end

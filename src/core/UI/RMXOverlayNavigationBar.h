@@ -16,10 +16,9 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
-/** A customized navigation bar used in the overlay controller. */
 @interface RMXOverlayNavigationBar : UINavigationBar
-@end
 
-NS_ASSUME_NONNULL_END
+@property(nonatomic, strong, readonly) UIButton *closeButton;
+@property(nonatomic, strong, readonly) UIButton *remoteButton;
+
+@end

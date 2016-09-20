@@ -1,0 +1,247 @@
+/*
+ Copyright 2016-present Google Inc. All Rights Reserved.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+
+#if !defined(__has_feature) || !__has_feature(objc_arc)
+#error "This file requires ARC support."
+#endif
+
+#import "RMXOverlayViewController.h"
+
+#import "RMXCellButton.h"
+#import "RMXCellColorPicker.h"
+#import "RMXCellSegmented.h"
+#import "RMXCellSlider.h"
+#import "RMXCellStepper.h"
+#import "RMXCellSwitch.h"
+#import "RMXCellTextPicker.h"
+#import "RMXOverlayNavigationBar.h"
+#import "RMXOverlayView.h"
+#import "RMXRemixer.h"
+
+static CGFloat kPanelHeightThreshold = 500.0f;
+static CGFloat kAnimationDuration = 0.3f;
+static CGFloat kSpringDamping = 0.8f;
+static CGFloat kInitialSpeed = 0.4f;
+
+@interface RMXOverlayViewController () <UITableViewDataSource,
+                                        UITableViewDelegate,
+                                        RMXOverlayViewDelegate>
+@property(nonatomic, strong) RMXOverlayView *view;
+@end
+
+@implementation RMXOverlayViewController {
+  NSMutableArray<RMXRemix *> *_content;
+  UIPanGestureRecognizer *_panGestureRecognizer;
+  CGFloat _gestureInitialDelta;
+}
+
+@dynamic view;
+
+- (void)loadView {
+  self.view =
+      [[RMXOverlayView alloc] initWithFrame:[[UIApplication sharedApplication] keyWindow].frame];
+  [self.view hidePanel];
+  self.view.delegate = self;
+}
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  
+  self.view.tableView.dataSource = self;
+  self.view.tableView.delegate = self;
+  
+  [self.view.tableView registerClass:[RMXCellButton class]
+     forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
+  [self.view.tableView registerClass:[RMXCellColorPicker class]
+     forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
+  [self.view.tableView registerClass:[RMXCellSegmented class]
+     forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
+  [self.view.tableView registerClass:[RMXCellSlider class]
+     forCellReuseIdentifier:NSStringFromClass([RMXCellSlider class])];
+  [self.view.tableView registerClass:[RMXCellStepper class]
+     forCellReuseIdentifier:NSStringFromClass([RMXCellStepper class])];
+  [self.view.tableView registerClass:[RMXCellSwitch class]
+     forCellReuseIdentifier:NSStringFromClass([RMXCellSwitch class])];
+  [self.view.tableView registerClass:[RMXCellTextPicker class]
+     forCellReuseIdentifier:NSStringFromClass([RMXCellTextPicker class])];
+  
+  UINavigationItem *item = self.view.navigationBar.topItem;
+  [(UIButton *)item.leftBarButtonItem.customView addTarget:self
+                                                    action:@selector(dismissOverlay:)
+                                          forControlEvents:UIControlEventTouchUpInside];
+  [(UIButton *)item.rightBarButtonItem.customView addTarget:self
+                                                     action:@selector(sendEmailInvite:)
+                                           forControlEvents:UIControlEventTouchUpInside];
+  _panGestureRecognizer =
+      [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
+  _panGestureRecognizer.delegate = self;
+  [self.view.navigationBar addGestureRecognizer:_panGestureRecognizer];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  [self reloadData];
+}
+
+#pragma mark - Public
+
+- (void)showPanel {
+  [self reloadData];
+  [UIView animateWithDuration:kAnimationDuration
+                        delay:0
+       usingSpringWithDamping:kSpringDamping
+        initialSpringVelocity:kInitialSpeed
+                      options:UIViewAnimationOptionCurveLinear
+                   animations:^{
+                     [self.view showAtDefaultHeight];
+                     [self.view layoutSubviews];
+                   }
+                   completion:^(BOOL finished) {
+                   }];
+}
+
+#pragma mark - Presentation
+
+- (void)didPan:(UIPanGestureRecognizer *)recognizer {
+  if (recognizer.state == UIGestureRecognizerStateBegan) {
+    _gestureInitialDelta = [recognizer locationInView:self.view.navigationBar].y;
+  } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+    if (self.view.panelHeight <= 2 * RMXOverlayNavbarHeight) {
+      [recognizer velocityInView:self.view].y >= 0 ? [self minimizePanel] : [self maximizePanel];
+    } else if ([recognizer velocityInView:self.view].y > kPanelHeightThreshold) {
+      [self minimizePanel];
+    } else if ([recognizer velocityInView:self.view].y < -kPanelHeightThreshold) {
+      [self maximizePanel];
+    }
+    return;
+  }
+  self.view.panelHeight =
+      MAX(CGRectGetHeight(self.view.frame) - [recognizer locationInView:self.view].y +
+          _gestureInitialDelta, RMXOverlayNavbarHeight);
+  [self.view setNeedsLayout];
+}
+
+- (void)minimizePanel {
+  [UIView animateWithDuration:kAnimationDuration
+                        delay:0
+       usingSpringWithDamping:kSpringDamping
+        initialSpringVelocity:kInitialSpeed
+                      options:UIViewAnimationOptionCurveLinear
+                   animations:^{
+                     [self.view showMinimized];
+                     [self.view layoutSubviews];
+                   }
+                   completion:^(BOOL finished) {
+                   }];
+}
+
+- (void)maximizePanel {
+  [UIView animateWithDuration:kAnimationDuration
+                        delay:0
+       usingSpringWithDamping:kSpringDamping
+        initialSpringVelocity:kInitialSpeed
+                      options:UIViewAnimationOptionCurveLinear
+                   animations:^{
+                     [self.view showMaximized];
+                     [self.view layoutSubviews];
+                   }
+                   completion:^(BOOL finished) {
+                   }];
+}
+
+- (void)dismissOverlay:(id)sender {
+  [self dismissOptionsViewWithCompletion:nil];
+}
+
+- (void)dismissOptionsViewWithCompletion:(void (^)(BOOL finished))completion {
+  [UIView animateWithDuration:0.2
+                   animations:^{
+                     [self.view hidePanel];
+                     [self.view layoutSubviews];
+                   }
+                   completion:^(BOOL finished) {
+                     if (completion) {
+                       completion(finished);
+                     }
+                   }];
+}
+
+- (void)reloadData {
+  _content =  [RMXRemixer allRemixes];
+  [self.view.tableView reloadData];
+}
+
+- (void)sendEmailInvite:(id)sender {
+  [RMXRemixer sendEmailInvite];
+}
+
+#pragma mark - <UITableViewDataSource>
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return [_content count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  RMXRemix *remix = _content[indexPath.row];
+  NSString *identifier = [self cellIdentifierForRemix:remix];
+  RMXCell *cell = (RMXCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+  cell.remix = remix;
+  return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  RMXRemix *remix = _content[indexPath.row];
+  return [[self cellClassForRemix:remix] cellHeight];
+}
+
+#pragma mark - <RMXOverlayViewDelegate>
+
+- (void)touchStartedAtPoint:(CGPoint)point withEvent:(UIEvent *)event {
+  // No-op.
+}
+
+- (BOOL)shouldCapturePointOutsidePanel:(CGPoint)point {
+  return NO;
+}
+
+#pragma mark - Private
+
+- (Class)cellClassForRemix:(RMXRemix *)remix {
+  if (remix.controlType == RMXControlTypeButton) {
+    return [RMXCellButton class];
+  } else if (remix.controlType == RMXControlTypeColorPicker) {
+    return [RMXCellColorPicker class];
+  } else if (remix.controlType == RMXControlTypeSegmented) {
+    return [RMXCellSegmented class];
+  } else if (remix.controlType == RMXControlTypeSlider) {
+    return [RMXCellSlider class];
+  } else if (remix.controlType == RMXControlTypeStepper) {
+    return [RMXCellStepper class];
+  } else if (remix.controlType == RMXControlTypeSwitch) {
+    return [RMXCellSwitch class];
+  } else if (remix.controlType == RMXControlTypeTextPicker) {
+    return [RMXCellTextPicker class];
+  }
+  return nil;
+}
+
+- (NSString *)cellIdentifierForRemix:(RMXRemix *)remix {
+  return NSStringFromClass([self cellClassForRemix:remix]);
+}
+
+@end

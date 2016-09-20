@@ -16,13 +16,9 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@interface RMXOverlayViewController : UIViewController
 
-/**
- The RMXOverlayController class provides a table view with a datasource consisting of available
- remixes. The overlay is presented via a three-finger swipe gesture.
- */
-@interface RMXOverlayController : UIViewController
+- (void)showPanel;
+- (void)reloadData;
+
 @end
-
-NS_ASSUME_NONNULL_END

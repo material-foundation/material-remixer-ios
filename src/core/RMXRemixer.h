@@ -26,6 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RMXRemixer : NSObject <RMXRemixDelegate>
 
+/** Starts a new session of Remixer. */
++ (void)start;
+
+/** Stops the current Remixer session. */
++ (void)stop;
+
+/** Sends an invitation to the web dashboard. */
++ (void)sendEmailInvite;
+
 /**
  Returns a remix with the given key from the dictionary of remixes.
  @param key The key of the remix.
@@ -59,10 +68,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Removes all remixes and empties the dictionary of remixes. */
 + (void)removeAllRemixes;
-
-#pragma mark - RMXRemixDelegate
-
-- (void)remix:(RMXRemix *)remix wasUpdatedFromOverlayToValue:(id)value;
 
 @end
 
