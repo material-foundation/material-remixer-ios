@@ -107,4 +107,3 @@ static CGFloat kToolbarHeight = 44.0f;
 }
 
 @end
-
