@@ -14,17 +14,24 @@
  limitations under the License.
  */
 
-#import "RMXCell.h"
+#import <UIKit/UIKit.h>
 
-@class RMXBooleanRemix;
+/** A view controller that shows the controls for refining the values of the Remixes. */
+@interface RMXOverlayViewController : UIViewController
 
-NS_ASSUME_NONNULL_BEGIN
+/**
+ Shows the overlay panel with the Remixer controls.
+ @param animated If YES, the transition is animated.
+ */
+- (void)showPanelAnimated:(BOOL)animated;
 
-/** Provides a table view cell that has a switch control. */
-@interface RMXCellSwitch : RMXCell
+/**
+ Hides the overlay panel with the Remixer controls.
+ @param animated If YES, the transition is animated.
+ */
+- (void)hidePanelAnimated:(BOOL)animated;
 
-@property(nonatomic, weak) RMXBooleanRemix *remix;
+/** Forces a reload of the Remixer controls. */
+- (void)reloadData;
 
 @end
-
-NS_ASSUME_NONNULL_END

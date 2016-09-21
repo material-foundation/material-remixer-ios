@@ -20,7 +20,7 @@
 
 #import "RMXCellSwitch.h"
 
-#import "RMXRemix.h"
+#import "RMXBooleanRemix.h"
 
 @implementation RMXCellSwitch {
   UISwitch *_switchControl;
@@ -35,7 +35,7 @@
   _switchControl = nil;
 }
 
-- (void)setRemix:(RMXRemix *)remix {
+- (void)setRemix:(RMXBooleanRemix *)remix {
   [super setRemix:remix];
   if (!remix) {
     return;
@@ -56,7 +56,7 @@
 #pragma mark - Control Events
 
 - (void)switchUpdated:(UISwitch *)switchControl {
-  [self.remix setSelectedValue:@(switchControl.isOn) fromOverlay:YES];
+  [self.remix setSelectedValue:switchControl.isOn fromOverlay:YES];
 }
 
 @end

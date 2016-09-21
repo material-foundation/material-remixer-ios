@@ -16,7 +16,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import <Remixer/RMXApp.h>
 #import <Remixer/RMXBooleanRemix.h>
 #import <Remixer/RMXItemListRemix.h>
 #import <Remixer/RMXRangeRemix.h>

@@ -30,4 +30,6 @@ typedef void (^RMXBooleanUpdateBlock)(RMXRemix *remix, BOOL selectedValue);
                           defaultValue:(BOOL)defaultValue
                            updateBlock:(RMXBooleanUpdateBlock)updateBlock;
 
+- (void)setSelectedValue:(BOOL)selectedValue fromOverlay:(BOOL)fromOverlay;
+
 @end
