@@ -65,9 +65,9 @@
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   if ([_itemList.firstObject isKindOfClass:[UIColor class]]) {
-    json[@"itemList"] = [self colorsToJSON];
+    json[RMXDictionaryKeyItemList] = [self colorsToJSON];
   } else {
-    json[@"itemList"] = self.itemList;
+    json[RMXDictionaryKeyItemList] = self.itemList;
   }
   return json;
 }

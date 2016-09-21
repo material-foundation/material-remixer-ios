@@ -72,9 +72,9 @@
 
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
-  json[@"minimumValue"] = @(self.minimumValue);
-  json[@"maximumValue"] = @(self.maximumValue);
-  json[@"stepValue"] = @(self.increment);
+  json[RMXDictionaryKeyMinValue] = @(self.minimumValue);
+  json[RMXDictionaryKeyMaxValue] = @(self.maximumValue);
+  json[RMXDictionaryKeyIncrement] = @(self.increment);
   return json;
 }
 

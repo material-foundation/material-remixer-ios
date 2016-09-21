@@ -29,6 +29,12 @@
   return remix;
 }
 
++ (instancetype)addWithDictionary:(NSDictionary *)dictionary {
+  return [self addBooleanRemixWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
+                         defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
+                          updateBlock:nil];
+}
+
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(BOOL)defaultValue
                 updateBlock:(RMXBooleanUpdateBlock)updateBlock {

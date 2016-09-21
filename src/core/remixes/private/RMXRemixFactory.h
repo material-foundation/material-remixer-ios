@@ -15,8 +15,11 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "RMXStorageController.h"
 
-@interface RMXLocalStorageController : NSObject <RMXStorageController>
+#import "RMXRemix.h"
+
+@interface RMXRemixFactory : NSObject
+
++ (__kindof RMXRemix *)remixFromJSONDictionary:(NSDictionary *)dictionary;
 
 @end

@@ -37,6 +37,17 @@ static NSString *const RMXTypeBoolean = @"__RemixTypeBoolean__";
 static NSString *const RMXTypeRange = @"__RemixTypeRange__";
 static NSString *const RMXTypeString = @"__RemixTypeString__";
 
+/** Keys for the JSON dictionary that contains the data for a Remix. */
+static NSString *const RMXDictionaryKeySelectedValue = @"selectedValue";
+static NSString *const RMXDictionaryKeyKey = @"key";
+static NSString *const RMXDictionaryKeyTypeIdentifier = @"typeIdentifier";
+static NSString *const RMXDictionaryKeyControlType = @"controlType";
+static NSString *const RMXDictionaryKeyTitle = @"title";
+static NSString *const RMXDictionaryKeyMinValue = @"minimumValue";
+static NSString *const RMXDictionaryKeyMaxValue = @"maximumValue";
+static NSString *const RMXDictionaryKeyIncrement = @"increment";
+static NSString *const RMXDictionaryKeyItemList = @"itemList";
+
 /** Type of UI controls supported by Remixer. */
 typedef NS_ENUM(NSInteger, RMXControlType) {
   RMXControlTypeButton = 0,
@@ -86,6 +97,9 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
              typeIdentifier:(NSString *)typeIdentifier
                defaultValue:(nullable id)defaultValue
                 updateBlock:(RMXUpdateBlock)updateBlock;
+
+/** Initializer for creating Remixes from a dictionary. */
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 /** Setter for the selectedValue property. */
 - (void)setSelectedValue:(id)value fromOverlay:(BOOL)fromOverlay;

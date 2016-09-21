@@ -42,6 +42,13 @@
   return self;
 }
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+  return [self initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
+            typeIdentifier:[dictionary objectForKey:RMXDictionaryKeyTypeIdentifier]
+              defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
+               updateBlock:nil];
+}
+
 - (NSString *)title {
   if (_title.length > 0) {
     return _title;
@@ -71,11 +78,11 @@
 
 - (NSMutableDictionary *)toJSON {
   NSMutableDictionary *json = [NSMutableDictionary dictionary];
-  json[@"key"] = self.typeIdentifier;
-  json[@"value"] = self.selectedValue;
-  json[@"remixType"] = self.typeIdentifier;
-  json[@"controlType"] = @(self.controlType);
-  json[@"title"] = self.title;
+  json[RMXDictionaryKeyKey] = self.key;
+  json[RMXDictionaryKeySelectedValue] = self.selectedValue;
+  json[RMXDictionaryKeyTypeIdentifier] = self.typeIdentifier;
+  json[RMXDictionaryKeyControlType] = @(self.controlType);
+  json[RMXDictionaryKeyTitle] = self.title;
   return json;
 }
 
