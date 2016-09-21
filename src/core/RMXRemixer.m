@@ -65,7 +65,6 @@
   instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
-  [instance.overlayWindow setHidden:NO];
 }
 
 + (NSString *)sessionId {
@@ -79,8 +78,7 @@
 }
 
 + (RMXOverlayWindow *)overlayWindow {
-  RMXRemixer *sharedInstance = [self sharedInstance];
-  return sharedInstance.overlayWindow;
+  return [[self sharedInstance] overlayWindow];
 }
 
 #pragma mark - Swipe gesture
@@ -97,7 +95,8 @@
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizer *)recognizer {
-  [_overlayController showPanel];
+  _overlayWindow.hidden = NO;
+  [_overlayController showPanelAnimated:YES];
 }
 
 #pragma mark - Email

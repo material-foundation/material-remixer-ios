@@ -99,9 +99,27 @@ static CGFloat kInitialSpeed = 0.4f;
 
 #pragma mark - Public
 
-- (void)showPanel {
+- (void)hidePanelAnimated:(BOOL)animated {
+  [UIView animateWithDuration:animated ? kAnimationDuration : 0
+                        delay:0
+       usingSpringWithDamping:kSpringDamping
+        initialSpringVelocity:kInitialSpeed
+                      options:UIViewAnimationOptionCurveLinear
+                   animations:^{
+                     [self.view hidePanel];
+                     [self.view layoutSubviews];
+                   }
+                   completion:^(BOOL finished) {
+                     self.view.hidden = YES;
+                   }];
+}
+
+- (void)showPanelAnimated:(BOOL)animated {
   [self reloadData];
-  [UIView animateWithDuration:kAnimationDuration
+  [self.view hidePanel];
+  [self.view layoutSubviews];
+  self.view.hidden = NO;
+  [UIView animateWithDuration:animated ? kAnimationDuration : 0
                         delay:0
        usingSpringWithDamping:kSpringDamping
         initialSpringVelocity:kInitialSpeed
@@ -174,6 +192,7 @@ static CGFloat kInitialSpeed = 0.4f;
                      [self.view layoutSubviews];
                    }
                    completion:^(BOOL finished) {
+                     self.view.hidden = YES;
                      if (completion) {
                        completion(finished);
                      }

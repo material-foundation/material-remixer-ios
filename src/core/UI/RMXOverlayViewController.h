@@ -19,8 +19,17 @@
 /** A view controller that shows the controls for refining the values of the Remixes. */
 @interface RMXOverlayViewController : UIViewController
 
-/** Shows the overlay panel with the Remixer controls. */
-- (void)showPanel;
+/**
+ Shows the overlay panel with the Remixer controls.
+ @param animated If YES, the transition is animated.
+ */
+- (void)showPanelAnimated:(BOOL)animated;
+
+/**
+ Hides the overlay panel with the Remixer controls.
+ @param animated If YES, the transition is animated.
+ */
+- (void)hidePanelAnimated:(BOOL)animated;
 
 /** Forces a reload of the Remixer controls. */
 - (void)reloadData;
