@@ -14,6 +14,10 @@
  limitations under the License.
  */
 
+#if !defined(__has_feature) || !__has_feature(objc_arc)
+#error "This file requires ARC support."
+#endif
+
 #import "RMXOverlayView.h"
 
 #import "RMXOverlayNavigationBar.h"
@@ -59,8 +63,8 @@ static CGFloat kToolbarHeight = 44.0f;
                                          _panelHeight);
   
   [UIView setAnimationsEnabled:NO];
-  _tableView.frame = CGRectMake(0, RMXOverlayNavbarHeight,
-                                boundsSize.width, _panelHeight - RMXOverlayNavbarHeight);
+  CGFloat tableViewHeight = _panelHeight - RMXOverlayNavbarHeight;
+  _tableView.frame = CGRectMake(0, RMXOverlayNavbarHeight, boundsSize.width, tableViewHeight);
   [UIView setAnimationsEnabled:YES];
   
   _navigationBar.frame = CGRectMake(0, 0, boundsSize.width, RMXOverlayNavbarHeight);

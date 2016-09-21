@@ -22,6 +22,13 @@
 
 #import "RMXOverlayResources.h"
 
+@interface RMXOverlayNavigationBar ()
+
+@property(nonatomic, strong) UIButton *closeButton;
+@property(nonatomic, strong) UIButton *remoteButton;
+
+@end
+
 @implementation RMXOverlayNavigationBar
 
 static CGFloat kButtonWidth = 110.0f;

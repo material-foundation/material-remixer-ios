@@ -19,10 +19,4 @@
 /** A custom UINavigationBar used inside of the overlay. */
 @interface RMXOverlayNavigationBar : UINavigationBar
 
-/** A button that closes the overlay. */
-@property(nonatomic, strong, readonly) UIButton *closeButton;
-
-/** A button that starts the remote functionality. */
-@property(nonatomic, strong, readonly) UIButton *remoteButton;
-
 @end

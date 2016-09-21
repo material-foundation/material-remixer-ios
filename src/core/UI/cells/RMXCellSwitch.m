@@ -49,14 +49,14 @@
     self.accessoryView = _switchControl;
   }
 
-  _switchControl.on = [remix.selectedValue boolValue];
+  _switchControl.on = remix.selectedValue;
   self.textLabel.text = remix.title;
 }
 
 #pragma mark - Control Events
 
 - (void)switchUpdated:(UISwitch *)switchControl {
-  [self.remix setSelectedValue:@(switchControl.isOn) fromOverlay:YES];
+  [self.remix setSelectedValue:switchControl.isOn fromOverlay:YES];
 }
 
 @end
