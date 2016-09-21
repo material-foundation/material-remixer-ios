@@ -21,6 +21,8 @@
 #import "RMXCellTextPicker.h"
 
 #import "RMXItemListRemix.h"
+#import "RMXOverlayWindow.h"
+#import "RMXRemixer.h"
 
 /** Provide return chars to force padding within UIAlertController. */
 NSString *const kAlertStringPadding = @"\n\n\n\n\n\n\n\n\n\n";
@@ -102,7 +104,7 @@ static CGFloat kPickerheight = 200.0f;
   UIAlertAction *action =
       [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
   [_alertController addAction:action];
-  UIViewController *vc = [self.window.rootViewController presentedViewController];
+  UIViewController *vc = [[RMXRemixer overlayWindow] rootViewController];
   [vc presentViewController:_alertController animated:YES completion:nil];
 }
 

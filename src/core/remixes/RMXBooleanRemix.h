@@ -32,4 +32,6 @@ typedef void (^RMXBooleanUpdateBlock)(RMXRemix *remix, BOOL selectedValue);
 
 + (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
 
+- (void)setSelectedValue:(BOOL)selectedValue fromOverlay:(BOOL)fromOverlay;
+
 @end

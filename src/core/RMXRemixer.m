@@ -14,14 +14,29 @@
  limitations under the License.
  */
 
+#if !defined(__has_feature) || !__has_feature(objc_arc)
+#error "This file requires ARC support."
+#endif
+
 #import "RMXRemixer.h"
 
 #import "RMXRemix.h"
 #import "RMXLocalStorageController.h"
+#import "UI/RMXOverlayViewController.h"
+#import "UI/RMXOverlayWindow.h"
 
-@interface RMXRemixer ()
+#if TARGET_OS_SIMULATOR
+#define SWIPE_GESTURE_REQUIRED_TOUCHES 2
+#else
+#define SWIPE_GESTURE_REQUIRED_TOUCHES 3
+#endif
+
+@interface RMXRemixer () <UIGestureRecognizerDelegate>
 @property(nonatomic, strong) NSMutableDictionary *remixes;
 @property(nonatomic, strong) RMXLocalStorageController *storage;
+@property(nonatomic, strong) RMXOverlayViewController *overlayController;
+@property(nonatomic, strong) UISwipeGestureRecognizer *swipeUpGesture;
+@property(nonatomic, strong) RMXOverlayWindow *overlayWindow;
 @end
 
 @implementation RMXRemixer
@@ -44,6 +59,71 @@
   return sharedInstance;
 }
 
++ (void)start {
+  UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+  RMXRemixer *instance = [self sharedInstance];
+  instance.swipeUpGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:[self sharedInstance]
+                                                                      action:@selector(didSwipe:)];
+  instance.swipeUpGesture.direction = UISwipeGestureRecognizerDirectionUp;
+  instance.swipeUpGesture.numberOfTouchesRequired = SWIPE_GESTURE_REQUIRED_TOUCHES;
+  instance.swipeUpGesture.delegate = [self sharedInstance];
+  [keyWindow addGestureRecognizer:instance.swipeUpGesture];
+  
+  instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
+  instance.overlayController = [[RMXOverlayViewController alloc] init];
+  instance.overlayWindow.rootViewController = instance.overlayController;
+}
+
++ (NSString *)sessionId {
+  // Store unique session id if doesn't exist.
+  NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"];
+  if (!sessionId) {
+    sessionId = [[[NSUUID UUID] UUIDString] substringToIndex:8];
+    [[NSUserDefaults standardUserDefaults] setObject:sessionId forKey:@"sessionId"];
+  }
+  return sessionId;
+}
+
++ (RMXOverlayWindow *)overlayWindow {
+  return [[self sharedInstance] overlayWindow];
+}
+
+#pragma mark - Swipe gesture
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+    shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+  if ((gestureRecognizer == _swipeUpGesture) &&
+      (gestureRecognizer.numberOfTouches == SWIPE_GESTURE_REQUIRED_TOUCHES)) {
+    otherGestureRecognizer.enabled = NO;
+    otherGestureRecognizer.enabled = YES;
+    return YES;
+  }
+  return NO;
+}
+
+- (void)didSwipe:(UISwipeGestureRecognizer *)recognizer {
+  _overlayWindow.hidden = NO;
+  [_overlayController showPanelAnimated:YES];
+}
+
+#pragma mark - Email
+
++ (void)sendEmailInvite {
+  // Genrates a mailto: URL string.
+  NSString *sessionId = [self sessionId];
+  NSString *remixerURL =
+  [NSString stringWithFormat:@"https://remix-4d1f9.firebaseapp.com/#/composer/%@", sessionId];
+  NSString *subject = [NSString stringWithFormat:@"Invitation to Remixer session %@", sessionId];
+  NSString *body = [NSString stringWithFormat:@"You have been invited to a Remixer session. \n\n"
+                    @"Follow this link to log in: <a href='%@'>%@</a>",
+                    remixerURL, sessionId];
+  NSString *mailTo = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", subject, body];
+  NSString *url = [mailTo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
+#pragma mark - Remixes
+
 + (nullable RMXRemix *)remixForKey:(NSString *)key {
   return [[[self sharedInstance] remixes] objectForKey:key];
 }
@@ -64,6 +144,7 @@
   }
 
   remix.delegate = [self sharedInstance];
+  [[[self sharedInstance] overlayController] reloadData];
 }
 
 + (void)removeRemix:(RMXRemix *)remix {
@@ -81,6 +162,7 @@
 
 + (void)removeAllRemixes {
   [[[self sharedInstance] remixes] removeAllObjects];
+  [[[self sharedInstance] overlayController] reloadData];
 }
 
 #pragma mark - RMXRemixDelegate

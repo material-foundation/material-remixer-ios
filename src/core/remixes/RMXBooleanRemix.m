@@ -50,4 +50,14 @@
   return self;
 }
 
+#pragma mark - Selected value overrides
+
+- (BOOL)selectedValue {
+  return [[super selectedValue] boolValue];
+}
+
+- (void)setSelectedValue:(BOOL)selectedValue fromOverlay:(BOOL)fromOverlay {
+  [super setSelectedValue:@(selectedValue) fromOverlay:fromOverlay];
+}
+
 @end

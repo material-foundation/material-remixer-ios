@@ -16,10 +16,7 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
-/** A customized navigation bar used in the overlay controller. */
+/** A custom UINavigationBar used inside of the overlay. */
 @interface RMXOverlayNavigationBar : UINavigationBar
-@end
 
-NS_ASSUME_NONNULL_END
+@end

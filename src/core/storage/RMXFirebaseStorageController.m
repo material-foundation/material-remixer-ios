@@ -17,7 +17,6 @@
 #import "RMXFirebaseStorageController.h"
 
 #import "Firebase.h"
-#import "RMXRemix.h"
 #import "RMXRemixer.h"
 
 static NSString *const kKeyRemixes = @"remixes";

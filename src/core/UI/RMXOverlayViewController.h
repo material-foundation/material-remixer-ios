@@ -16,13 +16,22 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+/** A view controller that shows the controls for refining the values of the Remixes. */
+@interface RMXOverlayViewController : UIViewController
 
 /**
- The RMXOverlayController class provides a table view with a datasource consisting of available
- remixes. The overlay is presented via a three-finger swipe gesture.
+ Shows the overlay panel with the Remixer controls.
+ @param animated If YES, the transition is animated.
  */
-@interface RMXOverlayController : UIViewController
-@end
+- (void)showPanelAnimated:(BOOL)animated;
 
-NS_ASSUME_NONNULL_END
+/**
+ Hides the overlay panel with the Remixer controls.
+ @param animated If YES, the transition is animated.
+ */
+- (void)hidePanelAnimated:(BOOL)animated;
+
+/** Forces a reload of the Remixer controls. */
+- (void)reloadData;
+
+@end

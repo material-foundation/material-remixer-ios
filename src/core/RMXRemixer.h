@@ -18,6 +18,8 @@
 
 #import "RMXRemix.h"
 
+@class RMXOverlayWindow;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -25,6 +27,24 @@ NS_ASSUME_NONNULL_BEGIN
  saving/syncing its values.
  */
 @interface RMXRemixer : NSObject <RMXRemixDelegate>
+
+/** Starts Remixer. */
++ (void)start;
+
+/** Stops the current Remixer session. */
++ (void)stop;
+
+/** Sends an invitation to the web dashboard. */
++ (void)sendEmailInvite;
+
+/** A unique session id. */
++ (NSString *)sessionId;
+
+/**
+ Getter for the UIWindow used by the overlay.
+ @return The UIWindow.
+ */
++ (RMXOverlayWindow *)overlayWindow;
 
 /**
  Returns a remix with the given key from the dictionary of remixes.
@@ -59,10 +79,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Removes all remixes and empties the dictionary of remixes. */
 + (void)removeAllRemixes;
-
-#pragma mark - RMXRemixDelegate
-
-- (void)remix:(RMXRemix *)remix wasUpdatedFromOverlayToValue:(id)value;
 
 @end
 
