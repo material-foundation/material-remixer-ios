@@ -35,6 +35,8 @@
   return remix;
 }
 
+#pragma mark - Private
+
 - (instancetype)initItemListRemixWithKey:(NSString *)key
                             defaultValue:(id)defaultValue
                                 itemList:(NSArray<id> *)itemList

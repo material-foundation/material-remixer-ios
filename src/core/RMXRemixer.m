@@ -17,9 +17,11 @@
 #import "RMXRemixer.h"
 
 #import "RMXRemix.h"
+#import "RMXLocalStorageController.h"
 
 @interface RMXRemixer ()
 @property(nonatomic, strong) NSMutableDictionary *remixes;
+@property(nonatomic, strong) RMXLocalStorageController *storage;
 @end
 
 @implementation RMXRemixer
@@ -28,6 +30,7 @@
   self = [super init];
   if (self) {
     _remixes = [NSMutableDictionary dictionary];
+    _storage = [[RMXLocalStorageController alloc] init];
   }
   return self;
 }
@@ -49,7 +52,12 @@
   RMXRemix *existingRemix = [self remixForKey:remix.key];
   if (!existingRemix) {
     [[[self sharedInstance] remixes] setObject:remix forKey:remix.key];
-    [remix executeUpdateBlocks];
+    RMXRemix *storedRemix = [[[self sharedInstance] storage] remixForKey:remix.key];
+    if (storedRemix) {
+      [remix setSelectedValue:storedRemix.selectedValue fromOverlay:NO];
+    } else {
+      [remix executeUpdateBlocks];
+    }
   } else {
     [existingRemix addAndExecuteUpdateBlock:remix.updateBlocks.firstObject];
     remix = existingRemix;
@@ -79,7 +87,7 @@
 
 - (void)remix:(RMXRemix *)remix wasUpdatedFromOverlayToValue:(nonnull id)value {
   if (!remix.delaysCommits) {
-    // TODO: Storage / sync.
+    [_storage saveRemix:remix];
   }
 }
 

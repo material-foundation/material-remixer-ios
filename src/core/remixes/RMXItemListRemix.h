@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
                                itemList:(NSArray<id> *)itemList
                             updateBlock:(RMXUpdateBlock)updateBlock;
 
++ (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
+
 @end
 
 NS_ASSUME_NONNULL_END

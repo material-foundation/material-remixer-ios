@@ -49,6 +49,8 @@
                         updateBlock:updateBlock];
 }
 
+#pragma mark - Private
+
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(CGFloat)defaultValue
                    minValue:(CGFloat)minValue

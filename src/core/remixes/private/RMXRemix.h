@@ -99,7 +99,7 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
                 updateBlock:(RMXUpdateBlock)updateBlock;
 
 /** Initializer for creating Remixes from a dictionary. */
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
 
 /** Setter for the selectedValue property. */
 - (void)setSelectedValue:(id)value fromOverlay:(BOOL)fromOverlay;

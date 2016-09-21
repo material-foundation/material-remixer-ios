@@ -30,6 +30,6 @@ typedef void (^RMXBooleanUpdateBlock)(RMXRemix *remix, BOOL selectedValue);
                           defaultValue:(BOOL)defaultValue
                            updateBlock:(RMXBooleanUpdateBlock)updateBlock;
 
-+ (instancetype)addWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
 
 @end

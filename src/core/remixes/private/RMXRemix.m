@@ -37,12 +37,16 @@
     _key = key;
     _typeIdentifier = typeIdentifier;
     _selectedValue = defaultValue;
-    _updateBlocks = [NSMutableSet setWithObject:updateBlock];
+    if (updateBlock) {
+      _updateBlocks = [NSMutableArray arrayWithObject:updateBlock];
+    } else {
+      _updateBlocks = [NSMutableArray array];
+    }
   }
   return self;
 }
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+- (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
   return [self initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
             typeIdentifier:[dictionary objectForKey:RMXDictionaryKeyTypeIdentifier]
               defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
