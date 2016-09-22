@@ -98,7 +98,7 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
                defaultValue:(nullable id)defaultValue
                 updateBlock:(RMXUpdateBlock)updateBlock;
 
-/** Initializer for creating Remixes from a dictionary. */
+/** Creates an instance based on the data contained in a dictionary. */
 + (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
 
 /** Setter for the selectedValue property. */

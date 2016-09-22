@@ -20,10 +20,10 @@
 
 #import "RMXRemixer.h"
 
-#import "RMXRemix.h"
+#import "RMXLocalStorageController.h"
 #import "RMXBooleanRemix.h"
 #import "RMXRangeRemix.h"
-#import "RMXLocalStorageController.h"
+#import "RMXRemix.h"
 #import "UI/RMXOverlayViewController.h"
 #import "UI/RMXOverlayWindow.h"
 

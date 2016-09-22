@@ -53,6 +53,7 @@ typedef void (^RMXRangeUpdateBlock)(RMXRemix *remix, CGFloat selectedValue);
                             maxValue:(CGFloat)maxValue
                          updateBlock:(RMXRangeUpdateBlock)updateBlock;
 
+/** Setter for the selected value */
 - (void)setSelectedValue:(CGFloat)selectedValue fromOverlay:(BOOL)fromOverlay;
 
 @end

@@ -16,11 +16,10 @@
 
 @class RMXRemix;
 
-/** Interface for they different types of storage supported by the library. */
+/** Interface for they different types of storage supported by Remixer. */
 @protocol RMXStorageController
 
 @required
-
 /**
  Retrieves a saved Remix using its key.
  @return A Remix or nil if not found.
@@ -31,11 +30,16 @@
 - (void)saveRemix:(RMXRemix *)remix;
 
 @optional
-
-/** Called during initialization to give the controller a chance to set  */
+/** Called during initialization to give the controller a chance to set itself up */
 - (void)setup;
+
+/** Called by Remixer when it wants to start receiving updates (if supported) */
 - (void)startObservingUpdates;
+
+/** Called by Remixer when it wants to stop receiving updates (if supported) */
 - (void)stopObservingUpdates;
+
+/** Called when Remixer is shutting down */
 - (void)shutDown;
 
 @end
