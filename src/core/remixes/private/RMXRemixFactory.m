@@ -29,7 +29,7 @@
   } else if ([typeIdentifier isEqualToString:RMXTypeRange]) {
 //    return [RMXRangeRemix addWithDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeBoolean]) {
-    return [RMXBooleanRemix remixWithDictionary:dictionary];
+    return [RMXBooleanRemix remixFromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeString]) {
     // return [RMXStringRemix addWithDictionary:dictionary];
   }

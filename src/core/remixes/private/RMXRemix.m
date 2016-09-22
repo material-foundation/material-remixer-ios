@@ -83,7 +83,6 @@
 - (NSMutableDictionary *)toJSON {
   NSMutableDictionary *json = [NSMutableDictionary dictionary];
   json[RMXDictionaryKeyKey] = self.key;
-  json[RMXDictionaryKeySelectedValue] = self.selectedValue;
   json[RMXDictionaryKeyTypeIdentifier] = self.typeIdentifier;
   json[RMXDictionaryKeyControlType] = @(self.controlType);
   json[RMXDictionaryKeyTitle] = self.title;

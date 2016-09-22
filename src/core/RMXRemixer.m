@@ -21,6 +21,7 @@
 #import "RMXRemixer.h"
 
 #import "RMXRemix.h"
+#import "RMXBooleanRemix.h"
 #import "RMXLocalStorageController.h"
 #import "UI/RMXOverlayViewController.h"
 #import "UI/RMXOverlayWindow.h"
@@ -132,9 +133,14 @@
   RMXRemix *existingRemix = [self remixForKey:remix.key];
   if (!existingRemix) {
     [[[self sharedInstance] remixes] setObject:remix forKey:remix.key];
-    RMXRemix *storedRemix = [[[self sharedInstance] storage] remixForKey:remix.key];
+    __kindof RMXRemix *storedRemix = [[[self sharedInstance] storage] remixForKey:remix.key];
     if (storedRemix) {
-      [remix setSelectedValue:storedRemix.selectedValue fromOverlay:NO];
+      if ([storedRemix isKindOfClass:[RMXBooleanRemix class]]) {
+        BOOL storedValue = [(RMXBooleanRemix *)storedRemix selectedValue];
+        [(RMXBooleanRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
+      } else {
+        [remix setSelectedValue:storedRemix.selectedValue fromOverlay:NO];
+      }
     } else {
       [remix executeUpdateBlocks];
     }

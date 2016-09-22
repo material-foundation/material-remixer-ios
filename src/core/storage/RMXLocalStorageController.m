@@ -21,7 +21,7 @@
 
 @implementation RMXLocalStorageController
 
-- (id)remixForKey:(NSString *)key {
+- (__kindof RMXRemix *)remixForKey:(NSString *)key {
   NSDictionary *json = [[NSUserDefaults standardUserDefaults] objectForKey:key];
   return [RMXRemixFactory remixFromJSONDictionary:json];
 }
