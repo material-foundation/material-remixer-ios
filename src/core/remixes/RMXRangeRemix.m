@@ -49,6 +49,29 @@
                         updateBlock:updateBlock];
 }
 
++ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
+  NSString *key = [dictionary objectForKey:RMXDictionaryKeyKey];
+  CGFloat selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] floatValue];
+  CGFloat minValue = [[dictionary objectForKey:RMXDictionaryKeyMinValue] floatValue];
+  CGFloat maxValue = [[dictionary objectForKey:RMXDictionaryKeyMaxValue] floatValue];
+  CGFloat increment = [[dictionary objectForKey:RMXDictionaryKeyIncrement] floatValue];
+  return [[self alloc] initWithKey:key
+                      defaultValue:selectedValue
+                          minValue:minValue
+                          maxValue:maxValue
+                         increment:increment
+                       updateBlock:nil];
+}
+
+- (NSDictionary *)toJSON {
+  NSMutableDictionary *json = [super toJSON];
+  json[RMXDictionaryKeySelectedValue] = @(self.selectedValue);
+  json[RMXDictionaryKeyMinValue] = @(self.minimumValue);
+  json[RMXDictionaryKeyMaxValue] = @(self.maximumValue);
+  json[RMXDictionaryKeyIncrement] = @(self.increment);
+  return json;
+}
+
 #pragma mark - Private
 
 - (instancetype)initWithKey:(NSString *)key
@@ -72,12 +95,14 @@
   return self;
 }
 
-- (NSDictionary *)toJSON {
-  NSMutableDictionary *json = [super toJSON];
-  json[RMXDictionaryKeyMinValue] = @(self.minimumValue);
-  json[RMXDictionaryKeyMaxValue] = @(self.maximumValue);
-  json[RMXDictionaryKeyIncrement] = @(self.increment);
-  return json;
+#pragma mark - Selected value overrides
+
+- (CGFloat)selectedValue {
+  return [[super selectedValue] floatValue];
+}
+
+- (void)setSelectedValue:(CGFloat)selectedValue fromOverlay:(BOOL)fromOverlay {
+  [super setSelectedValue:@(selectedValue) fromOverlay:fromOverlay];
 }
 
 @end

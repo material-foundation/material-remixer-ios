@@ -22,6 +22,7 @@
 
 #import "RMXRemix.h"
 #import "RMXBooleanRemix.h"
+#import "RMXRangeRemix.h"
 #import "RMXLocalStorageController.h"
 #import "UI/RMXOverlayViewController.h"
 #import "UI/RMXOverlayWindow.h"
@@ -133,15 +134,20 @@
   RMXRemix *existingRemix = [self remixForKey:remix.key];
   if (!existingRemix) {
     [[[self sharedInstance] remixes] setObject:remix forKey:remix.key];
-    __kindof RMXRemix *storedRemix = [[[self sharedInstance] storage] remixForKey:remix.key];
+    RMXRemix *storedRemix = [[[self sharedInstance] storage] remixForKey:remix.key];
     if (storedRemix) {
+      // Stored Remixes are currently only being used to update the selected value.
       if ([storedRemix isKindOfClass:[RMXBooleanRemix class]]) {
         BOOL storedValue = [(RMXBooleanRemix *)storedRemix selectedValue];
         [(RMXBooleanRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
+      } else if ([storedRemix isKindOfClass:[RMXRangeRemix class]]) {
+        CGFloat storedValue = [(RMXRangeRemix *)storedRemix selectedValue];
+        [(RMXRangeRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
       } else {
         [remix setSelectedValue:storedRemix.selectedValue fromOverlay:NO];
       }
     } else {
+      // Since we're not setting the value, we need to manually call the update blocks.
       [remix executeUpdateBlocks];
     }
   } else {

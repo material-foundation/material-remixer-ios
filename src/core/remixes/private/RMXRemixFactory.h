@@ -20,6 +20,6 @@
 
 @interface RMXRemixFactory : NSObject
 
-+ (__kindof RMXRemix *)remixFromJSONDictionary:(NSDictionary *)dictionary;
++ (RMXRemix *)remixFromJSONDictionary:(NSDictionary *)dictionary;
 
 @end

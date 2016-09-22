@@ -19,7 +19,7 @@
 @protocol RMXStorageController
 
 @required
-- (id)remixForKey:(NSString *)key;
+- (RMXRemix *)remixForKey:(NSString *)key;
 - (void)saveRemix:(RMXRemix *)remix;
 
 @optional

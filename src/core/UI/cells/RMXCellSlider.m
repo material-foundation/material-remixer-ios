@@ -57,7 +57,7 @@
   _sliderControl.maximumValueImage = [self imageFromFloatValue:remix.maximumValue];
   _sliderControl.minimumValue = remix.minimumValue;
   _sliderControl.maximumValue = remix.maximumValue;
-  _sliderControl.value = [remix.selectedValue floatValue];
+  _sliderControl.value = remix.selectedValue;
 
   [self updateDetailLabel];
 }
@@ -67,14 +67,14 @@
 - (void)sliderUpdated:(UISlider *)sliderControl {
   // Continuously update slider, but do not commit changes.
   [self.remix setDelaysCommits:YES];
-  [self.remix setSelectedValue:@(sliderControl.value) fromOverlay:YES];
+  [self.remix setSelectedValue:sliderControl.value fromOverlay:YES];
   [self updateDetailLabel];
 }
 
 - (void)sliderUpdateComplete:(UISlider *)sliderControl {
   // Commit value only after slider update complete.
   [self.remix setDelaysCommits:NO];
-  [self.remix setSelectedValue:@(sliderControl.value) fromOverlay:YES];
+  [self.remix setSelectedValue:sliderControl.value fromOverlay:YES];
   [self updateDetailLabel];
 }
 

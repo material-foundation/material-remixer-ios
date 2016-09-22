@@ -22,16 +22,14 @@
 
 @implementation RMXRemixFactory
 
-+ (__kindof RMXRemix *)remixFromJSONDictionary:(NSDictionary *)dictionary {
-  NSString *typeIdentifier = [dictionary objectForKey:@"typeIdentifier"];
++ (RMXRemix *)remixFromJSONDictionary:(NSDictionary *)dictionary {
+  NSString *typeIdentifier = [dictionary objectForKey:RMXDictionaryKeyTypeIdentifier];
   if ([typeIdentifier isEqualToString:RMXTypeItemList]) {
-//    return [RMXItemListRemix addWithDictionary:dictionary];
+    return [RMXItemListRemix remixFromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeRange]) {
-//    return [RMXRangeRemix addWithDictionary:dictionary];
+    return [RMXRangeRemix remixFromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeBoolean]) {
     return [RMXBooleanRemix remixFromDictionary:dictionary];
-  } else if ([typeIdentifier isEqualToString:RMXTypeString]) {
-    // return [RMXStringRemix addWithDictionary:dictionary];
   }
   return nil;
 }

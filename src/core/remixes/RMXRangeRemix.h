@@ -26,16 +26,16 @@ typedef void (^RMXRangeUpdateBlock)(RMXRemix *remix, CGFloat selectedValue);
 /** A type of Remix for numeric values. */
 @interface RMXRangeRemix : RMXRemix
 
-/** The selected value of a given remix. */
-@property(nonatomic, assign) NSNumber *selectedValue;
+/** The selected value of this remix. */
+@property(nonatomic, assign) CGFloat selectedValue;
 
-/** The minimum value available to this control. */
+/** The minimum value of the selected value. */
 @property(nonatomic, assign) CGFloat minimumValue;
 
-/** The maximum value available to this control. */
+/** The maximum value of the selected value. */
 @property(nonatomic, assign) CGFloat maximumValue;
 
-/** The delta used to increment or decrement the value. Optional. */
+/** The delta used to increment or decrement the value. Optional, defaults to zero. */
 @property(nonatomic, assign) CGFloat increment;
 
 /** Designated initializer */
@@ -52,6 +52,8 @@ typedef void (^RMXRangeUpdateBlock)(RMXRemix *remix, CGFloat selectedValue);
                             minValue:(CGFloat)minValue
                             maxValue:(CGFloat)maxValue
                          updateBlock:(RMXRangeUpdateBlock)updateBlock;
+
+- (void)setSelectedValue:(CGFloat)selectedValue fromOverlay:(BOOL)fromOverlay;
 
 @end
 

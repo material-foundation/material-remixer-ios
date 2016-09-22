@@ -46,11 +46,11 @@
   return self;
 }
 
-- (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
-  return [self initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
-            typeIdentifier:[dictionary objectForKey:RMXDictionaryKeyTypeIdentifier]
-              defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
-               updateBlock:nil];
++ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
+  return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
+                    typeIdentifier:[dictionary objectForKey:RMXDictionaryKeyTypeIdentifier]
+                      defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
+                       updateBlock:nil];
 }
 
 - (NSString *)title {
