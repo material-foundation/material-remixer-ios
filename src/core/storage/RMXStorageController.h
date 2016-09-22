@@ -16,13 +16,23 @@
 
 @class RMXRemix;
 
+/** Interface for they different types of storage supported by the library. */
 @protocol RMXStorageController
 
 @required
-- (RMXRemix *)remixForKey:(NSString *)key;
+
+/**
+ Retrieves a saved Remix using its key.
+ @return A Remix or nil if not found.
+ */
+- (nullable RMXRemix *)remixForKey:(NSString *)key;
+
+/** Saves a Remix */
 - (void)saveRemix:(RMXRemix *)remix;
 
 @optional
+
+/** Called during initialization to give the controller a chance to set  */
 - (void)setup;
 - (void)startObservingUpdates;
 - (void)stopObservingUpdates;

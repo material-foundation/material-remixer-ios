@@ -21,6 +21,11 @@
 
 #import "RMXRemixer.h"
 
+NSString *const kColorKeyRed = @"r";
+NSString *const kColorKeyGreen = @"g";
+NSString *const kColorKeyBlue = @"b";
+NSString *const kColorKeyAlpha = @"a";
+
 @implementation RMXItemListRemix
 
 + (instancetype)addItemListRemixWithKey:(NSString *)key
@@ -110,18 +115,18 @@
     g = b = r;
   };
   return @{
-    @"r" : @(round(r * 255)),
-    @"g" : @(round(g * 255)),
-    @"b" : @(round(b * 255)),
-    @"a" : @(round(a * 100))
+    kColorKeyRed   : @(round(r * 255)),
+    kColorKeyGreen : @(round(g * 255)),
+    kColorKeyBlue  : @(round(b * 255)),
+    kColorKeyAlpha : @(round(a * 100))
   };
 }
 
 + (UIColor *)colorFromRGBADictionary:(NSDictionary *)dictionary {
-  CGFloat red = [[dictionary objectForKey:@"r"] integerValue] / 255.0;
-  CGFloat green = [[dictionary objectForKey:@"g"] integerValue] / 255.0;
-  CGFloat blue = [[dictionary objectForKey:@"b"] integerValue] / 255.0;
-  CGFloat alpha = [[dictionary objectForKey:@"a"] integerValue] / 100.0;
+  CGFloat red = [[dictionary objectForKey:kColorKeyRed] integerValue] / 255.0;
+  CGFloat green = [[dictionary objectForKey:kColorKeyGreen] integerValue] / 255.0;
+  CGFloat blue = [[dictionary objectForKey:kColorKeyBlue] integerValue] / 255.0;
+  CGFloat alpha = [[dictionary objectForKey:kColorKeyAlpha] integerValue] / 100.0;
   return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 

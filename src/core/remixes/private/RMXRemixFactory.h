@@ -18,8 +18,13 @@
 
 #import "RMXRemix.h"
 
+/** Utility class that helps with the initialization of different types of Remixes */
 @interface RMXRemixFactory : NSObject
 
+/**
+ Creates a Remix using the data contained in a JSON dictionary.
+ @return A Remix
+ */
 + (RMXRemix *)remixFromJSONDictionary:(NSDictionary *)dictionary;
 
 @end

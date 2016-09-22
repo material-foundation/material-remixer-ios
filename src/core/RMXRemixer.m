@@ -136,18 +136,8 @@
     [[[self sharedInstance] remixes] setObject:remix forKey:remix.key];
     RMXRemix *storedRemix = [[[self sharedInstance] storage] remixForKey:remix.key];
     if (storedRemix) {
-      // Stored Remixes are currently only being used to update the selected value.
-      if ([storedRemix isKindOfClass:[RMXBooleanRemix class]]) {
-        BOOL storedValue = [(RMXBooleanRemix *)storedRemix selectedValue];
-        [(RMXBooleanRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
-      } else if ([storedRemix isKindOfClass:[RMXRangeRemix class]]) {
-        CGFloat storedValue = [(RMXRangeRemix *)storedRemix selectedValue];
-        [(RMXRangeRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
-      } else {
-        [remix setSelectedValue:storedRemix.selectedValue fromOverlay:NO];
-      }
+      [self updateRemix:remix usingStoredRemix:storedRemix];
     } else {
-      // Since we're not setting the value, we need to manually call the update blocks.
       [remix executeUpdateBlocks];
     }
   } else {
@@ -182,6 +172,21 @@
 - (void)remix:(RMXRemix *)remix wasUpdatedFromOverlayToValue:(nonnull id)value {
   if (!remix.delaysCommits) {
     [_storage saveRemix:remix];
+  }
+}
+
+#pragma mark - Private
+
++ (void)updateRemix:(RMXRemix *)remix usingStoredRemix:(RMXRemix *)storedRemix {
+  // Stored Remixes are currently only being used to update the selected value.
+  if ([storedRemix isKindOfClass:[RMXBooleanRemix class]]) {
+    BOOL storedValue = [(RMXBooleanRemix *)storedRemix selectedValue];
+    [(RMXBooleanRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
+  } else if ([storedRemix isKindOfClass:[RMXRangeRemix class]]) {
+    CGFloat storedValue = [(RMXRangeRemix *)storedRemix selectedValue];
+    [(RMXRangeRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
+  } else {
+    [remix setSelectedValue:storedRemix.selectedValue fromOverlay:NO];
   }
 }
 
