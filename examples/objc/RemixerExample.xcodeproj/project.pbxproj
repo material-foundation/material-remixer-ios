@@ -22,6 +22,7 @@
 		798E3D54D56EF3A4679478DD /* libPods-RemixerExampleUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1B69AE1F95496E8600D1 /* libPods-RemixerExampleUITests.a */; };
 		A8051A4E8459A4C91846B06A /* libPods-RemixerExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC313F3652A92D1176144A86 /* libPods-RemixerExample.a */; };
 		AFE54E8DC3102636B1D40D3D /* libPods-RemixerExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3493DFBE32A0FB9E92AE862E /* libPods-RemixerExampleTests.a */; };
+		B1B65AFE1D959DC3000F82FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1B65AFD1D959DC3000F82FA /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		7DAA9C743FD4A8D454DA0E8D /* libPods-RemixExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82266CB204667B9767A37E48 /* Pods-RemixerExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleUITests/Pods-RemixerExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A71E6E12CB7184D1B2F1A238 /* Pods-RemixerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample/Pods-RemixerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		B1B65AFD1D959DC3000F82FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C33F1B69AE1F95496E8600D1 /* libPods-RemixerExampleUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixerExampleUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC313F3652A92D1176144A86 /* libPods-RemixerExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixerExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 		5DC04DB41D3EC39800AF9086 /* RemixerExample */ = {
 			isa = PBXGroup;
 			children = (
+				B1B65AFD1D959DC3000F82FA /* GoogleService-Info.plist */,
 				5DC04DB51D3EC39800AF9086 /* AppDelegate.h */,
 				5DC04DB61D3EC39800AF9086 /* AppDelegate.m */,
 				5DC04DB71D3EC39800AF9086 /* Assets.xcassets */,
@@ -279,6 +282,7 @@
 				TargetAttributes = {
 					5DC6686B1CF378780021C595 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EQHXZ8M8AV;
 					};
 					5DC668871CF378780021C595 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -317,6 +321,7 @@
 			files = (
 				5DC04DC51D3EC39800AF9086 /* Assets.xcassets in Resources */,
 				5DC04DC61D3EC39800AF9086 /* LaunchScreen.storyboard in Resources */,
+				B1B65AFE1D959DC3000F82FA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +612,7 @@
 			baseConfigurationReference = A71E6E12CB7184D1B2F1A238 /* Pods-RemixerExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EQHXZ8M8AV;
 				INFOPLIST_FILE = RemixerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.RemixerExample;
@@ -619,6 +625,7 @@
 			baseConfigurationReference = 449AF8AEF74887CF91C736D5 /* Pods-RemixerExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EQHXZ8M8AV;
 				INFOPLIST_FILE = RemixerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.RemixerExample;

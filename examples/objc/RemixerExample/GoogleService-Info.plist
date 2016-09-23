@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>1092386109715-pe7afb65p55mnb2m674jqcnbh5jjdvn9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1092386109715-pe7afb65p55mnb2m674jqcnbh5jjdvn9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAfYKQbYV2KyqupNr5syPORgn6dSNpWRdQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1092386109715</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.google.mdc-shrine</string>
+	<key>PROJECT_ID</key>
+	<string>remix-4d1f9</string>
+	<key>STORAGE_BUCKET</key>
+	<string>remix-4d1f9.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1092386109715:ios:5d33336308f6c2d9</string>
+	<key>DATABASE_URL</key>
+	<string>https://remix-4d1f9.firebaseio.com</string>
+</dict>
+</plist>

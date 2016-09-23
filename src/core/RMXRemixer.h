@@ -80,6 +80,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** Removes all remixes and empties the dictionary of remixes. */
 + (void)removeAllRemixes;
 
++ (void)updateRemix:(RMXRemix *)remix usingStoredRemix:(RMXRemix *)storedRemix;
+
 @end
 
 NS_ASSUME_NONNULL_END
