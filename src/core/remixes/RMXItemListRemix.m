@@ -118,7 +118,7 @@ NSString *const kColorKeyAlpha = @"a";
     kColorKeyRed   : @(round(r * 255)),
     kColorKeyGreen : @(round(g * 255)),
     kColorKeyBlue  : @(round(b * 255)),
-    kColorKeyAlpha : @(round(a * 100))
+    kColorKeyAlpha : @(a)
   };
 }
 
@@ -126,7 +126,7 @@ NSString *const kColorKeyAlpha = @"a";
   CGFloat red = [[dictionary objectForKey:kColorKeyRed] integerValue] / 255.0;
   CGFloat green = [[dictionary objectForKey:kColorKeyGreen] integerValue] / 255.0;
   CGFloat blue = [[dictionary objectForKey:kColorKeyBlue] integerValue] / 255.0;
-  CGFloat alpha = [[dictionary objectForKey:kColorKeyAlpha] integerValue] / 100.0;
+  CGFloat alpha = [[dictionary objectForKey:kColorKeyAlpha] floatValue];
   return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
