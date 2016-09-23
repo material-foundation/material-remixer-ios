@@ -80,6 +80,12 @@
   [instance.storage startObservingUpdates];
 }
 
++ (void)stop {
+  RMXRemixer *instance = [self sharedInstance];
+  [instance.storage stopObservingUpdates];
+  [instance.storage shutDown];
+}
+
 + (NSString *)sessionId {
   // Store unique session id if doesn't exist.
   NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"];

@@ -22,13 +22,13 @@
 #import "RMXRemixer.h"
 #import "RMXRemixFactory.h"
 
-static NSString *const kKeyRemixes = @"remixes";
-static NSString *const kKeySelectedValue = @"selectedValue";
-static NSString *const kKeySessionId = @"sessionId";
+//TODO(chuga): Figure out where to set this path.
+static NSString *const kFirebasePath = @"iOSDemoApp";
+static NSString *const kFirebaseKeyRemixes = @"remixes";
 
 @implementation RMXFirebaseStorageController  {
   FIRDatabaseReference *_ref;
-  NSMutableDictionary<NSString *, RMXRemix *> *_remixes;
+  NSMutableDictionary<NSString *, RMXRemix *> *_storedRemixes;
 }
 
 + (instancetype)sharedInstance {
@@ -48,9 +48,9 @@ static NSString *const kKeySessionId = @"sessionId";
   [[FIRAuth auth] signInAnonymouslyWithCompletion:^(FIRUser *user, NSError *error) {
   }];
   
-  _ref = [[FIRDatabase database] referenceWithPath:@"demo"];
-  _remixes = [NSMutableDictionary dictionary];
-  [[_ref child:kKeyRemixes]
+  _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
+  _storedRemixes = [NSMutableDictionary dictionary];
+  [[_ref child:kFirebaseKeyRemixes]
        observeSingleEventOfType:FIRDataEventTypeValue
                       withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
                         NSDictionary *remixes = snapshot.value;
@@ -58,48 +58,40 @@ static NSString *const kKeySessionId = @"sessionId";
                           return;
                         }
                         for (NSDictionary *json in [remixes allValues]) {
-                         [_remixes setObject:[RMXRemixFactory remixFromJSONDictionary:json]
-                                      forKey:json[RMXDictionaryKeyKey]];
+                         [_storedRemixes setObject:[RMXRemixFactory remixFromJSONDictionary:json]
+                                            forKey:json[RMXDictionaryKeyKey]];
                         }
                       }];
 }
 
 - (void)startObservingUpdates {
-  [[_ref child:kKeyRemixes]
+  [[_ref child:kFirebaseKeyRemixes]
        observeEventType:FIRDataEventTypeChildChanged
               withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
                 RMXRemix *updatedRemix = [RMXRemixFactory remixFromJSONDictionary:snapshot.value];
-                [_remixes setObject:updatedRemix
-                             forKey:snapshot.key];
+                [_storedRemixes setObject:updatedRemix
+                                   forKey:snapshot.key];
                 RMXRemix *remix = [RMXRemixer remixForKey:snapshot.key];
-                [RMXRemixer updateRemix:remix usingStoredRemix:updatedRemix];
+                if (remix) {
+                  [RMXRemixer updateRemix:remix usingStoredRemix:updatedRemix];
+                }
               }];
 }
 
 - (void)stopObservingUpdates {
-  [[_ref child:kKeyRemixes] removeAllObservers];
+  [[_ref child:kFirebaseKeyRemixes] removeAllObservers];
 }
 
 - (void)shutDown {
+  // No-op.
 }
 
 - (RMXRemix *)remixForKey:(NSString *)key {
-  return [_remixes objectForKey:key];
+  return [_storedRemixes objectForKey:key];
 }
 
 - (void)saveRemix:(RMXRemix *)remix {
-  [[[_ref child:kKeyRemixes] child:remix.key] setValue:[remix toJSON]];
-}
-
-#pragma mark - Private
-
-- (NSString *)sessionId {
-  NSString *_sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:kKeySessionId];
-  if (!_sessionId) {
-    _sessionId = [[[NSUUID UUID] UUIDString] substringToIndex:8];
-    [[NSUserDefaults standardUserDefaults] setObject:_sessionId forKey:kKeySessionId];
-  }
-  return _sessionId;
+  [[[_ref child:kFirebaseKeyRemixes] child:remix.key] setValue:[remix toJSON]];
 }
 
 @end
