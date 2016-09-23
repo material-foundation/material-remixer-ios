@@ -17,6 +17,7 @@
 #import <Foundation/Foundation.h>
 #import "RMXStorageController.h"
 
+/** A storage controller that uses Firebase to store and sync Remixes.  */
 @interface RMXFirebaseStorageController : NSObject <RMXStorageController>
 
 @end
