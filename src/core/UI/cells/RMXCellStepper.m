@@ -52,7 +52,7 @@
   _stepperControl.minimumValue = remix.minimumValue;
   _stepperControl.maximumValue = remix.maximumValue;
   _stepperControl.stepValue = remix.increment;
-  _stepperControl.value = [remix.selectedValue floatValue];
+  _stepperControl.value = remix.selectedValue;
 
   self.textLabel.text = remix.title;
 }
@@ -60,7 +60,7 @@
 #pragma mark - Control Events
 
 - (void)stepperUpdated:(UIStepper *)stepperControl {
-  [self.remix setSelectedValue:@(stepperControl.value) fromOverlay:YES];
+  [self.remix setSelectedValue:stepperControl.value fromOverlay:YES];
 }
 
 @end

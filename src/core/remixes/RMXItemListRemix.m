@@ -21,6 +21,11 @@
 
 #import "RMXRemixer.h"
 
+NSString *const kColorKeyRed = @"r";
+NSString *const kColorKeyGreen = @"g";
+NSString *const kColorKeyBlue = @"b";
+NSString *const kColorKeyAlpha = @"a";
+
 @implementation RMXItemListRemix
 
 + (instancetype)addItemListRemixWithKey:(NSString *)key
@@ -34,6 +39,37 @@
   [RMXRemixer addRemix:remix];
   return remix;
 }
+
++ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
+  id selectedValue = [dictionary objectForKey:RMXDictionaryKeySelectedValue];
+  NSMutableArray *itemList = [NSMutableArray array];
+  if ([selectedValue isKindOfClass:[NSDictionary class]]) {
+    selectedValue = [self colorFromRGBADictionary:selectedValue];
+    for (NSDictionary *colorDictionary in [dictionary objectForKey:RMXDictionaryKeyItemList]) {
+      [itemList addObject:[self colorFromRGBADictionary:colorDictionary]];
+    }
+  } else {
+    itemList = [dictionary objectForKey:RMXDictionaryKeyItemList];
+  }
+  return [[self alloc] initItemListRemixWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
+                                   defaultValue:selectedValue
+                                       itemList:itemList
+                                    updateBlock:nil];
+}
+
+- (NSDictionary *)toJSON {
+  NSMutableDictionary *json = [super toJSON];
+  if ([self.selectedValue isKindOfClass:[UIColor class]]) {
+    json[RMXDictionaryKeySelectedValue] = [[self class] rgbaDictionaryFromColor:self.selectedValue];
+    json[RMXDictionaryKeyItemList] = [self colorsToJSON];
+  } else {
+    json[RMXDictionaryKeySelectedValue] = self.selectedValue;
+    json[RMXDictionaryKeyItemList] = self.itemList;
+  }
+  return json;
+}
+
+#pragma mark - Private
 
 - (instancetype)initItemListRemixWithKey:(NSString *)key
                             defaultValue:(id)defaultValue
@@ -62,38 +98,36 @@
   return self;
 }
 
-- (NSDictionary *)toJSON {
-  NSMutableDictionary *json = [super toJSON];
-  if ([_itemList.firstObject isKindOfClass:[UIColor class]]) {
-    json[@"itemList"] = [self colorsToJSON];
-  } else {
-    json[@"itemList"] = self.itemList;
-  }
-  return json;
-}
-
 #pragma mark - UIColor helpers
 
 - (NSDictionary *)colorsToJSON {
   NSMutableArray<NSDictionary *> *hexColors = [NSMutableArray array];
   for (UIColor *color in self.itemList) {
-    [hexColors addObject:[self rgbaDictionaryFromColor:color]];
+    [hexColors addObject:[[self class] rgbaDictionaryFromColor:color]];
   }
   return hexColors;
 }
 
-- (NSDictionary *)rgbaDictionaryFromColor:(UIColor *)color {
++ (NSDictionary *)rgbaDictionaryFromColor:(UIColor *)color {
   CGFloat r, g, b, a;
   if (![color getRed:&r green:&g blue:&b alpha:&a]) {
     [color getWhite:&r alpha:&a];
     g = b = r;
   };
   return @{
-    @"r" : @(round(r * 255)),
-    @"g" : @(round(g * 255)),
-    @"b" : @(round(b * 255)),
-    @"a" : @(a)
+    kColorKeyRed   : @(round(r * 255)),
+    kColorKeyGreen : @(round(g * 255)),
+    kColorKeyBlue  : @(round(b * 255)),
+    kColorKeyAlpha : @(a)
   };
+}
+
++ (UIColor *)colorFromRGBADictionary:(NSDictionary *)dictionary {
+  CGFloat red = [[dictionary objectForKey:kColorKeyRed] integerValue] / 255.0;
+  CGFloat green = [[dictionary objectForKey:kColorKeyGreen] integerValue] / 255.0;
+  CGFloat blue = [[dictionary objectForKey:kColorKeyBlue] integerValue] / 255.0;
+  CGFloat alpha = [[dictionary objectForKey:kColorKeyAlpha] floatValue];
+  return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 @end

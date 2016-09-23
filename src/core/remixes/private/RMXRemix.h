@@ -16,6 +16,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "RMXRemixConstants.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class RMXRemix;
@@ -31,23 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-/** Identifiers for the different types of Remixes. */
-static NSString *const RMXTypeItemList = @"__RemixTypeItemList__";
-static NSString *const RMXTypeBoolean = @"__RemixTypeBoolean__";
-static NSString *const RMXTypeRange = @"__RemixTypeRange__";
-static NSString *const RMXTypeString = @"__RemixTypeString__";
-
-/** Type of UI controls supported by Remixer. */
-typedef NS_ENUM(NSInteger, RMXControlType) {
-  RMXControlTypeButton = 0,
-  RMXControlTypeColorPicker = 1,
-  RMXControlTypeSegmented = 2,
-  RMXControlTypeSlider = 3,
-  RMXControlTypeStepper = 4,
-  RMXControlTypeSwitch = 5,
-  RMXControlTypeTextPicker = 6
-};
-
 /** RMXUpdateBlock is a block that will be invoked when a remix is updated. */
 typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 
@@ -62,7 +47,7 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 /** The selected value of a given remix. */
 @property(nonatomic, readonly) id selectedValue;
 
-/** The type of remix. */
+/** The type of remix. See RMXRemixConstants for possible values. */
 @property(nonatomic, readonly) NSString *typeIdentifier;
 
 /** The update blocks associated with this remix. */
@@ -86,6 +71,9 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
              typeIdentifier:(NSString *)typeIdentifier
                defaultValue:(nullable id)defaultValue
                 updateBlock:(RMXUpdateBlock)updateBlock;
+
+/** Creates an instance based on the data contained in a dictionary. */
++ (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
 
 /** Setter for the selectedValue property. */
 - (void)setSelectedValue:(id)value fromOverlay:(BOOL)fromOverlay;

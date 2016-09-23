@@ -29,6 +29,20 @@
   return remix;
 }
 
++ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
+  NSString *key = [dictionary objectForKey:RMXDictionaryKeyKey];
+  BOOL selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] boolValue];
+  return [[self alloc] initWithKey:key defaultValue:selectedValue updateBlock:nil];
+}
+
+- (NSDictionary *)toJSON {
+  NSMutableDictionary *json = [super toJSON];
+  json[RMXDictionaryKeySelectedValue] = @([self selectedValue]);
+  return json;
+}
+
+#pragma mark - Private
+
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(BOOL)defaultValue
                 updateBlock:(RMXBooleanUpdateBlock)updateBlock {

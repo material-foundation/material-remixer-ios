@@ -20,6 +20,9 @@
 
 #import "RMXRemixer.h"
 
+#import "RMXBooleanRemix.h"
+#import "RMXLocalStorageController.h"
+#import "RMXRangeRemix.h"
 #import "RMXRemix.h"
 #import "UI/RMXOverlayViewController.h"
 #import "UI/RMXOverlayWindow.h"
@@ -32,6 +35,7 @@
 
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
 @property(nonatomic, strong) NSMutableDictionary *remixes;
+@property(nonatomic, strong) RMXLocalStorageController *storage;
 @property(nonatomic, strong) RMXOverlayViewController *overlayController;
 @property(nonatomic, strong) UISwipeGestureRecognizer *swipeUpGesture;
 @property(nonatomic, strong) RMXOverlayWindow *overlayWindow;
@@ -43,6 +47,7 @@
   self = [super init];
   if (self) {
     _remixes = [NSMutableDictionary dictionary];
+    _storage = [[RMXLocalStorageController alloc] init];
   }
   return self;
 }
@@ -129,7 +134,12 @@
   RMXRemix *existingRemix = [self remixForKey:remix.key];
   if (!existingRemix) {
     [[[self sharedInstance] remixes] setObject:remix forKey:remix.key];
-    [remix executeUpdateBlocks];
+    RMXRemix *storedRemix = [[[self sharedInstance] storage] remixForKey:remix.key];
+    if (storedRemix) {
+      [self updateRemix:remix usingStoredRemix:storedRemix];
+    } else {
+      [remix executeUpdateBlocks];
+    }
   } else {
     [existingRemix addAndExecuteUpdateBlock:remix.updateBlocks.firstObject];
     remix = existingRemix;
@@ -161,7 +171,22 @@
 
 - (void)remix:(RMXRemix *)remix wasUpdatedFromOverlayToValue:(nonnull id)value {
   if (!remix.delaysCommits) {
-    // TODO: Storage / sync.
+    [_storage saveRemix:remix];
+  }
+}
+
+#pragma mark - Private
+
++ (void)updateRemix:(RMXRemix *)remix usingStoredRemix:(RMXRemix *)storedRemix {
+  // Stored Remixes are currently only being used to update the selected value.
+  if ([storedRemix isKindOfClass:[RMXBooleanRemix class]]) {
+    BOOL storedValue = [(RMXBooleanRemix *)storedRemix selectedValue];
+    [(RMXBooleanRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
+  } else if ([storedRemix isKindOfClass:[RMXRangeRemix class]]) {
+    CGFloat storedValue = [(RMXRangeRemix *)storedRemix selectedValue];
+    [(RMXRangeRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
+  } else {
+    [remix setSelectedValue:storedRemix.selectedValue fromOverlay:NO];
   }
 }
 

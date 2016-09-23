@@ -37,9 +37,20 @@
     _key = key;
     _typeIdentifier = typeIdentifier;
     _selectedValue = defaultValue;
-    _updateBlocks = [NSMutableSet setWithObject:updateBlock];
+    if (updateBlock) {
+      _updateBlocks = [NSMutableArray arrayWithObject:updateBlock];
+    } else {
+      _updateBlocks = [NSMutableArray array];
+    }
   }
   return self;
+}
+
++ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
+  return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
+                    typeIdentifier:[dictionary objectForKey:RMXDictionaryKeyTypeIdentifier]
+                      defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
+                       updateBlock:nil];
 }
 
 - (NSString *)title {
@@ -71,11 +82,10 @@
 
 - (NSMutableDictionary *)toJSON {
   NSMutableDictionary *json = [NSMutableDictionary dictionary];
-  json[@"key"] = self.typeIdentifier;
-  json[@"value"] = self.selectedValue;
-  json[@"remixType"] = self.typeIdentifier;
-  json[@"controlType"] = @(self.controlType);
-  json[@"title"] = self.title;
+  json[RMXDictionaryKeyKey] = self.key;
+  json[RMXDictionaryKeyTypeIdentifier] = self.typeIdentifier;
+  json[RMXDictionaryKeyControlType] = @(self.controlType);
+  json[RMXDictionaryKeyTitle] = self.title;
   return json;
 }
 
