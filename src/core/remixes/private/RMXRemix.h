@@ -29,6 +29,8 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 
 /**
  The RMXRemix class provides the core infrastructure for creating different types of remixes.
+ You can subscribe to RMXRemixUpdateNotification if you want to be notified of any changes to 
+ the selectedValue property.
  */
 @interface RMXRemix : NSObject
 
