@@ -16,13 +16,22 @@
 
 #import <UIKit/UIKit.h>
 
-#import <Remixer/RMXBooleanRemix.h>
-#import <Remixer/RMXItemListRemix.h>
-#import <Remixer/RMXRangeRemix.h>
-#import <Remixer/RMXRemixer.h>
+/** A view controller that shows the controls for refining the values of the Remixes. */
+@interface RMXOverlayViewController : UIViewController
 
-//! Project version number for Remixer.
-FOUNDATION_EXPORT double RemixerVersionNumber;
+/**
+ Shows the overlay panel with the Remixer controls.
+ @param animated If YES, the transition is animated.
+ */
+- (void)showPanelAnimated:(BOOL)animated;
 
-//! Project version string for Remixer.
-FOUNDATION_EXPORT const unsigned char RemixerVersionString[];
+/**
+ Hides the overlay panel with the Remixer controls.
+ @param animated If YES, the transition is animated.
+ */
+- (void)hidePanelAnimated:(BOOL)animated;
+
+/** Forces a reload of the Remixer controls. */
+- (void)reloadData;
+
+@end

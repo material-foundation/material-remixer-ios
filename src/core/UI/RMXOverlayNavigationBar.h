@@ -16,13 +16,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import <Remixer/RMXBooleanRemix.h>
-#import <Remixer/RMXItemListRemix.h>
-#import <Remixer/RMXRangeRemix.h>
-#import <Remixer/RMXRemixer.h>
+/** A custom UINavigationBar used inside of the overlay. */
+@interface RMXOverlayNavigationBar : UINavigationBar
 
-//! Project version number for Remixer.
-FOUNDATION_EXPORT double RemixerVersionNumber;
-
-//! Project version string for Remixer.
-FOUNDATION_EXPORT const unsigned char RemixerVersionString[];
+@end

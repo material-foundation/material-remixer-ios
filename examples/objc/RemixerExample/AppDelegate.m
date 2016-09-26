@@ -35,7 +35,7 @@
   [self.window makeKeyAndVisible];
 
   // Start Remixer.
-  [[RMXApp sharedInstance] start];
+  [RMXRemixer start];
 
   return YES;
 }

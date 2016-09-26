@@ -14,15 +14,17 @@
  limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
+#import "RMXCell.h"
 
-#import <Remixer/RMXBooleanRemix.h>
-#import <Remixer/RMXItemListRemix.h>
-#import <Remixer/RMXRangeRemix.h>
-#import <Remixer/RMXRemixer.h>
+@class RMXRangeRemix;
 
-//! Project version number for Remixer.
-FOUNDATION_EXPORT double RemixerVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for Remixer.
-FOUNDATION_EXPORT const unsigned char RemixerVersionString[];
+/** Provides a table view cell that has a slider control. */
+@interface RMXCellSlider : RMXCell
+
+@property(nonatomic, weak) RMXRangeRemix *remix;
+
+@end
+
+NS_ASSUME_NONNULL_END

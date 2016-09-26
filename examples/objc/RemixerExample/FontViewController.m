@@ -39,22 +39,20 @@
     @"System", @"AvenirNext-Bold", @"Baskerville-SemiBold", @"Courier",
     @"Futura-CondensedExtraBold", @"Helvetica-Light", @"SnellRoundhand"
   ];
-  RMXTextPicker *textPickerControl =
-      [RMXTextPicker controlWithTitle:@"Text Font" itemList:fontNames];
-  [RMXRemix addRemixWithKey:@"font"
-               usingControl:textPickerControl
-              selectedValue:@(0)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                  NSString *fontName = fontNames[[selectedValue integerValue]];
-                  _fontLabel.text = fontName;
-                  _fontLabel.font = [UIFont fontWithName:fontName size:[UIFont labelFontSize]];
-
-                }];
+  [RMXItemListRemix addItemListRemixWithKey:@"font"
+                               defaultValue:fontNames[1]
+                                   itemList:fontNames
+                                updateBlock:^(RMXRemix *_Nonnull remix, id selectedValue) {
+                                  NSString *fontName = selectedValue;
+                                  _fontLabel.text = fontName;
+                                  _fontLabel.font =
+                                      [UIFont fontWithName:fontName size:[UIFont labelFontSize]];
+                                }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-  [RMXRemix removeAllRemixes];
+  [RMXRemixer removeAllRemixes];
 }
 
 @end
