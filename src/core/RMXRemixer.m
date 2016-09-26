@@ -21,6 +21,7 @@
 #import "RMXRemixer.h"
 
 #import "RMXBooleanRemix.h"
+#import "RMXFirebaseStorageController.h"
 #import "RMXLocalStorageController.h"
 #import "RMXRangeRemix.h"
 #import "RMXRemix.h"
@@ -35,7 +36,7 @@
 
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
 @property(nonatomic, strong) NSMutableDictionary *remixes;
-@property(nonatomic, strong) RMXLocalStorageController *storage;
+@property(nonatomic, strong) id<RMXStorageController> storage;
 @property(nonatomic, strong) RMXOverlayViewController *overlayController;
 @property(nonatomic, strong) UISwipeGestureRecognizer *swipeUpGesture;
 @property(nonatomic, strong) RMXOverlayWindow *overlayWindow;
@@ -47,7 +48,7 @@
   self = [super init];
   if (self) {
     _remixes = [NSMutableDictionary dictionary];
-    _storage = [[RMXLocalStorageController alloc] init];
+    _storage = [[RMXFirebaseStorageController alloc] init];
   }
   return self;
 }
@@ -74,6 +75,15 @@
   instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
+  
+  [instance.storage setup];
+  [instance.storage startObservingUpdates];
+}
+
++ (void)stop {
+  RMXRemixer *instance = [self sharedInstance];
+  [instance.storage stopObservingUpdates];
+  [instance.storage shutDown];
 }
 
 + (NSString *)sessionId {
@@ -167,16 +177,6 @@
   [[[self sharedInstance] overlayController] reloadData];
 }
 
-#pragma mark - RMXRemixDelegate
-
-- (void)remix:(RMXRemix *)remix wasUpdatedFromOverlayToValue:(nonnull id)value {
-  if (!remix.delaysCommits) {
-    [_storage saveRemix:remix];
-  }
-}
-
-#pragma mark - Private
-
 + (void)updateRemix:(RMXRemix *)remix usingStoredRemix:(RMXRemix *)storedRemix {
   // Stored Remixes are currently only being used to update the selected value.
   if ([storedRemix isKindOfClass:[RMXBooleanRemix class]]) {
@@ -187,6 +187,14 @@
     [(RMXRangeRemix *)remix setSelectedValue:storedValue fromOverlay:NO];
   } else {
     [remix setSelectedValue:storedRemix.selectedValue fromOverlay:NO];
+  }
+}
+
+#pragma mark - RMXRemixDelegate
+
+- (void)remix:(RMXRemix *)remix wasUpdatedFromOverlayToValue:(nonnull id)value {
+  if (!remix.delaysCommits) {
+    [_storage saveRemix:remix];
   }
 }
 

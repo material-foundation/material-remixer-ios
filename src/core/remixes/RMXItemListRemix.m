@@ -69,6 +69,13 @@ NSString *const kColorKeyAlpha = @"a";
   return json;
 }
 
+- (void)setSelectedValue:(id)selectedValue fromOverlay:(BOOL)fromOverlay {
+  if ([selectedValue isKindOfClass:[NSDictionary class]]) {
+    selectedValue = [[self class] colorFromRGBADictionary:selectedValue];
+  }
+  [super setSelectedValue:selectedValue fromOverlay:fromOverlay];
+}
+
 #pragma mark - Private
 
 - (instancetype)initItemListRemixWithKey:(NSString *)key
