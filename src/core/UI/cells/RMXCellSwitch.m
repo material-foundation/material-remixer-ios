@@ -56,7 +56,8 @@
 #pragma mark - Control Events
 
 - (void)switchUpdated:(UISwitch *)switchControl {
-  [self.remix setSelectedValue:switchControl.isOn fromOverlay:YES];
+  [self.remix setSelectedValue:switchControl.isOn];
+  [self.remix save];
 }
 
 @end

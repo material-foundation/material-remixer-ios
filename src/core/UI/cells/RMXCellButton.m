@@ -62,7 +62,8 @@ static CGFloat kButtonPaddingLeft = 10.0f;
 #pragma mark - Control Events
 
 - (void)didTapButton:(UIButton *)button {
-  [self.remix setSelectedValue:@(button.isSelected) fromOverlay:YES];
+  [self.remix setSelectedValue:@(button.isSelected)];
+  [self.remix save];
 }
 
 @end

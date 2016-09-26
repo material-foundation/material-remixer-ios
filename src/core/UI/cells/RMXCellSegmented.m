@@ -59,7 +59,8 @@
 
 - (void)segmentUpdated:(UISegmentedControl *)segmentControl {
   id newValue = [self.remix.itemList objectAtIndex:segmentControl.selectedSegmentIndex];
-  [self.remix setSelectedValue:newValue fromOverlay:YES];
+  [self.remix setSelectedValue:newValue];
+  [self.remix save];
   [self updateSelectedIndicator];
 }
 

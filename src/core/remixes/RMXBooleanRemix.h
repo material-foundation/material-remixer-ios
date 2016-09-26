@@ -23,14 +23,11 @@ typedef void (^RMXBooleanUpdateBlock)(RMXRemix *remix, BOOL selectedValue);
 @interface RMXBooleanRemix : RMXRemix
 
 /** The selected value of a boolean remix. */
-@property(nonatomic, readonly) BOOL selectedValue;
+@property(nonatomic, assign) BOOL selectedValue;
 
 /** Designated initializer */
 + (instancetype)addBooleanRemixWithKey:(NSString *)key
                           defaultValue:(BOOL)defaultValue
                            updateBlock:(RMXBooleanUpdateBlock)updateBlock;
-
-/** Setter for the selected value. */
-- (void)setSelectedValue:(BOOL)selectedValue fromOverlay:(BOOL)fromOverlay;
 
 @end
