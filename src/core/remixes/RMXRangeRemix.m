@@ -101,8 +101,8 @@
   return [[super selectedValue] floatValue];
 }
 
-- (void)setSelectedValue:(CGFloat)selectedValue fromOverlay:(BOOL)fromOverlay {
-  [super setSelectedValue:@(selectedValue) fromOverlay:fromOverlay];
+- (void)setSelectedValue:(CGFloat)selectedValue {
+  [super setSelectedValue:@(selectedValue)];
 }
 
 @end

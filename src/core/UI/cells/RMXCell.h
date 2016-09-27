@@ -31,12 +31,12 @@ extern const CGFloat RMXCellHeightLarge;
  The RMXCell class provides table view cell that should be subclassed for specific remix
  model types.
  */
-@interface RMXCell : UITableViewCell <RMXRemixDelegate>
+@interface RMXCell : UITableViewCell
 
 /** A view that all subclasses should add their inner controls to as subviews. */
 @property(nonatomic, strong) UIView *controlViewWrapper;
 
-/** The remix properties for this cell. Subclasses should override the getter with call to super. */
+/** The remix properties for this cell */
 @property(nonatomic, weak) RMXRemix *remix;
 
 /** The height of this cell. Subclasses should override. */

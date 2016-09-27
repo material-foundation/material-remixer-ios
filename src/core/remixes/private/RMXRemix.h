@@ -20,24 +20,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+static NSString *const RMXRemixUpdateNotification = @"RMXRemixUpdateNotification";
+
 @class RMXRemix;
-
-/** Delegate for receiving updates when the value of this Remix changes. */
-@protocol RMXRemixDelegate <NSObject>
-
-/** Method that gets called when the value gets updated by the user using the overlay. */
-- (void)remix:(RMXRemix *)remix wasUpdatedFromOverlayToValue:(id)value;
-
-/** Method that gets called when the value gets updated from outside of the app. */
-- (void)remix:(RMXRemix *)remix wasUpdatedFromBackendToValue:(id)value;
-
-@end
 
 /** RMXUpdateBlock is a block that will be invoked when a remix is updated. */
 typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 
 /**
  The RMXRemix class provides the core infrastructure for creating different types of remixes.
+ You can subscribe to RMXRemixUpdateNotification if you want to be notified of any changes to 
+ the selectedValue property.
  */
 @interface RMXRemix : NSObject
 
@@ -45,7 +38,7 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 @property(nonatomic, readonly) NSString *key;
 
 /** The selected value of a given remix. */
-@property(nonatomic, readonly) id selectedValue;
+@property(nonatomic, strong) id selectedValue;
 
 /** The type of remix. See RMXRemixConstants for possible values. */
 @property(nonatomic, readonly) NSString *typeIdentifier;
@@ -59,13 +52,6 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 /** The type of control to be used in the in-app overlay. */
 @property(nonatomic, assign) RMXControlType controlType;
 
-/** Flag used to prevent storing/syncing values during continuous UI updates. */
-@property(nonatomic, assign) BOOL delaysCommits;
-
-/** The delegate for this remix. */
-// TODO(chuga): Make this an array.
-@property(nonatomic, weak) id<RMXRemixDelegate> delegate;
-
 /** Designated initializer. */
 - (instancetype)initWithKey:(NSString *)key
              typeIdentifier:(NSString *)typeIdentifier
@@ -75,8 +61,8 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 /** Creates an instance based on the data contained in a dictionary. */
 + (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
 
-/** Setter for the selectedValue property. */
-- (void)setSelectedValue:(id)value fromOverlay:(BOOL)fromOverlay;
+/** Saves the current value of the Remix. */
+- (void)save;
 
 /** Executes all the update blocks with the current selected value. */
 - (void)executeUpdateBlocks;

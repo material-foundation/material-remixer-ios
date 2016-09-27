@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  The RMXRemixer class is a Singleton class that keeps track of all the Remixes and deals with
  saving/syncing its values.
  */
-@interface RMXRemixer : NSObject <RMXRemixDelegate>
+@interface RMXRemixer : NSObject
 
 /** Starts Remixer. */
 + (void)start;
@@ -79,6 +79,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Removes all remixes and empties the dictionary of remixes. */
 + (void)removeAllRemixes;
+
+/** Saves the remix using one of the storage options. */
++ (void)saveRemix:(RMXRemix *)remix;
 
 /** Update an existing remix using a version from one of our storage sources. */
 + (void)updateRemix:(RMXRemix *)remix usingStoredRemix:(RMXRemix *)storedRemix;

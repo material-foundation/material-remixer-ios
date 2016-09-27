@@ -76,7 +76,8 @@ static CGFloat kSwatchInnerPadding = 10.0f;
 #pragma mark - Control Events
 
 - (void)swatchPressed:(UIButton *)button {
-  [self.remix setSelectedValue:button.backgroundColor fromOverlay:YES];
+  [self.remix setSelectedValue:button.backgroundColor];
+  [self.remix save];
   [self updateSelectedIndicator];
 }
 

@@ -62,8 +62,8 @@
   return [[super selectedValue] boolValue];
 }
 
-- (void)setSelectedValue:(BOOL)selectedValue fromOverlay:(BOOL)fromOverlay {
-  [super setSelectedValue:@(selectedValue) fromOverlay:fromOverlay];
+- (void)setSelectedValue:(BOOL)selectedValue {
+  [super setSelectedValue:@(selectedValue)];
 }
 
 @end

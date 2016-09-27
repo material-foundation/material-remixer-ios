@@ -61,12 +61,15 @@
   }
 }
 
-- (void)setSelectedValue:(id)selectedValue fromOverlay:(BOOL)fromOverlay {
+- (void)setSelectedValue:(id)selectedValue {
   _selectedValue = selectedValue;
   [self executeUpdateBlocks];
-  if (fromOverlay) {
-    [self.delegate remix:self wasUpdatedFromOverlayToValue:selectedValue];
-  }
+  [[NSNotificationCenter defaultCenter] postNotificationName:RMXRemixUpdateNotification
+                                                      object:self];
+}
+
+- (void)save {
+  [RMXRemixer saveRemix:self];
 }
 
 - (void)executeUpdateBlocks {

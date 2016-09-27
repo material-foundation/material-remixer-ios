@@ -60,7 +60,8 @@
 #pragma mark - Control Events
 
 - (void)stepperUpdated:(UIStepper *)stepperControl {
-  [self.remix setSelectedValue:stepperControl.value fromOverlay:YES];
+  [self.remix setSelectedValue:stepperControl.value];
+  [self.remix save];
 }
 
 @end

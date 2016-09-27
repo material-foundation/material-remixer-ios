@@ -129,7 +129,8 @@ static CGFloat kPickerheight = 200.0f;
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
-  [self.remix setSelectedValue:[self.remix.itemList objectAtIndex:row] fromOverlay:YES];
+  [self.remix setSelectedValue:[self.remix.itemList objectAtIndex:row]];
+  [self.remix save];
   [self updateSelectedIndicator];
   [_alertController dismissViewControllerAnimated:YES completion:nil];
 }

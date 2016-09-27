@@ -29,7 +29,9 @@ static CGFloat kContainerPaddingTop = 24.0f;
 static CGFloat kContainerPaddingEdges = 16.0f;
 static CGFloat kContainerHeight = 40.0f;
 
-@implementation RMXCell
+@implementation RMXCell {
+  id<NSObject> _notificationObserver;
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
               reuseIdentifier:(NSString *)reuseIdentifier {
@@ -48,6 +50,15 @@ static CGFloat kContainerHeight = 40.0f;
 - (void)setRemix:(RMXRemix *)remix {
   _remix = remix;
 
+  [[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
+  _notificationObserver =
+      [[NSNotificationCenter defaultCenter] addObserverForName:RMXRemixUpdateNotification
+                                                        object:_remix
+                                                         queue:nil
+                                                    usingBlock:^(NSNotification *notification) {
+                                                      [self setRemix:notification.object];
+                                                    }];
+
   // Add control container view.
   if (!_controlViewWrapper) {
     CGRect containerFrame = CGRectMake(
@@ -59,17 +70,12 @@ static CGFloat kContainerHeight = 40.0f;
   }
 }
 
-#pragma mark - <RMXRemixDelegate>
-
-- (void)remix:(RMXRemix *)remix didSelectValue:(NSNumber *)selectedValue {
-  [self setRemix:remix];
-}
-
 #pragma mark - Layout
 
 - (void)prepareForReuse {
   [super prepareForReuse];
 
+  [[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
   [_controlViewWrapper removeFromSuperview];
   _controlViewWrapper = nil;
   self.remix = nil;
@@ -83,12 +89,6 @@ static CGFloat kContainerHeight = 40.0f;
   CGRect detailFrame = self.detailTextLabel.frame;
   detailFrame.origin.y = kDetailTextPaddingTop;
   self.detailTextLabel.frame = detailFrame;
-}
-
-#pragma mark - RMXRemixDelegate
-
-- (void)remix:(RMXRemix *)remix wasUpdatedFromBackendToValue:(nonnull id)value {
-  [self setRemix:remix];
 }
 
 @end

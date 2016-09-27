@@ -65,16 +65,14 @@
 #pragma mark - Control Events
 
 - (void)sliderUpdated:(UISlider *)sliderControl {
-  // Continuously update slider, but do not commit changes.
-  [self.remix setDelaysCommits:YES];
-  [self.remix setSelectedValue:sliderControl.value fromOverlay:YES];
+  // Continuously update slider, but do not save changes.
+  [self.remix setSelectedValue:sliderControl.value];
   [self updateDetailLabel];
 }
 
 - (void)sliderUpdateComplete:(UISlider *)sliderControl {
-  // Commit value only after slider update complete.
-  [self.remix setDelaysCommits:NO];
-  [self.remix setSelectedValue:sliderControl.value fromOverlay:YES];
+  [self.remix setSelectedValue:sliderControl.value];
+  [self.remix save];
   [self updateDetailLabel];
 }
 
