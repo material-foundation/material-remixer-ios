@@ -26,7 +26,15 @@ static CGFloat kPaddingMaxGridMultiplier = 20;
 @implementation UIView (RMXRemixerAPI)
 
 - (CGFloat)alphaRemixForKey:(NSString *)key updateProperty:(NSString *)property {
-  return [self floatRemixForKey:key minValue:0 maxValue:1 updateProperty:property];
+  [RMXRangeRemix addRangeRemixWithKey:key
+                         defaultValue:[[self valueForKey:property] floatValue]
+                             minValue:0
+                             maxValue:1
+                            increment:0
+                          updateBlock:^(RMXRemix * _Nonnull remix, CGFloat selectedValue) {
+                            [self setValue:@(selectedValue) forKey:property];
+                          }];
+  return [[self valueForKey:property] floatValue];
 }
 
 - (UIColor *)colorRemixForKey:(NSString *)key updateProperty:(NSString *)property {
@@ -53,33 +61,6 @@ static CGFloat kPaddingMaxGridMultiplier = 20;
 }
 
 #pragma mark - Private
-
-- (CGFloat)floatRemixForKey:(NSString *)key
-                   minValue:(CGFloat)minValue
-                   maxValue:(CGFloat)maxValue
-             updateProperty:(NSString *)property {
-  return [self floatRemixForKey:key
-                       minValue:minValue
-                       maxValue:maxValue
-                      increment:0
-                 updateProperty:property];
-}
-
-- (CGFloat)floatRemixForKey:(NSString *)key
-                   minValue:(CGFloat)minValue
-                   maxValue:(CGFloat)maxValue
-                  increment:(CGFloat)increment
-             updateProperty:(NSString *)property {
-  [RMXRangeRemix addRangeRemixWithKey:key
-                         defaultValue:[[self valueForKey:property] floatValue]
-                             minValue:minValue
-                             maxValue:maxValue
-                            increment:increment
-                          updateBlock:^(RMXRemix * _Nonnull remix, CGFloat selectedValue) {
-                            [self setValue:@(selectedValue) forKey:property];
-                          }];
-  return [[self valueForKey:property] floatValue];
-}
 
 // Temporary hack to fake a color palette. This will go away once we support color palettes.
 - (NSArray<UIColor *> *)colorPalette {
