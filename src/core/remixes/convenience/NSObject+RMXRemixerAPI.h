@@ -13,13 +13,10 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
+#import <Foundation/Foundation.h>
 
-#import <UIKit/UIKit.h>
+@interface NSObject (RMXRemixerAPI)
 
-@interface UIView (RMXRemixerAPI)
-
-- (CGFloat)alphaRemixForKey:(NSString *)key updateProperty:(NSString *)property;
-- (UIColor *)colorRemixForKey:(NSString *)key updateProperty:(NSString *)property;
-- (CGFloat)layoutRemixForKey:(NSString *)key updateProperty:(NSString *)property;
+- (BOOL)booleanRemixForKey:(NSString *)key updateProperty:(NSString *)property;
 
 @end

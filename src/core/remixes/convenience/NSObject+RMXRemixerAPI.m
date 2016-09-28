@@ -13,13 +13,19 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  */
+#import "NSObject+RMXRemixerAPI.h"
 
-#import <UIKit/UIKit.h>
+#import "RMXBooleanRemix.h"
 
-@interface UIView (RMXRemixerAPI)
+@implementation NSObject (RMXRemixerAPI)
 
-- (CGFloat)alphaRemixForKey:(NSString *)key updateProperty:(NSString *)property;
-- (UIColor *)colorRemixForKey:(NSString *)key updateProperty:(NSString *)property;
-- (CGFloat)layoutRemixForKey:(NSString *)key updateProperty:(NSString *)property;
+- (BOOL)booleanRemixForKey:(NSString *)key updateProperty:(NSString *)property {
+  [RMXBooleanRemix addBooleanRemixWithKey:key
+                             defaultValue:[self valueForKey:property]
+                              updateBlock:^(RMXRemix *remix, BOOL selectedValue) {
+                                [self setValue:@(selectedValue) forKey:property];
+                              }];
+  return [[self valueForKey:property] boolValue];
+}
 
 @end

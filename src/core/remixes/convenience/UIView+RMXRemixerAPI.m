@@ -16,9 +16,12 @@
 
 #import "UIView+RMXRemixerAPI.h"
 
-#import "RMXBooleanRemix.h"
 #import "RMXItemListRemix.h"
 #import "RMXRangeRemix.h"
+
+// TODO(chuga): Make these configurable.
+static CGFloat kGridSize = 8.0f;
+static CGFloat kPaddingMaxGridMultiplier = 20;
 
 @implementation UIView (RMXRemixerAPI)
 
@@ -26,19 +29,10 @@
   return [self floatRemixForKey:key minValue:0 maxValue:1 updateProperty:property];
 }
 
-- (BOOL)booleanRemixForKey:(NSString *)key updateProperty:(NSString *)property {
-  [RMXBooleanRemix addBooleanRemixWithKey:key
-                             defaultValue:[self valueForKey:property]
-                              updateBlock:^(RMXRemix *remix, BOOL selectedValue) {
-                                [self setValue:@(selectedValue) forKey:property];
-                              }];
-  return [[self valueForKey:property] boolValue];
-}
-
 - (UIColor *)colorRemixForKey:(NSString *)key updateProperty:(NSString *)property {
   [RMXItemListRemix addItemListRemixWithKey:key
                                defaultValue:[self valueForKey:property]
-                                   itemList:@[[UIColor redColor], [UIColor yellowColor]]
+                                   itemList:[self colorPalette]
                                 updateBlock:^(RMXRemix *_Nonnull remix, id _Nonnull selectedValue) {
                                   [self setValue:selectedValue forKey:property];
                                 }];
@@ -49,8 +43,8 @@
   [RMXRangeRemix addRangeRemixWithKey:key
                          defaultValue:[[self valueForKey:property] floatValue]
                              minValue:0
-                             maxValue:CGFLOAT_MAX
-                            increment:8
+                             maxValue:kGridSize * kPaddingMaxGridMultiplier
+                            increment:kGridSize
                           updateBlock:^(RMXRemix * _Nonnull remix, CGFloat selectedValue) {
                             [self setValue:@(selectedValue) forKey:property];
                             [self setNeedsLayout];
@@ -85,6 +79,11 @@
                             [self setValue:@(selectedValue) forKey:property];
                           }];
   return [[self valueForKey:property] floatValue];
+}
+
+// Temporary hack to fake a color palette. This will go away once we support color palettes.
+- (NSArray<UIColor *> *)colorPalette {
+  return @[[UIColor redColor], [UIColor yellowColor]];
 }
 
 @end
