@@ -15,8 +15,15 @@
  */
 #import <Foundation/Foundation.h>
 
+/** Category for NSObject that adds a convenience API for Remixer. */
 @interface NSObject (RMXRemixerAPI)
 
+/**
+ Creates a BooleanRemix.
+ It automatically updates the object's property when the selectedValue changes.
+ 
+ @return The current value of the property.
+ */
 - (BOOL)booleanRemixForKey:(NSString *)key updateProperty:(NSString *)property;
 
 @end

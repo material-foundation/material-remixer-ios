@@ -16,10 +16,33 @@
 
 #import <UIKit/UIKit.h>
 
+/** Category for UIView that adds a convenience API for Remixer. */
 @interface UIView (RMXRemixerAPI)
 
+/**
+ Creates a RangeRemix with minValue 0 and maxValue 1.
+ It automatically updates the view's property when the selectedValue changes.
+ 
+ @return The current value of the property.
+ */
 - (CGFloat)alphaRemixForKey:(NSString *)key updateProperty:(NSString *)property;
+
+/**
+ Creates an ItemListRemix using the app's color palette as options.
+ It automatically updates the view's property when the selectedValue changes.
+ 
+ @return The current value of the property.
+ */
 - (UIColor *)colorRemixForKey:(NSString *)key updateProperty:(NSString *)property;
+
+/**
+ Creates a RangeRemix with minValue 0 and maxValue a multiple of the app's grid size.
+ It also sets the increment to the app's grid size so that everything aligns with it.
+ It automatically updates the view's property when the selectedValue changes, and calls
+ |setNeedsLayout|.
+ 
+ @return The current value of the property.
+ */
 - (CGFloat)layoutRemixForKey:(NSString *)key updateProperty:(NSString *)property;
 
 @end
