@@ -23,13 +23,13 @@
 #import "Remixer.h"
 
 @interface ColorDemoView : UIView
-@property(nonatomic, assign) CGFloat leftPadding;
+@property(nonatomic, assign) CGFloat boxSideLength;
 @end
 
 @implementation ColorDemoView {
   UIView *_box;
   CGFloat _topPadding;
-  CGFloat _boxSideLength;
+  CGFloat _leftPadding;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
