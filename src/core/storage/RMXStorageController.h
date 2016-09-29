@@ -14,20 +14,20 @@
  limitations under the License.
  */
 
-@class RMXRemix;
+@class RMXVariable;
 
 /** Interface for they different types of storage supported by Remixer. */
 @protocol RMXStorageController
 
 @required
 /**
- Retrieves a saved Remix using its key.
- @return A Remix or nil if not found.
+ Retrieves a saved Variable using its key.
+ @return A Variable or nil if not found.
  */
-- (nullable RMXRemix *)remixForKey:(NSString *)key;
+- (nullable RMXVariable *)variableForKey:(NSString *)key;
 
-/** Saves a Remix */
-- (void)saveRemix:(RMXRemix *)remix;
+/** Saves a Variable */
+- (void)saveVariable:(RMXVariable *)variable;
 
 @optional
 /** Called during initialization to give the controller a chance to set itself up. */

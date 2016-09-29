@@ -16,23 +16,23 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RMXRemixConstants.h"
+#import "RMXVariableConstants.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *const RMXRemixUpdateNotification = @"RMXRemixUpdateNotification";
+static NSString *const RMXVariableUpdateNotification = @"RMXVariableUpdateNotification";
 
-@class RMXRemix;
+@class RMXVariable;
 
 /** RMXUpdateBlock is a block that will be invoked when a remix is updated. */
-typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
+typedef void (^RMXUpdateBlock)(RMXVariable *remix, id selectedValue);
 
 /**
  The RMXRemix class provides the core infrastructure for creating different types of remixes.
  You can subscribe to RMXRemixUpdateNotification if you want to be notified of any changes to 
  the selectedValue property.
  */
-@interface RMXRemix : NSObject
+@interface RMXVariable : NSObject
 
 /** The unique key of the remix. */
 @property(nonatomic, readonly) NSString *key;

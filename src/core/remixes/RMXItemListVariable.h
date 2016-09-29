@@ -1,12 +1,12 @@
 /*
  Copyright 2016-present Google Inc. All Rights Reserved.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,17 +14,22 @@
  limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#import "RMXVariable.h"
 
-#import "RMXRemix.h"
+NS_ASSUME_NONNULL_BEGIN
 
-/** Utility class that helps with the initialization of different types of Remixes */
-@interface RMXRemixFactory : NSObject
+/** A type of Remix for variables that have a limited set of options. */
+@interface RMXItemListVariable : RMXVariable
 
-/**
- Creates a Remix using the data contained in a JSON dictionary.
- @return A Remix
- */
-+ (RMXRemix *)remixFromJSONDictionary:(NSDictionary *)dictionary;
+/** The array of items for this remix. */
+@property(nonatomic, strong) NSArray<id> *itemList;
+
+/** Designated initializer */
++ (instancetype)addItemListVariableWithKey:(NSString *)key
+                              defaultValue:(id)defaultValue
+                                  itemList:(NSArray<id> *)itemList
+                               updateBlock:(RMXUpdateBlock)updateBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END

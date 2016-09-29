@@ -14,22 +14,22 @@
  limitations under the License.
  */
 
-#import "RMXRemixFactory.h"
+#import "RMXVariableFactory.h"
 
-#import "RMXBooleanRemix.h"
-#import "RMXItemListRemix.h"
-#import "RMXRangeRemix.h"
+#import "RMXBooleanVariable.h"
+#import "RMXItemListVariable.h"
+#import "RMXRangeVariable.h"
 
-@implementation RMXRemixFactory
+@implementation RMXVariableFactory
 
-+ (RMXRemix *)remixFromJSONDictionary:(NSDictionary *)dictionary {
++ (RMXVariable *)variableFromJSONDictionary:(NSDictionary *)dictionary {
   NSString *typeIdentifier = [dictionary objectForKey:RMXDictionaryKeyTypeIdentifier];
   if ([typeIdentifier isEqualToString:RMXTypeItemList]) {
-    return [RMXItemListRemix remixFromDictionary:dictionary];
+    return [RMXItemListVariable variableFromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeRange]) {
-    return [RMXRangeRemix remixFromDictionary:dictionary];
+    return [RMXRangeVariable variableromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeBoolean]) {
-    return [RMXBooleanRemix remixFromDictionary:dictionary];
+    return [RMXBooleanVariable variableFromDictionary:dictionary];
   }
   return nil;
 }

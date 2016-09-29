@@ -16,7 +16,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RMXRemix.h"
+#import "RMXVariable.h"
 
 @class RMXOverlayWindow;
 
@@ -51,40 +51,40 @@ NS_ASSUME_NONNULL_BEGIN
  @param key The key of the remix.
  @return A remix from the dictionary of remixes.
  */
-+ (nullable RMXRemix *)remixForKey:(NSString *)key;
++ (nullable RMXVariable *)variableForKey:(NSString *)key;
 
 /**
  Adds a remix to the dictionary of remixes stored by key.
  @param remix The remix to be added.
  */
-+ (void)addRemix:(RMXRemix *)remix;
++ (void)addVariable:(RMXVariable *)variable;
 
 /**
  Removes a remix from the dictionary of remixes.
  @param remix The remix to be removed.
  */
-+ (void)removeRemix:(RMXRemix *)remix;
++ (void)removeVariable:(RMXVariable *)variable;
 
 /**
  Removes a remix with the given key from the dictionary of remixes.
  @param key The dictionary key of the remix.
  */
-+ (void)removeRemixWithKey:(NSString *)key;
++ (void)removeVariableWithKey:(NSString *)key;
 
 /**
  Returns all remixes.
  @return An array of all current remixes.
  */
-+ (NSArray<RMXRemix *> *)allRemixes;
++ (NSArray<RMXVariable *> *)allVariables;
 
 /** Removes all remixes and empties the dictionary of remixes. */
-+ (void)removeAllRemixes;
++ (void)removeAllVariables;
 
 /** Saves the remix using one of the storage options. */
-+ (void)saveRemix:(RMXRemix *)remix;
++ (void)saveVariable:(RMXVariable *)variable;
 
 /** Update an existing remix using a version from one of our storage sources. */
-+ (void)updateRemix:(RMXRemix *)remix usingStoredRemix:(RMXRemix *)storedRemix;
++ (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable;
 
 @end
 

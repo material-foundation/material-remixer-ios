@@ -16,8 +16,8 @@
 
 #import "UIView+RMXRemixerAPI.h"
 
-#import "RMXItemListRemix.h"
-#import "RMXRangeRemix.h"
+#import "RMXItemListVariable.h"
+#import "RMXRangeVariable.h"
 
 // TODO(chuga): Make these configurable.
 static CGFloat kGridSize = 8.0f;
@@ -25,38 +25,38 @@ static CGFloat kPaddingMaxGridMultiplier = 20;
 
 @implementation UIView (RMXRemixerAPI)
 
-- (CGFloat)alphaRemixForKey:(NSString *)key updateProperty:(NSString *)property {
-  [RMXRangeRemix addRangeRemixWithKey:key
-                         defaultValue:[[self valueForKey:property] floatValue]
-                             minValue:0
-                             maxValue:1
-                            increment:0
-                          updateBlock:^(RMXRemix * _Nonnull remix, CGFloat selectedValue) {
-                            [self setValue:@(selectedValue) forKey:property];
-                          }];
+- (CGFloat)alphaVariableForKey:(NSString *)key updateProperty:(NSString *)property {
+  [RMXRangeVariable addRangeVariableWithKey:key
+                               defaultValue:[[self valueForKey:property] floatValue]
+                                   minValue:0
+                                   maxValue:1
+                                  increment:0
+                                updateBlock:^(RMXVariable * _Nonnull variable, CGFloat selectedValue) {
+                                  [self setValue:@(selectedValue) forKey:property];
+                                }];
   return [[self valueForKey:property] floatValue];
 }
 
-- (UIColor *)colorRemixForKey:(NSString *)key updateProperty:(NSString *)property {
-  [RMXItemListRemix addItemListRemixWithKey:key
-                               defaultValue:[self valueForKey:property]
-                                   itemList:[self colorPalette]
-                                updateBlock:^(RMXRemix *_Nonnull remix, id _Nonnull selectedValue) {
+- (UIColor *)colorVariableForKey:(NSString *)key updateProperty:(NSString *)property {
+  [RMXItemListVariable addItemListVariableWithKey:key
+                                     defaultValue:[self valueForKey:property]
+                                         itemList:[self colorPalette]
+                                      updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                                   [self setValue:selectedValue forKey:property];
                                 }];
   return [self valueForKey:property];
 }
 
-- (CGFloat)layoutRemixForKey:(NSString *)key updateProperty:(NSString *)property {
-  [RMXRangeRemix addRangeRemixWithKey:key
-                         defaultValue:[[self valueForKey:property] floatValue]
-                             minValue:0
-                             maxValue:kGridSize * kPaddingMaxGridMultiplier
-                            increment:kGridSize
-                          updateBlock:^(RMXRemix * _Nonnull remix, CGFloat selectedValue) {
-                            [self setValue:@(selectedValue) forKey:property];
-                            [self setNeedsLayout];
-                          }];
+- (CGFloat)layoutVariableForKey:(NSString *)key updateProperty:(NSString *)property {
+  [RMXRangeVariable addRangeVariableWithKey:key
+                               defaultValue:[[self valueForKey:property] floatValue]
+                                   minValue:0
+                                   maxValue:kGridSize * kPaddingMaxGridMultiplier
+                                  increment:kGridSize
+                                updateBlock:^(RMXVariable * _Nonnull variable, CGFloat selectedValue) {
+                                  [self setValue:@(selectedValue) forKey:property];
+                                  [self setNeedsLayout];
+                                }];
   return [[self valueForKey:property] floatValue];
 }
 

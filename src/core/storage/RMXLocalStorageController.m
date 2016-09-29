@@ -16,18 +16,18 @@
 
 #import "RMXLocalStorageController.h"
 
-#import "RMXRemix.h"
-#import "RMXRemixFactory.h"
+#import "RMXVariable.h"
+#import "RMXVariableFactory.h"
 
 @implementation RMXLocalStorageController
 
-- (RMXRemix *)remixForKey:(NSString *)key {
+- (RMXVariable *)variableForKey:(NSString *)key {
   NSDictionary *json = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-  return [RMXRemixFactory remixFromJSONDictionary:json];
+  return [RMXVariableFactory variableFromJSONDictionary:json];
 }
 
-- (void)saveRemix:(RMXRemix *)remix {
-  [[NSUserDefaults standardUserDefaults] setObject:[remix toJSON] forKey:remix.key];
+- (void)saveVariable:(RMXVariable *)variable {
+  [[NSUserDefaults standardUserDefaults] setObject:[variable toJSON] forKey:variable.key];
 }
 
 @end

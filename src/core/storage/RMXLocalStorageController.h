@@ -17,7 +17,7 @@
 #import <Foundation/Foundation.h>
 #import "RMXStorageController.h"
 
-/** A simple storage controller that uses NSUserDefaults to store Remixes.  */
+/** A simple storage controller that uses NSUserDefaults to store Variables.  */
 @interface RMXLocalStorageController : NSObject <RMXStorageController>
 
 @end

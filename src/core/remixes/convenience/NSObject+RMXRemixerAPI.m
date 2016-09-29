@@ -15,16 +15,16 @@
  */
 #import "NSObject+RMXRemixerAPI.h"
 
-#import "RMXBooleanRemix.h"
+#import "RMXBooleanVariable.h"
 
 @implementation NSObject (RMXRemixerAPI)
 
-- (BOOL)booleanRemixForKey:(NSString *)key updateProperty:(NSString *)property {
-  [RMXBooleanRemix addBooleanRemixWithKey:key
-                             defaultValue:[self valueForKey:property]
-                              updateBlock:^(RMXRemix *remix, BOOL selectedValue) {
-                                [self setValue:@(selectedValue) forKey:property];
-                              }];
+- (BOOL)booleanVariableForKey:(NSString *)key updateProperty:(NSString *)property {
+  [RMXBooleanVariable addBooleanVariableWithKey:key
+                                   defaultValue:[self valueForKey:property]
+                                    updateBlock:^(RMXVariable *variable, BOOL selectedValue) {
+                                      [self setValue:@(selectedValue) forKey:property];
+                                    }];
   return [[self valueForKey:property] boolValue];
 }
 

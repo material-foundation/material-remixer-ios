@@ -14,20 +14,20 @@
  limitations under the License.
  */
 
-#import "RMXRemix.h"
+#import "RMXVariable.h"
 
 /** RMXBooleanUpdateBlock is a block that will be invoked when a boolean remix is updated. */
-typedef void (^RMXBooleanUpdateBlock)(RMXRemix *remix, BOOL selectedValue);
+typedef void (^RMXBooleanUpdateBlock)(RMXVariable *variable, BOOL selectedValue);
 
 /** A type of Remix for boolean values. */
-@interface RMXBooleanRemix : RMXRemix
+@interface RMXBooleanVariable : RMXVariable
 
 /** The selected value of a boolean remix. */
 @property(nonatomic, assign) BOOL selectedValue;
 
 /** Designated initializer */
-+ (instancetype)addBooleanRemixWithKey:(NSString *)key
-                          defaultValue:(BOOL)defaultValue
-                           updateBlock:(RMXBooleanUpdateBlock)updateBlock;
++ (instancetype)addBooleanVariableWithKey:(NSString *)key
+                             defaultValue:(BOOL)defaultValue
+                              updateBlock:(RMXBooleanUpdateBlock)updateBlock;
 
 @end

@@ -47,16 +47,16 @@ static CGFloat kContainerHeight = 40.0f;
   return RMXCellHeightMinimal;
 }
 
-- (void)setRemix:(RMXRemix *)remix {
-  _remix = remix;
+- (void)setVariable:(RMXVariable *)variable {
+  _variable = variable;
 
   [[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
   _notificationObserver =
-      [[NSNotificationCenter defaultCenter] addObserverForName:RMXRemixUpdateNotification
-                                                        object:_remix
+      [[NSNotificationCenter defaultCenter] addObserverForName:RMXVariableUpdateNotification
+                                                        object:_variable
                                                          queue:nil
                                                     usingBlock:^(NSNotification *notification) {
-                                                      [self setRemix:notification.object];
+                                                      [self setVariable:notification.object];
                                                     }];
 
   // Add control container view.
@@ -78,7 +78,7 @@ static CGFloat kContainerHeight = 40.0f;
   [[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
   [_controlViewWrapper removeFromSuperview];
   _controlViewWrapper = nil;
-  self.remix = nil;
+  self.variable = nil;
   self.accessoryView = nil;
 }
 

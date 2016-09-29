@@ -16,14 +16,14 @@
 
 #import "RMXCell.h"
 
-@class RMXRangeRemix;
+@class RMXRangeVariable;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** Provides a table view cell that has a slider control. */
 @interface RMXCellSlider : RMXCell
 
-@property(nonatomic, weak) RMXRangeRemix *remix;
+@property(nonatomic, weak) RMXRangeVariable *variable;
 
 @end
 

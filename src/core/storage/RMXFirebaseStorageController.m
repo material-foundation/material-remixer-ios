@@ -17,18 +17,18 @@
 #import "RMXFirebaseStorageController.h"
 
 #import "Firebase.h"
-#import "RMXBooleanRemix.h"
-#import "RMXRangeRemix.h"
+#import "RMXBooleanVariable.h"
+#import "RMXRangeVariable.h"
 #import "RMXRemixer.h"
-#import "RMXRemixFactory.h"
+#import "RMXVariableFactory.h"
 
 //TODO(chuga): Figure out where to set this path.
 static NSString *const kFirebasePath = @"iOSDemoApp";
-static NSString *const kFirebaseKeyRemixes = @"remixes";
+static NSString *const kFirebaseKeyVariables = @"variables";
 
 @implementation RMXFirebaseStorageController  {
   FIRDatabaseReference *_ref;
-  NSMutableDictionary<NSString *, RMXRemix *> *_storedRemixes;
+  NSMutableDictionary<NSString *, RMXVariable *> *_storedVariables;
 }
 
 + (instancetype)sharedInstance {
@@ -49,49 +49,51 @@ static NSString *const kFirebaseKeyRemixes = @"remixes";
   }];
   
   _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
-  _storedRemixes = [NSMutableDictionary dictionary];
-  [[_ref child:kFirebaseKeyRemixes]
+  _storedVariables = [NSMutableDictionary dictionary];
+  [[_ref child:kFirebaseKeyVariables]
        observeSingleEventOfType:FIRDataEventTypeValue
                       withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-                        NSDictionary *remixes = snapshot.value;
-                        if ([remixes isEqual:[NSNull null]]) {
+                        NSDictionary *variables = snapshot.value;
+                        if ([variables isEqual:[NSNull null]]) {
                           return;
                         }
-                        for (NSDictionary *json in [remixes allValues]) {
-                         [_storedRemixes setObject:[RMXRemixFactory remixFromJSONDictionary:json]
-                                            forKey:json[RMXDictionaryKeyKey]];
+                        for (NSDictionary *json in [variables allValues]) {
+                          RMXVariable *variable =
+                              [RMXVariableFactory variableFromJSONDictionary:json];
+                         [_storedVariables setObject:variable forKey:json[RMXDictionaryKeyKey]];
                         }
                       }];
 }
 
 - (void)startObservingUpdates {
-  [[_ref child:kFirebaseKeyRemixes]
+  [[_ref child:kFirebaseKeyVariables]
        observeEventType:FIRDataEventTypeChildChanged
               withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-                RMXRemix *updatedRemix = [RMXRemixFactory remixFromJSONDictionary:snapshot.value];
-                [_storedRemixes setObject:updatedRemix
-                                   forKey:snapshot.key];
-                RMXRemix *remix = [RMXRemixer remixForKey:snapshot.key];
-                if (remix) {
-                  [RMXRemixer updateRemix:remix usingStoredRemix:updatedRemix];
+                RMXVariable *updatedVariable =
+                    [RMXVariableFactory variableFromJSONDictionary:snapshot.value];
+                [_storedVariables setObject:updatedVariable
+                                     forKey:snapshot.key];
+                RMXVariable *variable = [RMXRemixer variableForKey:snapshot.key];
+                if (variable) {
+                  [RMXRemixer updateVariable:variable usingStoredVariable:updatedVariable];
                 }
               }];
 }
 
 - (void)stopObservingUpdates {
-  [[_ref child:kFirebaseKeyRemixes] removeAllObservers];
+  [[_ref child:kFirebaseKeyVariables] removeAllObservers];
 }
 
 - (void)shutDown {
   // No-op.
 }
 
-- (RMXRemix *)remixForKey:(NSString *)key {
-  return [_storedRemixes objectForKey:key];
+- (RMXVariable *)variableForKey:(NSString *)key {
+  return [_storedVariables objectForKey:key];
 }
 
-- (void)saveRemix:(RMXRemix *)remix {
-  [[[_ref child:kFirebaseKeyRemixes] child:remix.key] setValue:[remix toJSON]];
+- (void)saveVariable:(RMXVariable *)variable {
+  [[[_ref child:kFirebaseKeyVariables] child:variable.key] setValue:[variable toJSON]];
 }
 
 @end

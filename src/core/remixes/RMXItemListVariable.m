@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-#import "RMXItemListRemix.h"
+#import "RMXItemListVariable.h"
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIColor.h>
@@ -26,21 +26,21 @@ NSString *const kColorKeyGreen = @"g";
 NSString *const kColorKeyBlue = @"b";
 NSString *const kColorKeyAlpha = @"a";
 
-@implementation RMXItemListRemix
+@implementation RMXItemListVariable
 
-+ (instancetype)addItemListRemixWithKey:(NSString *)key
-                           defaultValue:(id)defaultValue
-                               itemList:(NSArray<id> *)itemList
-                            updateBlock:(RMXUpdateBlock)updateBlock {
-  RMXItemListRemix *remix = [[self alloc] initItemListRemixWithKey:key
-                                                      defaultValue:defaultValue
-                                                          itemList:itemList
-                                                       updateBlock:updateBlock];
-  [RMXRemixer addRemix:remix];
-  return remix;
++ (instancetype)addItemListVariableWithKey:(NSString *)key
+                              defaultValue:(id)defaultValue
+                                  itemList:(NSArray<id> *)itemList
+                               updateBlock:(RMXUpdateBlock)updateBlock {
+  RMXItemListVariable *variable = [[self alloc] initItemListVariableWithKey:key
+                                                               defaultValue:defaultValue
+                                                                   itemList:itemList
+                                                                updateBlock:updateBlock];
+  [RMXRemixer addVariable:variable];
+  return variable;
 }
 
-+ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
++ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
   id selectedValue = [dictionary objectForKey:RMXDictionaryKeySelectedValue];
   NSMutableArray *itemList = [NSMutableArray array];
   if ([selectedValue isKindOfClass:[NSDictionary class]]) {
@@ -51,10 +51,10 @@ NSString *const kColorKeyAlpha = @"a";
   } else {
     itemList = [dictionary objectForKey:RMXDictionaryKeyItemList];
   }
-  return [[self alloc] initItemListRemixWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
-                                   defaultValue:selectedValue
-                                       itemList:itemList
-                                    updateBlock:nil];
+  return [[self alloc] initItemListVariableWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
+                                      defaultValue:selectedValue
+                                          itemList:itemList
+                                       updateBlock:nil];
 }
 
 - (NSDictionary *)toJSON {
@@ -79,10 +79,10 @@ NSString *const kColorKeyAlpha = @"a";
 
 #pragma mark - Private
 
-- (instancetype)initItemListRemixWithKey:(NSString *)key
-                            defaultValue:(id)defaultValue
-                                itemList:(NSArray<id> *)itemList
-                             updateBlock:(RMXUpdateBlock)updateBlock {
+- (instancetype)initItemListVariableWithKey:(NSString *)key
+                               defaultValue:(id)defaultValue
+                                   itemList:(NSArray<id> *)itemList
+                                updateBlock:(RMXUpdateBlock)updateBlock {
   self = [super initWithKey:key
              typeIdentifier:RMXTypeItemList
                defaultValue:defaultValue
@@ -96,13 +96,13 @@ NSString *const kColorKeyAlpha = @"a";
   return self;
 }
 
-- (instancetype)initItemListRemixWithKey:(NSString *)key
-                                itemList:(NSArray<id> *)itemList
-                             updateBlock:(RMXUpdateBlock)updateBlock {
-  self = [self initItemListRemixWithKey:key
-                           defaultValue:nil
-                               itemList:itemList
-                            updateBlock:updateBlock];
+- (instancetype)initItemListVariableWithKey:(NSString *)key
+                                   itemList:(NSArray<id> *)itemList
+                                updateBlock:(RMXUpdateBlock)updateBlock {
+  self = [self initItemListVariableWithKey:key
+                              defaultValue:nil
+                                  itemList:itemList
+                               updateBlock:updateBlock];
   return self;
 }
 

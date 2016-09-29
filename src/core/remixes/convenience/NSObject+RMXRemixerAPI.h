@@ -19,11 +19,11 @@
 @interface NSObject (RMXRemixerAPI)
 
 /**
- Creates a BooleanRemix.
+ Creates a BooleanVariable.
  It automatically updates the object's property when the selectedValue changes.
  
  @return The current value of the property.
  */
-- (BOOL)booleanRemixForKey:(NSString *)key updateProperty:(NSString *)property;
+- (BOOL)booleanVariableForKey:(NSString *)key updateProperty:(NSString *)property;
 
 @end
