@@ -20,8 +20,6 @@
 
 #import "RMXCellSlider.h"
 
-#import "RMXRangeVariable.h"
-
 @implementation RMXCellSlider {
   UISlider *_sliderControl;
 }

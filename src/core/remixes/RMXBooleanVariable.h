@@ -16,10 +16,10 @@
 
 #import "RMXVariable.h"
 
-/** RMXBooleanUpdateBlock is a block that will be invoked when a boolean remix is updated. */
+/** RMXBooleanUpdateBlock is a block that will be invoked when a boolean Variable is updated. */
 typedef void (^RMXBooleanUpdateBlock)(RMXVariable *variable, BOOL selectedValue);
 
-/** A type of Remix for boolean values. */
+/** A type of Variable for boolean values. */
 @interface RMXBooleanVariable : RMXVariable
 
 /** Convenience accessor for the selectedValue property. */

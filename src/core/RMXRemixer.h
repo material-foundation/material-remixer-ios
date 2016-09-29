@@ -23,7 +23,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- The RMXRemixer class is a Singleton class that keeps track of all the Remixes and deals with
+ The RMXRemixer class is a Singleton class that keeps track of all the Variables and deals with
  saving/syncing its values.
  */
 @interface RMXRemixer : NSObject
@@ -47,43 +47,43 @@ NS_ASSUME_NONNULL_BEGIN
 + (RMXOverlayWindow *)overlayWindow;
 
 /**
- Returns a remix with the given key from the dictionary of remixes.
- @param key The key of the remix.
- @return A remix from the dictionary of remixes.
+ Returns a Variable with the given key from the dictionary of Variables.
+ @param key The key of the Variable.
+ @return A Variable from the dictionary of Variables.
  */
 + (nullable RMXVariable *)variableForKey:(NSString *)key;
 
 /**
- Adds a remix to the dictionary of remixes stored by key.
- @param remix The remix to be added.
+ Adds a Variable to the dictionary of Variables stored by key.
+ @param variable The Variable to be added.
  */
 + (void)addVariable:(RMXVariable *)variable;
 
 /**
- Removes a remix from the dictionary of remixes.
- @param remix The remix to be removed.
+ Removes a Variable from the dictionary of Variables.
+ @param variable The Variable to be removed.
  */
 + (void)removeVariable:(RMXVariable *)variable;
 
 /**
- Removes a remix with the given key from the dictionary of remixes.
- @param key The dictionary key of the remix.
+ Removes a Variable with the given key from the dictionary of Variables.
+ @param key The dictionary key of the Variable.
  */
 + (void)removeVariableWithKey:(NSString *)key;
 
 /**
- Returns all remixes.
- @return An array of all current remixes.
+ Returns all Variables.
+ @return An array of all current Variables.
  */
 + (NSArray<RMXVariable *> *)allVariables;
 
-/** Removes all remixes and empties the dictionary of remixes. */
+/** Removes all Variables and empties the dictionary of Variables. */
 + (void)removeAllVariables;
 
-/** Saves the remix using one of the storage options. */
+/** Saves the Variable using one of the storage options. */
 + (void)saveVariable:(RMXVariable *)variable;
 
-/** Update an existing remix using a version from one of our storage sources. */
+/** Update an existing Variable using a version from one of our storage sources. */
 + (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable;
 
 @end

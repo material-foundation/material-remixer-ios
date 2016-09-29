@@ -16,7 +16,7 @@
 
 #import <UIKit/UIKit.h>
 
-/** A view controller that shows the controls for refining the values of the Remixes. */
+/** A view controller that shows the controls for refining the values of the Variables. */
 @interface RMXOverlayViewController : UIViewController
 
 /**

@@ -20,8 +20,6 @@
 
 #import "RMXCellSegmented.h"
 
-#import "RMXItemListVariable.h"
-
 @implementation RMXCellSegmented {
   UISegmentedControl *_segmentControl;
 }

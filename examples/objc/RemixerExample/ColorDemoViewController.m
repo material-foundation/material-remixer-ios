@@ -38,26 +38,27 @@
     self.backgroundColor = [UIColor whiteColor];
     
     _box = [[UIView alloc] initWithFrame:CGRectZero];
-    _box.alpha = [_box alphaRemixForKey:@"alpha" updateProperty:@"alpha"];
-    _box.backgroundColor = [_box colorRemixForKey:@"colorPicker" updateProperty:@"backgroundColor"];
-    _box.hidden = [_box booleanRemixForKey:@"hidden" updateProperty:@"hidden"];
+    _box.alpha = [_box alphaVariableForKey:@"alpha" updateProperty:@"alpha"];
+    _box.backgroundColor =
+        [_box colorVariableForKey:@"colorPicker" updateProperty:@"backgroundColor"];
+    _box.hidden = [_box booleanVariableForKey:@"hidden" updateProperty:@"hidden"];
     [self addSubview:_box];
     
-    _leftPadding = [self layoutRemixForKey:@"leftPadding" updateProperty:@"leftPadding"];
-    _topPadding = [self layoutRemixForKey:@"topPadding" updateProperty:@"topPadding"];
-    _boxSideLength = [self layoutRemixForKey:@"boxSideLength" updateProperty:@"boxSideLength"];
+    _leftPadding = [self layoutVariableForKey:@"leftPadding" updateProperty:@"leftPadding"];
+    _topPadding = [self layoutVariableForKey:@"topPadding" updateProperty:@"topPadding"];
+    _boxSideLength = [self layoutVariableForKey:@"boxSideLength" updateProperty:@"boxSideLength"];
     
     // Add segment control.
     NSArray *themesOptions = @[ @"Light", @"Dark" ];
-    [RMXItemListRemix addItemListRemixWithKey:@"theme"
-                                 defaultValue:themesOptions[0]
-                                     itemList:themesOptions
-                                  updateBlock:^(RMXRemix *_Nonnull remix, id selectedValue) {
-                                    self.backgroundColor =
-                                        ([selectedValue isEqualToString:@"Light"])
-                                            ? [UIColor whiteColor]
-                                            : [UIColor darkGrayColor];
-                                  }];
+    [RMXItemListVariable addItemListVariableWithKey:@"theme"
+                                       defaultValue:themesOptions[0]
+                                           itemList:themesOptions
+                                        updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
+                                          self.backgroundColor =
+                                              ([selectedValue isEqualToString:@"Light"])
+                                                  ? [UIColor whiteColor]
+                                                  : [UIColor darkGrayColor];
+                                        }];
   }
   return self;
 }
@@ -84,7 +85,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-  [RMXRemixer removeAllRemixes];
+  [RMXRemixer removeAllVariables];
 }
 
 @end

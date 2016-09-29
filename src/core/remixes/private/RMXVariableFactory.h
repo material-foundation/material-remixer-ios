@@ -18,12 +18,12 @@
 
 #import "RMXVariable.h"
 
-/** Utility class that helps with the initialization of different types of Remixes */
+/** Utility class that helps with the initialization of different types of Variables */
 @interface RMXVariableFactory : NSObject
 
 /**
- Creates a Remix using the data contained in a JSON dictionary.
- @return A Remix
+ Creates a Variable using the data contained in a JSON dictionary.
+ @return A Variable
  */
 + (RMXVariable *)variableFromJSONDictionary:(NSDictionary *)dictionary;
 

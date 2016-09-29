@@ -20,10 +20,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** RMXRangeUpdateBlock is a block that will be invoked when a range remix is updated. */
+/** RMXRangeUpdateBlock is a block that will be invoked when a range Variable is updated. */
 typedef void (^RMXRangeUpdateBlock)(RMXVariable *variable, CGFloat selectedValue);
 
-/** A type of Remix for numeric values. */
+/** A type of Variable for numeric values. */
 @interface RMXRangeVariable : RMXVariable
 
 /** Convenience accessor for the selectedValue property. */

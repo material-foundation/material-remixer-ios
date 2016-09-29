@@ -43,7 +43,7 @@ static CGFloat kInitialSpeed = 0.4f;
 @end
 
 @implementation RMXOverlayViewController {
-  NSMutableArray<RMXRemix *> *_content;
+  NSMutableArray<RMXVariable *> *_content;
   UIPanGestureRecognizer *_panGestureRecognizer;
   CGFloat _gestureInitialDelta;
 }
@@ -200,7 +200,7 @@ static CGFloat kInitialSpeed = 0.4f;
 }
 
 - (void)reloadData {
-  _content =  [RMXRemixer allRemixes];
+  _content =  [RMXRemixer allVariables];
   [self.view.tableView reloadData];
 }
 
@@ -216,16 +216,16 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  RMXRemix *remix = _content[indexPath.row];
-  NSString *identifier = [self cellIdentifierForRemix:remix];
+  RMXVariable *variable = _content[indexPath.row];
+  NSString *identifier = [self cellIdentifierForVariable:variable];
   RMXCell *cell = (RMXCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
-  cell.remix = remix;
+  cell.variable = variable;
   return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  RMXRemix *remix = _content[indexPath.row];
-  return [[self cellClassForRemix:remix] cellHeight];
+  RMXVariable *variable = _content[indexPath.row];
+  return [[self cellClassForVariable:variable] cellHeight];
 }
 
 #pragma mark - <RMXOverlayViewDelegate>
@@ -240,27 +240,27 @@ static CGFloat kInitialSpeed = 0.4f;
 
 #pragma mark - Private
 
-- (Class)cellClassForRemix:(RMXRemix *)remix {
-  if (remix.controlType == RMXControlTypeButton) {
+- (Class)cellClassForVariable:(RMXVariable *)variable {
+  if (variable.controlType == RMXControlTypeButton) {
     return [RMXCellButton class];
-  } else if (remix.controlType == RMXControlTypeColorPicker) {
+  } else if (variable.controlType == RMXControlTypeColorPicker) {
     return [RMXCellColorPicker class];
-  } else if (remix.controlType == RMXControlTypeSegmented) {
+  } else if (variable.controlType == RMXControlTypeSegmented) {
     return [RMXCellSegmented class];
-  } else if (remix.controlType == RMXControlTypeSlider) {
+  } else if (variable.controlType == RMXControlTypeSlider) {
     return [RMXCellSlider class];
-  } else if (remix.controlType == RMXControlTypeStepper) {
+  } else if (variable.controlType == RMXControlTypeStepper) {
     return [RMXCellStepper class];
-  } else if (remix.controlType == RMXControlTypeSwitch) {
+  } else if (variable.controlType == RMXControlTypeSwitch) {
     return [RMXCellSwitch class];
-  } else if (remix.controlType == RMXControlTypeTextPicker) {
+  } else if (variable.controlType == RMXControlTypeTextPicker) {
     return [RMXCellTextPicker class];
   }
   return nil;
 }
 
-- (NSString *)cellIdentifierForRemix:(RMXRemix *)remix {
-  return NSStringFromClass([self cellClassForRemix:remix]);
+- (NSString *)cellIdentifierForVariable:(RMXVariable*)variable {
+  return NSStringFromClass([self cellClassForVariable:variable]);
 }
 
 @end

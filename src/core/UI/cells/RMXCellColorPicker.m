@@ -20,8 +20,6 @@
 
 #import "RMXCellColorPicker.h"
 
-#import "RMXItemListVariable.h"
-
 static CGFloat kSwatchInnerPadding = 10.0f;
 
 @implementation RMXCellColorPicker {

@@ -83,7 +83,7 @@
   self = [super initWithKey:key
              typeIdentifier:RMXTypeRange
                defaultValue:@(defaultValue)
-                updateBlock:^(RMXVarible *_Nonnull variable, id _Nonnull selectedValue) {
+                updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock(variable, [selectedValue floatValue]);
                 }];
   if (self) {

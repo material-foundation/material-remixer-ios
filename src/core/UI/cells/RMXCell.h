@@ -28,7 +28,7 @@ extern const CGFloat RMXCellHeightMinimal;
 extern const CGFloat RMXCellHeightLarge;
 
 /**
- The RMXCell class provides table view cell that should be subclassed for specific remix
+ The RMXCell class provides table view cell that should be subclassed for specific Variable
  model types.
  */
 @interface RMXCell : UITableViewCell

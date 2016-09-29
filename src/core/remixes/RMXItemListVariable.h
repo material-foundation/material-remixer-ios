@@ -18,10 +18,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** A type of Remix for variables that have a limited set of options. */
+/** A type of Variable for variables that have a limited set of options. */
 @interface RMXItemListVariable : RMXVariable
 
-/** The array of items for this remix. */
+/** The array of items for this Variable. */
 @property(nonatomic, strong) NSArray<id> *itemList;
 
 /** Designated initializer */

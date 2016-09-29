@@ -14,13 +14,13 @@
  limitations under the License.
  */
 
-/** Identifiers for the different types of Remixes. */
-static NSString *const RMXTypeItemList = @"__RemixTypeItemList__";
-static NSString *const RMXTypeBoolean = @"__RemixTypeBoolean__";
-static NSString *const RMXTypeRange = @"__RemixTypeRange__";
-static NSString *const RMXTypeString = @"__RemixTypeString__";
+/** Identifiers for the different types of Variables. */
+static NSString *const RMXTypeItemList = @"__VariableTypeItemList__";
+static NSString *const RMXTypeBoolean = @"__VariableTypeBoolean__";
+static NSString *const RMXTypeRange = @"__VariableTypeRange__";
+static NSString *const RMXTypeString = @"__VariableTypeString__";
 
-/** Keys for the JSON dictionary that contains the data for a Remix. */
+/** Keys for the JSON dictionary that contains the data for a Variable. */
 static NSString *const RMXDictionaryKeySelectedValue = @"selectedValue";
 static NSString *const RMXDictionaryKeyKey = @"key";
 static NSString *const RMXDictionaryKeyTypeIdentifier = @"typeIdentifier";

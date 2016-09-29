@@ -27,7 +27,7 @@
   if ([typeIdentifier isEqualToString:RMXTypeItemList]) {
     return [RMXItemListVariable variableFromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeRange]) {
-    return [RMXRangeVariable variableromDictionary:dictionary];
+    return [RMXRangeVariable variableFromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeBoolean]) {
     return [RMXBooleanVariable variableFromDictionary:dictionary];
   }
