@@ -183,15 +183,7 @@
 
 + (void)updateRemix:(RMXRemix *)remix usingStoredRemix:(RMXRemix *)storedRemix {
   // Stored Remixes are currently only being used to update the selected value.
-  if ([storedRemix isKindOfClass:[RMXBooleanRemix class]]) {
-    BOOL storedValue = [(RMXBooleanRemix *)storedRemix selectedValue];
-    [(RMXBooleanRemix *)remix setSelectedValue:storedValue];
-  } else if ([storedRemix isKindOfClass:[RMXRangeRemix class]]) {
-    CGFloat storedValue = [(RMXRangeRemix *)storedRemix selectedValue];
-    [(RMXRangeRemix *)remix setSelectedValue:storedValue];
-  } else {
-    [remix setSelectedValue:storedRemix.selectedValue];
-  }
+  [remix setSelectedValue:storedRemix.selectedValue];
 }
 
 @end
