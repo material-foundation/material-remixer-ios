@@ -20,8 +20,6 @@
 
 #import "RMXCellStepper.h"
 
-#import "RMXRangeRemix.h"
-
 @implementation RMXCellStepper {
   UIStepper *_stepperControl;
 }

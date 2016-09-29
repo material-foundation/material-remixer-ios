@@ -16,7 +16,7 @@
 
 #import "RMXCell.h"
 
-#import "RMXRangeRemix.h";
+#import "RMXRangeRemix.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -20,8 +20,6 @@
 
 #import "RMXCellSwitch.h"
 
-#import "RMXBooleanRemix.h"
-
 @implementation RMXCellSwitch {
   UISwitch *_switchControl;
 }

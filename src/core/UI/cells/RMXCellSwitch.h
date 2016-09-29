@@ -16,7 +16,7 @@
 
 #import "RMXCell.h"
 
-#import "RMXBooleanRemix.h";
+#import "RMXBooleanRemix.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

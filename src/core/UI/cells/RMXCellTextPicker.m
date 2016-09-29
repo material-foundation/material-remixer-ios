@@ -20,7 +20,6 @@
 
 #import "RMXCellTextPicker.h"
 
-#import "RMXItemListRemix.h"
 #import "RMXOverlayWindow.h"
 #import "RMXRemixer.h"
 
@@ -138,7 +137,7 @@ static CGFloat kPickerheight = 200.0f;
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger *selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
+  NSUInteger selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
   if (selectedIndex != NSNotFound) {
     [_pickerButton setTitle:self.remix.selectedValue forState:UIControlStateNormal];
   }

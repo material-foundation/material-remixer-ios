@@ -20,8 +20,6 @@
 
 #import "RMXCellColorPicker.h"
 
-#import "RMXItemListRemix.h"
-
 static CGFloat kSwatchInnerPadding = 10.0f;
 
 @implementation RMXCellColorPicker {
@@ -84,7 +82,7 @@ static CGFloat kSwatchInnerPadding = 10.0f;
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger *selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
+  NSUInteger selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
   if (selectedIndex != NSNotFound) {
     [self selectIndex:selectedIndex];
   }

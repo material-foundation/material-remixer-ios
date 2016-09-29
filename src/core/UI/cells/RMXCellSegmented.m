@@ -20,8 +20,6 @@
 
 #import "RMXCellSegmented.h"
 
-#import "RMXItemListRemix.h"
-
 @implementation RMXCellSegmented {
   UISegmentedControl *_segmentControl;
 }
@@ -67,7 +65,7 @@
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger *selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
+  NSUInteger selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
   if (selectedIndex != NSNotFound) {
     _segmentControl.selectedSegmentIndex = selectedIndex;
   }
