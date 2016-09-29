@@ -65,7 +65,7 @@
 
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
-  json[RMXDictionaryKeySelectedValue] = @(self.selectedValue);
+  json[RMXDictionaryKeySelectedValue] = @(self.selectedFloatValue);
   json[RMXDictionaryKeyMinValue] = @(self.minimumValue);
   json[RMXDictionaryKeyMaxValue] = @(self.maximumValue);
   json[RMXDictionaryKeyIncrement] = @(self.increment);
@@ -95,14 +95,12 @@
   return self;
 }
 
-#pragma mark - Selected value overrides
-
-- (CGFloat)selectedValue {
-  return [[super selectedValue] floatValue];
+- (CGFloat)selectedFloatValue {
+  return [self.selectedValue floatValue];
 }
 
-- (void)setSelectedValue:(CGFloat)selectedValue {
-  [super setSelectedValue:@(selectedValue)];
+- (void)setSelectedFloatValue:(CGFloat)selectedFloatValue {
+  self.selectedValue = @(selectedFloatValue);
 }
 
 @end

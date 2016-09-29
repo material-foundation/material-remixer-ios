@@ -26,8 +26,8 @@ typedef void (^RMXRangeUpdateBlock)(RMXRemix *remix, CGFloat selectedValue);
 /** A type of Remix for numeric values. */
 @interface RMXRangeRemix : RMXRemix
 
-/** The selected value of this remix. */
-@property(nonatomic, assign) CGFloat selectedValue;
+/** Convenience accessor for the selectedValue property. */
+@property(nonatomic, assign) CGFloat selectedFloatValue;
 
 /** The minimum value of the selected value. */
 @property(nonatomic, assign) CGFloat minimumValue;
