@@ -37,7 +37,7 @@
 
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
-  json[RMXDictionaryKeySelectedValue] = @([self selectedValue]);
+  json[RMXDictionaryKeySelectedValue] = @([self selectedBooleanValue]);
   return json;
 }
 
@@ -56,14 +56,12 @@
   return self;
 }
 
-#pragma mark - Selected value overrides
-
-- (BOOL)selectedValue {
-  return [[super selectedValue] boolValue];
+-  (BOOL)selectedBooleanValue {
+  return [self.selectedValue boolValue];
 }
 
-- (void)setSelectedValue:(BOOL)selectedValue {
-  [super setSelectedValue:@(selectedValue)];
+- (void)setSelectedBooleanValue:(BOOL)selectedBooleanValue {
+  self.selectedValue = @(selectedBooleanValue);
 }
 
 @end

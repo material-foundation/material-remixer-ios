@@ -57,7 +57,7 @@
   _sliderControl.maximumValueImage = [self imageFromFloatValue:variable.maximumValue];
   _sliderControl.minimumValue = variable.minimumValue;
   _sliderControl.maximumValue = variable.maximumValue;
-  _sliderControl.value = variable.selectedValue;
+  _sliderControl.value = variable.selectedFloatValue;
 
   [self updateDetailLabel];
 }
@@ -66,12 +66,12 @@
 
 - (void)sliderUpdated:(UISlider *)sliderControl {
   // Continuously update slider, but do not save changes.
-  [self.variable setSelectedValue:sliderControl.value];
+  [self.variable setSelectedFloatValue:sliderControl.value];
   [self updateDetailLabel];
 }
 
 - (void)sliderUpdateComplete:(UISlider *)sliderControl {
-  [self.variable setSelectedValue:sliderControl.value];
+  [self.variable setSelectedFloatValue:sliderControl.value];
   [self.variable save];
   [self updateDetailLabel];
 }
