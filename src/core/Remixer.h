@@ -21,10 +21,6 @@
 #import <Remixer/RMXRangeVariable.h>
 #import <Remixer/RMXRemixer.h>
 
-// TODO(chuga): Maybe make these optional.
-#import <Remixer/NSObject+RMXRemixerAPI.h>
-#import <Remixer/UIView+RMXRemixerAPI.h>
-
 //! Project version number for Remixer.
 FOUNDATION_EXPORT double RemixerVersionNumber;
 
