@@ -16,7 +16,7 @@
 
 #import "RMXCell.h"
 
-#import "RMXBooleanVariable.h";
+#import "RMXBooleanVariable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
