@@ -24,6 +24,8 @@
   UIStepper *_stepperControl;
 }
 
+@dynamic remix;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightMinimal;
 }

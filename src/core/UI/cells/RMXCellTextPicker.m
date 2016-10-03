@@ -37,6 +37,8 @@ static CGFloat kPickerheight = 200.0f;
   UIAlertController *_alertController;
 }
 
+@dynamic remix;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
 }

@@ -27,6 +27,8 @@ static CGFloat kSwatchInnerPadding = 10.0f;
   NSMutableArray<UIButton *> *_swatchButtons;
 }
 
+@dynamic remix;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
 }
@@ -48,7 +50,7 @@ static CGFloat kSwatchInnerPadding = 10.0f;
     _swatchesContainer = [[UIView alloc] initWithFrame:self.controlViewWrapper.bounds];
     _swatchButtons = [NSMutableArray array];
     CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
-    for (NSInteger count = 0; count < remix.itemList.count; count++) {
+    for (NSUInteger count = 0; count < remix.itemList.count; count++) {
       UIColor *color = remix.itemList[count];
       UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
       swatchButton.frame = CGRectMake((count * boundsHeight) + (count * kSwatchInnerPadding), 0,
@@ -88,9 +90,9 @@ static CGFloat kSwatchInnerPadding = 10.0f;
   }
 }
 
-- (void)selectIndex:(NSInteger)selectedIndex {
+- (void)selectIndex:(NSUInteger)selectedIndex {
   // Add check image if selected.
-  for (NSInteger i = 0; i < _swatchButtons.count; i++) {
+  for (NSUInteger i = 0; i < _swatchButtons.count; i++) {
     UIButton *swatchButton = _swatchButtons[i];
     UIImage *checkImage = (i == selectedIndex) ? RMXResources(RMXIconCheck) : nil;
     [swatchButton setImage:checkImage forState:UIControlStateNormal];

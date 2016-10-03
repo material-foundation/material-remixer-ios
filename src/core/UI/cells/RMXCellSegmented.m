@@ -24,6 +24,8 @@
   UISegmentedControl *_segmentControl;
 }
 
+@dynamic remix;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
 }

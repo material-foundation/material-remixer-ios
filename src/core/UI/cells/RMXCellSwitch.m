@@ -24,6 +24,8 @@
   UISwitch *_switchControl;
 }
 
+@dynamic remix;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightMinimal;
 }

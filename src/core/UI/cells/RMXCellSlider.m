@@ -24,6 +24,8 @@
   UISlider *_sliderControl;
 }
 
+@dynamic remix;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
 }
