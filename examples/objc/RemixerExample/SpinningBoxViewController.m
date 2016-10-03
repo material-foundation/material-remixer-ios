@@ -53,7 +53,7 @@
                     // Set box 1 animation.
                     CALayer *presentationLayer = _box1.layer.presentationLayer;
                     CGFloat angle =
-                       [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
+                        [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
                     animation.fromValue = [NSNumber numberWithFloat:angle];
                     animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
                     animation.duration = MAX(2.0 - selectedValue, 0.1);

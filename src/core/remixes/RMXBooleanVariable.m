@@ -56,7 +56,7 @@
   return self;
 }
 
--  (BOOL)selectedBooleanValue {
+- (BOOL)selectedBooleanValue {
   return [self.selectedValue boolValue];
 }
 

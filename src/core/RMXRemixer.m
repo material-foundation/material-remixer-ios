@@ -74,11 +74,11 @@
   instance.swipeUpGesture.numberOfTouchesRequired = SWIPE_GESTURE_REQUIRED_TOUCHES;
   instance.swipeUpGesture.delegate = [self sharedInstance];
   [keyWindow addGestureRecognizer:instance.swipeUpGesture];
-  
+
   instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
-  
+
   [instance.storage setup];
   [instance.storage startObservingUpdates];
 }
@@ -106,7 +106,8 @@
 #pragma mark - Swipe gesture
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-    shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    shouldRecognizeSimultaneouslyWithGestureRecognizer:
+        (UIGestureRecognizer *)otherGestureRecognizer {
   if ((gestureRecognizer == _swipeUpGesture) &&
       (gestureRecognizer.numberOfTouches == SWIPE_GESTURE_REQUIRED_TOUCHES)) {
     otherGestureRecognizer.enabled = NO;
@@ -127,11 +128,11 @@
   // Genrates a mailto: URL string.
   NSString *sessionId = [self sessionId];
   NSString *remixerURL =
-  [NSString stringWithFormat:@"https://remix-4d1f9.firebaseapp.com/#/composer/%@", sessionId];
+      [NSString stringWithFormat:@"https://remix-4d1f9.firebaseapp.com/#/composer/%@", sessionId];
   NSString *subject = [NSString stringWithFormat:@"Invitation to Remixer session %@", sessionId];
   NSString *body = [NSString stringWithFormat:@"You have been invited to a Remixer session. \n\n"
-                    @"Follow this link to log in: <a href='%@'>%@</a>",
-                    remixerURL, sessionId];
+                                              @"Follow this link to log in: <a href='%@'>%@</a>",
+                                              remixerURL, sessionId];
   NSString *mailTo = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", subject, body];
   NSString *url = [mailTo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
@@ -143,7 +144,7 @@
   return [[[self sharedInstance] variables] objectForKey:key];
 }
 
-+ (void)addVariable:(RMXVariable*)variable {
++ (void)addVariable:(RMXVariable *)variable {
   RMXVariable *existingVariable = [self variableForKey:variable.key];
   if (!existingVariable) {
     [[[self sharedInstance] variables] setObject:variable forKey:variable.key];

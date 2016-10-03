@@ -1,12 +1,12 @@
 /*
  Copyright 2016-present Google Inc. All Rights Reserved.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,19 +31,19 @@ static CGFloat kToolbarHeight = 44.0f;
   self = [super initWithFrame:frame];
   if (self) {
     _panelHeight = kDefaultOptionsViewHeight;
-    
+
     _panelContainerView = [[UIView alloc] initWithFrame:CGRectZero];
     [self addSubview:_panelContainerView];
-    
+
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.contentInset = UIEdgeInsetsMake(-36, 0, kToolbarHeight, 0);
     _tableView.allowsSelection = NO;
     [_panelContainerView addSubview:_tableView];
-    
+
     // Top navigation bar.
     _navigationBar = [[RMXOverlayNavigationBar alloc] initWithFrame:CGRectZero];
     [_panelContainerView addSubview:_navigationBar];
-    
+
     // Bottom toolbar.
     _bottomToolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
     _bottomToolbar.clipsToBounds = YES;
@@ -55,18 +55,16 @@ static CGFloat kToolbarHeight = 44.0f;
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
+
   CGSize boundsSize = self.bounds.size;
-  _panelContainerView.frame = CGRectMake(0,
-                                         boundsSize.height - _panelHeight,
-                                         boundsSize.width,
-                                         _panelHeight);
-  
+  _panelContainerView.frame =
+      CGRectMake(0, boundsSize.height - _panelHeight, boundsSize.width, _panelHeight);
+
   [UIView setAnimationsEnabled:NO];
   CGFloat tableViewHeight = _panelHeight - RMXOverlayNavbarHeight;
   _tableView.frame = CGRectMake(0, RMXOverlayNavbarHeight, boundsSize.width, tableViewHeight);
   [UIView setAnimationsEnabled:YES];
-  
+
   _navigationBar.frame = CGRectMake(0, 0, boundsSize.width, RMXOverlayNavbarHeight);
   CGRect frame = _bottomToolbar.frame;
   frame.size = CGSizeMake(boundsSize.width, kToolbarHeight);

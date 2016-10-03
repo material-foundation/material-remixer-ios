@@ -39,15 +39,15 @@
     @"System", @"AvenirNext-Bold", @"Baskerville-SemiBold", @"Courier",
     @"Futura-CondensedExtraBold", @"Helvetica-Light", @"SnellRoundhand"
   ];
-  [RMXItemListVariable addItemListVariableWithKey:@"font"
-                                     defaultValue:fontNames[1]
-                                         itemList:fontNames
-                                      updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
-                                        NSString *fontName = selectedValue;
-                                        _fontLabel.text = fontName;
-                                        _fontLabel.font =
-                                            [UIFont fontWithName:fontName size:[UIFont labelFontSize]];
-                                      }];
+  [RMXItemListVariable
+      addItemListVariableWithKey:@"font"
+                    defaultValue:fontNames[1]
+                        itemList:fontNames
+                     updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
+                       NSString *fontName = selectedValue;
+                       _fontLabel.text = fontName;
+                       _fontLabel.font = [UIFont fontWithName:fontName size:[UIFont labelFontSize]];
+                     }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

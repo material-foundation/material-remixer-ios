@@ -59,25 +59,25 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
+
   self.view.tableView.dataSource = self;
   self.view.tableView.delegate = self;
-  
+
   [self.view.tableView registerClass:[RMXCellButton class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
   [self.view.tableView registerClass:[RMXCellColorPicker class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
   [self.view.tableView registerClass:[RMXCellSegmented class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
   [self.view.tableView registerClass:[RMXCellSlider class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellSlider class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellSlider class])];
   [self.view.tableView registerClass:[RMXCellStepper class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellStepper class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellStepper class])];
   [self.view.tableView registerClass:[RMXCellSwitch class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellSwitch class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellSwitch class])];
   [self.view.tableView registerClass:[RMXCellTextPicker class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellTextPicker class])];
-  
+              forCellReuseIdentifier:NSStringFromClass([RMXCellTextPicker class])];
+
   UINavigationItem *item = self.view.navigationBar.topItem;
   [(UIButton *)item.leftBarButtonItem.customView addTarget:self
                                                     action:@selector(dismissOverlay:)
@@ -93,7 +93,7 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  
+
   [self reloadData];
 }
 
@@ -101,17 +101,17 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)hidePanelAnimated:(BOOL)animated {
   [UIView animateWithDuration:animated ? kAnimationDuration : 0
-                        delay:0
-       usingSpringWithDamping:kSpringDamping
-        initialSpringVelocity:kInitialSpeed
-                      options:UIViewAnimationOptionCurveLinear
-                   animations:^{
-                     [self.view hidePanel];
-                     [self.view layoutSubviews];
-                   }
-                   completion:^(BOOL finished) {
-                     self.view.hidden = YES;
-                   }];
+      delay:0
+      usingSpringWithDamping:kSpringDamping
+      initialSpringVelocity:kInitialSpeed
+      options:UIViewAnimationOptionCurveLinear
+      animations:^{
+        [self.view hidePanel];
+        [self.view layoutSubviews];
+      }
+      completion:^(BOOL finished) {
+        self.view.hidden = YES;
+      }];
 }
 
 - (void)showPanelAnimated:(BOOL)animated {
@@ -128,7 +128,7 @@ static CGFloat kInitialSpeed = 0.4f;
                      [self.view showAtDefaultHeight];
                      [self.view layoutSubviews];
                    }
-                   completion:^(BOOL finished) {
+                   completion:^(BOOL finished){
                    }];
 }
 
@@ -147,9 +147,9 @@ static CGFloat kInitialSpeed = 0.4f;
     }
     return;
   }
-  self.view.panelHeight =
-      MAX(CGRectGetHeight(self.view.frame) - [recognizer locationInView:self.view].y +
-          _gestureInitialDelta, RMXOverlayNavbarHeight);
+  self.view.panelHeight = MAX(CGRectGetHeight(self.view.frame) -
+                                  [recognizer locationInView:self.view].y + _gestureInitialDelta,
+                              RMXOverlayNavbarHeight);
   [self.view setNeedsLayout];
 }
 
@@ -163,7 +163,7 @@ static CGFloat kInitialSpeed = 0.4f;
                      [self.view showMinimized];
                      [self.view layoutSubviews];
                    }
-                   completion:^(BOOL finished) {
+                   completion:^(BOOL finished){
                    }];
 }
 
@@ -177,7 +177,7 @@ static CGFloat kInitialSpeed = 0.4f;
                      [self.view showMaximized];
                      [self.view layoutSubviews];
                    }
-                   completion:^(BOOL finished) {
+                   completion:^(BOOL finished){
                    }];
 }
 
@@ -187,20 +187,20 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)dismissOptionsViewWithCompletion:(void (^)(BOOL finished))completion {
   [UIView animateWithDuration:0.2
-                   animations:^{
-                     [self.view hidePanel];
-                     [self.view layoutSubviews];
-                   }
-                   completion:^(BOOL finished) {
-                     self.view.hidden = YES;
-                     if (completion) {
-                       completion(finished);
-                     }
-                   }];
+      animations:^{
+        [self.view hidePanel];
+        [self.view layoutSubviews];
+      }
+      completion:^(BOOL finished) {
+        self.view.hidden = YES;
+        if (completion) {
+          completion(finished);
+        }
+      }];
 }
 
 - (void)reloadData {
-  _content =  [RMXRemixer allVariables];
+  _content = [RMXRemixer allVariables];
   [self.view.tableView reloadData];
 }
 
@@ -259,7 +259,7 @@ static CGFloat kInitialSpeed = 0.4f;
   return nil;
 }
 
-- (NSString *)cellIdentifierForVariable:(RMXVariable*)variable {
+- (NSString *)cellIdentifierForVariable:(RMXVariable *)variable {
   return NSStringFromClass([self cellClassForVariable:variable]);
 }
 

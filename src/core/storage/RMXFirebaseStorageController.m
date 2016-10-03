@@ -1,12 +1,12 @@
 /*
  Copyright 2016-present Google Inc. All Rights Reserved.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,11 +22,11 @@
 #import "RMXRemixer.h"
 #import "RMXVariableFactory.h"
 
-//TODO(chuga): Figure out where to set this path.
+// TODO(chuga): Figure out where to set this path.
 static NSString *const kFirebasePath = @"iOSDemoApp";
 static NSString *const kFirebaseKeyVariables = @"variables";
 
-@implementation RMXFirebaseStorageController  {
+@implementation RMXFirebaseStorageController {
   FIRDatabaseReference *_ref;
   NSMutableDictionary<NSString *, RMXVariable *> *_storedVariables;
 }
@@ -44,40 +44,39 @@ static NSString *const kFirebaseKeyVariables = @"variables";
 
 - (void)setup {
   [FIRApp configure];
-  
-  [[FIRAuth auth] signInAnonymouslyWithCompletion:^(FIRUser *user, NSError *error) {
+
+  [[FIRAuth auth] signInAnonymouslyWithCompletion:^(FIRUser *user, NSError *error){
   }];
-  
+
   _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
   _storedVariables = [NSMutableDictionary dictionary];
   [[_ref child:kFirebaseKeyVariables]
-       observeSingleEventOfType:FIRDataEventTypeValue
-                      withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-                        NSDictionary *variables = snapshot.value;
-                        if ([variables isEqual:[NSNull null]]) {
-                          return;
-                        }
-                        for (NSDictionary *json in [variables allValues]) {
-                          RMXVariable *variable =
-                              [RMXVariableFactory variableFromJSONDictionary:json];
+      observeSingleEventOfType:FIRDataEventTypeValue
+                     withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+                       NSDictionary *variables = snapshot.value;
+                       if ([variables isEqual:[NSNull null]]) {
+                         return;
+                       }
+                       for (NSDictionary *json in [variables allValues]) {
+                         RMXVariable *variable =
+                             [RMXVariableFactory variableFromJSONDictionary:json];
                          [_storedVariables setObject:variable forKey:json[RMXDictionaryKeyKey]];
-                        }
-                      }];
+                       }
+                     }];
 }
 
 - (void)startObservingUpdates {
   [[_ref child:kFirebaseKeyVariables]
-       observeEventType:FIRDataEventTypeChildChanged
-              withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-                RMXVariable *updatedVariable =
-                    [RMXVariableFactory variableFromJSONDictionary:snapshot.value];
-                [_storedVariables setObject:updatedVariable
-                                     forKey:snapshot.key];
-                RMXVariable *variable = [RMXRemixer variableForKey:snapshot.key];
-                if (variable) {
-                  [RMXRemixer updateVariable:variable usingStoredVariable:updatedVariable];
-                }
-              }];
+      observeEventType:FIRDataEventTypeChildChanged
+             withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+               RMXVariable *updatedVariable =
+                   [RMXVariableFactory variableFromJSONDictionary:snapshot.value];
+               [_storedVariables setObject:updatedVariable forKey:snapshot.key];
+               RMXVariable *variable = [RMXRemixer variableForKey:snapshot.key];
+               if (variable) {
+                 [RMXRemixer updateVariable:variable usingStoredVariable:updatedVariable];
+               }
+             }];
 }
 
 - (void)stopObservingUpdates {

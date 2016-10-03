@@ -29,7 +29,7 @@ typedef void (^RMXUpdateBlock)(RMXVariable *variable, id selectedValue);
 
 /**
  This class provides the core infrastructure for creating different types of Variables.
- You can subscribe to RMXRemixUpdateNotification if you want to be notified of any changes to 
+ You can subscribe to RMXRemixUpdateNotification if you want to be notified of any changes to
  the selectedValue property.
  */
 @interface RMXVariable : NSObject

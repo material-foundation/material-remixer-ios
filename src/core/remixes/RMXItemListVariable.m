@@ -123,9 +123,9 @@ NSString *const kColorKeyAlpha = @"a";
     g = b = r;
   };
   return @{
-    kColorKeyRed   : @(round(r * 255)),
+    kColorKeyRed : @(round(r * 255)),
     kColorKeyGreen : @(round(g * 255)),
-    kColorKeyBlue  : @(round(b * 255)),
+    kColorKeyBlue : @(round(b * 255)),
     kColorKeyAlpha : @(a)
   };
 }

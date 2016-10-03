@@ -43,7 +43,7 @@
                      updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
                        _box.backgroundColor = selectedValue;
                      }];
-  
+
   // Add segment control.
   NSArray *themesOptions = @[ @"Light", @"Dark" ];
   [RMXItemListVariable
@@ -52,9 +52,10 @@
                         itemList:themesOptions
                      updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
                        self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
-                           ? [UIColor whiteColor] : [UIColor darkGrayColor];
+                                                       ? [UIColor whiteColor]
+                                                       : [UIColor darkGrayColor];
                      }];
-  
+
   // Add slider control.
   [RMXRangeVariable
       addRangeVariableWithKey:@"alpha"
@@ -64,7 +65,7 @@
                   updateBlock:^(RMXVariable *_Nonnull variable, CGFloat selectedValue) {
                     _box.alpha = selectedValue;
                   }];
-  
+
   // Add stepper control.
   [RMXRangeVariable
       addRangeVariableWithKey:@"width"
@@ -77,7 +78,7 @@
                     frame.size.width = selectedValue;
                     _box.frame = frame;
                   }];
-  
+
   // Add switch control.
   [RMXBooleanVariable
       addBooleanVariableWithKey:@"show"
@@ -85,7 +86,7 @@
                     updateBlock:^(RMXVariable *_Nonnull variable, BOOL selectedValue) {
                       _box.hidden = !selectedValue;
                     }];
-  
+
   // TODO(chuga): Add a Trigger Remix for printing the session ID.
 }
 
