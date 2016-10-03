@@ -47,18 +47,18 @@
     _leftPadding = [self layoutVariableForKey:@"leftPadding" updateProperty:@"leftPadding"];
     _topPadding = [self layoutVariableForKey:@"topPadding" updateProperty:@"topPadding"];
     _boxSideLength = [self layoutVariableForKey:@"boxSideLength" updateProperty:@"boxSideLength"];
-    
+
     // Add segment control.
     NSArray *themesOptions = @[ @"Light", @"Dark" ];
-    [RMXItemListVariable addItemListVariableWithKey:@"theme"
-                                       defaultValue:themesOptions[0]
-                                           itemList:themesOptions
-                                        updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
-                                          self.backgroundColor =
-                                              ([selectedValue isEqualToString:@"Light"])
-                                                  ? [UIColor whiteColor]
-                                                  : [UIColor darkGrayColor];
-                                        }];
+    [RMXItemListVariable
+        addItemListVariableWithKey:@"theme"
+                      defaultValue:themesOptions[0]
+                          itemList:themesOptions
+                       updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
+                         self.backgroundColor = ([selectedValue isEqualToString:@"Light"])
+                                                    ? [UIColor whiteColor]
+                                                    : [UIColor darkGrayColor];
+                       }];
   }
   return self;
 }
