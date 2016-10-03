@@ -16,7 +16,7 @@
 
 #import "RMXCell.h"
 
-#import "RMXItemListVariable.h";
+#import "RMXItemListVariable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -29,11 +29,11 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.view.backgroundColor = [UIColor whiteColor];
-  
+
   _box = [[UIView alloc] initWithFrame:CGRectMake(50, 150, 80, 80)];
   _box.backgroundColor = [UIColor redColor];
   [self.view addSubview:_box];
-  
+
   // Add color picker.
   NSArray *colorOptions = @[ [UIColor blueColor], [UIColor redColor], [UIColor greenColor] ];
   [RMXItemListVariable
