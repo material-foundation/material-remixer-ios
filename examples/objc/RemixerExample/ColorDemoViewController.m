@@ -22,72 +22,65 @@
 
 #import "Remixer.h"
 
-@implementation ColorDemoViewController {
+@interface ColorDemoView : UIView
+@property(nonatomic, assign) CGFloat boxSideLength;
+@end
+
+@implementation ColorDemoView {
   UIView *_box;
+  CGFloat _topPadding;
+  CGFloat _leftPadding;
 }
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  self.view.backgroundColor = [UIColor whiteColor];
+- (instancetype)initWithFrame:(CGRect)frame {
+  self = [super initWithFrame:frame];
+  if (self) {
+    self.backgroundColor = [UIColor whiteColor];
 
-  _box = [[UIView alloc] initWithFrame:CGRectMake(50, 150, 80, 80)];
-  _box.backgroundColor = [UIColor redColor];
-  [self.view addSubview:_box];
+    _box = [[UIView alloc] initWithFrame:CGRectZero];
+    _box.alpha = [_box alphaVariableForKey:@"alpha" updateProperty:@"alpha"];
+    _box.backgroundColor =
+        [_box colorVariableForKey:@"colorPicker" updateProperty:@"backgroundColor"];
+    _box.hidden = [_box booleanVariableForKey:@"hidden" updateProperty:@"hidden"];
+    [self addSubview:_box];
 
-  // Add color picker.
-  NSArray *colorOptions = @[ [UIColor blueColor], [UIColor redColor], [UIColor greenColor] ];
-  [RMXItemListVariable
-      addItemListVariableWithKey:@"colorPicker"
-                    defaultValue:colorOptions[0]
-                        itemList:colorOptions
-                     updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
-                       _box.backgroundColor = selectedValue;
-                     }];
+    _leftPadding = [self layoutVariableForKey:@"leftPadding" updateProperty:@"leftPadding"];
+    _topPadding = [self layoutVariableForKey:@"topPadding" updateProperty:@"topPadding"];
+    _boxSideLength = [self layoutVariableForKey:@"boxSideLength" updateProperty:@"boxSideLength"];
+    
+    // Add segment control.
+    NSArray *themesOptions = @[ @"Light", @"Dark" ];
+    [RMXItemListVariable addItemListVariableWithKey:@"theme"
+                                       defaultValue:themesOptions[0]
+                                           itemList:themesOptions
+                                        updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
+                                          self.backgroundColor =
+                                              ([selectedValue isEqualToString:@"Light"])
+                                                  ? [UIColor whiteColor]
+                                                  : [UIColor darkGrayColor];
+                                        }];
+  }
+  return self;
+}
 
-  // Add segment control.
-  NSArray *themesOptions = @[ @"Light", @"Dark" ];
-  [RMXItemListVariable
-      addItemListVariableWithKey:@"theme"
-                    defaultValue:themesOptions[0]
-                        itemList:themesOptions
-                     updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
-                       self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
-                                                       ? [UIColor whiteColor]
-                                                       : [UIColor darkGrayColor];
-                     }];
+- (void)layoutSubviews {
+  [super layoutSubviews];
 
-  // Add slider control.
-  [RMXRangeVariable
-      addRangeVariableWithKey:@"alpha"
-                 defaultValue:1
-                     minValue:0
-                     maxValue:1
-                  updateBlock:^(RMXVariable *_Nonnull variable, CGFloat selectedValue) {
-                    _box.alpha = selectedValue;
-                  }];
+  _box.frame = CGRectMake(_leftPadding, _topPadding, _boxSideLength, _boxSideLength);
+}
 
-  // Add stepper control.
-  [RMXRangeVariable
-      addRangeVariableWithKey:@"width"
-                 defaultValue:80
-                     minValue:40
-                     maxValue:200
-                    increment:20
-                  updateBlock:^(RMXVariable *_Nonnull variable, CGFloat selectedValue) {
-                    CGRect frame = _box.frame;
-                    frame.size.width = selectedValue;
-                    _box.frame = frame;
-                  }];
+@end
 
-  // Add switch control.
-  [RMXBooleanVariable
-      addBooleanVariableWithKey:@"show"
-                   defaultValue:YES
-                    updateBlock:^(RMXVariable *_Nonnull variable, BOOL selectedValue) {
-                      _box.hidden = !selectedValue;
-                    }];
+@interface ColorDemoViewController ()
+@property(nonatomic, strong) ColorDemoView *view;
+@end
 
-  // TODO(chuga): Add a Trigger Remix for printing the session ID.
+@implementation ColorDemoViewController
+
+@dynamic view;
+
+- (void)loadView {
+  self.view = [[ColorDemoView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
