@@ -65,7 +65,7 @@
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger *selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
+  NSUInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     _segmentControl.selectedSegmentIndex = selectedIndex;
   }

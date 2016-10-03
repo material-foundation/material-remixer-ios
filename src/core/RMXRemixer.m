@@ -62,6 +62,11 @@
 
 + (void)start {
   UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+  if (!keyWindow) {
+    // Get window if using storyboard.
+    keyWindow = [[[UIApplication sharedApplication] delegate] window];
+  }
+
   RMXRemixer *instance = [self sharedInstance];
   instance.swipeUpGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:[self sharedInstance]
                                                                       action:@selector(didSwipe:)];
