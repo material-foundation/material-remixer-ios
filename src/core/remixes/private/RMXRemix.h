@@ -56,7 +56,7 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
 - (instancetype)initWithKey:(NSString *)key
              typeIdentifier:(NSString *)typeIdentifier
                defaultValue:(nullable id)defaultValue
-                updateBlock:(RMXUpdateBlock)updateBlock;
+                updateBlock:(nullable RMXUpdateBlock)updateBlock;
 
 /** Creates an instance based on the data contained in a dictionary. */
 + (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
