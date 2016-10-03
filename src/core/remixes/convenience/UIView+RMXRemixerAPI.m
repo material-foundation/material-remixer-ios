@@ -16,6 +16,7 @@
 
 #import "UIView+RMXRemixerAPI.h"
 
+#import "RMXBooleanVariable.h"
 #import "RMXItemListVariable.h"
 #import "RMXRangeVariable.h"
 
@@ -36,6 +37,15 @@ static CGFloat kPaddingMaxGridMultiplier = 20;
                     [self setValue:@(selectedValue) forKey:property];
                   }];
   return [[self valueForKey:property] floatValue];
+}
+
+- (BOOL)booleanVariableForKey:(NSString *)key updateProperty:(NSString *)property {
+  [RMXBooleanVariable addBooleanVariableWithKey:key
+                                   defaultValue:[self valueForKey:property]
+                                    updateBlock:^(RMXVariable *variable, BOOL selectedValue) {
+                                      [self setValue:@(selectedValue) forKey:property];
+                                    }];
+  return [[self valueForKey:property] boolValue];
 }
 
 - (UIColor *)colorVariableForKey:(NSString *)key updateProperty:(NSString *)property {
@@ -66,6 +76,7 @@ static CGFloat kPaddingMaxGridMultiplier = 20;
 #pragma mark - Private
 
 // Temporary hack to fake a color palette. This will go away once we support color palettes.
+// TODO(chuga): Remove this.
 - (NSArray<UIColor *> *)colorPalette {
   return @[ [UIColor redColor], [UIColor yellowColor] ];
 }

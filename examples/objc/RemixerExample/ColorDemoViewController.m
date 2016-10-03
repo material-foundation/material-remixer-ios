@@ -21,6 +21,7 @@
 #import "ColorDemoViewController.h"
 
 #import "Remixer.h"
+#import "Remixer/UIView+RMXRemixerAPI.h"
 
 @interface ColorDemoView : UIView
 @property(nonatomic, assign) CGFloat boxSideLength;

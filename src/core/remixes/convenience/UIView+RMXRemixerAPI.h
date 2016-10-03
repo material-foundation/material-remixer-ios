@@ -28,6 +28,14 @@
 - (CGFloat)alphaVariableForKey:(NSString *)key updateProperty:(NSString *)property;
 
 /**
+ Creates a BooleanVariable.
+ It automatically updates the object's property when the selectedValue changes.
+ 
+ @return The current value of the property.
+ */
+- (BOOL)booleanVariableForKey:(NSString *)key updateProperty:(NSString *)property;
+
+/**
  Creates an ItemListVariable using the app's color palette as options.
  It automatically updates the view's property when the selectedValue changes.
 
