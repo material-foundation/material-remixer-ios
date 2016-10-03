@@ -16,6 +16,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** Category for UIView that adds a convenience API for Remixer. */
 @interface UIView (RMXRemixerAPI)
 
@@ -41,7 +43,7 @@
 
  @return The current value of the property.
  */
-- (UIColor *)colorVariableForKey:(NSString *)key updateProperty:(NSString *)property;
+- (nullable UIColor *)colorVariableForKey:(NSString *)key updateProperty:(NSString *)property;
 
 /**
  Creates a RangeVariable with minValue 0 and maxValue a multiple of the app's grid size.
@@ -54,3 +56,5 @@
 - (CGFloat)layoutVariableForKey:(NSString *)key updateProperty:(NSString *)property;
 
 @end
+
+NS_ASSUME_NONNULL_END
