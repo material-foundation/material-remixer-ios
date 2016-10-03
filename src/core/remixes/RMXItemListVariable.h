@@ -14,20 +14,22 @@
  limitations under the License.
  */
 
-#import "RMXRemix.h"
+#import "RMXVariable.h"
 
-/** RMXBooleanUpdateBlock is a block that will be invoked when a boolean remix is updated. */
-typedef void (^RMXBooleanUpdateBlock)(RMXRemix *remix, BOOL selectedValue);
+NS_ASSUME_NONNULL_BEGIN
 
-/** A type of Remix for boolean values. */
-@interface RMXBooleanRemix : RMXRemix
+/** A type of Variable for variables that have a limited set of options. */
+@interface RMXItemListVariable : RMXVariable
 
-/** Convenience accessor for the selectedValue property. */
-@property(nonatomic, assign) BOOL selectedBooleanValue;
+/** The array of items for this Variable. */
+@property(nonatomic, strong) NSArray<id> *itemList;
 
 /** Designated initializer */
-+ (instancetype)addBooleanRemixWithKey:(NSString *)key
-                          defaultValue:(BOOL)defaultValue
-                           updateBlock:(RMXBooleanUpdateBlock)updateBlock;
++ (instancetype)addItemListVariableWithKey:(NSString *)key
+                              defaultValue:(id)defaultValue
+                                  itemList:(NSArray<id> *)itemList
+                               updateBlock:(RMXUpdateBlock)updateBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END

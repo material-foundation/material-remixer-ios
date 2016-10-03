@@ -33,14 +33,14 @@
   _segmentControl = nil;
 }
 
-- (void)setRemix:(RMXItemListRemix *)remix {
-  [super setRemix:remix];
-  if (!remix) {
+- (void)setVariable:(RMXItemListVariable *)variable {
+  [super setVariable:variable];
+  if (!variable) {
     return;
   }
 
   if (!_segmentControl) {
-    _segmentControl = [[UISegmentedControl alloc] initWithItems:remix.itemList];
+    _segmentControl = [[UISegmentedControl alloc] initWithItems:variable.itemList];
     _segmentControl.frame = self.controlViewWrapper.bounds;
     _segmentControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [_segmentControl addTarget:self
@@ -50,22 +50,22 @@
   }
 
   [self updateSelectedIndicator];
-  self.detailTextLabel.text = remix.title;
+  self.detailTextLabel.text = variable.title;
 }
 
 #pragma mark - Control Events
 
 - (void)segmentUpdated:(UISegmentedControl *)segmentControl {
-  id newValue = [self.remix.itemList objectAtIndex:segmentControl.selectedSegmentIndex];
-  [self.remix setSelectedValue:newValue];
-  [self.remix save];
+  id newValue = [self.variable.itemList objectAtIndex:segmentControl.selectedSegmentIndex];
+  [self.variable setSelectedValue:newValue];
+  [self.variable save];
   [self updateSelectedIndicator];
 }
 
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
+  NSUInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     _segmentControl.selectedSegmentIndex = selectedIndex;
   }

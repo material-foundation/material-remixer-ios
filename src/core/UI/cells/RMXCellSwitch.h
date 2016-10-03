@@ -16,14 +16,14 @@
 
 #import "RMXCell.h"
 
-#import "RMXBooleanRemix.h"
+#import "RMXBooleanVariable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** Provides a table view cell that has a switch control. */
 @interface RMXCellSwitch : RMXCell
 
-@property(nonatomic, weak) RMXBooleanRemix *remix;
+@property(nonatomic, weak) RMXBooleanVariable *variable;
 
 @end
 

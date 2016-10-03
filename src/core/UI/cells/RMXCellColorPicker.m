@@ -38,9 +38,9 @@ static CGFloat kSwatchInnerPadding = 10.0f;
   _swatchButtons = nil;
 }
 
-- (void)setRemix:(RMXItemListRemix *)remix {
-  [super setRemix:remix];
-  if (!remix) {
+- (void)setVariable:(RMXItemListVariable *)variable {
+  [super setVariable:variable];
+  if (!variable) {
     return;
   }
 
@@ -48,8 +48,8 @@ static CGFloat kSwatchInnerPadding = 10.0f;
     _swatchesContainer = [[UIView alloc] initWithFrame:self.controlViewWrapper.bounds];
     _swatchButtons = [NSMutableArray array];
     CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
-    for (NSInteger count = 0; count < remix.itemList.count; count++) {
-      UIColor *color = remix.itemList[count];
+    for (NSInteger count = 0; count < variable.itemList.count; count++) {
+      UIColor *color = variable.itemList[count];
       UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
       swatchButton.frame = CGRectMake((count * boundsHeight) + (count * kSwatchInnerPadding), 0,
                                       boundsHeight, boundsHeight);
@@ -68,21 +68,21 @@ static CGFloat kSwatchInnerPadding = 10.0f;
   }
 
   [self updateSelectedIndicator];
-  self.detailTextLabel.text = remix.title;
+  self.detailTextLabel.text = variable.title;
 }
 
 #pragma mark - Control Events
 
 - (void)swatchPressed:(UIButton *)button {
-  [self.remix setSelectedValue:button.backgroundColor];
-  [self.remix save];
+  [self.variable setSelectedValue:button.backgroundColor];
+  [self.variable save];
   [self updateSelectedIndicator];
 }
 
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
+  NSUInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     [self selectIndex:selectedIndex];
   }

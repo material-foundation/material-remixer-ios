@@ -36,59 +36,63 @@
 
   // Add color picker.
   NSArray *colorOptions = @[ [UIColor blueColor], [UIColor redColor], [UIColor greenColor] ];
-  [RMXItemListRemix addItemListRemixWithKey:@"colorPicker"
-                               defaultValue:colorOptions[0]
-                                   itemList:colorOptions
-                                updateBlock:^(RMXRemix *_Nonnull remix, id selectedValue) {
-                                  _box.backgroundColor = selectedValue;
-                                }];
+  [RMXItemListVariable
+      addItemListVariableWithKey:@"colorPicker"
+                    defaultValue:colorOptions[0]
+                        itemList:colorOptions
+                     updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
+                       _box.backgroundColor = selectedValue;
+                     }];
 
   // Add segment control.
   NSArray *themesOptions = @[ @"Light", @"Dark" ];
-  [RMXItemListRemix addItemListRemixWithKey:@"theme"
-                               defaultValue:themesOptions[0]
-                                   itemList:themesOptions
-                                updateBlock:^(RMXRemix *_Nonnull remix, id selectedValue) {
-                                  self.view.backgroundColor =
-                                      ([selectedValue isEqualToString:@"Light"])
-                                          ? [UIColor whiteColor]
-                                          : [UIColor darkGrayColor];
-                                }];
+  [RMXItemListVariable
+      addItemListVariableWithKey:@"theme"
+                    defaultValue:themesOptions[0]
+                        itemList:themesOptions
+                     updateBlock:^(RMXVariable *_Nonnull variable, id selectedValue) {
+                       self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
+                                                       ? [UIColor whiteColor]
+                                                       : [UIColor darkGrayColor];
+                     }];
 
   // Add slider control.
-  [RMXRangeRemix addRangeRemixWithKey:@"alpha"
-                         defaultValue:1
-                             minValue:0
-                             maxValue:1
-                          updateBlock:^(RMXRemix *_Nonnull remix, CGFloat selectedValue) {
-                            _box.alpha = selectedValue;
-                          }];
+  [RMXRangeVariable
+      addRangeVariableWithKey:@"alpha"
+                 defaultValue:1
+                     minValue:0
+                     maxValue:1
+                  updateBlock:^(RMXVariable *_Nonnull variable, CGFloat selectedValue) {
+                    _box.alpha = selectedValue;
+                  }];
 
   // Add stepper control.
-  [RMXRangeRemix addRangeRemixWithKey:@"width"
-                         defaultValue:80
-                             minValue:40
-                             maxValue:200
-                            increment:20
-                          updateBlock:^(RMXRemix *_Nonnull remix, CGFloat selectedValue) {
-                            CGRect frame = _box.frame;
-                            frame.size.width = selectedValue;
-                            _box.frame = frame;
-                          }];
+  [RMXRangeVariable
+      addRangeVariableWithKey:@"width"
+                 defaultValue:80
+                     minValue:40
+                     maxValue:200
+                    increment:20
+                  updateBlock:^(RMXVariable *_Nonnull variable, CGFloat selectedValue) {
+                    CGRect frame = _box.frame;
+                    frame.size.width = selectedValue;
+                    _box.frame = frame;
+                  }];
 
   // Add switch control.
-  [RMXBooleanRemix addBooleanRemixWithKey:@"show"
-                             defaultValue:YES
-                              updateBlock:^(RMXRemix *remix, BOOL selectedValue) {
-                                _box.hidden = !selectedValue;
-                              }];
+  [RMXBooleanVariable
+      addBooleanVariableWithKey:@"show"
+                   defaultValue:YES
+                    updateBlock:^(RMXVariable *_Nonnull variable, BOOL selectedValue) {
+                      _box.hidden = !selectedValue;
+                    }];
 
   // TODO(chuga): Add a Trigger Remix for printing the session ID.
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
-  [RMXRemixer removeAllRemixes];
+  [RMXRemixer removeAllVariables];
 }
 
 @end

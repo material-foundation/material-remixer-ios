@@ -16,37 +16,37 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RMXRemixConstants.h"
+#import "RMXVariableConstants.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *const RMXRemixUpdateNotification = @"RMXRemixUpdateNotification";
+static NSString *const RMXVariableUpdateNotification = @"RMXVariableUpdateNotification";
 
-@class RMXRemix;
+@class RMXVariable;
 
-/** RMXUpdateBlock is a block that will be invoked when a remix is updated. */
-typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
+/** RMXUpdateBlock is a block that will be invoked when a Variable is updated. */
+typedef void (^RMXUpdateBlock)(RMXVariable *variable, id selectedValue);
 
 /**
- The RMXRemix class provides the core infrastructure for creating different types of remixes.
- You can subscribe to RMXRemixUpdateNotification if you want to be notified of any changes to 
+ This class provides the core infrastructure for creating different types of Variables.
+ You can subscribe to RMXRemixUpdateNotification if you want to be notified of any changes to
  the selectedValue property.
  */
-@interface RMXRemix : NSObject
+@interface RMXVariable : NSObject
 
-/** The unique key of the remix. */
+/** The unique key of the Variable. */
 @property(nonatomic, readonly) NSString *key;
 
-/** The selected value of a given remix. */
+/** The selected value of a given Variable. */
 @property(nonatomic, strong) id selectedValue;
 
-/** The type of remix. See RMXRemixConstants for possible values. */
+/** The type of Variable. See RMXRemixConstants for possible values. */
 @property(nonatomic, readonly) NSString *typeIdentifier;
 
-/** The update blocks associated with this remix. */
+/** The update blocks associated with this Variable. */
 @property(nonatomic, readonly) NSArray *updateBlocks;
 
-/** The title associated with this remix. The default value is the remixer's key. */
+/** The title associated with this Variable. The default value is the Variable's key. */
 @property(nonatomic, copy) NSString *title;
 
 /** The type of control to be used in the in-app overlay. */
@@ -59,9 +59,9 @@ typedef void (^RMXUpdateBlock)(RMXRemix *remix, id selectedValue);
                 updateBlock:(RMXUpdateBlock)updateBlock;
 
 /** Creates an instance based on the data contained in a dictionary. */
-+ (instancetype)remixFromDictionary:(NSDictionary *)dictionary;
++ (instancetype)variableFromDictionary:(NSDictionary *)dictionary;
 
-/** Saves the current value of the Remix. */
+/** Saves the current value of the Variable. */
 - (void)save;
 
 /** Executes all the update blocks with the current selected value. */

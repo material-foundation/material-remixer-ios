@@ -1,12 +1,12 @@
 /*
  Copyright 2016-present Google Inc. All Rights Reserved.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,13 +14,13 @@
  limitations under the License.
  */
 
-/** Identifiers for the different types of Remixes. */
-static NSString *const RMXTypeItemList = @"__RemixTypeItemList__";
-static NSString *const RMXTypeBoolean = @"__RemixTypeBoolean__";
-static NSString *const RMXTypeRange = @"__RemixTypeRange__";
-static NSString *const RMXTypeString = @"__RemixTypeString__";
+/** Identifiers for the different types of Variables. */
+static NSString *const RMXTypeItemList = @"__VariableTypeItemList__";
+static NSString *const RMXTypeBoolean = @"__VariableTypeBoolean__";
+static NSString *const RMXTypeRange = @"__VariableTypeRange__";
+static NSString *const RMXTypeString = @"__VariableTypeString__";
 
-/** Keys for the JSON dictionary that contains the data for a Remix. */
+/** Keys for the JSON dictionary that contains the data for a Variable. */
 static NSString *const RMXDictionaryKeySelectedValue = @"selectedValue";
 static NSString *const RMXDictionaryKeyKey = @"key";
 static NSString *const RMXDictionaryKeyTypeIdentifier = @"typeIdentifier";

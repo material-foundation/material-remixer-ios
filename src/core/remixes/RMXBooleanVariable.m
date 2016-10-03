@@ -14,22 +14,22 @@
  limitations under the License.
  */
 
-#import "RMXBooleanRemix.h"
+#import "RMXBooleanVariable.h"
 
 #import "RMXRemixer.h"
 
-@implementation RMXBooleanRemix
+@implementation RMXBooleanVariable
 
-+ (instancetype)addBooleanRemixWithKey:(NSString *)key
-                          defaultValue:(BOOL)defaultValue
-                           updateBlock:(RMXBooleanUpdateBlock)updateBlock {
-  RMXBooleanRemix *remix =
++ (instancetype)addBooleanVariableWithKey:(NSString *)key
+                             defaultValue:(BOOL)defaultValue
+                              updateBlock:(RMXBooleanUpdateBlock)updateBlock {
+  RMXBooleanVariable *variable =
       [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];
-  [RMXRemixer addRemix:remix];
-  return remix;
+  [RMXRemixer addVariable:variable];
+  return variable;
 }
 
-+ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
++ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
   NSString *key = [dictionary objectForKey:RMXDictionaryKeyKey];
   BOOL selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] boolValue];
   return [[self alloc] initWithKey:key defaultValue:selectedValue updateBlock:nil];
@@ -49,14 +49,14 @@
   self = [super initWithKey:key
              typeIdentifier:RMXTypeBoolean
                defaultValue:@(defaultValue)
-                updateBlock:^(RMXRemix *_Nonnull remix, id _Nonnull selectedValue) {
-                  updateBlock(remix, [selectedValue boolValue]);
+                updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
+                  updateBlock(variable, [selectedValue boolValue]);
                 }];
   self.controlType = RMXControlTypeSwitch;
   return self;
 }
 
--  (BOOL)selectedBooleanValue {
+- (BOOL)selectedBooleanValue {
   return [self.selectedValue boolValue];
 }
 

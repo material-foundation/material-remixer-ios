@@ -33,9 +33,9 @@
   _switchControl = nil;
 }
 
-- (void)setRemix:(RMXBooleanRemix *)remix {
-  [super setRemix:remix];
-  if (!remix) {
+- (void)setVariable:(RMXBooleanVariable *)variable {
+  [super setVariable:variable];
+  if (!variable) {
     return;
   }
 
@@ -47,15 +47,15 @@
     self.accessoryView = _switchControl;
   }
 
-  _switchControl.on = remix.selectedBooleanValue;
-  self.textLabel.text = remix.title;
+  _switchControl.on = variable.selectedBooleanValue;
+  self.textLabel.text = variable.title;
 }
 
 #pragma mark - Control Events
 
 - (void)switchUpdated:(UISwitch *)switchControl {
-  [self.remix setSelectedBooleanValue:switchControl.isOn];
-  [self.remix save];
+  [self.variable setSelectedBooleanValue:switchControl.isOn];
+  [self.variable save];
 }
 
 @end

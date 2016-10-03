@@ -20,7 +20,7 @@
 
 #import "RMXCellButton.h"
 
-#import "RMXRemix.h"
+#import "RMXVariable.h"
 
 static CGFloat kButtonPaddingLeft = 10.0f;
 
@@ -37,9 +37,9 @@ static CGFloat kButtonPaddingLeft = 10.0f;
   _button = nil;
 }
 
-- (void)setRemix:(RMXRemix *)remix {
-  [super setRemix:remix];
-  if (!remix) {
+- (void)setVariable:(RMXVariable *)variable {
+  [super setVariable:variable];
+  if (!variable) {
     return;
   }
 
@@ -55,15 +55,15 @@ static CGFloat kButtonPaddingLeft = 10.0f;
     [self.controlViewWrapper addSubview:_button];
   }
 
-  [_button setTitle:remix.title forState:UIControlStateNormal];
+  [_button setTitle:variable.title forState:UIControlStateNormal];
   self.detailTextLabel.text = @"Action";
 }
 
 #pragma mark - Control Events
 
 - (void)didTapButton:(UIButton *)button {
-  [self.remix setSelectedValue:@(button.isSelected)];
-  [self.remix save];
+  [self.variable setSelectedValue:@(button.isSelected)];
+  [self.variable save];
 }
 
 @end
