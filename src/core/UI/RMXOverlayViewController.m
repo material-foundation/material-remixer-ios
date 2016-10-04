@@ -144,6 +144,8 @@ static CGFloat kInitialSpeed = 0.4f;
       [self minimizePanel];
     } else if ([recognizer velocityInView:self.view].y < -kPanelHeightThreshold) {
       [self maximizePanel];
+    } else if (self.view.panelContainerView.frame.origin.y < 0) {
+      [self maximizePanel];
     }
     return;
   }
