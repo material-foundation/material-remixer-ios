@@ -20,11 +20,9 @@
 
 #import "RMXRemixer.h"
 
-#import "RMXBooleanRemix.h"
 #import "RMXFirebaseStorageController.h"
 #import "RMXLocalStorageController.h"
-#import "RMXRangeRemix.h"
-#import "RMXRemix.h"
+#import "RMXVariable.h"
 #import "UI/RMXOverlayViewController.h"
 #import "UI/RMXOverlayWindow.h"
 
@@ -35,7 +33,7 @@
 #endif
 
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
-@property(nonatomic, strong) NSMutableDictionary *remixes;
+@property(nonatomic, strong) NSMutableDictionary *variables;
 @property(nonatomic, strong) id<RMXStorageController> storage;
 @property(nonatomic, strong) RMXOverlayViewController *overlayController;
 @property(nonatomic, strong) UISwipeGestureRecognizer *swipeUpGesture;
@@ -47,7 +45,7 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
-    _remixes = [NSMutableDictionary dictionary];
+    _variables = [NSMutableDictionary dictionary];
     _storage = [[RMXFirebaseStorageController alloc] init];
   }
   return self;
@@ -76,11 +74,11 @@
   instance.swipeUpGesture.numberOfTouchesRequired = SWIPE_GESTURE_REQUIRED_TOUCHES;
   instance.swipeUpGesture.delegate = [self sharedInstance];
   [keyWindow addGestureRecognizer:instance.swipeUpGesture];
-  
+
   instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
-  
+
   [instance.storage setup];
   [instance.storage startObservingUpdates];
 }
@@ -108,7 +106,8 @@
 #pragma mark - Swipe gesture
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-    shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    shouldRecognizeSimultaneouslyWithGestureRecognizer:
+        (UIGestureRecognizer *)otherGestureRecognizer {
   if ((gestureRecognizer == _swipeUpGesture) &&
       (gestureRecognizer.numberOfTouches == SWIPE_GESTURE_REQUIRED_TOUCHES)) {
     otherGestureRecognizer.enabled = NO;
@@ -129,66 +128,66 @@
   // Genrates a mailto: URL string.
   NSString *sessionId = [self sessionId];
   NSString *remixerURL =
-  [NSString stringWithFormat:@"https://remix-4d1f9.firebaseapp.com/#/composer/%@", sessionId];
+      [NSString stringWithFormat:@"https://remix-4d1f9.firebaseapp.com/#/composer/%@", sessionId];
   NSString *subject = [NSString stringWithFormat:@"Invitation to Remixer session %@", sessionId];
   NSString *body = [NSString stringWithFormat:@"You have been invited to a Remixer session. \n\n"
-                    @"Follow this link to log in: <a href='%@'>%@</a>",
-                    remixerURL, sessionId];
+                                              @"Follow this link to log in: <a href='%@'>%@</a>",
+                                              remixerURL, sessionId];
   NSString *mailTo = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", subject, body];
   NSString *url = [mailTo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
-#pragma mark - Remixes
+#pragma mark - Variables
 
-+ (nullable RMXRemix *)remixForKey:(NSString *)key {
-  return [[[self sharedInstance] remixes] objectForKey:key];
++ (nullable RMXVariable *)variableForKey:(NSString *)key {
+  return [[[self sharedInstance] variables] objectForKey:key];
 }
 
-+ (void)addRemix:(RMXRemix *)remix {
-  RMXRemix *existingRemix = [self remixForKey:remix.key];
-  if (!existingRemix) {
-    [[[self sharedInstance] remixes] setObject:remix forKey:remix.key];
-    RMXRemix *storedRemix = [[[self sharedInstance] storage] remixForKey:remix.key];
-    if (storedRemix) {
-      [self updateRemix:remix usingStoredRemix:storedRemix];
++ (void)addVariable:(RMXVariable *)variable {
+  RMXVariable *existingVariable = [self variableForKey:variable.key];
+  if (!existingVariable) {
+    [[[self sharedInstance] variables] setObject:variable forKey:variable.key];
+    RMXVariable *storedVariable = [[[self sharedInstance] storage] variableForKey:variable.key];
+    if (storedVariable) {
+      [self updateVariable:variable usingStoredVariable:storedVariable];
     } else {
-      [remix executeUpdateBlocks];
+      [variable executeUpdateBlocks];
     }
   } else {
-    [existingRemix addAndExecuteUpdateBlock:remix.updateBlocks.firstObject];
-    remix = existingRemix;
+    [existingVariable addAndExecuteUpdateBlock:variable.updateBlocks.firstObject];
+    variable = existingVariable;
   }
 
   // TODO(chuga): Figure out when and how to do the initial |saveRemix|.
   [[[self sharedInstance] overlayController] reloadData];
 }
 
-+ (void)removeRemix:(RMXRemix *)remix {
-  [[[self sharedInstance] remixes] removeObjectForKey:remix.key];
++ (void)removeVariable:(RMXVariable *)variable {
+  [[[self sharedInstance] variables] removeObjectForKey:variable.key];
 }
 
-+ (void)removeRemixWithKey:(NSString *)key {
-  RMXRemix *remix = [self remixForKey:key];
-  [[self sharedInstance] removeRemix:remix];
++ (void)removeVariableWithKey:(NSString *)key {
+  RMXVariable *variable = [self variableForKey:key];
+  [[self sharedInstance] removeVariable:variable];
 }
 
-+ (NSArray<RMXRemix *> *)allRemixes {
-  return [[[self sharedInstance] remixes] allValues];
++ (NSArray<RMXVariable *> *)allVariables {
+  return [[[self sharedInstance] variables] allValues];
 }
 
-+ (void)removeAllRemixes {
-  [[[self sharedInstance] remixes] removeAllObjects];
++ (void)removeAllVariables {
+  [[[self sharedInstance] variables] removeAllObjects];
   [[[self sharedInstance] overlayController] reloadData];
 }
 
-+ (void)saveRemix:(RMXRemix *)remix {
-  [[[self sharedInstance] storage] saveRemix:remix];
++ (void)saveVariable:(RMXVariable *)variable {
+  [[[self sharedInstance] storage] saveVariable:variable];
 }
 
-+ (void)updateRemix:(RMXRemix *)remix usingStoredRemix:(RMXRemix *)storedRemix {
-  // Stored Remixes are currently only being used to update the selected value.
-  [remix setSelectedValue:storedRemix.selectedValue];
++ (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable {
+  // Stored Variables are currently only being used to update the selected value.
+  [variable setSelectedValue:storedVariable.selectedValue];
 }
 
 @end

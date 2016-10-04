@@ -18,15 +18,15 @@
 #error "This file requires ARC support."
 #endif
 
-#import "RMXRemix.h"
+#import "RMXVariable.h"
 
 #import "RMXRemixer.h"
 
-@interface RMXRemix ()
+@interface RMXVariable ()
 @property(nonatomic, strong) NSMutableArray *updateBlocks;
 @end
 
-@implementation RMXRemix
+@implementation RMXVariable
 
 - (instancetype)initWithKey:(NSString *)key
              typeIdentifier:(NSString *)typeIdentifier
@@ -46,7 +46,7 @@
   return self;
 }
 
-+ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
++ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
   return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
                     typeIdentifier:[dictionary objectForKey:RMXDictionaryKeyTypeIdentifier]
                       defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
@@ -64,12 +64,12 @@
 - (void)setSelectedValue:(id)selectedValue {
   _selectedValue = selectedValue;
   [self executeUpdateBlocks];
-  [[NSNotificationCenter defaultCenter] postNotificationName:RMXRemixUpdateNotification
+  [[NSNotificationCenter defaultCenter] postNotificationName:RMXVariableUpdateNotification
                                                       object:self];
 }
 
 - (void)save {
-  [RMXRemixer saveRemix:self];
+  [RMXRemixer saveVariable:self];
 }
 
 - (void)executeUpdateBlocks {

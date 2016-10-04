@@ -17,7 +17,7 @@
 #import <UIKit/UIKit.h>
 
 #import "RMXOverlayResources.h"
-#import "RMXRemix.h"
+#import "RMXVariable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +28,7 @@ extern const CGFloat RMXCellHeightMinimal;
 extern const CGFloat RMXCellHeightLarge;
 
 /**
- The RMXCell class provides table view cell that should be subclassed for specific remix
+ The RMXCell class provides table view cell that should be subclassed for specific Variable
  model types.
  */
 @interface RMXCell : UITableViewCell
@@ -36,8 +36,8 @@ extern const CGFloat RMXCellHeightLarge;
 /** A view that all subclasses should add their inner controls to as subviews. */
 @property(nonatomic, strong) UIView *controlViewWrapper;
 
-/** The remix properties for this cell */
-@property(nonatomic, weak) RMXRemix *remix;
+/** The Variable this cell is controlling. */
+@property(nonatomic, weak) RMXVariable *variable;
 
 /** The height of this cell. Subclasses should override. */
 + (CGFloat)cellHeight;

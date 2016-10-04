@@ -14,17 +14,17 @@
  limitations under the License.
  */
 
-#import "RMXRemix.h"
+#import "RMXVariable.h"
 
 #import <CoreGraphics/CoreGraphics.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** RMXRangeUpdateBlock is a block that will be invoked when a range remix is updated. */
-typedef void (^RMXRangeUpdateBlock)(RMXRemix *remix, CGFloat selectedValue);
+/** RMXRangeUpdateBlock is a block that will be invoked when a range Variable is updated. */
+typedef void (^RMXRangeUpdateBlock)(RMXVariable *variable, CGFloat selectedValue);
 
-/** A type of Remix for numeric values. */
-@interface RMXRangeRemix : RMXRemix
+/** A type of Variable for numeric values. */
+@interface RMXRangeVariable : RMXVariable
 
 /** Convenience accessor for the selectedValue property. */
 @property(nonatomic, assign) CGFloat selectedFloatValue;
@@ -39,19 +39,19 @@ typedef void (^RMXRangeUpdateBlock)(RMXRemix *remix, CGFloat selectedValue);
 @property(nonatomic, assign) CGFloat increment;
 
 /** Designated initializer */
-+ (instancetype)addRangeRemixWithKey:(NSString *)key
-                        defaultValue:(CGFloat)defaultValue
-                            minValue:(CGFloat)minValue
-                            maxValue:(CGFloat)maxValue
-                           increment:(CGFloat)increment
-                         updateBlock:(RMXRangeUpdateBlock)updateBlock;
++ (instancetype)addRangeVariableWithKey:(NSString *)key
+                           defaultValue:(CGFloat)defaultValue
+                               minValue:(CGFloat)minValue
+                               maxValue:(CGFloat)maxValue
+                              increment:(CGFloat)increment
+                            updateBlock:(RMXRangeUpdateBlock)updateBlock;
 
 /** Convenience initializer */
-+ (instancetype)addRangeRemixWithKey:(NSString *)key
-                        defaultValue:(CGFloat)defaultValue
-                            minValue:(CGFloat)minValue
-                            maxValue:(CGFloat)maxValue
-                         updateBlock:(RMXRangeUpdateBlock)updateBlock;
++ (instancetype)addRangeVariableWithKey:(NSString *)key
+                           defaultValue:(CGFloat)defaultValue
+                               minValue:(CGFloat)minValue
+                               maxValue:(CGFloat)maxValue
+                            updateBlock:(RMXRangeUpdateBlock)updateBlock;
 
 @end
 

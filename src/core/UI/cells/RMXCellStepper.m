@@ -24,7 +24,7 @@
   UIStepper *_stepperControl;
 }
 
-@dynamic remix;
+@dynamic variable;
 
 + (CGFloat)cellHeight {
   return RMXCellHeightMinimal;
@@ -35,9 +35,9 @@
   _stepperControl = nil;
 }
 
-- (void)setRemix:(RMXRangeRemix *)remix {
-  [super setRemix:remix];
-  if (!remix) {
+- (void)setVariable:(RMXRangeVariable *)variable {
+  [super setVariable:variable];
+  if (!variable) {
     return;
   }
 
@@ -49,19 +49,19 @@
     self.accessoryView = _stepperControl;
   }
 
-  _stepperControl.minimumValue = remix.minimumValue;
-  _stepperControl.maximumValue = remix.maximumValue;
-  _stepperControl.stepValue = remix.increment;
-  _stepperControl.value = remix.selectedFloatValue;
+  _stepperControl.minimumValue = variable.minimumValue;
+  _stepperControl.maximumValue = variable.maximumValue;
+  _stepperControl.stepValue = variable.increment;
+  _stepperControl.value = variable.selectedFloatValue;
 
-  self.textLabel.text = remix.title;
+  self.textLabel.text = variable.title;
 }
 
 #pragma mark - Control Events
 
 - (void)stepperUpdated:(UIStepper *)stepperControl {
-  [self.remix setSelectedFloatValue:stepperControl.value];
-  [self.remix save];
+  [self.variable setSelectedFloatValue:stepperControl.value];
+  [self.variable save];
 }
 
 @end

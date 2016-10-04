@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-@class RMXRemix;
+@class RMXVariable;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,13 +23,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 /**
- Retrieves a saved Remix using its key.
- @return A Remix or nil if not found.
+ Retrieves a saved Variable using its key.
+ @return A Variable or nil if not found.
  */
-- (nullable RMXRemix *)remixForKey:(NSString *)key;
+- (nullable RMXVariable *)variableForKey:(NSString *)key;
 
-/** Saves a Remix */
-- (void)saveRemix:(RMXRemix *)remix;
+/** Saves a Variable */
+- (void)saveVariable:(RMXVariable *)variable;
 
 @optional
 /** Called during initialization to give the controller a chance to set itself up. */

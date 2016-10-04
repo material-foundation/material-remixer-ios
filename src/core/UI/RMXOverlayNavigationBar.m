@@ -59,12 +59,12 @@ NSString *const kButtonTitleNearby = @"NEARBY";
 
     _remoteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_remoteButton setFrame:CGRectMake(0, 0, kButtonWidth, kButtonHeight)];
-    [_remoteButton setTintColor:
-        [UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8]]; // #2869FC
+    [_remoteButton
+        setTintColor:[UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8]];  // #2869FC
     [_remoteButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
-    [_remoteButton setTitleColor:
-        [UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8] // #2869FC
-                     forState:UIControlStateNormal];
+    [_remoteButton
+        setTitleColor:[UIColor colorWithRed:0.1569 green:0.4118 blue:0.9922 alpha:0.8]  // #2869FC
+             forState:UIControlStateNormal];
     [_remoteButton setTitle:kButtonTitleNearby forState:UIControlStateNormal];
     [_remoteButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [_remoteButton setImage:RMXResources(RMXIconWifi) forState:UIControlStateNormal];
@@ -81,7 +81,7 @@ NSString *const kButtonTitleNearby = @"NEARBY";
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
+
   self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
   _closeButton.center = CGPointMake(_closeButton.center.x, self.center.y);
   _remoteButton.center = CGPointMake(_remoteButton.center.x, self.center.y);

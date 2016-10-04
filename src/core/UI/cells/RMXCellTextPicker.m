@@ -37,7 +37,7 @@ static CGFloat kPickerheight = 200.0f;
   UIAlertController *_alertController;
 }
 
-@dynamic remix;
+@dynamic variable;
 
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
@@ -48,9 +48,9 @@ static CGFloat kPickerheight = 200.0f;
   _pickerButton = nil;
 }
 
-- (void)setRemix:(RMXItemListRemix *)remix {
-  [super setRemix:remix];
-  if (!remix) {
+- (void)setVariable:(RMXItemListVariable *)variable {
+  [super setVariable:variable];
+  if (!variable) {
     return;
   }
 
@@ -84,14 +84,14 @@ static CGFloat kPickerheight = 200.0f;
   }
 
   [self updateSelectedIndicator];
-  self.detailTextLabel.text = remix.title;
+  self.detailTextLabel.text = variable.title;
 }
 
 #pragma mark - Control Events
 
 - (void)pickerPressed:(UIButton *)pickerButton {
   // Present picker view in an alert controller.
-  _alertController = [UIAlertController alertControllerWithTitle:self.remix.title
+  _alertController = [UIAlertController alertControllerWithTitle:self.variable.title
                                                          message:kAlertStringPadding
                                                   preferredStyle:UIAlertControllerStyleActionSheet];
   UIPickerView *picker = [[UIPickerView alloc]
@@ -99,7 +99,7 @@ static CGFloat kPickerheight = 200.0f;
                                kPickerheight)];
   picker.dataSource = self;
   picker.delegate = self;
-  NSInteger selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
+  NSInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
   [picker selectRow:selectedIndex inComponent:0 animated:NO];
   [_alertController.view addSubview:picker];
   UIAlertAction *action =
@@ -116,7 +116,7 @@ static CGFloat kPickerheight = 200.0f;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-  return self.remix.itemList.count;
+  return self.variable.itemList.count;
 }
 
 #pragma mark - <UIPickerViewDelegate>
@@ -124,14 +124,14 @@ static CGFloat kPickerheight = 200.0f;
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-  return [self.remix.itemList objectAtIndex:row];
+  return [self.variable.itemList objectAtIndex:row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
-  [self.remix setSelectedValue:[self.remix.itemList objectAtIndex:row]];
-  [self.remix save];
+  [self.variable setSelectedValue:[self.variable.itemList objectAtIndex:row]];
+  [self.variable save];
   [self updateSelectedIndicator];
   [_alertController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -139,9 +139,9 @@ static CGFloat kPickerheight = 200.0f;
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger selectedIndex = [self.remix.itemList indexOfObject:self.remix.selectedValue];
+  NSUInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
-    [_pickerButton setTitle:self.remix.selectedValue forState:UIControlStateNormal];
+    [_pickerButton setTitle:self.variable.selectedValue forState:UIControlStateNormal];
   }
 }
 

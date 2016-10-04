@@ -14,42 +14,42 @@
  limitations under the License.
  */
 
-#import "RMXRangeRemix.h"
+#import "RMXRangeVariable.h"
 
 #import "RMXRemixer.h"
 
-@implementation RMXRangeRemix
+@implementation RMXRangeVariable
 
-+ (instancetype)addRangeRemixWithKey:(NSString *)key
-                        defaultValue:(CGFloat)defaultValue
-                            minValue:(CGFloat)minValue
-                            maxValue:(CGFloat)maxValue
-                           increment:(CGFloat)increment
-                         updateBlock:(RMXRangeUpdateBlock)updateBlock {
-  RMXRangeRemix *remix = [[self alloc] initWithKey:key
-                                      defaultValue:defaultValue
-                                          minValue:minValue
-                                          maxValue:maxValue
-                                         increment:increment
-                                       updateBlock:updateBlock];
-  [RMXRemixer addRemix:remix];
-  return remix;
++ (instancetype)addRangeVariableWithKey:(NSString *)key
+                           defaultValue:(CGFloat)defaultValue
+                               minValue:(CGFloat)minValue
+                               maxValue:(CGFloat)maxValue
+                              increment:(CGFloat)increment
+                            updateBlock:(RMXRangeUpdateBlock)updateBlock {
+  RMXRangeVariable *variable = [[self alloc] initWithKey:key
+                                            defaultValue:defaultValue
+                                                minValue:minValue
+                                                maxValue:maxValue
+                                               increment:increment
+                                             updateBlock:updateBlock];
+  [RMXRemixer addVariable:variable];
+  return variable;
 }
 
-+ (instancetype)addRangeRemixWithKey:(NSString *)key
-                        defaultValue:(CGFloat)defaultValue
-                            minValue:(CGFloat)minValue
-                            maxValue:(CGFloat)maxValue
-                         updateBlock:(RMXRangeUpdateBlock)updateBlock {
-  return [self addRangeRemixWithKey:key
-                       defaultValue:defaultValue
-                           minValue:minValue
-                           maxValue:maxValue
-                          increment:0
-                        updateBlock:updateBlock];
++ (instancetype)addRangeVariableWithKey:(NSString *)key
+                           defaultValue:(CGFloat)defaultValue
+                               minValue:(CGFloat)minValue
+                               maxValue:(CGFloat)maxValue
+                            updateBlock:(RMXRangeUpdateBlock)updateBlock {
+  return [self addRangeVariableWithKey:key
+                          defaultValue:defaultValue
+                              minValue:minValue
+                              maxValue:maxValue
+                             increment:0
+                           updateBlock:updateBlock];
 }
 
-+ (instancetype)remixFromDictionary:(NSDictionary *)dictionary {
++ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
   NSString *key = [dictionary objectForKey:RMXDictionaryKeyKey];
   CGFloat selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] floatValue];
   CGFloat minValue = [[dictionary objectForKey:RMXDictionaryKeyMinValue] floatValue];
@@ -83,8 +83,8 @@
   self = [super initWithKey:key
              typeIdentifier:RMXTypeRange
                defaultValue:@(defaultValue)
-                updateBlock:^(RMXRemix *_Nonnull remix, id _Nonnull selectedValue) {
-                  updateBlock(remix, [selectedValue floatValue]);
+                updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
+                  updateBlock(variable, [selectedValue floatValue]);
                 }];
   if (self) {
     _minimumValue = minValue;

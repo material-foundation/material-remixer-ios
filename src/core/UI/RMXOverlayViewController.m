@@ -44,7 +44,7 @@ static CGFloat kInitialSpeed = 0.4f;
 @end
 
 @implementation RMXOverlayViewController {
-  NSArray<RMXRemix *> *_content;
+  NSArray<RMXVariable *> *_content;
   UIPanGestureRecognizer *_panGestureRecognizer;
   CGFloat _gestureInitialDelta;
 }
@@ -60,25 +60,25 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
+
   self.view.tableView.dataSource = self;
   self.view.tableView.delegate = self;
-  
+
   [self.view.tableView registerClass:[RMXCellButton class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
   [self.view.tableView registerClass:[RMXCellColorPicker class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
   [self.view.tableView registerClass:[RMXCellSegmented class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
   [self.view.tableView registerClass:[RMXCellSlider class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellSlider class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellSlider class])];
   [self.view.tableView registerClass:[RMXCellStepper class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellStepper class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellStepper class])];
   [self.view.tableView registerClass:[RMXCellSwitch class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellSwitch class])];
+              forCellReuseIdentifier:NSStringFromClass([RMXCellSwitch class])];
   [self.view.tableView registerClass:[RMXCellTextPicker class]
-     forCellReuseIdentifier:NSStringFromClass([RMXCellTextPicker class])];
-  
+              forCellReuseIdentifier:NSStringFromClass([RMXCellTextPicker class])];
+
   UINavigationItem *item = self.view.navigationBar.topItem;
   [(UIButton *)item.leftBarButtonItem.customView addTarget:self
                                                     action:@selector(dismissOverlay:)
@@ -94,7 +94,7 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  
+
   [self reloadData];
 }
 
@@ -102,17 +102,17 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)hidePanelAnimated:(BOOL)animated {
   [UIView animateWithDuration:animated ? kAnimationDuration : 0
-                        delay:0
-       usingSpringWithDamping:kSpringDamping
-        initialSpringVelocity:kInitialSpeed
-                      options:UIViewAnimationOptionCurveLinear
-                   animations:^{
-                     [self.view hidePanel];
-                     [self.view layoutSubviews];
-                   }
-                   completion:^(BOOL finished) {
-                     self.view.hidden = YES;
-                   }];
+      delay:0
+      usingSpringWithDamping:kSpringDamping
+      initialSpringVelocity:kInitialSpeed
+      options:UIViewAnimationOptionCurveLinear
+      animations:^{
+        [self.view hidePanel];
+        [self.view layoutSubviews];
+      }
+      completion:^(BOOL finished) {
+        self.view.hidden = YES;
+      }];
 }
 
 - (void)showPanelAnimated:(BOOL)animated {
@@ -129,7 +129,7 @@ static CGFloat kInitialSpeed = 0.4f;
                      [self.view showAtDefaultHeight];
                      [self.view layoutSubviews];
                    }
-                   completion:^(BOOL finished) {
+                   completion:^(BOOL finished){
                    }];
 }
 
@@ -148,9 +148,9 @@ static CGFloat kInitialSpeed = 0.4f;
     }
     return;
   }
-  self.view.panelHeight =
-      MAX(CGRectGetHeight(self.view.frame) - [recognizer locationInView:self.view].y +
-          _gestureInitialDelta, RMXOverlayNavbarHeight);
+  self.view.panelHeight = MAX(CGRectGetHeight(self.view.frame) -
+                                  [recognizer locationInView:self.view].y + _gestureInitialDelta,
+                              RMXOverlayNavbarHeight);
   [self.view setNeedsLayout];
 }
 
@@ -164,7 +164,7 @@ static CGFloat kInitialSpeed = 0.4f;
                      [self.view showMinimized];
                      [self.view layoutSubviews];
                    }
-                   completion:^(BOOL finished) {
+                   completion:^(BOOL finished){
                    }];
 }
 
@@ -178,7 +178,7 @@ static CGFloat kInitialSpeed = 0.4f;
                      [self.view showMaximized];
                      [self.view layoutSubviews];
                    }
-                   completion:^(BOOL finished) {
+                   completion:^(BOOL finished){
                    }];
 }
 
@@ -188,20 +188,20 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)dismissOptionsViewWithCompletion:(void (^)(BOOL finished))completion {
   [UIView animateWithDuration:0.2
-                   animations:^{
-                     [self.view hidePanel];
-                     [self.view layoutSubviews];
-                   }
-                   completion:^(BOOL finished) {
-                     self.view.hidden = YES;
-                     if (completion) {
-                       completion(finished);
-                     }
-                   }];
+      animations:^{
+        [self.view hidePanel];
+        [self.view layoutSubviews];
+      }
+      completion:^(BOOL finished) {
+        self.view.hidden = YES;
+        if (completion) {
+          completion(finished);
+        }
+      }];
 }
 
 - (void)reloadData {
-  _content =  [RMXRemixer allRemixes];
+  _content = [RMXRemixer allVariables];
   [self.view.tableView reloadData];
 }
 
@@ -217,16 +217,16 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  RMXRemix *remix = _content[indexPath.row];
-  NSString *identifier = [self cellIdentifierForRemix:remix];
+  RMXVariable *variable = _content[indexPath.row];
+  NSString *identifier = [self cellIdentifierForVariable:variable];
   RMXCell *cell = (RMXCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
-  cell.remix = remix;
+  cell.variable = variable;
   return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  RMXRemix *remix = _content[indexPath.row];
-  return [[self cellClassForRemix:remix] cellHeight];
+  RMXVariable *variable = _content[indexPath.row];
+  return [[self cellClassForVariable:variable] cellHeight];
 }
 
 #pragma mark - <RMXOverlayViewDelegate>
@@ -241,27 +241,27 @@ static CGFloat kInitialSpeed = 0.4f;
 
 #pragma mark - Private
 
-- (Class)cellClassForRemix:(RMXRemix *)remix {
-  if (remix.controlType == RMXControlTypeButton) {
+- (Class)cellClassForVariable:(RMXVariable *)variable {
+  if (variable.controlType == RMXControlTypeButton) {
     return [RMXCellButton class];
-  } else if (remix.controlType == RMXControlTypeColorPicker) {
+  } else if (variable.controlType == RMXControlTypeColorPicker) {
     return [RMXCellColorPicker class];
-  } else if (remix.controlType == RMXControlTypeSegmented) {
+  } else if (variable.controlType == RMXControlTypeSegmented) {
     return [RMXCellSegmented class];
-  } else if (remix.controlType == RMXControlTypeSlider) {
+  } else if (variable.controlType == RMXControlTypeSlider) {
     return [RMXCellSlider class];
-  } else if (remix.controlType == RMXControlTypeStepper) {
+  } else if (variable.controlType == RMXControlTypeStepper) {
     return [RMXCellStepper class];
-  } else if (remix.controlType == RMXControlTypeSwitch) {
+  } else if (variable.controlType == RMXControlTypeSwitch) {
     return [RMXCellSwitch class];
-  } else if (remix.controlType == RMXControlTypeTextPicker) {
+  } else if (variable.controlType == RMXControlTypeTextPicker) {
     return [RMXCellTextPicker class];
   }
   return nil;
 }
 
-- (NSString *)cellIdentifierForRemix:(RMXRemix *)remix {
-  return NSStringFromClass([self cellClassForRemix:remix]);
+- (NSString *)cellIdentifierForVariable:(RMXVariable *)variable {
+  return NSStringFromClass([self cellClassForVariable:variable]);
 }
 
 @end

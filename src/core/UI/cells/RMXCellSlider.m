@@ -24,7 +24,7 @@
   UISlider *_sliderControl;
 }
 
-@dynamic remix;
+@dynamic variable;
 
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
@@ -35,9 +35,9 @@
   _sliderControl = nil;
 }
 
-- (void)setRemix:(RMXRangeRemix *)remix {
-  [super setRemix:remix];
-  if (!remix) {
+- (void)setVariable:(RMXRangeVariable *)variable {
+  [super setVariable:variable];
+  if (!variable) {
     return;
   }
 
@@ -53,11 +53,11 @@
     [self.controlViewWrapper addSubview:_sliderControl];
   }
 
-  _sliderControl.minimumValueImage = [self imageFromFloatValue:remix.minimumValue];
-  _sliderControl.maximumValueImage = [self imageFromFloatValue:remix.maximumValue];
-  _sliderControl.minimumValue = remix.minimumValue;
-  _sliderControl.maximumValue = remix.maximumValue;
-  _sliderControl.value = remix.selectedFloatValue;
+  _sliderControl.minimumValueImage = [self imageFromFloatValue:variable.minimumValue];
+  _sliderControl.maximumValueImage = [self imageFromFloatValue:variable.maximumValue];
+  _sliderControl.minimumValue = variable.minimumValue;
+  _sliderControl.maximumValue = variable.maximumValue;
+  _sliderControl.value = variable.selectedFloatValue;
 
   [self updateDetailLabel];
 }
@@ -66,13 +66,13 @@
 
 - (void)sliderUpdated:(UISlider *)sliderControl {
   // Continuously update slider, but do not save changes.
-  [self.remix setSelectedFloatValue:sliderControl.value];
+  [self.variable setSelectedFloatValue:sliderControl.value];
   [self updateDetailLabel];
 }
 
 - (void)sliderUpdateComplete:(UISlider *)sliderControl {
-  [self.remix setSelectedFloatValue:sliderControl.value];
-  [self.remix save];
+  [self.variable setSelectedFloatValue:sliderControl.value];
+  [self.variable save];
   [self updateDetailLabel];
 }
 
@@ -80,7 +80,7 @@
 
 - (void)updateDetailLabel {
   self.detailTextLabel.text =
-      [NSString stringWithFormat:@"%@ (%.2f)", self.remix.title, _sliderControl.value];
+      [NSString stringWithFormat:@"%@ (%.2f)", self.variable.title, _sliderControl.value];
 }
 
 - (UIImage *)imageFromFloatValue:(CGFloat)floatValue {
