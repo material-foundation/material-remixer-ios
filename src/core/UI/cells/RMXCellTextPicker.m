@@ -37,6 +37,8 @@ static CGFloat kPickerheight = 200.0f;
   UIAlertController *_alertController;
 }
 
+@dynamic variable;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
 }

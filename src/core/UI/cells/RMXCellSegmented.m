@@ -24,6 +24,8 @@
   UISegmentedControl *_segmentControl;
 }
 
+@dynamic variable;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
 }

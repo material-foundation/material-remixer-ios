@@ -26,6 +26,8 @@ static CGFloat kTextPaddingTop = 10.0f;
   UIStepper *_stepperControl;
 }
 
+@dynamic variable;
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
               reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
