@@ -16,6 +16,8 @@
 
 @class RMXVariable;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** Interface for they different types of storage supported by Remixer. */
 @protocol RMXStorageController
 
@@ -43,3 +45,5 @@
 - (void)shutDown;
 
 @end
+
+NS_ASSUME_NONNULL_END

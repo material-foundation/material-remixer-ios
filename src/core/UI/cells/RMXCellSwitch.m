@@ -24,6 +24,8 @@
   UISwitch *_switchControl;
 }
 
+@dynamic variable;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightMinimal;
 }

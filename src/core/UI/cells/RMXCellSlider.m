@@ -24,6 +24,8 @@
   UISlider *_sliderControl;
 }
 
+@dynamic variable;
+
 + (CGFloat)cellHeight {
   return RMXCellHeightLarge;
 }

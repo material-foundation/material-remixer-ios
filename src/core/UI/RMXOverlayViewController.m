@@ -38,12 +38,13 @@ static CGFloat kInitialSpeed = 0.4f;
 
 @interface RMXOverlayViewController () <UITableViewDataSource,
                                         UITableViewDelegate,
+                                        UIGestureRecognizerDelegate,
                                         RMXOverlayViewDelegate>
 @property(nonatomic, strong) RMXOverlayView *view;
 @end
 
 @implementation RMXOverlayViewController {
-  NSMutableArray<RMXVariable *> *_content;
+  NSArray<RMXVariable *> *_content;
   UIPanGestureRecognizer *_panGestureRecognizer;
   CGFloat _gestureInitialDelta;
 }
@@ -237,7 +238,7 @@ static CGFloat kInitialSpeed = 0.4f;
 }
 
 - (BOOL)shouldCapturePointOutsidePanel:(CGPoint)point {
-  return self.presentedViewController;
+  return self.presentedViewController != nil;
 }
 
 #pragma mark - Private

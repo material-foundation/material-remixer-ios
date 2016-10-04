@@ -108,7 +108,7 @@ NSString *const kColorKeyAlpha = @"a";
 
 #pragma mark - UIColor helpers
 
-- (NSDictionary *)colorsToJSON {
+- (NSArray *)colorsToJSON {
   NSMutableArray<NSDictionary *> *hexColors = [NSMutableArray array];
   for (UIColor *color in self.itemList) {
     [hexColors addObject:[[self class] rgbaDictionaryFromColor:color]];

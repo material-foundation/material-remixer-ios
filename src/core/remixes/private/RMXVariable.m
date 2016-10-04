@@ -31,7 +31,7 @@
 - (instancetype)initWithKey:(NSString *)key
              typeIdentifier:(NSString *)typeIdentifier
                defaultValue:(nullable id)defaultValue
-                updateBlock:(RMXUpdateBlock)updateBlock {
+                updateBlock:(nullable RMXUpdateBlock)updateBlock {
   self = [super init];
   if (self) {
     _key = key;
