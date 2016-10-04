@@ -20,11 +20,22 @@
 
 #import "RMXCellStepper.h"
 
+static CGFloat kTextPaddingTop = 10.0f;
+
 @implementation RMXCellStepper {
   UIStepper *_stepperControl;
 }
 
 @dynamic variable;
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style
+              reuseIdentifier:(NSString *)reuseIdentifier {
+  self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+  if (self) {
+    self.textLabel.textColor = [UIColor colorWithWhite:0 alpha:1];
+  }
+  return self;
+}
 
 + (CGFloat)cellHeight {
   return RMXCellHeightMinimal;
@@ -54,7 +65,16 @@
   _stepperControl.stepValue = variable.increment;
   _stepperControl.value = variable.selectedFloatValue;
 
-  self.textLabel.text = variable.title;
+  self.textLabel.text = [NSString stringWithFormat:@"%.2f", variable.selectedFloatValue];
+  self.detailTextLabel.text = variable.title;
+}
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+  
+  CGRect frame = self.textLabel.frame;
+  frame.origin.y += kTextPaddingTop;
+  self.textLabel.frame = frame;
 }
 
 #pragma mark - Control Events
