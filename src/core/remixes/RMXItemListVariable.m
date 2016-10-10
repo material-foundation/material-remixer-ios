@@ -90,7 +90,7 @@ NSString *const kColorKeyAlpha = @"a";
   if (self) {
     _itemList = itemList;
     self.controlType = [_itemList.firstObject isKindOfClass:[UIColor class]]
-                           ? RMXControlTypeColorPicker
+                           ? RMXControlTypeColorList
                            : RMXControlTypeTextPicker;
   }
   return self;

@@ -16,6 +16,7 @@
 
 #import "RMXVariableFactory.h"
 
+#import "RMXColorVariable.h"
 #import "RMXBooleanVariable.h"
 #import "RMXItemListVariable.h"
 #import "RMXRangeVariable.h"
@@ -30,6 +31,8 @@
     return [RMXRangeVariable variableFromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeBoolean]) {
     return [RMXBooleanVariable variableFromDictionary:dictionary];
+  } else if ([typeIdentifier isEqualToString:RMXTypeColor]) {
+    return [RMXColorVariable variableFromDictionary:dictionary];
   }
   return nil;
 }

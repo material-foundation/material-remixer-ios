@@ -21,7 +21,7 @@
 #import "RMXOverlayViewController.h"
 
 #import "RMXCellButton.h"
-#import "RMXCellColorPicker.h"
+#import "RMXCellColorList.h"
 #import "RMXCellSegmented.h"
 #import "RMXCellSlider.h"
 #import "RMXCellStepper.h"
@@ -66,8 +66,8 @@ static CGFloat kInitialSpeed = 0.4f;
 
   [self.view.tableView registerClass:[RMXCellButton class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
-  [self.view.tableView registerClass:[RMXCellColorPicker class]
-              forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
+  [self.view.tableView registerClass:[RMXCellColorList class]
+              forCellReuseIdentifier:NSStringFromClass([RMXCellColorList class])];
   [self.view.tableView registerClass:[RMXCellSegmented class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
   [self.view.tableView registerClass:[RMXCellSlider class]
@@ -246,8 +246,8 @@ static CGFloat kInitialSpeed = 0.4f;
 - (Class)cellClassForVariable:(RMXVariable *)variable {
   if (variable.controlType == RMXControlTypeButton) {
     return [RMXCellButton class];
-  } else if (variable.controlType == RMXControlTypeColorPicker) {
-    return [RMXCellColorPicker class];
+  } else if (variable.controlType == RMXControlTypeColorList) {
+    return [RMXCellColorList class];
   } else if (variable.controlType == RMXControlTypeSegmented) {
     return [RMXCellSegmented class];
   } else if (variable.controlType == RMXControlTypeSlider) {

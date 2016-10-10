@@ -18,11 +18,11 @@
 #error "This file requires ARC support."
 #endif
 
-#import "RMXCellColorPicker.h"
+#import "RMXCellColorList.h"
 
 static CGFloat kSwatchInnerPadding = 10.0f;
 
-@implementation RMXCellColorPicker {
+@implementation RMXCellColorList {
   UIView *_swatchesContainer;
   NSMutableArray<UIButton *> *_swatchButtons;
 }
