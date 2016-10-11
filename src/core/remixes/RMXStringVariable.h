@@ -26,6 +26,9 @@ typedef void (^RMXStringUpdateBlock)(RMXVariable *variable, NSString *selectedVa
 /** The selected value of this Variable */
 @property(nonatomic, strong) NSString *selectedValue;
 
+/** If set, these are the only values this Variable can take. */
+@property(nonatomic, strong) NSArray<NSString *> *possibleValues;
+
 /** Designated initializer */
 + (instancetype)addStringVariableWithKey:(NSString *)key
                             defaultValue:(NSString *)defaultValue

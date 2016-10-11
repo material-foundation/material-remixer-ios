@@ -20,6 +20,8 @@
 
 @implementation RMXNumberVariable
 
+@dynamic possibleValues;
+
 + (instancetype)addRangeVariableWithKey:(NSString *)key
                            defaultValue:(CGFloat)defaultValue
                                minValue:(CGFloat)minValue

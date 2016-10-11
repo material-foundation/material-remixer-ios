@@ -29,6 +29,9 @@ typedef void (^RMXNumberUpdateBlock)(RMXVariable *variable, CGFloat selectedValu
 /** Convenience accessor for the selectedValue property. */
 @property(nonatomic, assign) CGFloat selectedFloatValue;
 
+/** If set, these are the only values this Variable can take. */
+@property(nonatomic, strong) NSArray<NSNumber *> *possibleValues;
+
 /** Designated initializer */
 + (instancetype)addNumberVariableWithKey:(NSString *)key
                             defaultValue:(CGFloat)defaultValue
