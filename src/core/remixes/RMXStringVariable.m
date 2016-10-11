@@ -21,6 +21,7 @@
 @implementation RMXStringVariable
 
 @dynamic selectedValue;
+@dynamic possibleValues;
 
 + (instancetype)addStringVariableWithKey:(NSString *)key
                             defaultValue:(NSString *)defaultValue

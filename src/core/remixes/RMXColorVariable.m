@@ -29,6 +29,7 @@ NSString *const RMXColorKeyAlpha = @"a";
 @implementation RMXColorVariable
 
 @dynamic selectedValue;
+@dynamic possibleValues;
 
 + (instancetype)addColorVariableWithKey:(NSString *)key
                            defaultValue:(UIColor *)defaultValue
