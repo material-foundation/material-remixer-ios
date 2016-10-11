@@ -16,14 +16,10 @@
 
 #import "RMXCell.h"
 
-#import "RMXVariable.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
 /** Provides a table view cell that has a segmented control. */
 @interface RMXCellSegmented : RMXCell
-
-@property(nonatomic, weak) RMXVariable *variable;
 
 @end
 
