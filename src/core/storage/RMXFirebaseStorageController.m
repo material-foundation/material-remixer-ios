@@ -60,7 +60,9 @@ static NSString *const kFirebaseKeyVariables = @"variables";
                        for (NSDictionary *json in [variables allValues]) {
                          RMXVariable *variable =
                              [RMXVariableFactory variableFromJSONDictionary:json];
-                         [_storedVariables setObject:variable forKey:json[RMXDictionaryKeyKey]];
+                         if (variable) {
+                           [_storedVariables setObject:variable forKey:json[RMXDictionaryKeyKey]];
+                         }
                        }
                      }];
 }

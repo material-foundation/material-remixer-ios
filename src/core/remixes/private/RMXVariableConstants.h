@@ -22,15 +22,15 @@ static NSString *const RMXTypeRange = @"__VariableTypeRange__";
 static NSString *const RMXTypeString = @"__VariableTypeString__";
 
 /** Keys for the JSON dictionary that contains the data for a Variable. */
-static NSString *const RMXDictionaryKeySelectedValue = @"selectedValue";
 static NSString *const RMXDictionaryKeyKey = @"key";
+static NSString *const RMXDictionaryKeySelectedValue = @"selectedValue";
+static NSString *const RMXDictionaryKeyPossibleValues = @"possibleValues";
 static NSString *const RMXDictionaryKeyTypeIdentifier = @"typeIdentifier";
 static NSString *const RMXDictionaryKeyControlType = @"controlType";
 static NSString *const RMXDictionaryKeyTitle = @"title";
 static NSString *const RMXDictionaryKeyMinValue = @"minimumValue";
 static NSString *const RMXDictionaryKeyMaxValue = @"maximumValue";
 static NSString *const RMXDictionaryKeyIncrement = @"increment";
-static NSString *const RMXDictionaryKeyItemList = @"itemList";
 
 /** Type of UI controls supported by Remixer. */
 typedef NS_ENUM(NSInteger, RMXControlType) {

@@ -26,9 +26,10 @@
                             defaultValue:(NSString *)defaultValue
                           possibleValues:(NSArray<NSString *> *)possibleValues
                              updateBlock:(RMXStringUpdateBlock)updateBlock {
-  RMXStringVariable *variable =
-      [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];
-  variable.possibleValues = possibleValues;
+  RMXStringVariable *variable = [[self alloc] initWithKey:key
+                                             defaultValue:defaultValue
+                                           possibleValues:possibleValues
+                                              updateBlock:updateBlock];
   [RMXRemixer addVariable:variable];
   return variable;
 }
@@ -36,6 +37,7 @@
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
   return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
                       defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
+                    possibleValues:[dictionary objectForKey:RMXDictionaryKeyPossibleValues]
                        updateBlock:nil];
 }
 
@@ -43,7 +45,7 @@
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = self.selectedValue;
   if (self.possibleValues.count > 0) {
-    json[RMXDictionaryKeyItemList] = self.possibleValues;
+    json[RMXDictionaryKeyPossibleValues] = self.possibleValues;
   }
   return json;
 }
@@ -52,12 +54,13 @@
 
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(NSString *)defaultValue
+             possibleValues:(NSArray<NSString *> *)possibleValues
                 updateBlock:(RMXStringUpdateBlock)updateBlock {
   self = [super initWithKey:key
              typeIdentifier:RMXTypeString
                defaultValue:defaultValue
                 updateBlock:updateBlock];
-  self.possibleValues = [NSArray array];
+  self.possibleValues = possibleValues;
   self.controlType = RMXControlTypeTextPicker;
   return self;
 }
