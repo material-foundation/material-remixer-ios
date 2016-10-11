@@ -75,6 +75,8 @@ NSString *const RMXColorKeyAlpha = @"a";
                defaultValue:defaultValue
                 updateBlock:updateBlock];
   self.possibleValues = possibleValues;
+  // TODO(chuga): Implement a color picker control for color variables that don't have a pre-defined
+  // list of possible values.
   self.controlType =
       self.possibleValues.count > 0 ? RMXControlTypeColorList : RMXControlTypeColorPicker;
   return self;
