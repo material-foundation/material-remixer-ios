@@ -16,14 +16,14 @@
 
 #import "RMXCell.h"
 
-#import "RMXRangeVariable.h"
+#import "RMXNumberVariable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** Provides a table view cell that has a stepper control. */
 @interface RMXCellStepper : RMXCell
 
-@property(nonatomic, weak) RMXRangeVariable *variable;
+@property(nonatomic, weak) RMXNumberVariable *variable;
 
 @end
 

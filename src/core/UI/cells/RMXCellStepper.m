@@ -20,7 +20,13 @@
 
 #import "RMXCellStepper.h"
 
+#import "RMXRangeVariable.h"
+
 static CGFloat kTextPaddingTop = 10.0f;
+
+static CGFloat kDefaultMinValue = -100.0f;
+static CGFloat kDefaultMaxValue = 100.0f;
+static CGFloat kDefaultIncrementValue = 1;
 
 @implementation RMXCellStepper {
   UIStepper *_stepperControl;
@@ -46,7 +52,7 @@ static CGFloat kTextPaddingTop = 10.0f;
   _stepperControl = nil;
 }
 
-- (void)setVariable:(RMXRangeVariable *)variable {
+- (void)setVariable:(RMXNumberVariable *)variable {
   [super setVariable:variable];
   if (!variable) {
     return;
@@ -59,12 +65,18 @@ static CGFloat kTextPaddingTop = 10.0f;
               forControlEvents:UIControlEventValueChanged];
     self.accessoryView = _stepperControl;
   }
-
-  _stepperControl.minimumValue = variable.minimumValue;
-  _stepperControl.maximumValue = variable.maximumValue;
-  _stepperControl.stepValue = variable.increment;
+  
   _stepperControl.value = variable.selectedFloatValue;
-
+  if ([self.variable isKindOfClass:[RMXRangeVariable class]]) {
+    RMXRangeVariable *rangeVariable = self.variable;
+    _stepperControl.minimumValue = rangeVariable.minimumValue;
+    _stepperControl.maximumValue = rangeVariable.maximumValue;
+    _stepperControl.stepValue = rangeVariable.increment;
+  } else {
+    _stepperControl.minimumValue = kDefaultMinValue;
+    _stepperControl.maximumValue = kDefaultMaxValue;
+    _stepperControl.stepValue = kDefaultIncrementValue;
+  }
   self.textLabel.text = [NSString stringWithFormat:@"%.2f", variable.selectedFloatValue];
   self.detailTextLabel.text = variable.title;
 }

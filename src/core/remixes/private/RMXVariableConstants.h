@@ -18,6 +18,7 @@
 static NSString *const RMXTypeItemList = @"__VariableTypeItemList__";
 static NSString *const RMXTypeBoolean = @"__VariableTypeBoolean__";
 static NSString *const RMXTypeColor = @"__VariableTypeColor__";
+static NSString *const RMXTypeNumber = @"__VariableTypeNumber__";
 static NSString *const RMXTypeRange = @"__VariableTypeRange__";
 static NSString *const RMXTypeString = @"__VariableTypeString__";
 
