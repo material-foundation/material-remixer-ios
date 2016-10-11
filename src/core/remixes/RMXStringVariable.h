@@ -1,12 +1,12 @@
 /*
  Copyright 2016-present Google Inc. All Rights Reserved.
-
+ 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
-
+ 
  http://www.apache.org/licenses/LICENSE-2.0
-
+ 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,20 +16,18 @@
 
 #import "RMXVariable.h"
 
-NS_ASSUME_NONNULL_BEGIN
+/** RMXStringUpdateBlock is a block that will be invoked when a string Variable is updated. */
+typedef void (^RMXStringUpdateBlock)(RMXVariable *variable, NSString *selectedValue);
 
-/** A type of Variable for variables that have a limited set of options. */
-@interface RMXItemListVariable : RMXVariable
+@interface RMXStringVariable : RMXVariable
 
-/** The array of items for this Variable. */
-@property(nonatomic, strong) NSArray<id> *itemList;
+/** The selected value of this Variable */
+@property(nonatomic, strong) NSString *selectedValue;
 
 /** Designated initializer */
-+ (instancetype)addItemListVariableWithKey:(NSString *)key
-                              defaultValue:(id)defaultValue
-                                  itemList:(NSArray<id> *)itemList
-                               updateBlock:(RMXUpdateBlock)updateBlock;
++ (instancetype)addStringVariableWithKey:(NSString *)key
+                            defaultValue:(NSString *)defaultValue
+                          possibleValues:(NSArray<NSString *> *)possibleValues
+                             updateBlock:(RMXStringUpdateBlock)updateBlock;
 
 @end
-
-NS_ASSUME_NONNULL_END

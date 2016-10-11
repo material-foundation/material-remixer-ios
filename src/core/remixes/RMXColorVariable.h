@@ -16,6 +16,8 @@
 
 #import "RMXVariable.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class UIColor;
 
 /** RMXColorUpdateBlock is a block that will be invoked when a boolean Variable is updated. */
@@ -27,9 +29,15 @@ typedef void (^RMXColorUpdateBlock)(RMXVariable *variable, UIColor *selectedValu
 /** The selected value of this Variable */
 @property(nonatomic, strong) UIColor *selectedValue;
 
+/** If set, these are the only values this Variable can take. */
+@property(nonatomic, strong) NSArray<UIColor *> *possibleValues;
+
 /** Designated initializer */
 + (instancetype)addColorVariableWithKey:(NSString *)key
                            defaultValue:(UIColor *)defaultValue
+                         possibleValues:(NSArray<UIColor *> *)possibleValues
                             updateBlock:(RMXColorUpdateBlock)updateBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END

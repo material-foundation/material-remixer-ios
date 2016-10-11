@@ -16,6 +16,8 @@
 
 #import "RMXVariable.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /** RMXBooleanUpdateBlock is a block that will be invoked when a boolean Variable is updated. */
 typedef void (^RMXBooleanUpdateBlock)(RMXVariable *variable, BOOL selectedValue);
 
@@ -31,3 +33,5 @@ typedef void (^RMXBooleanUpdateBlock)(RMXVariable *variable, BOOL selectedValue)
                               updateBlock:(RMXBooleanUpdateBlock)updateBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END

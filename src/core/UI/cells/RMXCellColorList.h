@@ -16,14 +16,14 @@
 
 #import "RMXCell.h"
 
-#import "RMXItemListVariable.h"
+#import "RMXColorVariable.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** Provides a table view cell that has a color list control. */
 @interface RMXCellColorList : RMXCell
 
-@property(nonatomic, weak) RMXItemListVariable *variable;
+@property(nonatomic, weak) RMXColorVariable *variable;
 
 @end
 

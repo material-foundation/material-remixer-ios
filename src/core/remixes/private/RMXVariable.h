@@ -40,6 +40,9 @@ typedef void (^RMXUpdateBlock)(RMXVariable *variable, id selectedValue);
 /** The selected value of a given Variable. */
 @property(nonatomic, strong) id selectedValue;
 
+/** If set, these are the only values this Variable can take. */
+@property(nonatomic, strong) NSArray<id> *possibleValues;
+
 /** The type of Variable. See RMXRemixConstants for possible values. */
 @property(nonatomic, readonly) NSString *typeIdentifier;
 

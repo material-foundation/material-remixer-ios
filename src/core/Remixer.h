@@ -17,8 +17,9 @@
 #import <UIKit/UIKit.h>
 
 #import <Remixer/RMXBooleanVariable.h>
-#import <Remixer/RMXItemListVariable.h>
+#import <Remixer/RMXColorVariable.h>
 #import <Remixer/RMXRangeVariable.h>
+#import <Remixer/RMXStringVariable.h>
 #import <Remixer/RMXRemixer.h>
 
 //! Project version number for Remixer.

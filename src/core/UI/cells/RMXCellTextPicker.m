@@ -48,7 +48,7 @@ static CGFloat kPickerheight = 200.0f;
   _pickerButton = nil;
 }
 
-- (void)setVariable:(RMXItemListVariable *)variable {
+- (void)setVariable:(RMXVariable *)variable {
   [super setVariable:variable];
   if (!variable) {
     return;
@@ -99,7 +99,8 @@ static CGFloat kPickerheight = 200.0f;
                                kPickerheight)];
   picker.dataSource = self;
   picker.delegate = self;
-  NSInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
+  NSInteger selectedIndex =
+      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
   [picker selectRow:selectedIndex inComponent:0 animated:NO];
   [_alertController.view addSubview:picker];
   UIAlertAction *action =
@@ -116,7 +117,7 @@ static CGFloat kPickerheight = 200.0f;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-  return self.variable.itemList.count;
+  return self.variable.possibleValues.count;
 }
 
 #pragma mark - <UIPickerViewDelegate>
@@ -124,13 +125,13 @@ static CGFloat kPickerheight = 200.0f;
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-  return [self.variable.itemList objectAtIndex:row];
+  return [self.variable.possibleValues objectAtIndex:row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
-  [self.variable setSelectedValue:[self.variable.itemList objectAtIndex:row]];
+  [self.variable setSelectedValue:[self.variable.possibleValues objectAtIndex:row]];
   [self.variable save];
   [self updateSelectedIndicator];
   [_alertController dismissViewControllerAnimated:YES completion:nil];
@@ -139,7 +140,8 @@ static CGFloat kPickerheight = 200.0f;
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
+  NSUInteger selectedIndex =
+      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     [_pickerButton setTitle:self.variable.selectedValue forState:UIControlStateNormal];
   }

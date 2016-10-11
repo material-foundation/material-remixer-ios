@@ -40,7 +40,7 @@ static CGFloat kSwatchInnerPadding = 10.0f;
   _swatchButtons = nil;
 }
 
-- (void)setVariable:(RMXItemListVariable *)variable {
+- (void)setVariable:(RMXColorVariable *)variable {
   [super setVariable:variable];
   if (!variable) {
     return;
@@ -50,8 +50,8 @@ static CGFloat kSwatchInnerPadding = 10.0f;
     _swatchesContainer = [[UIView alloc] initWithFrame:self.controlViewWrapper.bounds];
     _swatchButtons = [NSMutableArray array];
     CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
-    for (NSUInteger count = 0; count < variable.itemList.count; count++) {
-      UIColor *color = variable.itemList[count];
+    for (NSUInteger count = 0; count < variable.possibleValues.count; count++) {
+      UIColor *color = variable.possibleValues[count];
       UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
       swatchButton.frame = CGRectMake((count * boundsHeight) + (count * kSwatchInnerPadding), 0,
                                       boundsHeight, boundsHeight);
@@ -84,7 +84,8 @@ static CGFloat kSwatchInnerPadding = 10.0f;
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
+  NSUInteger selectedIndex =
+      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     [self selectIndex:selectedIndex];
   }

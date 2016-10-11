@@ -32,9 +32,11 @@ NSString *const RMXColorKeyAlpha = @"a";
 
 + (instancetype)addColorVariableWithKey:(NSString *)key
                            defaultValue:(UIColor *)defaultValue
+                         possibleValues:(NSArray<UIColor *> *)possibleValues
                             updateBlock:(RMXColorUpdateBlock)updateBlock {
   RMXColorVariable *variable =
       [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];
+  variable.possibleValues = possibleValues;
   [RMXRemixer addVariable:variable];
   return variable;
 }
@@ -50,6 +52,9 @@ NSString *const RMXColorKeyAlpha = @"a";
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = [self rgbaDictionaryFromColor:self.selectedValue];
+  if (self.possibleValues.count > 0) {
+    json[RMXDictionaryKeyItemList] = [self colorsToJSON];
+  }
   return json;
 }
 
@@ -62,8 +67,17 @@ NSString *const RMXColorKeyAlpha = @"a";
              typeIdentifier:RMXTypeColor
                defaultValue:defaultValue
                 updateBlock:updateBlock];
+  self.possibleValues = [NSArray array];
   self.controlType = RMXControlTypeColorPicker;
   return self;
+}
+
+- (NSArray *)colorsToJSON {
+  NSMutableArray<NSDictionary *> *rgbaColors = [NSMutableArray array];
+  for (UIColor *color in self.possibleValues) {
+    [rgbaColors addObject:[[self class] rgbaDictionaryFromColor:color]];
+  }
+  return rgbaColors;
 }
 
 - (NSDictionary *)rgbaDictionaryFromColor:(UIColor *)color {
