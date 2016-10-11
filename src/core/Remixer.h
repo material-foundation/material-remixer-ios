@@ -19,8 +19,8 @@
 #import <Remixer/RMXBooleanVariable.h>
 #import <Remixer/RMXColorVariable.h>
 #import <Remixer/RMXRangeVariable.h>
-#import <Remixer/RMXStringVariable.h>
 #import <Remixer/RMXRemixer.h>
+#import <Remixer/RMXStringVariable.h>
 
 //! Project version number for Remixer.
 FOUNDATION_EXPORT double RemixerVersionNumber;
