@@ -49,7 +49,7 @@
                      minValue:0.5
                      maxValue:2.0
                     increment:0
-                  updateBlock:^(RMXRangeVariable *_Nonnull variable, CGFloat selectedValue) {
+                  updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
                     // Set box 1 animation.
                     CALayer *presentationLayer = _box1.layer.presentationLayer;
                     CGFloat angle =

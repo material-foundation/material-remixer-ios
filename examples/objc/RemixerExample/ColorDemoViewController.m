@@ -62,7 +62,7 @@
                  defaultValue:1
                      minValue:0
                      maxValue:1
-                  updateBlock:^(RMXRangeVariable *_Nonnull variable, CGFloat selectedValue) {
+                  updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
                     _box.alpha = selectedValue;
                   }];
 
@@ -73,7 +73,7 @@
                      minValue:40
                      maxValue:200
                     increment:20
-                  updateBlock:^(RMXRangeVariable *_Nonnull variable, CGFloat selectedValue) {
+                  updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
                     CGRect frame = _box.frame;
                     frame.size.width = selectedValue;
                     _box.frame = frame;
