@@ -40,7 +40,7 @@
       addColorVariableWithKey:@"colorPicker"
                  defaultValue:colorOptions[0]
                possibleValues:colorOptions
-                  updateBlock:^(RMXVariable *_Nonnull variable, UIColor *selectedValue) {
+                  updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
                     _box.backgroundColor = selectedValue;
                   }];
 
@@ -50,7 +50,7 @@
       addStringVariableWithKey:@"theme"
                   defaultValue:themesOptions[0]
                 possibleValues:themesOptions
-                   updateBlock:^(RMXVariable *_Nonnull variable, NSString *selectedValue) {
+                   updateBlock:^(RMXStringVariable *_Nonnull variable, NSString *selectedValue) {
                      self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
                                                      ? [UIColor whiteColor]
                                                      : [UIColor darkGrayColor];
@@ -62,7 +62,7 @@
                  defaultValue:1
                      minValue:0
                      maxValue:1
-                  updateBlock:^(RMXVariable *_Nonnull variable, CGFloat selectedValue) {
+                  updateBlock:^(RMXRangeVariable *_Nonnull variable, CGFloat selectedValue) {
                     _box.alpha = selectedValue;
                   }];
 
@@ -73,7 +73,7 @@
                      minValue:40
                      maxValue:200
                     increment:20
-                  updateBlock:^(RMXVariable *_Nonnull variable, CGFloat selectedValue) {
+                  updateBlock:^(RMXRangeVariable *_Nonnull variable, CGFloat selectedValue) {
                     CGRect frame = _box.frame;
                     frame.size.width = selectedValue;
                     _box.frame = frame;
@@ -83,7 +83,7 @@
   [RMXBooleanVariable
       addBooleanVariableWithKey:@"show"
                    defaultValue:YES
-                    updateBlock:^(RMXVariable *_Nonnull variable, BOOL selectedValue) {
+                    updateBlock:^(RMXBooleanVariable *_Nonnull variable, BOOL selectedValue) {
                       _box.hidden = !selectedValue;
                     }];
 
