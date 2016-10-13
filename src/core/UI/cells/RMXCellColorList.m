@@ -46,28 +46,26 @@ static CGFloat kSwatchInnerPadding = 10.0f;
     return;
   }
 
-  if (!_swatchesContainer) {
-    _swatchesContainer = [[UIView alloc] initWithFrame:self.controlViewWrapper.bounds];
-    _swatchButtons = [NSMutableArray array];
-    CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
-    for (NSUInteger count = 0; count < variable.possibleValues.count; count++) {
-      UIColor *color = variable.possibleValues[count];
-      UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-      swatchButton.frame = CGRectMake((count * boundsHeight) + (count * kSwatchInnerPadding), 0,
-                                      boundsHeight, boundsHeight);
-      swatchButton.layer.cornerRadius = boundsHeight / 2;
-      swatchButton.layer.shouldRasterize = YES;
-      swatchButton.layer.rasterizationScale = [UIScreen mainScreen].scale;
-      swatchButton.backgroundColor = color;
-      swatchButton.tintColor = [UIColor whiteColor];
-      [swatchButton addTarget:self
-                       action:@selector(swatchPressed:)
-             forControlEvents:UIControlEventTouchUpInside];
-      [_swatchButtons addObject:swatchButton];
-      [_swatchesContainer addSubview:swatchButton];
-    }
-    [self.controlViewWrapper addSubview:_swatchesContainer];
+  _swatchesContainer = [[UIView alloc] initWithFrame:self.controlViewWrapper.bounds];
+  _swatchButtons = [NSMutableArray array];
+  CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
+  for (NSUInteger count = 0; count < variable.possibleValues.count; count++) {
+    UIColor *color = variable.possibleValues[count];
+    UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    swatchButton.frame = CGRectMake((count * boundsHeight) + (count * kSwatchInnerPadding), 0,
+                                    boundsHeight, boundsHeight);
+    swatchButton.layer.cornerRadius = boundsHeight / 2;
+    swatchButton.layer.shouldRasterize = YES;
+    swatchButton.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    swatchButton.backgroundColor = color;
+    swatchButton.tintColor = [UIColor whiteColor];
+    [swatchButton addTarget:self
+                     action:@selector(swatchPressed:)
+           forControlEvents:UIControlEventTouchUpInside];
+    [_swatchButtons addObject:swatchButton];
+    [_swatchesContainer addSubview:swatchButton];
   }
+  [self.controlViewWrapper addSubview:_swatchesContainer];
 
   [self updateSelectedIndicator];
   self.detailTextLabel.text = variable.title;

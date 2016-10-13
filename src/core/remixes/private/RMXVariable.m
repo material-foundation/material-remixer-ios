@@ -76,6 +76,8 @@
   self.selectedValue = storedVariable.selectedValue;
   self.possibleValues = storedVariable.possibleValues;
   [self executeUpdateBlocks];
+  [[NSNotificationCenter defaultCenter] postNotificationName:RMXVariableUpdateNotification
+                                                      object:self];
 }
 
 - (void)executeUpdateBlocks {
