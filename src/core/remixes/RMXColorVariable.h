@@ -18,10 +18,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class RMXColorVariable;
 @class UIColor;
 
 /** RMXColorUpdateBlock is a block that will be invoked when a boolean Variable is updated. */
-typedef void (^RMXColorUpdateBlock)(RMXVariable *variable, UIColor *selectedValue);
+typedef void (^RMXColorUpdateBlock)(RMXColorVariable *variable, UIColor *selectedValue);
 
 /** A type of Variable for colors. */
 @interface RMXColorVariable : RMXVariable

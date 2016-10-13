@@ -18,6 +18,8 @@
 
 #import "RMXNumberVariable.h"
 
+@class RMXRangeVariable;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /** A type of Variable for numeric values. */

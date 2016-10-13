@@ -60,7 +60,9 @@
   self = [super initWithKey:key
              typeIdentifier:RMXTypeString
                defaultValue:defaultValue
-                updateBlock:updateBlock];
+                updateBlock:^(RMXVariable * _Nonnull variable, id  _Nonnull selectedValue) {
+                  updateBlock(variable, selectedValue);
+                }];
   self.possibleValues = possibleValues;
   self.controlType = RMXControlTypeTextPicker;
   return self;

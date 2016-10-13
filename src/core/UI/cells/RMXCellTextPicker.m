@@ -125,7 +125,7 @@ static CGFloat kPickerheight = 200.0f;
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-  return [self.variable.possibleValues objectAtIndex:row];
+  return [[self.variable.possibleValues objectAtIndex:row] description];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
