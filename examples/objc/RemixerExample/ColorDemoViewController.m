@@ -56,15 +56,12 @@
                                                      : [UIColor darkGrayColor];
                    }];
 
-  // Add slider control.
+  // Add slider control. Cloud API.
   [RMXRangeVariable
-      addRangeVariableWithKey:@"alpha"
-                 defaultValue:1
-                     minValue:0
-                     maxValue:1
-                  updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
-                    _box.alpha = selectedValue;
-                  }];
+      rangeVariableForKey:@"alpha"
+              updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
+                _box.alpha = selectedValue;
+              }];
 
   // Add stepper control.
   [RMXRangeVariable

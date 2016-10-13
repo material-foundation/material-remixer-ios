@@ -72,6 +72,12 @@
   [RMXRemixer saveVariable:self];
 }
 
+- (void)updateToStoredVariable:(RMXVariable *)storedVariable {
+  self.selectedValue = storedVariable.selectedValue;
+  self.possibleValues = storedVariable.possibleValues;
+  [self executeUpdateBlocks];
+}
+
 - (void)executeUpdateBlocks {
   for (RMXUpdateBlock updateBlock in _updateBlocks) {
     updateBlock(self, _selectedValue);

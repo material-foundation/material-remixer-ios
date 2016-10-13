@@ -32,8 +32,14 @@
 #define SWIPE_GESTURE_REQUIRED_TOUCHES 3
 #endif
 
+typedef NS_ENUM(NSInteger, RMXStorageType) {
+  RMXStorageTypeLocal = 0,
+  RMXStorageTypeCloud = 1
+};
+
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
 @property(nonatomic, strong) NSMutableDictionary *variables;
+@property(nonatomic, assign) RMXStorageType storageType;
 @property(nonatomic, strong) id<RMXStorageController> storage;
 @property(nonatomic, strong) RMXOverlayViewController *overlayController;
 @property(nonatomic, strong) UISwipeGestureRecognizer *swipeUpGesture;
@@ -46,7 +52,6 @@
   self = [super init];
   if (self) {
     _variables = [NSMutableDictionary dictionary];
-    _storage = [[RMXFirebaseStorageController alloc] init];
   }
   return self;
 }
@@ -58,6 +63,18 @@
     sharedInstance = [[self alloc] init];
   });
   return sharedInstance;
+}
+
++ (void)startInLocalMode {
+  RMXRemixer *instance = [self sharedInstance];
+  instance.storageType = RMXStorageTypeLocal;
+  [self start];
+}
+
++ (void)startInCloudMode {
+  RMXRemixer *instance = [self sharedInstance];
+  instance.storageType = RMXStorageTypeCloud;
+  [self start];
 }
 
 + (void)start {
@@ -78,7 +95,12 @@
   instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
-
+  
+  if (instance.storageType == RMXStorageTypeLocal) {
+    instance.storage = [[RMXLocalStorageController alloc] init];
+  } else {
+    instance.storage = [[RMXFirebaseStorageController alloc] init];
+  }
   [instance.storage setup];
   [instance.storage startObservingUpdates];
 }
@@ -144,7 +166,7 @@
   return [[[self sharedInstance] variables] objectForKey:key];
 }
 
-+ (void)addVariable:(RMXVariable *)variable {
++ (RMXVariable *)addVariable:(RMXVariable *)variable {
   RMXVariable *existingVariable = [self variableForKey:variable.key];
   if (!existingVariable) {
     [[[self sharedInstance] variables] setObject:variable forKey:variable.key];
@@ -161,6 +183,7 @@
 
   // TODO(chuga): Figure out when and how to do the initial |saveRemix|.
   [[[self sharedInstance] overlayController] reloadData];
+  return variable;
 }
 
 + (void)removeVariable:(RMXVariable *)variable {
@@ -186,8 +209,12 @@
 }
 
 + (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable {
-  // Stored Variables are currently only being used to update the selected value.
-  [variable setSelectedValue:storedVariable.selectedValue];
+  RMXRemixer *instance = [self sharedInstance];
+  if (instance.storageType == RMXStorageTypeCloud) {
+    [variable updateToStoredVariable:storedVariable];
+  } else {
+    [variable setSelectedValue:storedVariable.selectedValue];
+  }
 }
 
 @end

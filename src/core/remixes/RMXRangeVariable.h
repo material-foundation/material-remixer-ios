@@ -49,6 +49,12 @@ NS_ASSUME_NONNULL_BEGIN
                                maxValue:(CGFloat)maxValue
                             updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
+/** Cloud initializer */
++ (instancetype)rangeVariableForKey:(NSString *)key
+                        updateBlock:(RMXNumberUpdateBlock)updateBlock;
+
+- (void)updateToStoredVariable:(RMXRangeVariable *)storedVariable;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -21,6 +21,14 @@
 
 @implementation RMXLocalStorageController
 
+- (void)setup {
+  // No-op.
+}
+
+- (void)startObservingUpdates {
+  // No-op.
+}
+
 - (RMXVariable *)variableForKey:(NSString *)key {
   NSDictionary *json = [[NSUserDefaults standardUserDefaults] objectForKey:key];
   return [RMXVariableFactory variableFromJSONDictionary:json];

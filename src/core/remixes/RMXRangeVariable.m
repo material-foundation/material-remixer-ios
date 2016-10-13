@@ -32,8 +32,7 @@
                                                 maxValue:maxValue
                                                increment:increment
                                              updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+  return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)addRangeVariableWithKey:(NSString *)key
@@ -49,6 +48,17 @@
                            updateBlock:updateBlock];
 }
 
++ (instancetype)rangeVariableForKey:(NSString *)key
+                        updateBlock:(RMXNumberUpdateBlock)updateBlock {
+  RMXRangeVariable *variable = [[self alloc] initWithKey:key
+                                            defaultValue:1
+                                                minValue:0
+                                                maxValue:1
+                                               increment:0
+                                             updateBlock:updateBlock];
+  return [RMXRemixer addVariable:variable];
+}
+
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
   NSString *key = [dictionary objectForKey:RMXDictionaryKeyKey];
   CGFloat selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] floatValue];
@@ -61,6 +71,13 @@
                           maxValue:maxValue
                          increment:increment
                        updateBlock:nil];
+}
+
+- (void)updateToStoredVariable:(RMXRangeVariable *)storedVariable {
+  self.minimumValue = storedVariable.minimumValue;
+  self.maximumValue = storedVariable.maximumValue;
+  self.increment = storedVariable.increment;
+  [super updateToStoredVariable:storedVariable];
 }
 
 - (NSDictionary *)toJSON {
