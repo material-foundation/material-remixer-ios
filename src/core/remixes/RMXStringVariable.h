@@ -16,10 +16,12 @@
 
 #import "RMXVariable.h"
 
+@class RMXStringVariable;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /** RMXStringUpdateBlock is a block that will be invoked when a string Variable is updated. */
-typedef void (^RMXStringUpdateBlock)(RMXVariable *variable, NSString *selectedValue);
+typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *selectedValue);
 
 @interface RMXStringVariable : RMXVariable
 
