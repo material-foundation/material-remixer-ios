@@ -37,6 +37,8 @@
 
 + (instancetype)rangeVariableWithKey:(NSString *)key
                          updateBlock:(RMXNumberUpdateBlock)updateBlock {
+  // These default values are just temporary. We change them to the right values as soon as we
+  // get the data from the cloud service.
   RMXRangeVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:1
                                                 minValue:0

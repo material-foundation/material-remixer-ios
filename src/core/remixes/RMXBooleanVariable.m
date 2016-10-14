@@ -30,6 +30,8 @@
 
 + (instancetype)booleanVariableWithKey:(NSString *)key
                            updateBlock:(RMXBooleanUpdateBlock)updateBlock {
+  // These default values are just temporary. We change them to the right values as soon as we
+  // get the data from the cloud service.
   RMXBooleanVariable *variable =
       [[self alloc] initWithKey:key defaultValue:NO updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];

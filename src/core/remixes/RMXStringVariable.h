@@ -31,14 +31,14 @@ typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *sele
 /** If set, these are the only values this Variable can take. */
 @property(nonatomic, strong) NSArray<NSString *> *possibleValues;
 
-/** Designated initializer */
+/** Cloud API */
++ (instancetype)stringVariableWithKey:(NSString *)key
+                          updateBlock:(RMXStringUpdateBlock)updateBlock;
+
+/** Local API */
 + (instancetype)stringVariableWithKey:(NSString *)key
                          defaultValue:(NSString *)defaultValue
                        possibleValues:(NSArray<NSString *> *)possibleValues
-                          updateBlock:(RMXStringUpdateBlock)updateBlock;
-
-/** Cloud initializer */
-+ (instancetype)stringVariableWithKey:(NSString *)key
                           updateBlock:(RMXStringUpdateBlock)updateBlock;
 
 @end

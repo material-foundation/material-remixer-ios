@@ -34,16 +34,16 @@ NS_ASSUME_NONNULL_BEGIN
 /** The delta used to increment or decrement the value. Optional, defaults to zero. */
 @property(nonatomic, assign) CGFloat increment;
 
-/** Designated initializer */
+/** Cloud API */
++ (instancetype)rangeVariableWithKey:(NSString *)key
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
+
+/** Local API */
 + (instancetype)rangeVariableWithKey:(NSString *)key
                         defaultValue:(CGFloat)defaultValue
                             minValue:(CGFloat)minValue
                             maxValue:(CGFloat)maxValue
                            increment:(CGFloat)increment
-                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
-
-/** Cloud initializer */
-+ (instancetype)rangeVariableWithKey:(NSString *)key
                          updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 @end

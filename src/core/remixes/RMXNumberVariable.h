@@ -34,13 +34,13 @@ typedef void (^RMXNumberUpdateBlock)(RMXNumberVariable *variable, CGFloat select
 /** If set, these are the only values this Variable can take. */
 @property(nonatomic, strong) NSArray<NSNumber *> *possibleValues;
 
-/** Designated initializer */
+/** Cloud API */
 + (instancetype)numberVariableWithKey:(NSString *)key
-                         defaultValue:(CGFloat)defaultValue
                           updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
-/** Cloud initializer */
+/** Local API */
 + (instancetype)numberVariableWithKey:(NSString *)key
+                         defaultValue:(CGFloat)defaultValue
                           updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 @end

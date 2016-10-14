@@ -29,11 +29,13 @@ typedef void (^RMXBooleanUpdateBlock)(RMXBooleanVariable *variable, BOOL selecte
 /** Convenience accessor for the selectedValue property. */
 @property(nonatomic, assign) BOOL selectedBooleanValue;
 
+/** Cloud API */
 + (instancetype)booleanVariableWithKey:(NSString *)key
-                          defaultValue:(BOOL)defaultValue
                            updateBlock:(RMXBooleanUpdateBlock)updateBlock;
 
+/** Local API */
 + (instancetype)booleanVariableWithKey:(NSString *)key
+                          defaultValue:(BOOL)defaultValue
                            updateBlock:(RMXBooleanUpdateBlock)updateBlock;
 
 @end

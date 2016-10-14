@@ -33,11 +33,11 @@ typedef void (^RMXColorUpdateBlock)(RMXColorVariable *variable, UIColor *selecte
 /** If set, these are the only values this Variable can take. */
 @property(nonatomic, strong) NSArray<UIColor *> *possibleValues;
 
-/** Cloud initializer */
+/** Cloud API */
 + (instancetype)colorVariableWithKey:(NSString *)key
                          updateBlock:(RMXColorUpdateBlock)updateBlock;
 
-/** Single-device initializer */
+/** Local API */
 + (instancetype)colorVariableWithKey:(NSString *)key
                         defaultValue:(UIColor *)defaultValue
                       possibleValues:(NSArray<UIColor *> *)possibleValues

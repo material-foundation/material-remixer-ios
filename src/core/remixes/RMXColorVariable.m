@@ -45,6 +45,8 @@ NSString *const RMXColorKeyAlpha = @"a";
 
 + (instancetype)colorVariableWithKey:(NSString *)key
                          updateBlock:(RMXColorUpdateBlock)updateBlock {
+  // These default values are just temporary. We change them to the right values as soon as we
+  // get the data from the cloud service.
   RMXColorVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:[UIColor redColor]
                                           possibleValues:nil
