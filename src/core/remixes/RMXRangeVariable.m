@@ -20,12 +20,12 @@
 
 @implementation RMXRangeVariable
 
-+ (instancetype)addRangeVariableWithKey:(NSString *)key
-                           defaultValue:(CGFloat)defaultValue
-                               minValue:(CGFloat)minValue
-                               maxValue:(CGFloat)maxValue
-                              increment:(CGFloat)increment
-                            updateBlock:(RMXNumberUpdateBlock)updateBlock {
++ (instancetype)rangeVariableWithKey:(NSString *)key
+                        defaultValue:(CGFloat)defaultValue
+                            minValue:(CGFloat)minValue
+                            maxValue:(CGFloat)maxValue
+                           increment:(CGFloat)increment
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock {
   RMXRangeVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:defaultValue
                                                 minValue:minValue
@@ -35,21 +35,8 @@
   return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)addRangeVariableWithKey:(NSString *)key
-                           defaultValue:(CGFloat)defaultValue
-                               minValue:(CGFloat)minValue
-                               maxValue:(CGFloat)maxValue
-                            updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  return [self addRangeVariableWithKey:key
-                          defaultValue:defaultValue
-                              minValue:minValue
-                              maxValue:maxValue
-                             increment:0
-                           updateBlock:updateBlock];
-}
-
-+ (instancetype)rangeVariableForKey:(NSString *)key
-                        updateBlock:(RMXNumberUpdateBlock)updateBlock {
++ (instancetype)rangeVariableWithKey:(NSString *)key
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock {
   RMXRangeVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:1
                                                 minValue:0

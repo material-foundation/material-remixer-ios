@@ -31,10 +31,10 @@ NSString *const RMXColorKeyAlpha = @"a";
 @dynamic selectedValue;
 @dynamic possibleValues;
 
-+ (instancetype)addColorVariableWithKey:(NSString *)key
-                           defaultValue:(UIColor *)defaultValue
-                         possibleValues:(NSArray<UIColor *> *)possibleValues
-                            updateBlock:(RMXColorUpdateBlock)updateBlock {
++ (instancetype)colorVariableWithKey:(NSString *)key
+                        defaultValue:(UIColor *)defaultValue
+                      possibleValues:(NSArray<UIColor *> *)possibleValues
+                         updateBlock:(RMXColorUpdateBlock)updateBlock {
   RMXColorVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:defaultValue
                                           possibleValues:possibleValues
@@ -43,8 +43,8 @@ NSString *const RMXColorKeyAlpha = @"a";
   return variable;
 }
 
-+ (instancetype)colorVariableForKey:(NSString *)key
-                        updateBlock:(RMXColorUpdateBlock)updateBlock {
++ (instancetype)colorVariableWithKey:(NSString *)key
+                         updateBlock:(RMXColorUpdateBlock)updateBlock {
   RMXColorVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:[UIColor redColor]
                                           possibleValues:nil

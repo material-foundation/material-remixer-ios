@@ -35,13 +35,13 @@ typedef void (^RMXNumberUpdateBlock)(RMXNumberVariable *variable, CGFloat select
 @property(nonatomic, strong) NSArray<NSNumber *> *possibleValues;
 
 /** Designated initializer */
-+ (instancetype)addNumberVariableWithKey:(NSString *)key
-                            defaultValue:(CGFloat)defaultValue
-                             updateBlock:(RMXNumberUpdateBlock)updateBlock;
++ (instancetype)numberVariableWithKey:(NSString *)key
+                         defaultValue:(CGFloat)defaultValue
+                          updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 /** Cloud initializer */
-+ (instancetype)numberVariableForKey:(NSString *)key
-                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
++ (instancetype)numberVariableWithKey:(NSString *)key
+                          updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 @end
 

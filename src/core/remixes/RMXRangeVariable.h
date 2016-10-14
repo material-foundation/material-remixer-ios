@@ -35,23 +35,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) CGFloat increment;
 
 /** Designated initializer */
-+ (instancetype)addRangeVariableWithKey:(NSString *)key
-                           defaultValue:(CGFloat)defaultValue
-                               minValue:(CGFloat)minValue
-                               maxValue:(CGFloat)maxValue
-                              increment:(CGFloat)increment
-                            updateBlock:(RMXNumberUpdateBlock)updateBlock;
-
-/** Convenience initializer */
-+ (instancetype)addRangeVariableWithKey:(NSString *)key
-                           defaultValue:(CGFloat)defaultValue
-                               minValue:(CGFloat)minValue
-                               maxValue:(CGFloat)maxValue
-                            updateBlock:(RMXNumberUpdateBlock)updateBlock;
++ (instancetype)rangeVariableWithKey:(NSString *)key
+                        defaultValue:(CGFloat)defaultValue
+                            minValue:(CGFloat)minValue
+                            maxValue:(CGFloat)maxValue
+                           increment:(CGFloat)increment
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 /** Cloud initializer */
-+ (instancetype)rangeVariableForKey:(NSString *)key
-                        updateBlock:(RMXNumberUpdateBlock)updateBlock;
++ (instancetype)rangeVariableWithKey:(NSString *)key
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 @end
 

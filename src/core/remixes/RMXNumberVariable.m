@@ -22,17 +22,17 @@
 
 @dynamic possibleValues;
 
-+ (instancetype)addNumberVariableWithKey:(NSString *)key
-                            defaultValue:(CGFloat)defaultValue
-                             updateBlock:(RMXNumberUpdateBlock)updateBlock {
++ (instancetype)numberVariableWithKey:(NSString *)key
+                         defaultValue:(CGFloat)defaultValue
+                          updateBlock:(RMXNumberUpdateBlock)updateBlock {
   RMXNumberVariable *variable = [[self alloc] initWithKey:key
                                              defaultValue:defaultValue
                                               updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)numberVariableForKey:(NSString *)key
-                         updateBlock:(RMXNumberUpdateBlock)updateBlock {
++ (instancetype)numberVariableWithKey:(NSString *)key
+                          updateBlock:(RMXNumberUpdateBlock)updateBlock {
   RMXNumberVariable *variable = [[self alloc] initWithKey:key
                                              defaultValue:1
                                               updateBlock:updateBlock];

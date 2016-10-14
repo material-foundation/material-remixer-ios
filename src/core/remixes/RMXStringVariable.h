@@ -32,14 +32,14 @@ typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *sele
 @property(nonatomic, strong) NSArray<NSString *> *possibleValues;
 
 /** Designated initializer */
-+ (instancetype)addStringVariableWithKey:(NSString *)key
-                            defaultValue:(NSString *)defaultValue
-                          possibleValues:(NSArray<NSString *> *)possibleValues
-                             updateBlock:(RMXStringUpdateBlock)updateBlock;
++ (instancetype)stringVariableWithKey:(NSString *)key
+                         defaultValue:(NSString *)defaultValue
+                       possibleValues:(NSArray<NSString *> *)possibleValues
+                          updateBlock:(RMXStringUpdateBlock)updateBlock;
 
 /** Cloud initializer */
-+ (instancetype)stringVariableForKey:(NSString *)key
-                         updateBlock:(RMXStringUpdateBlock)updateBlock;
++ (instancetype)stringVariableWithKey:(NSString *)key
+                          updateBlock:(RMXStringUpdateBlock)updateBlock;
 
 @end
 
