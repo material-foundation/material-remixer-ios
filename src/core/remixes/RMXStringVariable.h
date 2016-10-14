@@ -37,6 +37,10 @@ typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *sele
                           possibleValues:(NSArray<NSString *> *)possibleValues
                              updateBlock:(RMXStringUpdateBlock)updateBlock;
 
+/** Cloud initializer */
++ (instancetype)stringVariableForKey:(NSString *)key
+                         updateBlock:(RMXStringUpdateBlock)updateBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -31,8 +31,16 @@
                                              defaultValue:defaultValue
                                            possibleValues:possibleValues
                                               updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+  return [RMXRemixer addVariable:variable];
+}
+
++ (instancetype)stringVariableForKey:(NSString *)key
+                         updateBlock:(RMXStringUpdateBlock)updateBlock {
+  RMXStringVariable *variable = [[self alloc] initWithKey:key
+                                             defaultValue:@""
+                                           possibleValues:nil
+                                              updateBlock:updateBlock];
+  return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {

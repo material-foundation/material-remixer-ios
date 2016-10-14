@@ -22,17 +22,21 @@
 
 @dynamic possibleValues;
 
-+ (instancetype)addRangeVariableWithKey:(NSString *)key
-                           defaultValue:(CGFloat)defaultValue
-                               minValue:(CGFloat)minValue
-                               maxValue:(CGFloat)maxValue
-                              increment:(CGFloat)increment
-                            updateBlock:(RMXNumberUpdateBlock)updateBlock {
++ (instancetype)addNumberVariableWithKey:(NSString *)key
+                            defaultValue:(CGFloat)defaultValue
+                             updateBlock:(RMXNumberUpdateBlock)updateBlock {
   RMXNumberVariable *variable = [[self alloc] initWithKey:key
                                              defaultValue:defaultValue
                                               updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+  return [RMXRemixer addVariable:variable];
+}
+
++ (instancetype)numberVariableForKey:(NSString *)key
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock {
+  RMXNumberVariable *variable = [[self alloc] initWithKey:key
+                                             defaultValue:1
+                                              updateBlock:updateBlock];
+  return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {

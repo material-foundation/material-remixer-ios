@@ -25,8 +25,14 @@
                               updateBlock:(RMXBooleanUpdateBlock)updateBlock {
   RMXBooleanVariable *variable =
       [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+  return [RMXRemixer addVariable:variable];
+}
+
++ (instancetype)booleanVariableForKey:(NSString *)key
+                          updateBlock:(RMXBooleanUpdateBlock)updateBlock {
+  RMXBooleanVariable *variable =
+      [[self alloc] initWithKey:key defaultValue:NO updateBlock:updateBlock];
+  return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {

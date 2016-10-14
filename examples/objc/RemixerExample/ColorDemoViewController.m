@@ -34,15 +34,12 @@
   _box.backgroundColor = [UIColor redColor];
   [self.view addSubview:_box];
 
-  // Add color picker.
-  NSArray *colorOptions = @[ [UIColor blueColor], [UIColor redColor], [UIColor greenColor] ];
+  // Add color picker. Cloud API.
   [RMXColorVariable
-      addColorVariableWithKey:@"colorPicker"
-                 defaultValue:colorOptions[0]
-               possibleValues:colorOptions
-                  updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
-                    _box.backgroundColor = selectedValue;
-                  }];
+      colorVariableForKey:@"colorPicker"
+              updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
+                _box.backgroundColor = selectedValue;
+              }];
 
   // Add segment control.
   NSArray *themesOptions = @[ @"Light", @"Dark" ];

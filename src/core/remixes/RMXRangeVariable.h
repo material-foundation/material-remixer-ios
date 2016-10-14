@@ -53,8 +53,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)rangeVariableForKey:(NSString *)key
                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
-- (void)updateToStoredVariable:(RMXRangeVariable *)storedVariable;
-
 @end
 
 NS_ASSUME_NONNULL_END

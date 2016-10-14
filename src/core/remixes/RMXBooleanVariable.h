@@ -34,6 +34,10 @@ typedef void (^RMXBooleanUpdateBlock)(RMXBooleanVariable *variable, BOOL selecte
                              defaultValue:(BOOL)defaultValue
                               updateBlock:(RMXBooleanUpdateBlock)updateBlock;
 
+/** Cloud initializer */
++ (instancetype)booleanVariableForKey:(NSString *)key
+                          updateBlock:(RMXBooleanUpdateBlock)updateBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

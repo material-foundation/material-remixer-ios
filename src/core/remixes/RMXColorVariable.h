@@ -39,6 +39,10 @@ typedef void (^RMXColorUpdateBlock)(RMXColorVariable *variable, UIColor *selecte
                          possibleValues:(NSArray<UIColor *> *)possibleValues
                             updateBlock:(RMXColorUpdateBlock)updateBlock;
 
+/** Cloud initializer */
++ (instancetype)colorVariableForKey:(NSString *)key
+                        updateBlock:(RMXColorUpdateBlock)updateBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

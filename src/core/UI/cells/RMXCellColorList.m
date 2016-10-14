@@ -46,6 +46,13 @@ static CGFloat kSwatchInnerPadding = 10.0f;
     return;
   }
 
+  for (UIButton *button in _swatchButtons) {
+    [button removeFromSuperview];
+  }
+  if (_swatchesContainer) {
+    [_swatchesContainer removeFromSuperview];
+  }
+
   _swatchesContainer = [[UIView alloc] initWithFrame:self.controlViewWrapper.bounds];
   _swatchButtons = [NSMutableArray array];
   CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);

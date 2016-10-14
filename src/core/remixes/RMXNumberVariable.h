@@ -39,6 +39,10 @@ typedef void (^RMXNumberUpdateBlock)(RMXNumberVariable *variable, CGFloat select
                             defaultValue:(CGFloat)defaultValue
                              updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
+/** Cloud initializer */
++ (instancetype)numberVariableForKey:(NSString *)key
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
