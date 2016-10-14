@@ -17,19 +17,22 @@
 #import "RMXVariableFactory.h"
 
 #import "RMXBooleanVariable.h"
-#import "RMXItemListVariable.h"
+#import "RMXColorVariable.h"
 #import "RMXRangeVariable.h"
+#import "RMXStringVariable.h"
 
 @implementation RMXVariableFactory
 
 + (RMXVariable *)variableFromJSONDictionary:(NSDictionary *)dictionary {
   NSString *typeIdentifier = [dictionary objectForKey:RMXDictionaryKeyTypeIdentifier];
-  if ([typeIdentifier isEqualToString:RMXTypeItemList]) {
-    return [RMXItemListVariable variableFromDictionary:dictionary];
-  } else if ([typeIdentifier isEqualToString:RMXTypeRange]) {
+  if ([typeIdentifier isEqualToString:RMXTypeRange]) {
     return [RMXRangeVariable variableFromDictionary:dictionary];
   } else if ([typeIdentifier isEqualToString:RMXTypeBoolean]) {
     return [RMXBooleanVariable variableFromDictionary:dictionary];
+  } else if ([typeIdentifier isEqualToString:RMXTypeColor]) {
+    return [RMXColorVariable variableFromDictionary:dictionary];
+  } else if ([typeIdentifier isEqualToString:RMXTypeString]) {
+    return [RMXStringVariable variableFromDictionary:dictionary];
   }
   return nil;
 }

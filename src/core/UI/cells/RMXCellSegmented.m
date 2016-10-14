@@ -35,14 +35,14 @@
   _segmentControl = nil;
 }
 
-- (void)setVariable:(RMXItemListVariable *)variable {
+- (void)setVariable:(RMXVariable *)variable {
   [super setVariable:variable];
   if (!variable) {
     return;
   }
 
   if (!_segmentControl) {
-    _segmentControl = [[UISegmentedControl alloc] initWithItems:variable.itemList];
+    _segmentControl = [[UISegmentedControl alloc] initWithItems:variable.possibleValues];
     _segmentControl.frame = self.controlViewWrapper.bounds;
     _segmentControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [_segmentControl addTarget:self
@@ -58,7 +58,7 @@
 #pragma mark - Control Events
 
 - (void)segmentUpdated:(UISegmentedControl *)segmentControl {
-  id newValue = [self.variable.itemList objectAtIndex:segmentControl.selectedSegmentIndex];
+  id newValue = [self.variable.possibleValues objectAtIndex:segmentControl.selectedSegmentIndex];
   [self.variable setSelectedValue:newValue];
   [self.variable save];
   [self updateSelectedIndicator];
@@ -67,7 +67,8 @@
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger selectedIndex = [self.variable.itemList indexOfObject:self.variable.selectedValue];
+  NSUInteger selectedIndex =
+      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     _segmentControl.selectedSegmentIndex = selectedIndex;
   }

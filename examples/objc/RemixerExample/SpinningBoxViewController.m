@@ -49,7 +49,7 @@
                      minValue:0.5
                      maxValue:2.0
                     increment:0
-                  updateBlock:^(RMXVariable *_Nonnull variable, CGFloat selectedValue) {
+                  updateBlock:^(RMXRangeVariable *_Nonnull variable, CGFloat selectedValue) {
                     // Set box 1 animation.
                     CALayer *presentationLayer = _box1.layer.presentationLayer;
                     CGFloat angle =
@@ -69,15 +69,16 @@
                     [_box2.layer addAnimation:animation forKey:@"spinning"];
                   }];
 
-  [RMXBooleanVariable addBooleanVariableWithKey:@"slowAnimations"
-                                   defaultValue:NO
-                                    updateBlock:^(RMXVariable *variable, BOOL selectedValue) {
-                                      CALayer *layer = self.view.layer;
-                                      layer.timeOffset =
-                                          [layer convertTime:CACurrentMediaTime() fromLayer:nil];
-                                      layer.beginTime = CACurrentMediaTime();
-                                      layer.speed = selectedValue ? 0.2 : 1;
-                                    }];
+  [RMXBooleanVariable
+      addBooleanVariableWithKey:@"slowAnimations"
+                   defaultValue:NO
+                    updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
+                      CALayer *layer = self.view.layer;
+                      layer.timeOffset =
+                          [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+                      layer.beginTime = CACurrentMediaTime();
+                      layer.speed = selectedValue ? 0.2 : 1;
+                    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

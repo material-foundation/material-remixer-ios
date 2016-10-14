@@ -18,10 +18,12 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 
+@class RMXRangeVariable;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /** RMXRangeUpdateBlock is a block that will be invoked when a range Variable is updated. */
-typedef void (^RMXRangeUpdateBlock)(RMXVariable *variable, CGFloat selectedValue);
+typedef void (^RMXRangeUpdateBlock)(RMXRangeVariable *variable, CGFloat selectedValue);
 
 /** A type of Variable for numeric values. */
 @interface RMXRangeVariable : RMXVariable
