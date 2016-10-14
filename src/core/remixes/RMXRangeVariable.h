@@ -16,20 +16,14 @@
 
 #import "RMXVariable.h"
 
-#import <CoreGraphics/CoreGraphics.h>
+#import "RMXNumberVariable.h"
 
 @class RMXRangeVariable;
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** RMXRangeUpdateBlock is a block that will be invoked when a range Variable is updated. */
-typedef void (^RMXRangeUpdateBlock)(RMXRangeVariable *variable, CGFloat selectedValue);
-
 /** A type of Variable for numeric values. */
-@interface RMXRangeVariable : RMXVariable
-
-/** Convenience accessor for the selectedValue property. */
-@property(nonatomic, assign) CGFloat selectedFloatValue;
+@interface RMXRangeVariable : RMXNumberVariable
 
 /** The minimum value of the selected value. */
 @property(nonatomic, assign) CGFloat minimumValue;
@@ -46,14 +40,14 @@ typedef void (^RMXRangeUpdateBlock)(RMXRangeVariable *variable, CGFloat selected
                                minValue:(CGFloat)minValue
                                maxValue:(CGFloat)maxValue
                               increment:(CGFloat)increment
-                            updateBlock:(RMXRangeUpdateBlock)updateBlock;
+                            updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 /** Convenience initializer */
 + (instancetype)addRangeVariableWithKey:(NSString *)key
                            defaultValue:(CGFloat)defaultValue
                                minValue:(CGFloat)minValue
                                maxValue:(CGFloat)maxValue
-                            updateBlock:(RMXRangeUpdateBlock)updateBlock;
+                            updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 @end
 
