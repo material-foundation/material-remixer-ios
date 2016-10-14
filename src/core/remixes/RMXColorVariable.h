@@ -34,8 +34,7 @@ typedef void (^RMXColorUpdateBlock)(RMXColorVariable *variable, UIColor *selecte
 @property(nonatomic, strong) NSArray<UIColor *> *possibleValues;
 
 /** Cloud API */
-+ (instancetype)colorVariableWithKey:(NSString *)key
-                         updateBlock:(RMXColorUpdateBlock)updateBlock;
++ (instancetype)colorVariableWithKey:(NSString *)key updateBlock:(RMXColorUpdateBlock)updateBlock;
 
 /** Local API */
 + (instancetype)colorVariableWithKey:(NSString *)key

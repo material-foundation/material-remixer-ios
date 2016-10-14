@@ -38,10 +38,8 @@
                           updateBlock:(RMXStringUpdateBlock)updateBlock {
   // These default values are just temporary. We change them to the right values as soon as we
   // get the data from the cloud service.
-  RMXStringVariable *variable = [[self alloc] initWithKey:key
-                                             defaultValue:@""
-                                           possibleValues:nil
-                                              updateBlock:updateBlock];
+  RMXStringVariable *variable =
+      [[self alloc] initWithKey:key defaultValue:@"" possibleValues:nil updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
 
@@ -70,7 +68,7 @@
   self = [super initWithKey:key
              typeIdentifier:RMXTypeString
                defaultValue:defaultValue
-                updateBlock:^(RMXVariable * _Nonnull variable, id  _Nonnull selectedValue) {
+                updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock(variable, selectedValue);
                 }];
   self.possibleValues = possibleValues;

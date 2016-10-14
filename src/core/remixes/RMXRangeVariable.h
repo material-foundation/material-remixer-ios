@@ -35,8 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) CGFloat increment;
 
 /** Cloud API */
-+ (instancetype)rangeVariableWithKey:(NSString *)key
-                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
++ (instancetype)rangeVariableWithKey:(NSString *)key updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 /** Local API */
 + (instancetype)rangeVariableWithKey:(NSString *)key

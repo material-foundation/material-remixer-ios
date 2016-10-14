@@ -32,8 +32,7 @@ typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *sele
 @property(nonatomic, strong) NSArray<NSString *> *possibleValues;
 
 /** Cloud API */
-+ (instancetype)stringVariableWithKey:(NSString *)key
-                          updateBlock:(RMXStringUpdateBlock)updateBlock;
++ (instancetype)stringVariableWithKey:(NSString *)key updateBlock:(RMXStringUpdateBlock)updateBlock;
 
 /** Local API */
 + (instancetype)stringVariableWithKey:(NSString *)key

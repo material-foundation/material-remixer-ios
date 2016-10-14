@@ -43,8 +43,7 @@ NSString *const RMXColorKeyAlpha = @"a";
   return variable;
 }
 
-+ (instancetype)colorVariableWithKey:(NSString *)key
-                         updateBlock:(RMXColorUpdateBlock)updateBlock {
++ (instancetype)colorVariableWithKey:(NSString *)key updateBlock:(RMXColorUpdateBlock)updateBlock {
   // These default values are just temporary. We change them to the right values as soon as we
   // get the data from the cloud service.
   RMXColorVariable *variable = [[self alloc] initWithKey:key
@@ -91,7 +90,7 @@ NSString *const RMXColorKeyAlpha = @"a";
   self = [super initWithKey:key
              typeIdentifier:RMXTypeColor
                defaultValue:defaultValue
-                updateBlock:^(RMXVariable * _Nonnull variable, id  _Nonnull selectedValue) {
+                updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock(variable, selectedValue);
                 }];
   self.possibleValues = possibleValues;
