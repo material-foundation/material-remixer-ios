@@ -20,6 +20,11 @@
 
 @class RMXOverlayWindow;
 
+typedef NS_ENUM(NSInteger, RMXStorageMode) {
+  RMXStorageModeLocal = 0,
+  RMXStorageModeCloud = 1
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -28,11 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RMXRemixer : NSObject
 
-/** Starts Remixer in local mode. */
-+ (void)startInLocalMode;
-
-/** Starts Remixer in local mode. */
-+ (void)startInCloudMode;
+/** Starts Remixer */
++ (void)startInMode:(RMXStorageMode)mode;
 
 /** Stops the current Remixer session. */
 + (void)stop;
@@ -86,6 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** Saves the Variable using one of the storage options. */
 + (void)saveVariable:(RMXVariable *)variable;
 
+/** Update an existing Variable using a version from one of our storage sources. */
 + (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable;
 
 @end

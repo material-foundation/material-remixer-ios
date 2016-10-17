@@ -32,14 +32,11 @@
 #define SWIPE_GESTURE_REQUIRED_TOUCHES 3
 #endif
 
-typedef NS_ENUM(NSInteger, RMXStorageType) {
-  RMXStorageTypeLocal = 0,
-  RMXStorageTypeCloud = 1
-};
+
 
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
 @property(nonatomic, strong) NSMutableDictionary *variables;
-@property(nonatomic, assign) RMXStorageType storageType;
+@property(nonatomic, assign) RMXStorageMode storageMode;
 @property(nonatomic, strong) id<RMXStorageController> storage;
 @property(nonatomic, strong) RMXOverlayViewController *overlayController;
 @property(nonatomic, strong) UISwipeGestureRecognizer *swipeUpGesture;
@@ -65,15 +62,9 @@ typedef NS_ENUM(NSInteger, RMXStorageType) {
   return sharedInstance;
 }
 
-+ (void)startInLocalMode {
++ (void)startInMode:(RMXStorageMode)mode {
   RMXRemixer *instance = [self sharedInstance];
-  instance.storageType = RMXStorageTypeLocal;
-  [self start];
-}
-
-+ (void)startInCloudMode {
-  RMXRemixer *instance = [self sharedInstance];
-  instance.storageType = RMXStorageTypeCloud;
+  instance.storageMode = mode;
   [self start];
 }
 
@@ -96,7 +87,7 @@ typedef NS_ENUM(NSInteger, RMXStorageType) {
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
   
-  if (instance.storageType == RMXStorageTypeLocal) {
+  if (instance.storageMode == RMXStorageModeLocal) {
     instance.storage = [[RMXLocalStorageController alloc] init];
   } else {
     instance.storage = [[RMXFirebaseStorageController alloc] init];
@@ -210,7 +201,7 @@ typedef NS_ENUM(NSInteger, RMXStorageType) {
 
 + (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable {
   RMXRemixer *instance = [self sharedInstance];
-  if (instance.storageType == RMXStorageTypeCloud) {
+  if (instance.storageMode == RMXStorageModeCloud) {
     [variable updateToStoredVariable:storedVariable];
   } else {
     [variable setSelectedValue:storedVariable.selectedValue];

@@ -50,15 +50,6 @@ static CGFloat kContainerHeight = 40.0f;
 - (void)setVariable:(RMXVariable *)variable {
   _variable = variable;
 
-  [[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
-  _notificationObserver =
-      [[NSNotificationCenter defaultCenter] addObserverForName:RMXVariableUpdateNotification
-                                                        object:_variable
-                                                         queue:nil
-                                                    usingBlock:^(NSNotification *notification) {
-                                                      [self setVariable:notification.object];
-                                                    }];
-
   // Add control container view.
   if (!_controlViewWrapper) {
     CGRect containerFrame = CGRectMake(
@@ -75,10 +66,9 @@ static CGFloat kContainerHeight = 40.0f;
 - (void)prepareForReuse {
   [super prepareForReuse];
 
-  [[NSNotificationCenter defaultCenter] removeObserver:_notificationObserver];
   [_controlViewWrapper removeFromSuperview];
   _controlViewWrapper = nil;
-  self.variable = nil;
+  _variable = nil;
   self.accessoryView = nil;
 }
 

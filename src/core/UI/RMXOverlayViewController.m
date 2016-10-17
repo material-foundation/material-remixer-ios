@@ -95,6 +95,18 @@ static CGFloat kInitialSpeed = 0.4f;
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(variableUpdateNotification:)
+                                               name:RMXVariableUpdateNotification
+                                             object:nil];
+  [self reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)variableUpdateNotification:(NSNotification *)notification {
   [self reloadData];
 }
 

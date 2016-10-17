@@ -35,11 +35,13 @@
 }
 
 + (instancetype)stringVariableWithKey:(NSString *)key
+                         defaultValue:(NSString *)defaultValue
                           updateBlock:(RMXStringUpdateBlock)updateBlock {
-  // These default values are just temporary. We change them to the right values as soon as we
-  // get the data from the cloud service.
   RMXStringVariable *variable =
-      [[self alloc] initWithKey:key defaultValue:@"" possibleValues:nil updateBlock:updateBlock];
+      [[self alloc] initWithKey:key
+                   defaultValue:defaultValue
+                 possibleValues:nil
+                    updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
 

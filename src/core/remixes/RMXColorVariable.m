@@ -43,11 +43,13 @@ NSString *const RMXColorKeyAlpha = @"a";
   return variable;
 }
 
-+ (instancetype)colorVariableWithKey:(NSString *)key updateBlock:(RMXColorUpdateBlock)updateBlock {
++ (instancetype)colorVariableWithKey:(NSString *)key
+                        defaultValue:(UIColor *)defaultValue
+                         updateBlock:(RMXColorUpdateBlock)updateBlock {
   // These default values are just temporary. We change them to the right values as soon as we
   // get the data from the cloud service.
   RMXColorVariable *variable = [[self alloc] initWithKey:key
-                                            defaultValue:[UIColor redColor]
+                                            defaultValue:defaultValue
                                           possibleValues:nil
                                              updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
@@ -119,7 +121,7 @@ NSString *const RMXColorKeyAlpha = @"a";
     RMXColorKeyRed : @(round(r * 255)),
     RMXColorKeyGreen : @(round(g * 255)),
     RMXColorKeyBlue : @(round(b * 255)),
-    RMXColorKeyAlpha : @(a)
+    RMXColorKeyAlpha : @(round(a * 100))
   };
 }
 
@@ -127,7 +129,7 @@ NSString *const RMXColorKeyAlpha = @"a";
   CGFloat red = [[dictionary objectForKey:RMXColorKeyRed] integerValue] / 255.0;
   CGFloat green = [[dictionary objectForKey:RMXColorKeyGreen] integerValue] / 255.0;
   CGFloat blue = [[dictionary objectForKey:RMXColorKeyBlue] integerValue] / 255.0;
-  CGFloat alpha = [[dictionary objectForKey:RMXColorKeyAlpha] floatValue];
+  CGFloat alpha = [[dictionary objectForKey:RMXColorKeyAlpha] integerValue] / 100.0;
   return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
