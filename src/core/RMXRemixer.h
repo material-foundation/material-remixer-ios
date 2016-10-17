@@ -20,6 +20,11 @@
 
 @class RMXOverlayWindow;
 
+typedef NS_ENUM(NSInteger, RMXStorageMode) {
+  RMXStorageModeLocal = 0,
+  RMXStorageModeCloud = 1
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -28,11 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RMXRemixer : NSObject
 
-/** Starts Remixer in local mode. */
-+ (void)startInLocalMode;
-
-/** Starts Remixer in local mode. */
-+ (void)startInCloudMode;
+/** Starts Remixer */
++ (void)startInMode:(RMXStorageMode)mode;
 
 /** Stops the current Remixer session. */
 + (void)stop;

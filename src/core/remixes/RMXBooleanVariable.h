@@ -29,14 +29,7 @@ typedef void (^RMXBooleanUpdateBlock)(RMXBooleanVariable *variable, BOOL selecte
 /** Convenience accessor for the selectedValue property. */
 @property(nonatomic, assign) BOOL selectedBooleanValue;
 
-/** Initializer for Variables that are stored in the cloud. */
-+ (instancetype)booleanVariableWithKey:(NSString *)key
-                           updateBlock:(RMXBooleanUpdateBlock)updateBlock;
-
-/**
- * Initializer for Variables that are not defined in the cloud. If you're using the cloud mode
- * these properties will be overriden if they differ from what's stored there.
- */
+/** Designated initializer. */
 + (instancetype)booleanVariableWithKey:(NSString *)key
                           defaultValue:(BOOL)defaultValue
                            updateBlock:(RMXBooleanUpdateBlock)updateBlock;

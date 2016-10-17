@@ -34,9 +34,10 @@
   _box.backgroundColor = [UIColor redColor];
   [self.view addSubview:_box];
 
-  // Add color picker. Cloud API.
+  // Add color picker.
   [RMXColorVariable
       colorVariableWithKey:@"colorPicker"
+              defaultValue:[UIColor redColor]
                updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];
@@ -53,9 +54,10 @@
                                                   : [UIColor darkGrayColor];
                 }];
 
-  // Add slider control. Cloud API.
+  // Add slider control.
   [RMXRangeVariable
       rangeVariableWithKey:@"alpha"
+              defaultValue:1
                updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
                  _box.alpha = selectedValue;
                }];

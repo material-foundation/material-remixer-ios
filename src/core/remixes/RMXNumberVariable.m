@@ -30,15 +30,6 @@
   return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)numberVariableWithKey:(NSString *)key
-                          updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  // These default values are just temporary. We change them to the right values as soon as we
-  // get the data from the cloud service.
-  RMXNumberVariable *variable =
-      [[self alloc] initWithKey:key defaultValue:1 updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
-}
-
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
   NSString *key = [dictionary objectForKey:RMXDictionaryKeyKey];
   CGFloat selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] floatValue];

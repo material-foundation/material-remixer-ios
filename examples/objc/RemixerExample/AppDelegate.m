@@ -35,7 +35,7 @@
   [self.window makeKeyAndVisible];
 
   // Start Remixer.
-  [RMXRemixer startInCloudMode];
+  [RMXRemixer startInMode:RMXStorageModeCloud];
 
   return YES;
 }
