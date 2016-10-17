@@ -24,21 +24,41 @@
 
 + (instancetype)numberVariableWithKey:(NSString *)key
                          defaultValue:(CGFloat)defaultValue
+                       possibleValues:(NSArray<NSNumber *> *)possibleValues
                           updateBlock:(RMXNumberUpdateBlock)updateBlock {
   RMXNumberVariable *variable =
-      [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];
+      [[self alloc] initWithKey:key
+                   defaultValue:defaultValue
+                 possibleValues:possibleValues
+                    updateBlock:updateBlock];
+  return [RMXRemixer addVariable:variable];
+}
+
++ (instancetype)numberVariableWithKey:(NSString *)key
+                         defaultValue:(CGFloat)defaultValue
+                          updateBlock:(RMXNumberUpdateBlock)updateBlock {
+  RMXNumberVariable *variable =
+  [[self alloc] initWithKey:key
+               defaultValue:defaultValue
+             possibleValues:nil
+                updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
-  NSString *key = [dictionary objectForKey:RMXDictionaryKeyKey];
   CGFloat selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] floatValue];
-  return [[self alloc] initWithKey:key defaultValue:selectedValue updateBlock:nil];
+  return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
+                      defaultValue:selectedValue
+                       possibleValues:[dictionary objectForKey:RMXDictionaryKeyPossibleValues]
+                       updateBlock:nil];
 }
 
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = @(self.selectedFloatValue);
+  if (self.possibleValues.count > 0) {
+    json[RMXDictionaryKeyPossibleValues] = self.possibleValues;
+  }
   return json;
 }
 
@@ -46,6 +66,7 @@
 
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(CGFloat)defaultValue
+             possibleValues:(NSArray<NSNumber *> *)possibleValues
                 updateBlock:(RMXNumberUpdateBlock)updateBlock {
   self = [super initWithKey:key
              typeIdentifier:RMXTypeNumber
@@ -54,6 +75,7 @@
                   updateBlock(variable, [selectedValue floatValue]);
                 }];
   if (self) {
+    self.possibleValues = possibleValues;
     self.controlType = RMXControlTypeStepper;
   }
   return self;

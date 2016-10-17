@@ -42,7 +42,7 @@ typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *sele
  * those values are defined in the cloud.
  */
 + (instancetype)stringVariableWithKey:(NSString *)key
-                         defaultValue:(CGFloat)defaultValue
+                         defaultValue:(NSString *)defaultValue
                           updateBlock:(RMXStringUpdateBlock)updateBlock;
 
 @end
