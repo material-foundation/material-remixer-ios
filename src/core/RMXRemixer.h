@@ -88,6 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** Saves the Variable using one of the storage options. */
 + (void)saveVariable:(RMXVariable *)variable;
 
+/** Update an existing Variable using a version from one of our storage sources. */
 + (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable;
 
 @end
