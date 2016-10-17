@@ -20,13 +20,12 @@
 
 @implementation RMXBooleanVariable
 
-+ (instancetype)addBooleanVariableWithKey:(NSString *)key
-                             defaultValue:(BOOL)defaultValue
-                              updateBlock:(RMXBooleanUpdateBlock)updateBlock {
++ (instancetype)booleanVariableWithKey:(NSString *)key
+                          defaultValue:(BOOL)defaultValue
+                           updateBlock:(RMXBooleanUpdateBlock)updateBlock {
   RMXBooleanVariable *variable =
       [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+  return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {

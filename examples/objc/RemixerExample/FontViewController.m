@@ -40,15 +40,15 @@
     @"Futura-CondensedExtraBold", @"Helvetica-Light", @"SnellRoundhand"
   ];
   [RMXStringVariable
-      addStringVariableWithKey:@"font"
-                  defaultValue:fontNames[1]
-                possibleValues:fontNames
-                   updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
-                     NSString *fontName = selectedValue;
-                     _fontLabel.text = fontName;
-                     _fontLabel.font =
-                         [UIFont fontWithName:fontName size:[UIFont labelFontSize]];
-                   }];
+      stringVariableWithKey:@"font"
+               defaultValue:fontNames[1]
+             possibleValues:fontNames
+                updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
+                  NSString *fontName = selectedValue;
+                  _fontLabel.text = fontName;
+                  _fontLabel.font =
+                      [UIFont fontWithName:fontName size:[UIFont labelFontSize]];
+                }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

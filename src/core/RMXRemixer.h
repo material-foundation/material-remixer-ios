@@ -20,6 +20,11 @@
 
 @class RMXOverlayWindow;
 
+typedef NS_ENUM(NSInteger, RMXStorageMode) {
+  RMXStorageModeLocal = 0,
+  RMXStorageModeCloud = 1
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -28,8 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RMXRemixer : NSObject
 
-/** Starts Remixer. */
-+ (void)start;
+/** Starts Remixer */
++ (void)startInMode:(RMXStorageMode)mode;
 
 /** Stops the current Remixer session. */
 + (void)stop;
@@ -57,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
  Adds a Variable to the dictionary of Variables stored by key.
  @param variable The Variable to be added.
  */
-+ (void)addVariable:(RMXVariable *)variable;
++ (RMXVariable *)addVariable:(RMXVariable *)variable;
 
 /**
  Removes a Variable from the dictionary of Variables.

@@ -35,57 +35,53 @@
   [self.view addSubview:_box];
 
   // Add color picker.
-  NSArray *colorOptions = @[ [UIColor blueColor], [UIColor redColor], [UIColor greenColor] ];
   [RMXColorVariable
-      addColorVariableWithKey:@"colorPicker"
-                 defaultValue:colorOptions[0]
-               possibleValues:colorOptions
-                  updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
-                    _box.backgroundColor = selectedValue;
-                  }];
+      colorVariableWithKey:@"colorPicker"
+              defaultValue:[UIColor redColor]
+               updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
+                 _box.backgroundColor = selectedValue;
+               }];
 
   // Add segment control.
   NSArray *themesOptions = @[ @"Light", @"Dark" ];
   [RMXStringVariable
-      addStringVariableWithKey:@"theme"
-                  defaultValue:themesOptions[0]
-                possibleValues:themesOptions
-                   updateBlock:^(RMXStringVariable *_Nonnull variable, NSString *selectedValue) {
-                     self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
-                                                     ? [UIColor whiteColor]
-                                                     : [UIColor darkGrayColor];
-                   }];
+      stringVariableWithKey:@"theme"
+               defaultValue:themesOptions[0]
+             possibleValues:themesOptions
+                updateBlock:^(RMXStringVariable *_Nonnull variable, NSString *selectedValue) {
+                  self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
+                                                  ? [UIColor whiteColor]
+                                                  : [UIColor darkGrayColor];
+                }];
 
   // Add slider control.
   [RMXRangeVariable
-      addRangeVariableWithKey:@"alpha"
-                 defaultValue:1
-                     minValue:0
-                     maxValue:1
-                  updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
-                    _box.alpha = selectedValue;
-                  }];
+      rangeVariableWithKey:@"alpha"
+              defaultValue:1
+               updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
+                 _box.alpha = selectedValue;
+               }];
 
   // Add stepper control.
   [RMXRangeVariable
-      addRangeVariableWithKey:@"width"
-                 defaultValue:80
-                     minValue:40
-                     maxValue:200
-                    increment:20
-                  updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
-                    CGRect frame = _box.frame;
-                    frame.size.width = selectedValue;
-                    _box.frame = frame;
-                  }];
+      rangeVariableWithKey:@"width"
+              defaultValue:80
+                  minValue:40
+                  maxValue:200
+                increment:20
+              updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
+                CGRect frame = _box.frame;
+                frame.size.width = selectedValue;
+                _box.frame = frame;
+              }];
 
   // Add switch control.
   [RMXBooleanVariable
-      addBooleanVariableWithKey:@"show"
-                   defaultValue:YES
-                    updateBlock:^(RMXBooleanVariable *_Nonnull variable, BOOL selectedValue) {
-                      _box.hidden = !selectedValue;
-                    }];
+      booleanVariableWithKey:@"show"
+                defaultValue:YES
+                 updateBlock:^(RMXBooleanVariable *_Nonnull variable, BOOL selectedValue) {
+                   _box.hidden = !selectedValue;
+                 }];
 
   // TODO(chuga): Add a Trigger Remix for printing the session ID.
 }

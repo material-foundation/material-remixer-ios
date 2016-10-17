@@ -31,16 +31,28 @@ NSString *const RMXColorKeyAlpha = @"a";
 @dynamic selectedValue;
 @dynamic possibleValues;
 
-+ (instancetype)addColorVariableWithKey:(NSString *)key
-                           defaultValue:(UIColor *)defaultValue
-                         possibleValues:(NSArray<UIColor *> *)possibleValues
-                            updateBlock:(RMXColorUpdateBlock)updateBlock {
++ (instancetype)colorVariableWithKey:(NSString *)key
+                        defaultValue:(UIColor *)defaultValue
+                      possibleValues:(NSArray<UIColor *> *)possibleValues
+                         updateBlock:(RMXColorUpdateBlock)updateBlock {
   RMXColorVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:defaultValue
                                           possibleValues:possibleValues
                                              updateBlock:updateBlock];
   [RMXRemixer addVariable:variable];
   return variable;
+}
+
++ (instancetype)colorVariableWithKey:(NSString *)key
+                        defaultValue:(UIColor *)defaultValue
+                         updateBlock:(RMXColorUpdateBlock)updateBlock {
+  // These default values are just temporary. We change them to the right values as soon as we
+  // get the data from the cloud service.
+  RMXColorVariable *variable = [[self alloc] initWithKey:key
+                                            defaultValue:defaultValue
+                                          possibleValues:nil
+                                             updateBlock:updateBlock];
+  return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
@@ -65,6 +77,12 @@ NSString *const RMXColorKeyAlpha = @"a";
   return json;
 }
 
+- (void)updateToStoredVariable:(RMXVariable *)storedVariable {
+  self.controlType =
+      storedVariable.possibleValues.count > 0 ? RMXControlTypeColorList : RMXControlTypeColorPicker;
+  [super updateToStoredVariable:storedVariable];
+}
+
 #pragma mark - Private
 
 - (instancetype)initWithKey:(NSString *)key
@@ -74,7 +92,7 @@ NSString *const RMXColorKeyAlpha = @"a";
   self = [super initWithKey:key
              typeIdentifier:RMXTypeColor
                defaultValue:defaultValue
-                updateBlock:^(RMXVariable * _Nonnull variable, id  _Nonnull selectedValue) {
+                updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock(variable, selectedValue);
                 }];
   self.possibleValues = possibleValues;

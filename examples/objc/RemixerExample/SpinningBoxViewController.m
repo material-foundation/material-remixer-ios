@@ -44,41 +44,41 @@
   animation.repeatCount = HUGE_VALF;
 
   [RMXRangeVariable
-      addRangeVariableWithKey:@"box1Animation"
-                 defaultValue:1
-                     minValue:0.5
-                     maxValue:2.0
-                    increment:0
-                  updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
-                    // Set box 1 animation.
-                    CALayer *presentationLayer = _box1.layer.presentationLayer;
-                    CGFloat angle =
-                        [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
-                    animation.fromValue = [NSNumber numberWithFloat:angle];
-                    animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
-                    animation.duration = MAX(2.0 - selectedValue, 0.1);
-                    [_box1.layer addAnimation:animation forKey:@"spinning"];
+      rangeVariableWithKey:@"box1Animation"
+              defaultValue:1
+                  minValue:0.5
+                  maxValue:2.0
+                 increment:0
+               updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
+                 // Set box 1 animation.
+                 CALayer *presentationLayer = _box1.layer.presentationLayer;
+                 CGFloat angle =
+                     [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
+                 animation.fromValue = [NSNumber numberWithFloat:angle];
+                 animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
+                 animation.duration = MAX(2.0 - selectedValue, 0.1);
+                 [_box1.layer addAnimation:animation forKey:@"spinning"];
 
-                    // Set box2 animation to be twice as fast.
-                    presentationLayer = _box2.layer.presentationLayer;
-                    angle =
-                        [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
-                    animation.fromValue = [NSNumber numberWithFloat:angle];
-                    animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
-                    animation.duration = MAX(2.0 - (selectedValue * 2), 0.1);
-                    [_box2.layer addAnimation:animation forKey:@"spinning"];
-                  }];
+                 // Set box2 animation to be twice as fast.
+                 presentationLayer = _box2.layer.presentationLayer;
+                 angle =
+                     [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
+                 animation.fromValue = [NSNumber numberWithFloat:angle];
+                 animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
+                 animation.duration = MAX(2.0 - (selectedValue * 2), 0.1);
+                 [_box2.layer addAnimation:animation forKey:@"spinning"];
+               }];
 
   [RMXBooleanVariable
-      addBooleanVariableWithKey:@"slowAnimations"
-                   defaultValue:NO
-                    updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
-                      CALayer *layer = self.view.layer;
-                      layer.timeOffset =
-                          [layer convertTime:CACurrentMediaTime() fromLayer:nil];
-                      layer.beginTime = CACurrentMediaTime();
-                      layer.speed = selectedValue ? 0.2 : 1;
-                    }];
+      booleanVariableWithKey:@"slowAnimations"
+                defaultValue:NO
+                 updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
+                   CALayer *layer = self.view.layer;
+                   layer.timeOffset =
+                       [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+                   layer.beginTime = CACurrentMediaTime();
+                   layer.speed = selectedValue ? 0.2 : 1;
+                 }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -20,33 +20,33 @@
 
 @implementation RMXRangeVariable
 
-+ (instancetype)addRangeVariableWithKey:(NSString *)key
-                           defaultValue:(CGFloat)defaultValue
-                               minValue:(CGFloat)minValue
-                               maxValue:(CGFloat)maxValue
-                              increment:(CGFloat)increment
-                            updateBlock:(RMXNumberUpdateBlock)updateBlock {
++ (instancetype)rangeVariableWithKey:(NSString *)key
+                        defaultValue:(CGFloat)defaultValue
+                            minValue:(CGFloat)minValue
+                            maxValue:(CGFloat)maxValue
+                           increment:(CGFloat)increment
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock {
   RMXRangeVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:defaultValue
                                                 minValue:minValue
                                                 maxValue:maxValue
                                                increment:increment
                                              updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+  return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)addRangeVariableWithKey:(NSString *)key
-                           defaultValue:(CGFloat)defaultValue
-                               minValue:(CGFloat)minValue
-                               maxValue:(CGFloat)maxValue
-                            updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  return [self addRangeVariableWithKey:key
-                          defaultValue:defaultValue
-                              minValue:minValue
-                              maxValue:maxValue
-                             increment:0
-                           updateBlock:updateBlock];
++ (instancetype)rangeVariableWithKey:(NSString *)key
+                        defaultValue:(CGFloat)defaultValue
+                         updateBlock:(RMXNumberUpdateBlock)updateBlock {
+  // These default values are just temporary. We change them to the right values as soon as we
+  // get the data from the cloud service.
+  RMXRangeVariable *variable = [[self alloc] initWithKey:key
+                                            defaultValue:defaultValue
+                                                minValue:defaultValue
+                                                maxValue:defaultValue
+                                               increment:0
+                                             updateBlock:updateBlock];
+  return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
@@ -61,6 +61,13 @@
                           maxValue:maxValue
                          increment:increment
                        updateBlock:nil];
+}
+
+- (void)updateToStoredVariable:(RMXRangeVariable *)storedVariable {
+  self.minimumValue = storedVariable.minimumValue;
+  self.maximumValue = storedVariable.maximumValue;
+  self.increment = storedVariable.increment;
+  [super updateToStoredVariable:storedVariable];
 }
 
 - (NSDictionary *)toJSON {

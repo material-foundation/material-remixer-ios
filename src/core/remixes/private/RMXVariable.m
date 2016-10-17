@@ -72,6 +72,14 @@
   [RMXRemixer saveVariable:self];
 }
 
+- (void)updateToStoredVariable:(RMXVariable *)storedVariable {
+  self.selectedValue = storedVariable.selectedValue;
+  self.possibleValues = storedVariable.possibleValues;
+  [self executeUpdateBlocks];
+  [[NSNotificationCenter defaultCenter] postNotificationName:RMXVariableUpdateNotification
+                                                      object:self];
+}
+
 - (void)executeUpdateBlocks {
   for (RMXUpdateBlock updateBlock in _updateBlocks) {
     updateBlock(self, _selectedValue);

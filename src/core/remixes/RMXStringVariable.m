@@ -23,16 +23,26 @@
 @dynamic selectedValue;
 @dynamic possibleValues;
 
-+ (instancetype)addStringVariableWithKey:(NSString *)key
-                            defaultValue:(NSString *)defaultValue
-                          possibleValues:(NSArray<NSString *> *)possibleValues
-                             updateBlock:(RMXStringUpdateBlock)updateBlock {
++ (instancetype)stringVariableWithKey:(NSString *)key
+                         defaultValue:(NSString *)defaultValue
+                       possibleValues:(NSArray<NSString *> *)possibleValues
+                          updateBlock:(RMXStringUpdateBlock)updateBlock {
   RMXStringVariable *variable = [[self alloc] initWithKey:key
                                              defaultValue:defaultValue
                                            possibleValues:possibleValues
                                               updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+  return [RMXRemixer addVariable:variable];
+}
+
++ (instancetype)stringVariableWithKey:(NSString *)key
+                         defaultValue:(NSString *)defaultValue
+                          updateBlock:(RMXStringUpdateBlock)updateBlock {
+  RMXStringVariable *variable =
+      [[self alloc] initWithKey:key
+                   defaultValue:defaultValue
+                 possibleValues:nil
+                    updateBlock:updateBlock];
+  return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
@@ -60,7 +70,7 @@
   self = [super initWithKey:key
              typeIdentifier:RMXTypeString
                defaultValue:defaultValue
-                updateBlock:^(RMXVariable * _Nonnull variable, id  _Nonnull selectedValue) {
+                updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock(variable, selectedValue);
                 }];
   self.possibleValues = possibleValues;

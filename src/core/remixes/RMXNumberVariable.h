@@ -1,12 +1,12 @@
 /*
  Copyright 2016-present Google Inc. All Rights Reserved.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,10 +34,19 @@ typedef void (^RMXNumberUpdateBlock)(RMXNumberVariable *variable, CGFloat select
 /** If set, these are the only values this Variable can take. */
 @property(nonatomic, strong) NSArray<NSNumber *> *possibleValues;
 
-/** Designated initializer */
-+ (instancetype)addNumberVariableWithKey:(NSString *)key
-                            defaultValue:(CGFloat)defaultValue
-                             updateBlock:(RMXNumberUpdateBlock)updateBlock;
+/** Designated initializer. */
++ (instancetype)numberVariableWithKey:(NSString *)key
+                         defaultValue:(CGFloat)defaultValue
+                       possibleValues:(NSArray<NSNumber *> *)possibleValues
+                          updateBlock:(RMXNumberUpdateBlock)updateBlock;
+
+/**
+ * Convenience initializer for when this Variable isn't limited to a set of possible values or when
+ * those values are defined in the cloud.
+ */
++ (instancetype)numberVariableWithKey:(NSString *)key
+                         defaultValue:(CGFloat)defaultValue
+                          updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 @end
 
