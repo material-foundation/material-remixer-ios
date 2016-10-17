@@ -58,19 +58,13 @@ static CGFloat kSwatchInnerPadding = 10.0f;
   CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
   for (NSUInteger count = 0; count < variable.possibleValues.count; count++) {
     UIColor *color = variable.possibleValues[count];
-    UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    swatchButton.frame = CGRectMake((count * boundsHeight) + (count * kSwatchInnerPadding), 0,
-                                    boundsHeight, boundsHeight);
-    swatchButton.layer.cornerRadius = boundsHeight / 2;
-    swatchButton.layer.shouldRasterize = YES;
-    swatchButton.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    swatchButton.backgroundColor = color;
-    swatchButton.tintColor = [UIColor whiteColor];
-    [swatchButton addTarget:self
-                     action:@selector(swatchPressed:)
-           forControlEvents:UIControlEventTouchUpInside];
-    [_swatchButtons addObject:swatchButton];
-    [_swatchesContainer addSubview:swatchButton];
+    [self addButtonForColor:color atPosition:count];
+  }
+  NSUInteger selectedIndex =
+      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
+  if (selectedIndex == NSNotFound) {
+    UIColor *color = self.variable.selectedValue;
+    [self addButtonForColor:color atPosition:self.variable.possibleValues.count];
   }
   [self.controlViewWrapper addSubview:_swatchesContainer];
 
@@ -88,11 +82,32 @@ static CGFloat kSwatchInnerPadding = 10.0f;
 
 #pragma mark - Private
 
+- (void)addButtonForColor:(UIColor *)color atPosition:(NSUInteger)position {
+  CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
+  UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  swatchButton.frame = CGRectMake((position * boundsHeight) + (position * kSwatchInnerPadding),
+                                  0,
+                                  boundsHeight,
+                                  boundsHeight);
+  swatchButton.layer.cornerRadius = boundsHeight / 2;
+  swatchButton.layer.shouldRasterize = YES;
+  swatchButton.layer.rasterizationScale = [UIScreen mainScreen].scale;
+  swatchButton.backgroundColor = color;
+  swatchButton.tintColor = [UIColor whiteColor];
+  [swatchButton addTarget:self
+                   action:@selector(swatchPressed:)
+         forControlEvents:UIControlEventTouchUpInside];
+  [_swatchButtons addObject:swatchButton];
+  [_swatchesContainer addSubview:swatchButton];
+}
+
 - (void)updateSelectedIndicator {
   NSUInteger selectedIndex =
       [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     [self selectIndex:selectedIndex];
+  } else {
+    [self selectIndex:_swatchButtons.count - 1];
   }
 }
 
