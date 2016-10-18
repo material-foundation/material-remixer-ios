@@ -16,14 +16,17 @@
 
 #import "RMXCell.h"
 
+#import "RMXStringVariable.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Provides a table view cell that has a text picker control.
  * This control only supports Variables that have possibleValues set to an array of values.
- * To generate the title for each row it calls the |description| method of each value.
  */
 @interface RMXCellTextPicker : RMXCell
+
+@property(nonatomic, weak) RMXStringVariable *variable;
 
 @end
 

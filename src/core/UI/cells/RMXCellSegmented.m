@@ -41,15 +41,20 @@
     return;
   }
 
-  if (!_segmentControl) {
+  NSUInteger selectedIndex = [variable.possibleValues indexOfObject:variable.selectedValue];
+  if (selectedIndex != NSNotFound) {
     _segmentControl = [[UISegmentedControl alloc] initWithItems:variable.possibleValues];
-    _segmentControl.frame = self.controlViewWrapper.bounds;
-    _segmentControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [_segmentControl addTarget:self
-                        action:@selector(segmentUpdated:)
-              forControlEvents:UIControlEventValueChanged];
-    [self.controlViewWrapper addSubview:_segmentControl];
+  } else {
+    NSMutableArray *allValues = [variable.possibleValues mutableCopy];
+    [allValues addObject:variable.selectedValue];
+    _segmentControl = [[UISegmentedControl alloc] initWithItems:allValues];
   }
+  _segmentControl.frame = self.controlViewWrapper.bounds;
+  _segmentControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+  [_segmentControl addTarget:self
+                      action:@selector(segmentUpdated:)
+            forControlEvents:UIControlEventValueChanged];
+  [self.controlViewWrapper addSubview:_segmentControl];
 
   [self updateSelectedIndicator];
   self.detailTextLabel.text = variable.title;
@@ -71,6 +76,8 @@
       [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     _segmentControl.selectedSegmentIndex = selectedIndex;
+  } else {
+    _segmentControl.selectedSegmentIndex = self.variable.possibleValues.count;
   }
 }
 

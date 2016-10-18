@@ -48,7 +48,7 @@ static CGFloat kPickerheight = 200.0f;
   _pickerButton = nil;
 }
 
-- (void)setVariable:(RMXVariable *)variable {
+- (void)setVariable:(RMXStringVariable *)variable {
   [super setVariable:variable];
   if (!variable) {
     return;
@@ -101,6 +101,9 @@ static CGFloat kPickerheight = 200.0f;
   picker.delegate = self;
   NSInteger selectedIndex =
       [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
+  if (selectedIndex == NSNotFound) {
+    selectedIndex = self.variable.possibleValues.count;
+  }
   [picker selectRow:selectedIndex inComponent:0 animated:NO];
   [_alertController.view addSubview:picker];
   UIAlertAction *action =
@@ -117,7 +120,12 @@ static CGFloat kPickerheight = 200.0f;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-  return self.variable.possibleValues.count;
+  NSUInteger selectedIndex =
+      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
+  if (selectedIndex != NSNotFound) {
+    return self.variable.possibleValues.count;
+  }
+  return self.variable.possibleValues.count + 1;
 }
 
 #pragma mark - <UIPickerViewDelegate>
@@ -125,14 +133,21 @@ static CGFloat kPickerheight = 200.0f;
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-  return [[self.variable.possibleValues objectAtIndex:row] description];
+  if (row == self.variable.possibleValues.count) {
+    return self.variable.selectedValue;
+  } else {
+    return [self.variable.possibleValues objectAtIndex:row];
+  }
+  
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
-  [self.variable setSelectedValue:[self.variable.possibleValues objectAtIndex:row]];
-  [self.variable save];
+  if (row < self.variable.possibleValues.count) {
+    [self.variable setSelectedValue:[self.variable.possibleValues objectAtIndex:row]];
+    [self.variable save];
+  }
   [self updateSelectedIndicator];
   [_alertController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -140,11 +155,7 @@ static CGFloat kPickerheight = 200.0f;
 #pragma mark - Private
 
 - (void)updateSelectedIndicator {
-  NSUInteger selectedIndex =
-      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
-  if (selectedIndex != NSNotFound) {
-    [_pickerButton setTitle:self.variable.selectedValue forState:UIControlStateNormal];
-  }
+  [_pickerButton setTitle:self.variable.selectedValue forState:UIControlStateNormal];
 }
 
 @end
