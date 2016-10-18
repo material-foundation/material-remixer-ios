@@ -44,15 +44,17 @@
 
   // Add segment control.
   NSArray *themesOptions = @[ @"Light", @"Dark" ];
-  [RMXStringVariable
-      stringVariableWithKey:@"theme"
-               defaultValue:themesOptions[0]
-             possibleValues:themesOptions
-                updateBlock:^(RMXStringVariable *_Nonnull variable, NSString *selectedValue) {
-                  self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
-                                                  ? [UIColor whiteColor]
-                                                  : [UIColor darkGrayColor];
-                }];
+  RMXStringVariable *themeVariable =
+      [RMXStringVariable
+          stringVariableWithKey:@"theme"
+                   defaultValue:themesOptions[0]
+                 possibleValues:themesOptions
+                    updateBlock:^(RMXStringVariable *_Nonnull variable, NSString *selectedValue) {
+                      self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
+                                                      ? [UIColor whiteColor]
+                                                      : [UIColor darkGrayColor];
+                    }];
+  themeVariable.controlType = RMXControlTypeSegmented;
 
   // Add slider control.
   [RMXRangeVariable
