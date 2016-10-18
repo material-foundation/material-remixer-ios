@@ -107,6 +107,7 @@ static CGFloat kSwatchInnerPadding = 10.0f;
   if (selectedIndex != NSNotFound) {
     [self selectIndex:selectedIndex];
   } else {
+    // If its not in the possibleValues array then it's the extra one we added for selectedValue.
     [self selectIndex:_swatchButtons.count - 1];
   }
 }
