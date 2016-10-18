@@ -21,6 +21,7 @@
 #import "RMXCellColorList.h"
 
 static CGFloat kSwatchInnerPadding = 10.0f;
+static CGFloat kMinLuminenceForLightColor = 0.5;
 
 @implementation RMXCellColorList {
   UIView *_swatchesContainer;
@@ -118,6 +119,17 @@ static CGFloat kSwatchInnerPadding = 10.0f;
     UIButton *swatchButton = _swatchButtons[i];
     UIImage *checkImage = (i == selectedIndex) ? RMXResources(RMXIconCheck) : nil;
     [swatchButton setImage:checkImage forState:UIControlStateNormal];
+    swatchButton.tintColor = [UIColor whiteColor];
+    if (checkImage) {
+      // Make the check black if the color is light.
+      CGFloat red, green, blue, alpha;
+      [swatchButton.backgroundColor getRed:&red green:&green blue:&blue alpha:&alpha];
+      // Percieved luminence: https://www.w3.org/TR/AERT#color-contrast
+      CGFloat luminence = 0.299 * red + 0.587 * green + 0.114 * blue;
+      if (luminence > kMinLuminenceForLightColor) {
+        swatchButton.tintColor = [UIColor blackColor];
+      }
+    }
   }
 }
 
