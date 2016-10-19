@@ -42,8 +42,7 @@
   }
 
   if (!_sliderControl) {
-    _sliderControl = [[UISlider alloc] initWithFrame:self.controlViewWrapper.bounds];
-    _sliderControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _sliderControl = [[UISlider alloc] initWithFrame:CGRectZero];
     [_sliderControl addTarget:self
                        action:@selector(sliderUpdated:)
              forControlEvents:UIControlEventValueChanged];
@@ -60,6 +59,12 @@
   _sliderControl.value = variable.selectedFloatValue;
 
   [self updateDetailLabel];
+}
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+  
+  _sliderControl.frame = self.controlViewWrapper.bounds;
 }
 
 #pragma mark - Control Events

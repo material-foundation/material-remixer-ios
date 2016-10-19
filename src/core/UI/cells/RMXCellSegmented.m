@@ -49,8 +49,6 @@
     [allValues addObject:variable.selectedValue];
     _segmentControl = [[UISegmentedControl alloc] initWithItems:allValues];
   }
-  _segmentControl.frame = self.controlViewWrapper.bounds;
-  _segmentControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
   [_segmentControl addTarget:self
                       action:@selector(segmentUpdated:)
             forControlEvents:UIControlEventValueChanged];
@@ -58,6 +56,12 @@
 
   [self updateSelectedIndicator];
   self.detailTextLabel.text = variable.title;
+}
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+  
+  _segmentControl.frame = self.controlViewWrapper.bounds;
 }
 
 #pragma mark - Control Events
