@@ -23,7 +23,10 @@
 #import "RMXOverlayWindow.h"
 #import "RMXRemixer.h"
 
+static CGFloat kTextPaddingLeft = 18.0f;
 static CGFloat kTextPaddingTop = 11.0f;
+static CGFloat kColorPreviewWidth = 10.0f;
+static CGFloat kButtonTopOffset = -12.0f;
 
 @implementation RMXCellColorPicker {
   UIView *_colorPreview;
@@ -77,17 +80,20 @@ static CGFloat kTextPaddingTop = 11.0f;
 - (void)layoutSubviews {
   [super layoutSubviews];
 
-  _colorPreview.frame = CGRectMake(0, 0, 10, CGRectGetHeight(self.controlViewWrapper.frame));
+  _colorPreview.frame =
+      CGRectMake(0, 0, kColorPreviewWidth, CGRectGetHeight(self.controlViewWrapper.frame));
 
   CGRect frame = self.textLabel.frame;
-  frame.origin.x += 18;
+  frame.origin.x += kTextPaddingLeft;
   frame.origin.y += kTextPaddingTop;
   self.textLabel.frame = frame;
 
   [_button sizeToFit];
   _button.frame =
-      CGRectMake(CGRectGetWidth(self.controlViewWrapper.frame) - CGRectGetWidth(_button.frame), -12,
-                 CGRectGetWidth(_button.frame), CGRectGetHeight(_button.frame));
+      CGRectMake(CGRectGetWidth(self.controlViewWrapper.frame) - CGRectGetWidth(_button.frame),
+                 kButtonTopOffset,
+                 CGRectGetWidth(_button.frame),
+                 CGRectGetHeight(_button.frame));
 }
 
 - (void)prepareForReuse {
