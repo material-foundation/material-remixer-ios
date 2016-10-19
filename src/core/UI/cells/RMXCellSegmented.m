@@ -60,7 +60,7 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
+
   _segmentControl.frame = self.controlViewWrapper.bounds;
 }
 

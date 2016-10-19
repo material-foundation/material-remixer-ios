@@ -1,12 +1,12 @@
 /*
  Copyright 2016-present Google Inc. All Rights Reserved.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -50,25 +50,25 @@ static CGFloat kTextPaddingTop = 11.0f;
   if (!variable) {
     return;
   }
-  
+
   if (!_button) {
     _button = [UIButton buttonWithType:UIButtonTypeSystem];
     [_button setTitle:@"Edit" forState:UIControlStateNormal];
     [_button addTarget:self
-                action:@selector(didTapButton:)
-      forControlEvents:UIControlEventTouchUpInside];
+                  action:@selector(didTapButton:)
+        forControlEvents:UIControlEventTouchUpInside];
     _button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     [self.controlViewWrapper addSubview:_button];
   }
-  
+
   if (!_colorPreview) {
     _colorPreview = [[UIView alloc] initWithFrame:CGRectZero];
     _colorPreview.layer.borderWidth = 1.0;
     _colorPreview.layer.borderColor = [UIColor blackColor].CGColor;
     [self.controlViewWrapper addSubview:_colorPreview];
   }
-  
+
   _colorPreview.backgroundColor = self.variable.selectedValue;
   self.textLabel.text = [self hexStringFromColor:self.variable.selectedValue];
   self.detailTextLabel.text = self.variable.title;
@@ -76,25 +76,23 @@ static CGFloat kTextPaddingTop = 11.0f;
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
+
   _colorPreview.frame = CGRectMake(0, 0, 10, CGRectGetHeight(self.controlViewWrapper.frame));
-  
+
   CGRect frame = self.textLabel.frame;
   frame.origin.x += 18;
   frame.origin.y += kTextPaddingTop;
   self.textLabel.frame = frame;
-  
+
   [_button sizeToFit];
   _button.frame =
-      CGRectMake(CGRectGetWidth(self.controlViewWrapper.frame) - CGRectGetWidth(_button.frame),
-                 -12,
-                 CGRectGetWidth(_button.frame),
-                 CGRectGetHeight(_button.frame));
+      CGRectMake(CGRectGetWidth(self.controlViewWrapper.frame) - CGRectGetWidth(_button.frame), -12,
+                 CGRectGetWidth(_button.frame), CGRectGetHeight(_button.frame));
 }
 
 - (void)prepareForReuse {
   [super prepareForReuse];
-  
+
   _button = nil;
   _colorPreview = nil;
 }
@@ -106,13 +104,13 @@ static CGFloat kTextPaddingTop = 11.0f;
       [UIAlertController alertControllerWithTitle:@"Enter the HEX value"
                                           message:nil
                                    preferredStyle:UIAlertControllerStyleAlert];
-  [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+  [alertController addTextFieldWithConfigurationHandler:^(UITextField *_Nonnull textField) {
     textField.placeholder = @"e.g. FF4499";
   }];
   UIAlertAction *saveAction =
       [UIAlertAction actionWithTitle:@"Save"
                                style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * _Nonnull action) {
+                             handler:^(UIAlertAction *_Nonnull action) {
                                UITextField *textField = alertController.textFields[0];
                                NSString *textInput = textField.text;
                                if (textInput.length < 6) {
@@ -144,18 +142,18 @@ static CGFloat kTextPaddingTop = 11.0f;
 - (NSString *)hexStringFromColor:(UIColor *)color {
   CGFloat rgba[4];
   CGFloat wa[2];
-  if ([color getRed:rgba green:rgba+1 blue:rgba+2 alpha:rgba+3]) {
-  } else if ([color getWhite:wa alpha:wa+1]) {
+  if ([color getRed:rgba green:rgba + 1 blue:rgba + 2 alpha:rgba + 3]) {
+  } else if ([color getWhite:wa alpha:wa + 1]) {
     // Grayscale
     rgba[0] = rgba[1] = rgba[2] = wa[0];
     rgba[3] = wa[1];
   }
-  
+
   // Convert range from [0, 1] to [0, 255].
   unsigned long red = round(rgba[0] * 255.0);
   unsigned long green = round(rgba[1] * 255.0);
   unsigned long blue = round(rgba[2] * 255.0);
-  
+
   return [[NSString stringWithFormat:@"#%02lx%02lx%02lx", red, green, blue] uppercaseString];
 }
 
@@ -174,11 +172,8 @@ static CGFloat kTextPaddingTop = 11.0f;
   hexString = [hexString substringFromIndex:2];
   hexScanner = [NSScanner scannerWithString:[hexString substringToIndex:2]];
   [hexScanner scanHexInt:&b];
-  
-  return [UIColor colorWithRed:r/255.0
-                         green:g/255.0
-                          blue:b/255.0
-                         alpha:1];
+
+  return [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1];
 }
 
 @end

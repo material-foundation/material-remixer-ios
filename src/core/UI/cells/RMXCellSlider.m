@@ -63,7 +63,7 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
+
   _sliderControl.frame = self.controlViewWrapper.bounds;
 }
 

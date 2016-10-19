@@ -49,7 +49,7 @@ static CGFloat kContainerHeight = 40.0f;
 
 - (void)setVariable:(RMXVariable *)variable {
   _variable = variable;
-  
+
   if (!_controlViewWrapper) {
     _controlViewWrapper = [[UIView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:_controlViewWrapper];
@@ -69,10 +69,9 @@ static CGFloat kContainerHeight = 40.0f;
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
+
   CGRect containerFrame =
-      CGRectMake(kContainerPaddingEdges,
-                 kContainerPaddingTop,
+      CGRectMake(kContainerPaddingEdges, kContainerPaddingTop,
                  CGRectGetWidth(self.contentView.bounds) - (kContainerPaddingEdges * 2),
                  [[self class] cellHeight] - kContainerPaddingTop - kContainerPaddingEdges);
   _controlViewWrapper.frame = containerFrame;
