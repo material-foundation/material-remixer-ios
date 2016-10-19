@@ -64,8 +64,6 @@
 - (void)setSelectedValue:(id)selectedValue {
   _selectedValue = selectedValue;
   [self executeUpdateBlocks];
-  [[NSNotificationCenter defaultCenter] postNotificationName:RMXVariableUpdateNotification
-                                                      object:self];
 }
 
 - (void)save {
