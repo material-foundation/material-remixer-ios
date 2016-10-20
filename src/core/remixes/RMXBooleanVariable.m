@@ -49,7 +49,7 @@
              typeIdentifier:RMXTypeBoolean
                defaultValue:@(defaultValue)
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock(variable, [selectedValue boolValue]);
+                  updateBlock((RMXBooleanVariable *)variable, [selectedValue boolValue]);
                 }];
   self.controlType = RMXControlTypeSwitch;
   return self;

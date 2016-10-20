@@ -37,11 +37,10 @@
 + (instancetype)stringVariableWithKey:(NSString *)key
                          defaultValue:(NSString *)defaultValue
                           updateBlock:(RMXStringUpdateBlock)updateBlock {
-  RMXStringVariable *variable =
-      [[self alloc] initWithKey:key
-                   defaultValue:defaultValue
-                 possibleValues:nil
-                    updateBlock:updateBlock];
+  RMXStringVariable *variable = [[self alloc] initWithKey:key
+                                             defaultValue:defaultValue
+                                           possibleValues:nil
+                                              updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
 
@@ -71,7 +70,7 @@
              typeIdentifier:RMXTypeString
                defaultValue:defaultValue
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock(variable, selectedValue);
+                  updateBlock((RMXStringVariable *)variable, selectedValue);
                 }];
   self.possibleValues = possibleValues;
   self.controlType = RMXControlTypeTextPicker;

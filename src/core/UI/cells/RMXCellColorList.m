@@ -56,7 +56,6 @@ static CGFloat kMinLuminenceForLightColor = 0.5;
 
   _swatchesContainer = [[UIView alloc] initWithFrame:self.controlViewWrapper.bounds];
   _swatchButtons = [NSMutableArray array];
-  CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
   for (NSUInteger count = 0; count < variable.possibleValues.count; count++) {
     UIColor *color = variable.possibleValues[count];
     [self addButtonForColor:color atPosition:count];

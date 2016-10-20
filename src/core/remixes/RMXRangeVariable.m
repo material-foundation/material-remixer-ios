@@ -91,7 +91,7 @@
              typeIdentifier:RMXTypeRange
                defaultValue:@(defaultValue)
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock(variable, [selectedValue floatValue]);
+                  updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
                 }];
   if (self) {
     _minimumValue = minValue;

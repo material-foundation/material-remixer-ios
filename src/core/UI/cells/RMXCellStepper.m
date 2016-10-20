@@ -67,7 +67,7 @@ static CGFloat kDefaultIncrementValue = 1;
   }
 
   if ([self.variable isKindOfClass:[RMXRangeVariable class]]) {
-    RMXRangeVariable *rangeVariable = self.variable;
+    RMXRangeVariable *rangeVariable = (RMXRangeVariable *)self.variable;
     _stepperControl.minimumValue = rangeVariable.minimumValue;
     _stepperControl.maximumValue = rangeVariable.maximumValue;
     _stepperControl.stepValue = rangeVariable.increment;
