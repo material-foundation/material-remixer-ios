@@ -66,7 +66,6 @@ static CGFloat kDefaultIncrementValue = 1;
     self.accessoryView = _stepperControl;
   }
   
-  _stepperControl.value = variable.selectedFloatValue;
   if ([self.variable isKindOfClass:[RMXRangeVariable class]]) {
     RMXRangeVariable *rangeVariable = self.variable;
     _stepperControl.minimumValue = rangeVariable.minimumValue;
@@ -77,6 +76,8 @@ static CGFloat kDefaultIncrementValue = 1;
     _stepperControl.maximumValue = kDefaultMaxValue;
     _stepperControl.stepValue = kDefaultIncrementValue;
   }
+  _stepperControl.value = [variable.selectedValue doubleValue];
+
   self.textLabel.text = [NSString stringWithFormat:@"%.2f", variable.selectedFloatValue];
   self.detailTextLabel.text = variable.title;
 }
