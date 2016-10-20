@@ -42,5 +42,6 @@ typedef NS_ENUM(NSInteger, RMXControlType) {
   RMXControlTypeSlider = 4,
   RMXControlTypeStepper = 5,
   RMXControlTypeSwitch = 6,
-  RMXControlTypeTextPicker = 7
+  RMXControlTypeTextPicker = 7,
+  RMXControlTypeTextInput = 8
 };

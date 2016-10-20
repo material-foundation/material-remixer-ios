@@ -26,6 +26,7 @@
 #import "RMXCellSlider.h"
 #import "RMXCellStepper.h"
 #import "RMXCellSwitch.h"
+#import "RMXCellTextInput.h"
 #import "RMXCellTextPicker.h"
 #import "RMXOverlayNavigationBar.h"
 #import "RMXOverlayView.h"
@@ -78,6 +79,8 @@ static CGFloat kInitialSpeed = 0.4f;
               forCellReuseIdentifier:NSStringFromClass([RMXCellSwitch class])];
   [self.view.tableView registerClass:[RMXCellTextPicker class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellTextPicker class])];
+  [self.view.tableView registerClass:[RMXCellTextInput class]
+              forCellReuseIdentifier:NSStringFromClass([RMXCellTextInput class])];
 
   UINavigationItem *item = self.view.navigationBar.topItem;
   [(UIButton *)item.leftBarButtonItem.customView addTarget:self
@@ -270,6 +273,8 @@ static CGFloat kInitialSpeed = 0.4f;
     return [RMXCellSwitch class];
   } else if (variable.controlType == RMXControlTypeTextPicker) {
     return [RMXCellTextPicker class];
+  } else if (variable.controlType == RMXControlTypeTextInput) {
+    return [RMXCellTextInput class];
   }
   return nil;
 }
