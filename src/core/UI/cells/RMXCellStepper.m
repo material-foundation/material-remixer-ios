@@ -65,7 +65,7 @@ static CGFloat kDefaultIncrementValue = 1;
               forControlEvents:UIControlEventValueChanged];
     self.accessoryView = _stepperControl;
   }
-  
+
   if ([self.variable isKindOfClass:[RMXRangeVariable class]]) {
     RMXRangeVariable *rangeVariable = self.variable;
     _stepperControl.minimumValue = rangeVariable.minimumValue;
@@ -84,7 +84,7 @@ static CGFloat kDefaultIncrementValue = 1;
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
+
   CGRect frame = self.textLabel.frame;
   frame.origin.y += kTextPaddingTop;
   self.textLabel.frame = frame;
