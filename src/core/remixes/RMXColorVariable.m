@@ -93,7 +93,7 @@ NSString *const RMXColorKeyAlpha = @"a";
              typeIdentifier:RMXTypeColor
                defaultValue:defaultValue
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock(variable, selectedValue);
+                  updateBlock((RMXColorVariable *)variable, selectedValue);
                 }];
   self.possibleValues = possibleValues;
   // TODO(chuga): Implement a color picker control for color variables that don't have a pre-defined

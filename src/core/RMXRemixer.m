@@ -32,8 +32,6 @@
 #define SWIPE_GESTURE_REQUIRED_TOUCHES 3
 #endif
 
-
-
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
 @property(nonatomic, strong) NSMutableDictionary *variables;
 @property(nonatomic, assign) RMXStorageMode storageMode;
@@ -86,7 +84,7 @@
   instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
-  
+
   if (instance.storageMode == RMXStorageModeLocal) {
     instance.storage = [[RMXLocalStorageController alloc] init];
   } else {
@@ -157,7 +155,7 @@
   return [[[self sharedInstance] variables] objectForKey:key];
 }
 
-+ (RMXVariable *)addVariable:(RMXVariable *)variable {
++ (__kindof RMXVariable *)addVariable:(RMXVariable *)variable {
   RMXVariable *existingVariable = [self variableForKey:variable.key];
   if (!existingVariable) {
     [[[self sharedInstance] variables] setObject:variable forKey:variable.key];

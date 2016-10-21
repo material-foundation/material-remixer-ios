@@ -133,18 +133,17 @@ static CGFloat kPickerheight = 200.0f;
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-  if (row == self.variable.possibleValues.count) {
+  if ((NSUInteger)row == self.variable.possibleValues.count) {
     return self.variable.selectedValue;
   } else {
     return [self.variable.possibleValues objectAtIndex:row];
   }
-  
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
-  if (row < self.variable.possibleValues.count) {
+  if ((NSUInteger)row < self.variable.possibleValues.count) {
     [self.variable setSelectedValue:[self.variable.possibleValues objectAtIndex:row]];
     [self.variable save];
   }
