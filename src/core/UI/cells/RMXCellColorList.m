@@ -34,13 +34,6 @@ static CGFloat kMinLuminenceForLightColor = 0.5;
   return RMXCellHeightLarge;
 }
 
-- (void)prepareForReuse {
-  [super prepareForReuse];
-  [_swatchesContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-  _swatchesContainer = nil;
-  _swatchButtons = nil;
-}
-
 - (void)setVariable:(RMXColorVariable *)variable {
   [super setVariable:variable];
   if (!variable) {
@@ -54,22 +47,41 @@ static CGFloat kMinLuminenceForLightColor = 0.5;
     [_swatchesContainer removeFromSuperview];
   }
 
-  _swatchesContainer = [[UIView alloc] initWithFrame:self.controlViewWrapper.bounds];
+  _swatchesContainer = [[UIView alloc] initWithFrame:CGRectZero];
   _swatchButtons = [NSMutableArray array];
-  for (NSUInteger count = 0; count < variable.possibleValues.count; count++) {
-    UIColor *color = variable.possibleValues[count];
-    [self addButtonForColor:color atPosition:count];
+  for (UIColor *color in variable.possibleValues) {
+    [self addButtonForColor:color];
   }
   NSUInteger selectedIndex =
       [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex == NSNotFound) {
     UIColor *color = self.variable.selectedValue;
-    [self addButtonForColor:color atPosition:self.variable.possibleValues.count];
+    [self addButtonForColor:color];
   }
   [self.controlViewWrapper addSubview:_swatchesContainer];
 
   [self updateSelectedIndicator];
   self.detailTextLabel.text = variable.title;
+}
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+
+  _swatchesContainer.frame = self.controlViewWrapper.bounds;
+  CGFloat boundsHeight = CGRectGetHeight(_swatchesContainer.bounds);
+  for (NSUInteger i = 0; i < _swatchButtons.count; i++) {
+    UIButton *button = _swatchButtons[i];
+    button.frame =
+        CGRectMake((i * boundsHeight) + (i * kSwatchInnerPadding), 0, boundsHeight, boundsHeight);
+    button.layer.cornerRadius = boundsHeight / 2;
+  }
+}
+
+- (void)prepareForReuse {
+  [super prepareForReuse];
+  [_swatchesContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+  _swatchesContainer = nil;
+  _swatchButtons = nil;
 }
 
 #pragma mark - Control Events
@@ -82,14 +94,9 @@ static CGFloat kMinLuminenceForLightColor = 0.5;
 
 #pragma mark - Private
 
-- (void)addButtonForColor:(UIColor *)color atPosition:(NSUInteger)position {
+- (void)addButtonForColor:(UIColor *)color {
   CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
   UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  swatchButton.frame = CGRectMake((position * boundsHeight) + (position * kSwatchInnerPadding),
-                                  0,
-                                  boundsHeight,
-                                  boundsHeight);
-  swatchButton.layer.cornerRadius = boundsHeight / 2;
   swatchButton.layer.shouldRasterize = YES;
   swatchButton.layer.rasterizationScale = [UIScreen mainScreen].scale;
   swatchButton.backgroundColor = color;
