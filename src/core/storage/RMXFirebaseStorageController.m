@@ -17,7 +17,6 @@
 #import "RMXFirebaseStorageController.h"
 
 @import Firebase;
-@import FirebaseDatabase;
 
 #import "RMXBooleanVariable.h"
 #import "RMXRangeVariable.h"
