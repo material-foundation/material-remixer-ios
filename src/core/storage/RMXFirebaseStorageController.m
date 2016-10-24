@@ -16,7 +16,8 @@
 
 #import "RMXFirebaseStorageController.h"
 
-#import "Firebase.h"
+@import Firebase;
+
 #import "RMXBooleanVariable.h"
 #import "RMXRangeVariable.h"
 #import "RMXRemixer.h"
@@ -45,8 +46,7 @@ static NSString *const kFirebaseKeyVariables = @"variables";
 - (void)setup {
   [FIRApp configure];
 
-  [[FIRAuth auth] signInAnonymouslyWithCompletion:^(FIRUser *user, NSError *error){
-  }];
+  // TODO(chuga): Add Firebase Auth code to authenticate user.
 
   _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
   _storedVariables = [NSMutableDictionary dictionary];

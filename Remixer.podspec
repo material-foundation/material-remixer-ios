@@ -18,26 +18,15 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Firebase' do |ss|
-    ss.source_files = 'src/firebase/*.{h,m}'
     ss.dependency 'Remixer/Core'
-    ss.dependency 'Firebase'
+    ss.dependency 'Firebase/Core'
     ss.dependency 'Firebase/Database'
-    ss.dependency 'Firebase/Auth'
-    ss.dependency 'Firebase/Storage'
     ss.resource = 'src/firebase/GoogleService-Info.plist'
     ss.xcconfig = {
-      'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/Firebase/Headers',
+      'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/FirebaseCore/Frameworks/frameworks" "$(PODS_ROOT)/FirebaseAnalytics/Frameworks/frameworks" "$(PODS_ROOT)/FirebaseDatabase/Frameworks" "$(PODS_ROOT)/GoogleInterchangeUtilities/Frameworks/frameworks" "$(PODS_ROOT)/GoogleSymbolUtilities/Frameworks/frameworks"',
+      'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/Firebase/Core/Sources',
       'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_HOST_FIREBASE=1'
     }
+    ss.frameworks = ['FirebaseCore', 'FirebaseAnalytics', 'FirebaseDatabase', 'GoogleInterchangeUtilities', 'GoogleSymbolUtilities']
   end
-
-  # s.subspec 'Subnet' do |ss|
-  #   ss.source_files = 'src/subnet/*.{h,m}'
-  #   ss.dependency 'Remixer/Core'
-  #   ss.dependency 'GCDWebServer', '~> 3.0'
-  #   ss.xcconfig = {
-  #     'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_HOST_SUBNET=1'
-  #   }
-  # end
-
 end
