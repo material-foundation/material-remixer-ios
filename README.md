@@ -4,7 +4,7 @@ Remixer helps teams use and refine design specs by providing an abstraction for 
 
 This SDK for iOS is currently in development.
 
-New to Remixer? Visit our [main repo](https://github.com/material-foundation/material-remixer) to get a full description of what it is and how it works.
+**New to Remixer?** Visit our [main repo](https://github.com/material-foundation/material-remixer) to get a full description of what it is and how it works.
 - - -
 
 ## Installation
@@ -59,7 +59,7 @@ open your-project.xcworkspace
 
 Now you're ready to get started in Xcode.
 
-### 4. Usage
+### 4. Add variables
 
 Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and call the
 shared start method in your AppDelegate class.
@@ -114,9 +114,21 @@ Now you can add Remixer variables in your view controller classes as follows:
                updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];
+}
 
-@end
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  // This prevents the variables from showing up in the overlay once you leave
+  // this view controller.
+  [RMXRemixer removeAllVariables];
+}
 ~~~
+
+### 5. Refine their values
+
+Run the app and swipe up with 3 fingers (or 2 if you're using the simulator). This will trigger the Remixer overlay. From here you can see the variables your app is using, and refine their values.
+
+![screenshot](demo_screenshot.png)
 
 ## Example App
 
