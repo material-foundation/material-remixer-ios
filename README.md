@@ -1,8 +1,10 @@
-# Remixer
+![remixer](https://github.com/material-foundation/material-remixer/raw/master/docs/assets/lockup_remixer_icon_horizontal_dark.png)
 
-Remixer is a set of libraries and protocols to allow live adjustment of apps and prototypes during
-the development process.
+Remixer helps teams use and refine design specs by providing an abstraction for these values that is accessible and configurable from both inside and outside the app itself. 
 
+This SDK for iOS is currently in development.
+
+New to Remixer? Visit our [main repo](https://github.com/material-foundation/material-remixer) to get a full description of what it is and how it works.
 - - -
 
 ## Installation
@@ -44,11 +46,7 @@ to your target in your Podfile:
 ~~~ ruby
 target "MyApp" do
   ...
-  # Until Remixer iOS is public:
-  pod 'Remixer', :git => 'https://github.com/material-foundation/material-remixer-ios.git'
-
-  # After Remixer iOS is public:
-  # pod 'Remixer'
+  pod 'Remixer'
 end
 ~~~
 
@@ -66,6 +64,8 @@ Now you're ready to get started in Xcode.
 Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and call the
 shared start method in your AppDelegate class.
 
+Note that we currently support only RMXStorageModeLocal as RMXStorageModeCloud is still in development.
+
 ~~~ objc
 #import "Remixer.h"
 
@@ -73,9 +73,16 @@ shared start method in your AppDelegate class.
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+  // Create the window
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-  // Start Remixer.
-  [[RMXApp sharedInstance] start];
+  // Start Remixer
+  [RMXRemixer startInMode:RMXStorageModeLocal];
+  
+  // Create the root view controller and set it in the window
+  self.window.rootViewController = [[UIViewController alloc] init];
+  [self.window makeKeyAndVisible];
 
   return YES;
 }
@@ -83,7 +90,7 @@ shared start method in your AppDelegate class.
 @end
 ~~~
 
-Now you can add Remixer components in your view controller classes as follows:
+Now you can add Remixer variables in your view controller classes as follows:
 
 ~~~ objc
 #import "Remixer.h"
@@ -99,23 +106,27 @@ Now you can add Remixer components in your view controller classes as follows:
   _box.backgroundColor = [UIColor redColor];
   [self.view addSubview:_box];
   
-  // Add slider remix.
-  RMXSlider *sliderControl = [RMXSlider controlWithTitle:@"Alpha" minimumValue:0 maximumValue:1];
-  [RMXRemix addRemixWithKey:@"alpha"
-               usingControl:sliderControl
-              selectedValue:@(1)
-                updateBlock:^(RMXRemix *remix, NSNumber *selectedValue) {
-                
-                  // Now set the box alpha to slider selected value.
-                  _box.alpha = [selectedValue floatValue];
-                }];
-}
+  // Add a color variable to control the background color.
+  // Note: You can set possibleValues to limit it to certain colors.
+  [RMXColorVariable
+      colorVariableWithKey:@"boxBgColor"
+              defaultValue:_box.backgroundColor
+               updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
+                 _box.backgroundColor = selectedValue;
+               }];
 
 @end
 ~~~
 
-### 5. Example Apps
+## Example App
 
-- [Objective-C example app](examples/)
+- [Objective-C example app](examples/objc)
 
+## Other Repositories
+
+Other platform specific libraries and tools can be found in the following GitHub repos:
+
+- [Android](https://github.com/material-foundation/material-remixer-android) - Remixer for Android.
+- [Web](https://github.com/material-foundation/material-remixer-web) - Remixer for Web.
+- Dashboard - Remixer web dashboard for all platforms (available soon).
 
