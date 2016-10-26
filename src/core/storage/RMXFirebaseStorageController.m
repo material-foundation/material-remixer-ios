@@ -16,6 +16,8 @@
 
 #import "RMXFirebaseStorageController.h"
 
+#ifdef REMIXER_CLOUD_FIREBASE
+
 @import Firebase;
 
 #import "RMXBooleanVariable.h"
@@ -24,7 +26,7 @@
 #import "RMXVariableFactory.h"
 
 // TODO(chuga): Figure out where to set this path.
-static NSString *const kFirebasePath = @"iOSDemoApp";
+static NSString *const kFirebasePath = @"Remixer";
 static NSString *const kFirebaseKeyVariables = @"variables";
 
 @implementation RMXFirebaseStorageController {
@@ -104,3 +106,5 @@ static NSString *const kFirebaseKeyVariables = @"variables";
 }
 
 @end
+
+#endif

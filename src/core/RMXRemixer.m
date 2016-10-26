@@ -93,6 +93,9 @@
   } else {
     #ifdef REMIXER_CLOUD_FIREBASE
     instance.storage = [[RMXFirebaseStorageController alloc] init];
+    #else
+    instance.storage = [[RMXLocalStorageController alloc] init];
+    // TODO(chuga): Print out a warning.
     #endif
   }
   [instance.storage setup];
