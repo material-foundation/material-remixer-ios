@@ -38,6 +38,7 @@
   [RMXColorVariable
       colorVariableWithKey:@"boxBgColor"
               defaultValue:[UIColor redColor]
+            possibleValues:@[[UIColor redColor], [UIColor blueColor], [UIColor greenColor]]
                updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];
@@ -59,6 +60,9 @@
   [RMXRangeVariable
       rangeVariableWithKey:@"alpha"
               defaultValue:1
+                  minValue:0
+                  maxValue:1
+                 increment:0
                updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
                  _box.alpha = selectedValue;
                }];
