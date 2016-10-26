@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'Remixer'
-  s.version      = '0.5.1'
+  s.version      = '0.5.2'
   s.author       = 'Google Inc.'
   s.summary      = 'Remixer is a set of libraries and protocols to allow live adjustment of apps and prototypes during the development process.'
   s.homepage     = 'https://github.com/material-remixer/material-remixer-ios'
@@ -21,11 +21,10 @@ Pod::Spec.new do |s|
     ss.dependency 'Remixer/Core'
     ss.dependency 'Firebase/Core'
     ss.dependency 'Firebase/Database'
-    ss.resource = 'src/firebase/GoogleService-Info.plist'
     ss.xcconfig = {
       'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/FirebaseCore/Frameworks/frameworks" "$(PODS_ROOT)/FirebaseAnalytics/Frameworks/frameworks" "$(PODS_ROOT)/FirebaseDatabase/Frameworks" "$(PODS_ROOT)/GoogleInterchangeUtilities/Frameworks/frameworks" "$(PODS_ROOT)/GoogleSymbolUtilities/Frameworks/frameworks"',
       'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/Firebase/Core/Sources',
-      'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_HOST_FIREBASE=1'
+      'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_CLOUD_FIREBASE=1'
     }
     ss.frameworks = ['FirebaseCore', 'FirebaseAnalytics', 'FirebaseDatabase', 'GoogleInterchangeUtilities', 'GoogleSymbolUtilities']
   end

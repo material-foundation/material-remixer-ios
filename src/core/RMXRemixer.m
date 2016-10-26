@@ -20,11 +20,14 @@
 
 #import "RMXRemixer.h"
 
-#import "RMXFirebaseStorageController.h"
 #import "RMXLocalStorageController.h"
 #import "RMXVariable.h"
 #import "UI/RMXOverlayViewController.h"
 #import "UI/RMXOverlayWindow.h"
+
+#ifdef REMIXER_CLOUD_FIREBASE
+#import "RMXFirebaseStorageController.h"
+#endif
 
 #if TARGET_OS_SIMULATOR
 #define SWIPE_GESTURE_REQUIRED_TOUCHES 2
@@ -88,7 +91,9 @@
   if (instance.storageMode == RMXStorageModeLocal) {
     instance.storage = [[RMXLocalStorageController alloc] init];
   } else {
+    #ifdef REMIXER_CLOUD_FIREBASE
     instance.storage = [[RMXFirebaseStorageController alloc] init];
+    #endif
   }
   [instance.storage setup];
   [instance.storage startObservingUpdates];
