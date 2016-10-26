@@ -27,7 +27,6 @@ static CGFloat kTextAplha = 0.5f;
 static CGFloat kDetailTextPaddingTop = 4.0f;
 static CGFloat kContainerPaddingTop = 24.0f;
 static CGFloat kContainerPaddingEdges = 16.0f;
-static CGFloat kContainerHeight = 40.0f;
 
 @implementation RMXCell {
   id<NSObject> _notificationObserver;

@@ -95,7 +95,6 @@ static CGFloat kMinLuminenceForLightColor = 0.5;
 #pragma mark - Private
 
 - (void)addButtonForColor:(UIColor *)color {
-  CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
   UIButton *swatchButton = [UIButton buttonWithType:UIButtonTypeCustom];
   swatchButton.layer.shouldRasterize = YES;
   swatchButton.layer.rasterizationScale = [UIScreen mainScreen].scale;

@@ -3,9 +3,9 @@ Pod::Spec.new do |s|
   s.version      = '0.5.2'
   s.author       = 'Google Inc.'
   s.summary      = 'Remixer is a set of libraries and protocols to allow live adjustment of apps and prototypes during the development process.'
-  s.homepage     = 'https://github.com/material-remixer/material-remixer-ios'
+  s.homepage     = 'https://github.com/material-foundation/material-remixer-ios'
   s.license      = 'Apache 2.0'
-  s.source       = { :git => 'https://github.com/material-foundation/material-remixer-ios', :tag => s.version.to_s }
+  s.source       = { :git => 'https://github.com/material-foundation/material-remixer-ios.git', :tag => s.version.to_s }
   s.platform     = :ios, '8.0'
   s.requires_arc = true
   s.default_subspec = 'Core'
