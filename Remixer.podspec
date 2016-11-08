@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = 'Remixer'
-  s.version      = '1.0.0'
+  s.version      = '0.5.2'
   s.author       = 'Google Inc.'
   s.summary      = 'Remixer is a set of libraries and protocols to allow live adjustment of apps and prototypes during the development process.'
-  s.homepage     = 'https://github.com/material-remixer/material-remixer-ios'
+  s.homepage     = 'https://github.com/material-foundation/material-remixer-ios'
   s.license      = 'Apache 2.0'
-  s.source       = { :git => 'https://github.com/material-foundation/material-remixer-ios', :tag => s.version.to_s }
+  s.source       = { :git => 'https://github.com/material-foundation/material-remixer-ios.git', :tag => s.version.to_s }
   s.platform     = :ios, '8.0'
   s.requires_arc = true
   s.default_subspec = 'Core'
@@ -18,26 +18,14 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Firebase' do |ss|
-    ss.source_files = 'src/firebase/*.{h,m}'
     ss.dependency 'Remixer/Core'
-    ss.dependency 'Firebase'
-    ss.dependency 'Firebase/Database'
-    ss.dependency 'Firebase/Auth'
-    ss.dependency 'Firebase/Storage'
-    ss.resource = 'src/firebase/GoogleService-Info.plist'
+    ss.dependency 'Firebase/Core', '~> 3.8'
+    ss.dependency 'Firebase/Database', '~> 3.1'
     ss.xcconfig = {
-      'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/Firebase/Headers',
-      'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_HOST_FIREBASE=1'
+      'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/FirebaseCore/Frameworks/frameworks" "$(PODS_ROOT)/FirebaseAnalytics/Frameworks/frameworks" "$(PODS_ROOT)/FirebaseDatabase/Frameworks" "$(PODS_ROOT)/GoogleInterchangeUtilities/Frameworks/frameworks" "$(PODS_ROOT)/GoogleSymbolUtilities/Frameworks/frameworks"',
+      'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/Firebase/Core/Sources',
+      'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_CLOUD_FIREBASE=1'
     }
+    ss.frameworks = ['FirebaseCore', 'FirebaseAnalytics', 'FirebaseDatabase', 'GoogleInterchangeUtilities', 'GoogleSymbolUtilities']
   end
-
-  # s.subspec 'Subnet' do |ss|
-  #   ss.source_files = 'src/subnet/*.{h,m}'
-  #   ss.dependency 'Remixer/Core'
-  #   ss.dependency 'GCDWebServer', '~> 3.0'
-  #   ss.xcconfig = {
-  #     'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_HOST_SUBNET=1'
-  #   }
-  # end
-
 end

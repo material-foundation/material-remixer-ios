@@ -74,7 +74,7 @@ NSString *const kButtonTitleNearby = @"NEARBY";
     _remoteButton.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
 
     item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_closeButton];
-    item.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_remoteButton];
+    // item.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_remoteButton];
   }
   return self;
 }

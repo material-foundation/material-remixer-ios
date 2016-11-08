@@ -36,31 +36,33 @@
 
   // Add color picker.
   [RMXColorVariable
-      colorVariableWithKey:@"colorPicker"
+      colorVariableWithKey:@"boxBgColor"
               defaultValue:[UIColor redColor]
-            possibleValues:@[[UIColor redColor]]
+            possibleValues:@[[UIColor redColor], [UIColor blueColor], [UIColor greenColor]]
                updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];
 
   // Add segment control.
   NSArray *themesOptions = @[ @"Light", @"Dark" ];
-  RMXStringVariable *themeVariable =
-      [RMXStringVariable
-          stringVariableWithKey:@"theme"
-                   defaultValue:themesOptions[0]
-                 possibleValues:themesOptions
-                    updateBlock:^(RMXStringVariable *_Nonnull variable, NSString *selectedValue) {
-                      self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
-                                                      ? [UIColor whiteColor]
-                                                      : [UIColor darkGrayColor];
-                    }];
+  RMXStringVariable *themeVariable = [RMXStringVariable
+      stringVariableWithKey:@"theme"
+               defaultValue:themesOptions[0]
+             possibleValues:themesOptions
+                updateBlock:^(RMXStringVariable *_Nonnull variable, NSString *selectedValue) {
+                  self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
+                                                  ? [UIColor whiteColor]
+                                                  : [UIColor darkGrayColor];
+                }];
   themeVariable.controlType = RMXControlTypeSegmented;
 
   // Add slider control.
   [RMXRangeVariable
       rangeVariableWithKey:@"alpha"
               defaultValue:1
+                  minValue:0
+                  maxValue:1
+                 increment:0
                updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
                  _box.alpha = selectedValue;
                }];
@@ -71,12 +73,12 @@
               defaultValue:80
                   minValue:40
                   maxValue:200
-                increment:20
-              updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
-                CGRect frame = _box.frame;
-                frame.size.width = selectedValue;
-                _box.frame = frame;
-              }];
+                 increment:20
+               updateBlock:^(RMXNumberVariable *_Nonnull variable, CGFloat selectedValue) {
+                 CGRect frame = _box.frame;
+                 frame.size.width = selectedValue;
+                 _box.frame = frame;
+               }];
 
   // Add switch control.
   [RMXBooleanVariable

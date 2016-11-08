@@ -20,19 +20,20 @@
 
 #import "RMXRemixer.h"
 
-#import "RMXFirebaseStorageController.h"
 #import "RMXLocalStorageController.h"
 #import "RMXVariable.h"
 #import "UI/RMXOverlayViewController.h"
 #import "UI/RMXOverlayWindow.h"
+
+#ifdef REMIXER_CLOUD_FIREBASE
+#import "RMXFirebaseStorageController.h"
+#endif
 
 #if TARGET_OS_SIMULATOR
 #define SWIPE_GESTURE_REQUIRED_TOUCHES 2
 #else
 #define SWIPE_GESTURE_REQUIRED_TOUCHES 3
 #endif
-
-
 
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
 @property(nonatomic, strong) NSMutableDictionary *variables;
@@ -86,11 +87,16 @@
   instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
-  
+
   if (instance.storageMode == RMXStorageModeLocal) {
     instance.storage = [[RMXLocalStorageController alloc] init];
   } else {
+    #ifdef REMIXER_CLOUD_FIREBASE
     instance.storage = [[RMXFirebaseStorageController alloc] init];
+    #else
+    instance.storage = [[RMXLocalStorageController alloc] init];
+    // TODO(chuga): Print out a warning.
+    #endif
   }
   [instance.storage setup];
   [instance.storage startObservingUpdates];
@@ -157,7 +163,7 @@
   return [[[self sharedInstance] variables] objectForKey:key];
 }
 
-+ (RMXVariable *)addVariable:(RMXVariable *)variable {
++ (__kindof RMXVariable *)addVariable:(RMXVariable *)variable {
   RMXVariable *existingVariable = [self variableForKey:variable.key];
   if (!existingVariable) {
     [[[self sharedInstance] variables] setObject:variable forKey:variable.key];

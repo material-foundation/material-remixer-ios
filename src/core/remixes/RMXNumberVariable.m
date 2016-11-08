@@ -26,22 +26,20 @@
                          defaultValue:(CGFloat)defaultValue
                        possibleValues:(NSArray<NSNumber *> *)possibleValues
                           updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  RMXNumberVariable *variable =
-      [[self alloc] initWithKey:key
-                   defaultValue:defaultValue
-                 possibleValues:possibleValues
-                    updateBlock:updateBlock];
+  RMXNumberVariable *variable = [[self alloc] initWithKey:key
+                                             defaultValue:defaultValue
+                                           possibleValues:possibleValues
+                                              updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
 
 + (instancetype)numberVariableWithKey:(NSString *)key
                          defaultValue:(CGFloat)defaultValue
                           updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  RMXNumberVariable *variable =
-  [[self alloc] initWithKey:key
-               defaultValue:defaultValue
-             possibleValues:nil
-                updateBlock:updateBlock];
+  RMXNumberVariable *variable = [[self alloc] initWithKey:key
+                                             defaultValue:defaultValue
+                                           possibleValues:nil
+                                              updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
 
@@ -49,7 +47,7 @@
   CGFloat selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] floatValue];
   return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
                       defaultValue:selectedValue
-                       possibleValues:[dictionary objectForKey:RMXDictionaryKeyPossibleValues]
+                    possibleValues:[dictionary objectForKey:RMXDictionaryKeyPossibleValues]
                        updateBlock:nil];
 }
 
@@ -72,7 +70,7 @@
              typeIdentifier:RMXTypeNumber
                defaultValue:@(defaultValue)
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock(variable, [selectedValue floatValue]);
+                  updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
                 }];
   if (self) {
     self.possibleValues = possibleValues;

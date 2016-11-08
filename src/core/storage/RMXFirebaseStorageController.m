@@ -16,14 +16,17 @@
 
 #import "RMXFirebaseStorageController.h"
 
-#import "Firebase.h"
+#ifdef REMIXER_CLOUD_FIREBASE
+
+@import Firebase;
+
 #import "RMXBooleanVariable.h"
 #import "RMXRangeVariable.h"
 #import "RMXRemixer.h"
 #import "RMXVariableFactory.h"
 
 // TODO(chuga): Figure out where to set this path.
-static NSString *const kFirebasePath = @"iOSDemoApp";
+static NSString *const kFirebasePath = @"Remixer";
 static NSString *const kFirebaseKeyVariables = @"variables";
 
 @implementation RMXFirebaseStorageController {
@@ -45,8 +48,7 @@ static NSString *const kFirebaseKeyVariables = @"variables";
 - (void)setup {
   [FIRApp configure];
 
-  [[FIRAuth auth] signInAnonymouslyWithCompletion:^(FIRUser *user, NSError *error){
-  }];
+  // TODO(chuga): Add Firebase Auth code to authenticate user.
 
   _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
   _storedVariables = [NSMutableDictionary dictionary];
@@ -63,7 +65,7 @@ static NSString *const kFirebaseKeyVariables = @"variables";
                          if (cloudVariable) {
                            [_storedVariables setObject:cloudVariable
                                                 forKey:json[RMXDictionaryKeyKey]];
-                           RMXVariable *variable = [RMXRemixer variableForKey:snapshot.key];
+                           RMXVariable *variable = [RMXRemixer variableForKey:cloudVariable.key];
                            if (variable) {
                              [RMXRemixer updateVariable:variable
                                     usingStoredVariable:cloudVariable];
@@ -104,3 +106,5 @@ static NSString *const kFirebaseKeyVariables = @"variables";
 }
 
 @end
+
+#endif

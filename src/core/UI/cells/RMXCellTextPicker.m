@@ -34,6 +34,7 @@ static CGFloat kPickerheight = 200.0f;
 
 @implementation RMXCellTextPicker {
   UIButton *_pickerButton;
+  UIView *_bottomBorder;
   UIAlertController *_alertController;
 }
 
@@ -43,11 +44,6 @@ static CGFloat kPickerheight = 200.0f;
   return RMXCellHeightLarge;
 }
 
-- (void)prepareForReuse {
-  [super prepareForReuse];
-  _pickerButton = nil;
-}
-
 - (void)setVariable:(RMXStringVariable *)variable {
   [super setVariable:variable];
   if (!variable) {
@@ -55,23 +51,17 @@ static CGFloat kPickerheight = 200.0f;
   }
 
   if (!_pickerButton) {
-    CGFloat boundsWidth = CGRectGetWidth(self.controlViewWrapper.bounds);
-    CGFloat boundsHeight = CGRectGetHeight(self.controlViewWrapper.bounds);
-
     _pickerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _pickerButton.frame = CGRectMake(0, 0, boundsWidth, boundsHeight - 10);
-    _pickerButton.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _pickerButton.frame = CGRectZero;
     _pickerButton.tintColor = [UIColor blackColor];
     _pickerButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [_pickerButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_pickerButton setImage:RMXResources(RMXIconDropDown) forState:UIControlStateNormal];
 
     // Add bottom border.
-    UIView *bottomBorder = [[UIView alloc]
-        initWithFrame:CGRectMake(0, CGRectGetHeight(_pickerButton.bounds) - 1.0, boundsWidth, 1.0)];
-    bottomBorder.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    bottomBorder.backgroundColor = [UIColor blackColor];
-    [_pickerButton addSubview:bottomBorder];
+    _bottomBorder = [[UIView alloc] initWithFrame:CGRectZero];
+    _bottomBorder.backgroundColor = [UIColor blackColor];
+    [_pickerButton addSubview:_bottomBorder];
 
     // Flip image to right.
     _pickerButton.transform = CGAffineTransformMakeScale(-1.0, 1.0);
@@ -85,6 +75,21 @@ static CGFloat kPickerheight = 200.0f;
 
   [self updateSelectedIndicator];
   self.detailTextLabel.text = variable.title;
+}
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+  
+  _pickerButton.frame = self.controlViewWrapper.bounds;
+  _bottomBorder.frame = CGRectMake(0,
+                                   CGRectGetHeight(_pickerButton.bounds) - 1.0,
+                                   CGRectGetWidth(self.controlViewWrapper.bounds),
+                                   1.0);
+}
+
+- (void)prepareForReuse {
+  [super prepareForReuse];
+  _pickerButton = nil;
 }
 
 #pragma mark - Control Events
@@ -133,18 +138,17 @@ static CGFloat kPickerheight = 200.0f;
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-  if (row == self.variable.possibleValues.count) {
+  if ((NSUInteger)row == self.variable.possibleValues.count) {
     return self.variable.selectedValue;
   } else {
     return [self.variable.possibleValues objectAtIndex:row];
   }
-  
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
-  if (row < self.variable.possibleValues.count) {
+  if ((NSUInteger)row < self.variable.possibleValues.count) {
     [self.variable setSelectedValue:[self.variable.possibleValues objectAtIndex:row]];
     [self.variable save];
   }

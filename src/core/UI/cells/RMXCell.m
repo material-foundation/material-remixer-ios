@@ -27,7 +27,6 @@ static CGFloat kTextAplha = 0.5f;
 static CGFloat kDetailTextPaddingTop = 4.0f;
 static CGFloat kContainerPaddingTop = 24.0f;
 static CGFloat kContainerPaddingEdges = 16.0f;
-static CGFloat kContainerHeight = 40.0f;
 
 @implementation RMXCell {
   id<NSObject> _notificationObserver;
@@ -50,13 +49,8 @@ static CGFloat kContainerHeight = 40.0f;
 - (void)setVariable:(RMXVariable *)variable {
   _variable = variable;
 
-  // Add control container view.
   if (!_controlViewWrapper) {
-    CGRect containerFrame = CGRectMake(
-        kContainerPaddingEdges, kContainerPaddingTop,
-        CGRectGetWidth(self.contentView.bounds) - (kContainerPaddingEdges * 2), kContainerHeight);
-    _controlViewWrapper = [[UIView alloc] initWithFrame:containerFrame];
-    _controlViewWrapper.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _controlViewWrapper = [[UIView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:_controlViewWrapper];
   }
 }
@@ -74,6 +68,12 @@ static CGFloat kContainerHeight = 40.0f;
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+
+  CGRect containerFrame =
+      CGRectMake(kContainerPaddingEdges, kContainerPaddingTop,
+                 CGRectGetWidth(self.contentView.bounds) - (kContainerPaddingEdges * 2),
+                 [[self class] cellHeight] - kContainerPaddingTop - kContainerPaddingEdges);
+  _controlViewWrapper.frame = containerFrame;
 
   // Position detail text label.
   CGRect detailFrame = self.detailTextLabel.frame;

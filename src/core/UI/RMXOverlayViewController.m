@@ -27,6 +27,7 @@
 #import "RMXCellStepper.h"
 #import "RMXCellSwitch.h"
 #import "RMXCellTextInput.h"
+#import "RMXCellColorPicker.h"
 #import "RMXCellTextPicker.h"
 #import "RMXOverlayNavigationBar.h"
 #import "RMXOverlayView.h"
@@ -69,6 +70,8 @@ static CGFloat kInitialSpeed = 0.4f;
               forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
   [self.view.tableView registerClass:[RMXCellColorList class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellColorList class])];
+  [self.view.tableView registerClass:[RMXCellColorPicker class]
+              forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
   [self.view.tableView registerClass:[RMXCellSegmented class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
   [self.view.tableView registerClass:[RMXCellSlider class]
@@ -263,6 +266,8 @@ static CGFloat kInitialSpeed = 0.4f;
     return [RMXCellButton class];
   } else if (variable.controlType == RMXControlTypeColorList) {
     return [RMXCellColorList class];
+  } else if (variable.controlType == RMXControlTypeColorPicker) {
+    return [RMXCellColorPicker class];
   } else if (variable.controlType == RMXControlTypeSegmented) {
     return [RMXCellSegmented class];
   } else if (variable.controlType == RMXControlTypeSlider) {
