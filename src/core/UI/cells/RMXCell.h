@@ -31,6 +31,10 @@ extern const CGFloat RMXCellHeightLarge;
 
 @protocol RMXCellDelegate <NSObject>
 
+/**
+ Called by the cell when it requires the overlay to go full screen.
+ One example use case is when the keyboard appears.
+ */
 - (void)cellRequestedFullScreenOverlay:(RMXCell *)cell;
 
 @end

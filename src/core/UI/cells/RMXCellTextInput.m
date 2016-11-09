@@ -55,7 +55,6 @@
 
 - (void)prepareForReuse {
   [super prepareForReuse];
-
   _textField = nil;
 }
 
