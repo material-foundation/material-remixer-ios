@@ -1,6 +1,6 @@
 ![remixer](https://cdn.rawgit.com/material-foundation/material-remixer/master/docs/assets/lockup_remixer_icon_horizontal_dark_small.svg)
 
-Remixer helps teams use and refine design specs by providing an abstraction for these values that is accessible and configurable from both inside and outside the app itself. 
+Remixer helps teams use and refine design specs by providing an abstraction for these values that is accessible and configurable from both inside and outside the app itself.
 
 This SDK for iOS is currently in development.
 
@@ -73,13 +73,13 @@ Note that we currently support only RMXStorageModeLocal as RMXStorageModeCloud i
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
   // Create the window
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
   // Start Remixer
   [RMXRemixer startInMode:RMXStorageModeLocal];
-  
+
   // Create the root view controller and set it in the window
   self.window.rootViewController = [[UIViewController alloc] init];
   [self.window makeKeyAndVisible];
@@ -105,7 +105,7 @@ Now you can add Remixer variables in your view controller classes as follows:
   _box = [[UIView alloc] initWithFrame:CGRectMake(50, 150, 80, 80)];
   _box.backgroundColor = [UIColor redColor];
   [self.view addSubview:_box];
-  
+
   // Add a color variable to control the background color.
   // Note: You can set possibleValues to limit it to certain colors.
   [RMXColorVariable

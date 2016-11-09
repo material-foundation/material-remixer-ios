@@ -22,12 +22,12 @@
 
 #import "RMXCellButton.h"
 #import "RMXCellColorList.h"
+#import "RMXCellColorPicker.h"
 #import "RMXCellSegmented.h"
 #import "RMXCellSlider.h"
 #import "RMXCellStepper.h"
 #import "RMXCellSwitch.h"
 #import "RMXCellTextInput.h"
-#import "RMXCellColorPicker.h"
 #import "RMXCellTextPicker.h"
 #import "RMXOverlayNavigationBar.h"
 #import "RMXOverlayView.h"
@@ -41,7 +41,8 @@ static CGFloat kInitialSpeed = 0.4f;
 @interface RMXOverlayViewController () <UITableViewDataSource,
                                         UITableViewDelegate,
                                         UIGestureRecognizerDelegate,
-                                        RMXOverlayViewDelegate>
+                                        RMXOverlayViewDelegate,
+                                        RMXCellDelegate>
 @property(nonatomic, strong) RMXOverlayView *view;
 @end
 
@@ -65,6 +66,7 @@ static CGFloat kInitialSpeed = 0.4f;
 
   self.view.tableView.dataSource = self;
   self.view.tableView.delegate = self;
+  self.view.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 
   [self.view.tableView registerClass:[RMXCellButton class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
@@ -203,10 +205,11 @@ static CGFloat kInitialSpeed = 0.4f;
 }
 
 - (void)dismissOverlay:(id)sender {
-  [self dismissOptionsViewWithCompletion:nil];
+  [self dismissOverlayWithCompletion:nil];
 }
 
-- (void)dismissOptionsViewWithCompletion:(void (^)(BOOL finished))completion {
+- (void)dismissOverlayWithCompletion:(void (^)(BOOL finished))completion {
+  [self.view endEditing:YES];
   [UIView animateWithDuration:0.2
       animations:^{
         [self.view hidePanel];
@@ -229,7 +232,7 @@ static CGFloat kInitialSpeed = 0.4f;
   [RMXRemixer sendEmailInvite];
 }
 
-#pragma mark - <UITableViewDataSource>
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   return [_content count];
@@ -241,15 +244,18 @@ static CGFloat kInitialSpeed = 0.4f;
   NSString *identifier = [self cellIdentifierForVariable:variable];
   RMXCell *cell = (RMXCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
   cell.variable = variable;
+  cell.delegate = self;
   return cell;
 }
+
+#pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   RMXVariable *variable = _content[indexPath.row];
   return [[self cellClassForVariable:variable] cellHeight];
 }
 
-#pragma mark - <RMXOverlayViewDelegate>
+#pragma mark - RMXOverlayViewDelegate
 
 - (void)touchStartedAtPoint:(CGPoint)point withEvent:(UIEvent *)event {
   // No-op.
@@ -257,6 +263,12 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (BOOL)shouldCapturePointOutsidePanel:(CGPoint)point {
   return self.presentedViewController != nil;
+}
+
+#pragma mark - RMXCellDelegate
+
+- (void)cellRequestedFullScreenOverlay:(RMXCell *)cell {
+  [self maximizePanel];
 }
 
 #pragma mark - Private

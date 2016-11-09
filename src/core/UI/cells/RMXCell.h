@@ -21,11 +21,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class RMXCell;
+
 /** Minimal height for the cell. */
 extern const CGFloat RMXCellHeightMinimal;
 
 /** Larger height for the cell. */
 extern const CGFloat RMXCellHeightLarge;
+
+@protocol RMXCellDelegate <NSObject>
+
+- (void)cellRequestedFullScreenOverlay:(RMXCell *)cell;
+
+@end
 
 /**
  The RMXCell class provides table view cell that should be subclassed for specific Variable
@@ -38,6 +46,9 @@ extern const CGFloat RMXCellHeightLarge;
 
 /** The Variable this cell is controlling. */
 @property(nonatomic, weak) RMXVariable *variable;
+
+/** The delegate for this cell. */
+@property(nonatomic, weak) id<RMXCellDelegate> delegate;
 
 /** The height of this cell. Subclasses should override. */
 + (CGFloat)cellHeight;

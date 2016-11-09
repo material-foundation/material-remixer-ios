@@ -61,24 +61,22 @@
 
                  // Set box2 animation to be twice as fast.
                  presentationLayer = _box2.layer.presentationLayer;
-                 angle =
-                     [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
+                 angle = [[presentationLayer valueForKeyPath:@"transform.rotation.z"] floatValue];
                  animation.fromValue = [NSNumber numberWithFloat:angle];
                  animation.toValue = [NSNumber numberWithFloat:angle + M_PI * 2.0];
                  animation.duration = MAX(2.0 - (selectedValue * 2), 0.1);
                  [_box2.layer addAnimation:animation forKey:@"spinning"];
                }];
 
-  [RMXBooleanVariable
-      booleanVariableWithKey:@"slowAnimations"
-                defaultValue:NO
-                 updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
-                   CALayer *layer = self.view.layer;
-                   layer.timeOffset =
-                       [layer convertTime:CACurrentMediaTime() fromLayer:nil];
-                   layer.beginTime = CACurrentMediaTime();
-                   layer.speed = selectedValue ? 0.2 : 1;
-                 }];
+  [RMXBooleanVariable booleanVariableWithKey:@"slowAnimations"
+                                defaultValue:NO
+                                 updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
+                                   CALayer *layer = self.view.layer;
+                                   layer.timeOffset =
+                                       [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+                                   layer.beginTime = CACurrentMediaTime();
+                                   layer.speed = selectedValue ? 0.2 : 1;
+                                 }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

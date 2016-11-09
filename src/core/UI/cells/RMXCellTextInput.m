@@ -1,12 +1,12 @@
 /*
  Copyright 2016-present Google Inc. All Rights Reserved.
- 
+
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,7 +20,7 @@
 
 #import "RMXCellTextInput.h"
 
-@interface RMXCellTextInput () <UITextInputDelegate>
+@interface RMXCellTextInput () <UITextFieldDelegate>
 @end
 
 @implementation RMXCellTextInput {
@@ -38,12 +38,13 @@
   if (!variable) {
     return;
   }
-  
+
   _textField = [[UITextField alloc] initWithFrame:CGRectZero];
   _textField.text = self.variable.selectedValue;
+  _textField.returnKeyType = UIReturnKeyDone;
   _textField.delegate = self;
   [self.controlViewWrapper addSubview:_textField];
-  
+
   self.detailTextLabel.text = variable.title;
 }
 
@@ -54,18 +55,30 @@
 
 - (void)prepareForReuse {
   [super prepareForReuse];
-  
+
   _textField = nil;
 }
 
-#pragma mark - UITextInputDelegate
+#pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  [textField resignFirstResponder];
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+  [self.delegate cellRequestedFullScreenOverlay:self];
   return YES;
 }
 
-#pragma mark - Private
+- (BOOL)textField:(UITextField *)textField
+    shouldChangeCharactersInRange:(NSRange)range
+                replacementString:(NSString *)string {
+  NSString *currentValue =
+      [textField.text stringByReplacingCharactersInRange:range withString:string];
+  [self.variable setSelectedValue:currentValue];
+  [self.variable save];
+  return YES;
+}
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [_textField resignFirstResponder];
+  return YES;
+}
 
 @end
