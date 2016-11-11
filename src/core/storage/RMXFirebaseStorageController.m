@@ -67,8 +67,7 @@ static NSString *const kFirebaseKeyVariables = @"variables";
                                                 forKey:json[RMXDictionaryKeyKey]];
                            RMXVariable *variable = [RMXRemixer variableForKey:cloudVariable.key];
                            if (variable) {
-                             [RMXRemixer updateVariable:variable
-                                    usingStoredVariable:cloudVariable];
+                             [RMXRemixer updateVariable:variable usingStoredVariable:cloudVariable];
                            }
                          }
                        }

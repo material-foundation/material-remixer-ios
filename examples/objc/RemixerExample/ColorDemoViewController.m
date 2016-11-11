@@ -38,7 +38,7 @@
   [RMXColorVariable
       colorVariableWithKey:@"boxBgColor"
               defaultValue:[UIColor redColor]
-            possibleValues:@[[UIColor redColor], [UIColor blueColor], [UIColor greenColor]]
+            possibleValues:@[ [UIColor redColor], [UIColor blueColor], [UIColor greenColor] ]
                updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];

@@ -91,9 +91,7 @@ static CGFloat kButtonTopOffset = -12.0f;
   [_button sizeToFit];
   _button.frame =
       CGRectMake(CGRectGetWidth(self.controlViewWrapper.frame) - CGRectGetWidth(_button.frame),
-                 kButtonTopOffset,
-                 CGRectGetWidth(_button.frame),
-                 CGRectGetHeight(_button.frame));
+                 kButtonTopOffset, CGRectGetWidth(_button.frame), CGRectGetHeight(_button.frame));
 }
 
 - (void)prepareForReuse {

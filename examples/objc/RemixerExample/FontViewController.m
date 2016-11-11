@@ -30,25 +30,38 @@
   [super viewDidLoad];
   self.view.backgroundColor = [UIColor whiteColor];
 
-  _fontLabel =
-      [[UILabel alloc] initWithFrame:CGRectMake(0, 100, CGRectGetWidth(self.view.bounds), 40)];
+  _fontLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+  _fontLabel.numberOfLines = 0;
   _fontLabel.textAlignment = NSTextAlignmentCenter;
   [self.view addSubview:_fontLabel];
+
+  [RMXStringVariable stringVariableWithKey:@"labelText"
+                              defaultValue:@"This is a customizable label"
+                               updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
+                                 _fontLabel.text = selectedValue;
+                                 [self.view setNeedsLayout];
+                               }];
 
   NSArray<NSString *> *fontNames = @[
     @"System", @"AvenirNext-Bold", @"Baskerville-SemiBold", @"Courier",
     @"Futura-CondensedExtraBold", @"Helvetica-Light", @"SnellRoundhand"
   ];
   [RMXStringVariable
-      stringVariableWithKey:@"font"
+      stringVariableWithKey:@"labelFont"
                defaultValue:fontNames[1]
              possibleValues:fontNames
-                updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
-                  NSString *fontName = selectedValue;
-                  _fontLabel.text = fontName;
+                updateBlock:^(RMXStringVariable *variable, NSString *selectedFontName) {
                   _fontLabel.font =
-                      [UIFont fontWithName:fontName size:[UIFont labelFontSize]];
+                      [UIFont fontWithName:selectedFontName size:_fontLabel.font.pointSize];
+                  [self.view setNeedsLayout];
                 }];
+}
+
+- (void)viewWillLayoutSubviews {
+  [super viewWillLayoutSubviews];
+
+  CGSize labelSize = [_fontLabel sizeThatFits:CGRectInset(self.view.bounds, 20, 100).size];
+  _fontLabel.frame = CGRectMake(20, 100, self.view.bounds.size.width - 40, labelSize.height);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

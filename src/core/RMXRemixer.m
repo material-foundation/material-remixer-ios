@@ -91,12 +91,12 @@
   if (instance.storageMode == RMXStorageModeLocal) {
     instance.storage = [[RMXLocalStorageController alloc] init];
   } else {
-    #ifdef REMIXER_CLOUD_FIREBASE
+#ifdef REMIXER_CLOUD_FIREBASE
     instance.storage = [[RMXFirebaseStorageController alloc] init];
-    #else
+#else
     instance.storage = [[RMXLocalStorageController alloc] init];
-    // TODO(chuga): Print out a warning.
-    #endif
+// TODO(chuga): Print out a warning.
+#endif
   }
   [instance.storage setup];
   [instance.storage startObservingUpdates];

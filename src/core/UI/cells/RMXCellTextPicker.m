@@ -79,12 +79,10 @@ static CGFloat kPickerheight = 200.0f;
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
+
   _pickerButton.frame = self.controlViewWrapper.bounds;
-  _bottomBorder.frame = CGRectMake(0,
-                                   CGRectGetHeight(_pickerButton.bounds) - 1.0,
-                                   CGRectGetWidth(self.controlViewWrapper.bounds),
-                                   1.0);
+  _bottomBorder.frame = CGRectMake(0, CGRectGetHeight(_pickerButton.bounds) - 1.0,
+                                   CGRectGetWidth(self.controlViewWrapper.bounds), 1.0);
 }
 
 - (void)prepareForReuse {

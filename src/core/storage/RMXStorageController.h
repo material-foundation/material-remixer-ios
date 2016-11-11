@@ -19,7 +19,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /** Interface for they different types of storage supported by Remixer. */
-@protocol RMXStorageController
+@protocol RMXStorageController <NSObject>
 
 @required
 /**

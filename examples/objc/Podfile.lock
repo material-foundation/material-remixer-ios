@@ -23,10 +23,10 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
-  - Remixer/Core (1.0.0)
-  - Remixer/Firebase (1.0.0):
-    - Firebase/Core
-    - Firebase/Database
+  - Remixer/Core (0.5.2)
+  - Remixer/Firebase (0.5.2):
+    - Firebase/Core (~> 3.8)
+    - Firebase/Database (~> 3.1)
     - Remixer/Core
 
 DEPENDENCIES:
@@ -45,7 +45,7 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
-  Remixer: 6083bf76ba904c8e7dfa38acb2834cdad4b49838
+  Remixer: d358089aa00e0b780ae0710a2b356b0c7d36016a
 
 PODFILE CHECKSUM: d1a9444e2abc793509b33eccd75ed4aaad6d17bf
 
