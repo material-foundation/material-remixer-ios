@@ -140,6 +140,9 @@ Visit our [State of Development](https://github.com/material-foundation/material
 
 ## Other Repositories
 
+The main Remixer GitHub repo for documentation, project tracking, and general information:
+- [Remixer docs](https://github.com/material-foundation/material-remixer)
+
 Other platform specific libraries and tools can be found in the following GitHub repos:
 
 - [Android](https://github.com/material-foundation/material-remixer-android) - Remixer for Android.
