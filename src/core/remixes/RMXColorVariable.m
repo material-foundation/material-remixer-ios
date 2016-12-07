@@ -55,19 +55,6 @@ NSString *const RMXColorKeyAlpha = @"a";
   return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
-  id selectedValue = [dictionary objectForKey:RMXDictionaryKeySelectedValue];
-  selectedValue = [self colorFromRGBADictionary:selectedValue];
-  NSMutableArray *possibleValues = [NSMutableArray array];
-  for (NSDictionary *colorDict in [dictionary objectForKey:RMXDictionaryKeyPossibleValues]) {
-    [possibleValues addObject:[self colorFromRGBADictionary:colorDict]];
-  }
-  return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
-                      defaultValue:selectedValue
-                    possibleValues:possibleValues
-                       updateBlock:nil];
-}
-
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = [[self class] rgbaDictionaryFromColor:self.selectedValue];
@@ -77,10 +64,11 @@ NSString *const RMXColorKeyAlpha = @"a";
   return json;
 }
 
-- (void)updateToStoredVariable:(RMXVariable *)storedVariable {
-  self.controlType =
-      storedVariable.possibleValues.count > 0 ? RMXControlTypeColorList : RMXControlTypeColorPicker;
-  [super updateToStoredVariable:storedVariable];
+- (void)setSelectedValue:(id)selectedValue {
+  if ([selectedValue isKindOfClass:[NSDictionary class]]) {
+    selectedValue = [[self class] colorFromRGBADictionary:selectedValue];
+  }
+  [super setSelectedValue:selectedValue];
 }
 
 #pragma mark - Private

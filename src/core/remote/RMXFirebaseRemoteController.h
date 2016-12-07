@@ -15,16 +15,10 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "RMXRemoteController.h"
 
-#import "RMXVariable.h"
+@class RMXVariable;
 
-/** Utility class that helps with the initialization of different types of Variables */
-@interface RMXVariableFactory : NSObject
-
-/**
- Creates a Variable using the data contained in a JSON dictionary.
- @return A Variable
- */
-+ (RMXVariable *)variableFromJSONDictionary:(NSDictionary *)dictionary;
+@interface RMXFirebaseRemoteController : NSObject<RMXRemoteController>
 
 @end

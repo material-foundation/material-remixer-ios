@@ -43,14 +43,6 @@
   return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
-  CGFloat selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] floatValue];
-  return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
-                      defaultValue:selectedValue
-                    possibleValues:[dictionary objectForKey:RMXDictionaryKeyPossibleValues]
-                       updateBlock:nil];
-}
-
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = @(self.selectedFloatValue);

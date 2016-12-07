@@ -46,13 +46,6 @@
   return self;
 }
 
-+ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
-  return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
-                    typeIdentifier:[dictionary objectForKey:RMXDictionaryKeyTypeIdentifier]
-                      defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
-                       updateBlock:nil];
-}
-
 - (NSString *)title {
   if (_title.length > 0) {
     return _title;
@@ -68,14 +61,6 @@
 
 - (void)save {
   [RMXRemixer saveVariable:self];
-}
-
-- (void)updateToStoredVariable:(RMXVariable *)storedVariable {
-  self.selectedValue = storedVariable.selectedValue;
-  self.possibleValues = storedVariable.possibleValues;
-  [self executeUpdateBlocks];
-  [[NSNotificationCenter defaultCenter] postNotificationName:RMXVariableUpdateNotification
-                                                      object:self];
 }
 
 - (void)executeUpdateBlocks {

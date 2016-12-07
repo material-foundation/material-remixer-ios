@@ -61,14 +61,8 @@ typedef void (^RMXUpdateBlock)(RMXVariable *variable, id selectedValue);
                defaultValue:(nullable id)defaultValue
                 updateBlock:(nullable RMXUpdateBlock)updateBlock;
 
-/** Creates an instance based on the data contained in a dictionary. */
-+ (instancetype)variableFromDictionary:(NSDictionary *)dictionary;
-
 /** Saves the current value of the Variable. */
 - (void)save;
-
-/** Updates the properties of the Variable to match the ones from storedVariable. */
-- (void)updateToStoredVariable:(RMXVariable *)storedVariable;
 
 /** Executes all the update blocks with the current selected value. */
 - (void)executeUpdateBlocks;

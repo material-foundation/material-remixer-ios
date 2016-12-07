@@ -14,10 +14,25 @@
  limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
-#import "RMXStorageController.h"
+@class RMXVariable;
 
-/** A storage controller that uses Firebase to store and sync Variables.  */
-@interface RMXFirebaseStorageController : NSObject <RMXStorageController>
+NS_ASSUME_NONNULL_BEGIN
+
+/** */
+@protocol RMXRemoteController <NSObject>
+
+@required
+
+- (void)addVariable:(RMXVariable *)variable;
+- (void)updateVariable:(RMXVariable *)variable;
+- (void)removeVariable:(RMXVariable *)variable;
+- (void)removeAllVariables;
+
+- (void)setup;
+- (void)startObservingUpdates;
+- (void)stopObservingUpdates;
+- (void)shutDown;
 
 @end
+
+NS_ASSUME_NONNULL_END

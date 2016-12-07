@@ -22,27 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol RMXStorageController <NSObject>
 
 @required
-/**
- Retrieves a saved Variable using its key.
- @return A Variable or nil if not found.
- */
-- (nullable RMXVariable *)variableForKey:(NSString *)key;
 
-/** Saves a Variable */
-- (void)saveVariable:(RMXVariable *)variable;
+- (nullable id)selectedValueForVariableKey:(NSString *)key;
 
-@optional
-/** Called during initialization to give the controller a chance to set itself up. */
-- (void)setup;
-
-/** Called by Remixer when it wants to start receiving updates (if supported). */
-- (void)startObservingUpdates;
-
-/** Called by Remixer when it wants to stop receiving updates (if supported). */
-- (void)stopObservingUpdates;
-
-/** Called when Remixer is shutting down. */
-- (void)shutDown;
+- (void)saveSelectedValueOfVariable:(RMXVariable *)variable;
 
 @end
 

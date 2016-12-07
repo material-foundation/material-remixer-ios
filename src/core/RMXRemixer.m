@@ -21,12 +21,13 @@
 #import "RMXRemixer.h"
 
 #import "RMXLocalStorageController.h"
+#import "RMXRemoteController.h"
 #import "RMXVariable.h"
 #import "UI/RMXOverlayViewController.h"
 #import "UI/RMXOverlayWindow.h"
 
 #ifdef REMIXER_CLOUD_FIREBASE
-#import "RMXFirebaseStorageController.h"
+#import "RMXFirebaseRemoteController.h"
 #endif
 
 #if TARGET_OS_SIMULATOR
@@ -37,8 +38,8 @@
 
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
 @property(nonatomic, strong) NSMutableDictionary *variables;
-@property(nonatomic, assign) RMXStorageMode storageMode;
 @property(nonatomic, strong) id<RMXStorageController> storage;
+@property(nonatomic, strong) id<RMXRemoteController> remoteController;
 @property(nonatomic, strong) RMXOverlayViewController *overlayController;
 @property(nonatomic, strong) UISwipeGestureRecognizer *swipeUpGesture;
 @property(nonatomic, strong) RMXOverlayWindow *overlayWindow;
@@ -63,12 +64,6 @@
   return sharedInstance;
 }
 
-+ (void)startInMode:(RMXStorageMode)mode {
-  RMXRemixer *instance = [self sharedInstance];
-  instance.storageMode = mode;
-  [self start];
-}
-
 + (void)start {
   UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
   if (!keyWindow) {
@@ -88,24 +83,17 @@
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
 
-  if (instance.storageMode == RMXStorageModeLocal) {
-    instance.storage = [[RMXLocalStorageController alloc] init];
-  } else {
+  instance.storage = [[RMXLocalStorageController alloc] init];
+
 #ifdef REMIXER_CLOUD_FIREBASE
-    instance.storage = [[RMXFirebaseStorageController alloc] init];
-#else
-    instance.storage = [[RMXLocalStorageController alloc] init];
-// TODO(chuga): Print out a warning.
+  instance.remoteController = [[RMXFirebaseRemoteController alloc] init];
+  [instance.remoteController setup];
+  [instance.remoteController startObservingUpdates];
 #endif
-  }
-  [instance.storage setup];
-  [instance.storage startObservingUpdates];
 }
 
 + (void)stop {
-  RMXRemixer *instance = [self sharedInstance];
-  [instance.storage stopObservingUpdates];
-  [instance.storage shutDown];
+  // No-op
 }
 
 + (NSString *)sessionId {
@@ -141,22 +129,6 @@
   [_overlayController showPanelAnimated:YES];
 }
 
-#pragma mark - Email
-
-+ (void)sendEmailInvite {
-  // Genrates a mailto: URL string.
-  NSString *sessionId = [self sessionId];
-  NSString *remixerURL =
-      [NSString stringWithFormat:@"https://remix-4d1f9.firebaseapp.com/#/composer/%@", sessionId];
-  NSString *subject = [NSString stringWithFormat:@"Invitation to Remixer session %@", sessionId];
-  NSString *body = [NSString stringWithFormat:@"You have been invited to a Remixer session. \n\n"
-                                              @"Follow this link to log in: <a href='%@'>%@</a>",
-                                              remixerURL, sessionId];
-  NSString *mailTo = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@", subject, body];
-  NSString *url = [mailTo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-}
-
 #pragma mark - Variables
 
 + (nullable RMXVariable *)variableForKey:(NSString *)key {
@@ -167,9 +139,9 @@
   RMXVariable *existingVariable = [self variableForKey:variable.key];
   if (!existingVariable) {
     [[[self sharedInstance] variables] setObject:variable forKey:variable.key];
-    RMXVariable *storedVariable = [[[self sharedInstance] storage] variableForKey:variable.key];
-    if (storedVariable) {
-      [self updateVariable:variable usingStoredVariable:storedVariable];
+    id storedValue = [[[self sharedInstance] storage] selectedValueForVariableKey:variable.key];
+    if (storedValue) {
+      [variable setSelectedValue:storedValue];
     } else {
       [variable executeUpdateBlocks];
     }
@@ -178,40 +150,42 @@
     variable = existingVariable;
   }
 
-  // TODO(chuga): Figure out when and how to do the initial |saveRemix|.
+  [[[self sharedInstance] remoteController] addVariable:variable];
   [[[self sharedInstance] overlayController] reloadData];
   return variable;
 }
 
 + (void)removeVariable:(RMXVariable *)variable {
   [[[self sharedInstance] variables] removeObjectForKey:variable.key];
+  [[[self sharedInstance] remoteController] removeVariable:variable];
 }
 
 + (void)removeVariableWithKey:(NSString *)key {
   RMXVariable *variable = [self variableForKey:key];
   [[self sharedInstance] removeVariable:variable];
+  [[[self sharedInstance] remoteController] removeVariable:variable];
+}
+
++ (void)removeAllVariables {
+  [[[self sharedInstance] variables] removeAllObjects];
+  [[[self sharedInstance] overlayController] reloadData];
+  [[[self sharedInstance] remoteController] removeAllVariables];
 }
 
 + (NSArray<RMXVariable *> *)allVariables {
   return [[[self sharedInstance] variables] allValues];
 }
 
-+ (void)removeAllVariables {
-  [[[self sharedInstance] variables] removeAllObjects];
-  [[[self sharedInstance] overlayController] reloadData];
-}
-
 + (void)saveVariable:(RMXVariable *)variable {
-  [[[self sharedInstance] storage] saveVariable:variable];
+  [[[self sharedInstance] storage] saveSelectedValueOfVariable:variable];
+  [[[self sharedInstance] remoteController] updateVariable:variable];
 }
 
-+ (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable {
-  RMXRemixer *instance = [self sharedInstance];
-  if (instance.storageMode == RMXStorageModeCloud) {
-    [variable updateToStoredVariable:storedVariable];
-  } else {
-    [variable setSelectedValue:storedVariable.selectedValue];
-  }
++ (void)updateVariable:(RMXVariable *)variable fromRemoteControllerToValue:(id)value {
+  [variable setSelectedValue:value];
+  [[NSNotificationCenter defaultCenter] postNotificationName:RMXVariableUpdateNotification
+                                                      object:variable];
+  [[[self sharedInstance] storage] saveSelectedValueOfVariable:variable];
 }
 
 @end
