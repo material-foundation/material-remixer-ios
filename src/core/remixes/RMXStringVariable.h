@@ -37,14 +37,6 @@ typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *sele
                        possibleValues:(NSArray<NSString *> *)possibleValues
                           updateBlock:(RMXStringUpdateBlock)updateBlock;
 
-/**
- * Convenience initializer for when this Variable isn't limited to a set of possible values or when
- * those values are defined in the cloud.
- */
-+ (instancetype)stringVariableWithKey:(NSString *)key
-                         defaultValue:(NSString *)defaultValue
-                          updateBlock:(RMXStringUpdateBlock)updateBlock;
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -80,10 +80,16 @@ NS_ASSUME_NONNULL_BEGIN
 /** Removes all Variables and empties the dictionary of Variables. */
 + (void)removeAllVariables;
 
-/** Saves the Variable using one of the storage options. */
+/**
+ Saves the Variable using one of the storage options.
+ @param variable The variable to save.
+ */
 + (void)saveVariable:(RMXVariable *)variable;
 
-/** . */
+/**
+ Sets and saves the updated selectedValue and triggers a notification to update the control.
+ @param value The new value that the variable should be set to.
+ */
 + (void)updateVariable:(RMXVariable *)variable fromRemoteControllerToValue:(id)value;
 
 @end

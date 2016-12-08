@@ -40,14 +40,6 @@ typedef void (^RMXNumberUpdateBlock)(RMXNumberVariable *variable, CGFloat select
                        possibleValues:(NSArray<NSNumber *> *)possibleValues
                           updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
-/**
- * Convenience initializer for when this Variable isn't limited to a set of possible values or when
- * those values are defined in the cloud.
- */
-+ (instancetype)numberVariableWithKey:(NSString *)key
-                         defaultValue:(CGFloat)defaultValue
-                          updateBlock:(RMXNumberUpdateBlock)updateBlock;
-
 @end
 
 NS_ASSUME_NONNULL_END

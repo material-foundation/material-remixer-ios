@@ -33,16 +33,6 @@
   return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)numberVariableWithKey:(NSString *)key
-                         defaultValue:(CGFloat)defaultValue
-                          updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  RMXNumberVariable *variable = [[self alloc] initWithKey:key
-                                             defaultValue:defaultValue
-                                           possibleValues:nil
-                                              updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
-}
-
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = @(self.selectedFloatValue);

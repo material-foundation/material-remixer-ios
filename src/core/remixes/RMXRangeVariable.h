@@ -42,11 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
                            increment:(CGFloat)increment
                          updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
-/** Convenience initializer for when the min, max and increment values are defined in the cloud. */
-+ (instancetype)rangeVariableWithKey:(NSString *)key
-                        defaultValue:(CGFloat)defaultValue
-                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
-
 @end
 
 NS_ASSUME_NONNULL_END

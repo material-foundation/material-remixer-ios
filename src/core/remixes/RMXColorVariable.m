@@ -43,18 +43,6 @@ NSString *const RMXColorKeyAlpha = @"a";
   return variable;
 }
 
-+ (instancetype)colorVariableWithKey:(NSString *)key
-                        defaultValue:(UIColor *)defaultValue
-                         updateBlock:(RMXColorUpdateBlock)updateBlock {
-  // These default values are just temporary. We change them to the right values as soon as we
-  // get the data from the cloud service.
-  RMXColorVariable *variable = [[self alloc] initWithKey:key
-                                            defaultValue:defaultValue
-                                          possibleValues:nil
-                                             updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
-}
-
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = [[self class] rgbaDictionaryFromColor:self.selectedValue];
