@@ -95,6 +95,7 @@ static CGFloat kDefaultIncrementValue = 1;
 - (void)stepperUpdated:(UIStepper *)stepperControl {
   [self.variable setSelectedFloatValue:stepperControl.value];
   [self.variable save];
+  self.textLabel.text = [NSString stringWithFormat:@"%.2f", self.variable.selectedFloatValue];
 }
 
 @end
