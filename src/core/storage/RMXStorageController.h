@@ -18,13 +18,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** Interface for they different types of storage supported by Remixer. */
+/** Interface for the different types of storage options supported by Remixer. */
 @protocol RMXStorageController <NSObject>
 
 @required
 
+/**
+ Retrieves the saved value for a variable's key
+ @param key The variable's key
+ */
 - (nullable id)selectedValueForVariableKey:(NSString *)key;
 
+/**
+ Saves the selected value of the variable
+ @param variable The variable whos selected value we want to save
+ */
 - (void)saveSelectedValueOfVariable:(RMXVariable *)variable;
 
 @end

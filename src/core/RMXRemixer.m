@@ -87,13 +87,14 @@
 
 #ifdef REMIXER_CLOUD_FIREBASE
   instance.remoteController = [[RMXFirebaseRemoteController alloc] init];
-  [instance.remoteController setup];
   [instance.remoteController startObservingUpdates];
 #endif
 }
 
 + (void)stop {
-  // No-op
+#ifdef REMIXER_CLOUD_FIREBASE
+  [[[self sharedInstance] remoteController] stopObservingUpdates];
+#endif
 }
 
 + (NSString *)sessionId {

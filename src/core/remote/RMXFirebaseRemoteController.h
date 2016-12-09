@@ -19,6 +19,7 @@
 
 @class RMXVariable;
 
+/** A Firebase implementation of Remote Controllers.  */
 @interface RMXFirebaseRemoteController : NSObject<RMXRemoteController>
 
 @end

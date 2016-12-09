@@ -18,20 +18,28 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** */
+/** Interface for the different types of remote controllers supported by Remixer */
 @protocol RMXRemoteController <NSObject>
 
 @required
 
-- (void)addVariable:(RMXVariable *)variable;
-- (void)updateVariable:(RMXVariable *)variable;
-- (void)removeVariable:(RMXVariable *)variable;
-- (void)removeAllVariables;
-
-- (void)setup;
+/** Called when Remixer is ready to start receiving updates from remote controllers */
 - (void)startObservingUpdates;
+
+/** Called when Remixer wants to stop receiving updates from remote controllers */
 - (void)stopObservingUpdates;
-- (void)shutDown;
+
+/** Adds a variable to the remote controllers */
+- (void)addVariable:(RMXVariable *)variable;
+
+/** Updates a variable in the remote controllers */
+- (void)updateVariable:(RMXVariable *)variable;
+
+/** Removes a variable from the remote controllers */
+- (void)removeVariable:(RMXVariable *)variable;
+
+/** Removes all variables from the remote controllers */
+- (void)removeAllVariables;
 
 @end
 

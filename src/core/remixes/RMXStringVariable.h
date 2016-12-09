@@ -34,7 +34,7 @@ typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *sele
 /** Designated initializer. */
 + (instancetype)stringVariableWithKey:(NSString *)key
                          defaultValue:(NSString *)defaultValue
-                       possibleValues:(NSArray<NSString *> *)possibleValues
+                       possibleValues:(nullable NSArray<NSString *> *)possibleValues
                           updateBlock:(RMXStringUpdateBlock)updateBlock;
 
 @end
