@@ -42,7 +42,9 @@ static NSString *const kFirebasePath = @"Remixer";
 }
 
 - (void)startObservingUpdates {
+  // TODO(chuga): Revisit this device ID generation.
   _deviceKey = [[[NSUUID UUID] UUIDString] substringToIndex:8];
+
   [FIRApp configure];
   _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
   _storedVariables = [NSMutableDictionary dictionary];
