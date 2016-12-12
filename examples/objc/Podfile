@@ -3,12 +3,11 @@ use_frameworks!
 
 target 'RemixerExample' do
 	pod 'Remixer/Firebase', :path => '../../'
-end
 
-target 'RemixerExampleTests' do
+  target 'RemixerExampleTests' do
+  end
 
-end
-
-target 'RemixerExampleUITests' do
+  target 'RemixerExampleUITests' do
+  end
 
 end

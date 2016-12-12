@@ -55,7 +55,7 @@
 		5D39B4BF1D79D8F9008F0158 /* RMXFirebaseHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D39B4901D79D8F9008F0158 /* RMXFirebaseHost.h */; };
 		5D39B4C01D79D8F9008F0158 /* RMXFirebaseHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D39B4911D79D8F9008F0158 /* RMXFirebaseHost.m */; };
 		5DD5B2AE1CF36C2C003F6543 /* Remixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD5B2A31CF36C2C003F6543 /* Remixer.framework */; };
-		75C89C564D4157C60B1CE247 /* libPods-Remixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F04E58C256B9C1E9B799F681 /* libPods-Remixer.a */; };
+		A4F5D9C47E5EE17895F27F06 /* Pods_Remixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A1D6B4BCDE4B9C8BC13173 /* Pods_Remixer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +122,7 @@
 		5D39B4911D79D8F9008F0158 /* RMXFirebaseHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMXFirebaseHost.m; sourceTree = "<group>"; };
 		5DD5B2A31CF36C2C003F6543 /* Remixer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Remixer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD5B2AD1CF36C2C003F6543 /* Remixer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Remixer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F04E58C256B9C1E9B799F681 /* libPods-Remixer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Remixer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65A1D6B4BCDE4B9C8BC13173 /* Pods_Remixer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Remixer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75C89C564D4157C60B1CE247 /* libPods-Remixer.a in Frameworks */,
+				A4F5D9C47E5EE17895F27F06 /* Pods_Remixer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +279,7 @@
 		A343EF24DD4393D8C07627F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F04E58C256B9C1E9B799F681 /* libPods-Remixer.a */,
+				65A1D6B4BCDE4B9C8BC13173 /* Pods_Remixer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -354,12 +354,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DD5B2BA1CF36C2C003F6543 /* Build configuration list for PBXNativeTarget "RemixerTests" */;
 			buildPhases = (
-				143052ECAB24CC46B9A8D9FC /* [CP] Check Pods Manifest.lock */,
 				5DD5B2A91CF36C2C003F6543 /* Sources */,
 				5DD5B2AA1CF36C2C003F6543 /* Frameworks */,
 				5DD5B2AB1CF36C2C003F6543 /* Resources */,
-				AD21CC659344CB9B7E6163D7 /* [CP] Embed Pods Frameworks */,
-				0D67175A050B5B578A2926A2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -440,36 +437,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Remixer/Pods-Remixer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0D67175A050B5B578A2926A2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerTests/Pods-RemixerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		143052ECAB24CC46B9A8D9FC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		740AAD8E26984A50FBF9365A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,22 +449,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AD21CC659344CB9B7E6163D7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerTests/Pods-RemixerTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

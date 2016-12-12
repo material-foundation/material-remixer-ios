@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143817059966983CBE40C479 /* Pods_RemixerExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76EED002938B8D091261204 /* Pods_RemixerExampleTests.framework */; };
+		566C21F5F221D094E8686D7C /* Pods_RemixerExample_RemixerExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F100C6B5469115EDDFDE8A /* Pods_RemixerExample_RemixerExampleUITests.framework */; };
 		5DC04DC41D3EC39800AF9086 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DB61D3EC39800AF9086 /* AppDelegate.m */; };
 		5DC04DC51D3EC39800AF9086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DB71D3EC39800AF9086 /* Assets.xcassets */; };
 		5DC04DC61D3EC39800AF9086 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DB81D3EC39800AF9086 /* LaunchScreen.storyboard */; };
@@ -16,12 +18,12 @@
 		5DC04DCB1D3EC39800AF9086 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DC11D3EC39800AF9086 /* MainViewController.m */; };
 		5DC04DCC1D3EC39800AF9086 /* SpinningBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DC31D3EC39800AF9086 /* SpinningBoxViewController.m */; };
 		5DC04DD01D3EC3B800AF9086 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DCE1D3EC3B800AF9086 /* Info.plist */; };
-		5DC04DD11D3EC3B800AF9086 /* RemixerExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DCF1D3EC3B800AF9086 /* RemixerExampleTests.m */; };
+		5DC04DD11D3EC3B800AF9086 /* LocalStorageControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */; };
 		5DC04DD51D3EC3C200AF9086 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DD31D3EC3C200AF9086 /* Info.plist */; };
 		5DC04DD61D3EC3C200AF9086 /* RemixerExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DD41D3EC3C200AF9086 /* RemixerExampleUITests.m */; };
-		798E3D54D56EF3A4679478DD /* libPods-RemixerExampleUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F1B69AE1F95496E8600D1 /* libPods-RemixerExampleUITests.a */; };
-		A8051A4E8459A4C91846B06A /* libPods-RemixerExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC313F3652A92D1176144A86 /* libPods-RemixerExample.a */; };
-		AFE54E8DC3102636B1D40D3D /* libPods-RemixerExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3493DFBE32A0FB9E92AE862E /* libPods-RemixerExampleTests.a */; };
+		EB785A13A952A7D290FD27B4 /* Pods_RemixerExample_RemixerExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D495C64FB292C584D42398 /* Pods_RemixerExample_RemixerExampleTests.framework */; };
+		F4059DF2F03134784270081D /* Pods_RemixerExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E724FB0E2FE6C25DDF473F /* Pods_RemixerExampleUITests.framework */; };
+		FDD7D89D9E50647FC560FA5D /* Pods_RemixerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE964335280F9B0FC29C4FE /* Pods_RemixerExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +48,12 @@
 		04B9B4B1957F9CBD8513506F /* libPods-RemixExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0634F336DF5196E800539DE5 /* Pods-RemixerExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleTests/Pods-RemixerExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		08756CFBFC50C7320DDF4980 /* libPods-RemixExampleUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixExampleUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21384605EC9673BF230374A7 /* Pods-RemixerExample-RemixerExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleTests/Pods-RemixerExample-RemixerExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		25AB123AB846D218D5C02B43 /* Pods-RemixerExample-RemixerExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleTests/Pods-RemixerExample-RemixerExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		29440DF2C10561369F324C53 /* Pods-RemixerExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleUITests/Pods-RemixerExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3134430C033C24A67CFC3963 /* Pods-RemixerExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleTests/Pods-RemixerExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3493DFBE32A0FB9E92AE862E /* libPods-RemixerExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixerExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		449AF8AEF74887CF91C736D5 /* Pods-RemixerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample/Pods-RemixerExample.release.xcconfig"; sourceTree = "<group>"; };
+		5AE964335280F9B0FC29C4FE /* Pods_RemixerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D5848311CFF3EC300A8870F /* dylib1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = dylib1.o; path = usr/lib/dylib1.o; sourceTree = SDKROOT; };
 		5D5848331CFF40FF00A8870F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5D5848351CFF426B00A8870F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -68,7 +72,7 @@
 		5DC04DC21D3EC39800AF9086 /* SpinningBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinningBoxViewController.h; sourceTree = "<group>"; };
 		5DC04DC31D3EC39800AF9086 /* SpinningBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinningBoxViewController.m; sourceTree = "<group>"; };
 		5DC04DCE1D3EC3B800AF9086 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DC04DCF1D3EC3B800AF9086 /* RemixerExampleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemixerExampleTests.m; sourceTree = "<group>"; };
+		5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorageControllerTests.m; sourceTree = "<group>"; };
 		5DC04DD31D3EC3C200AF9086 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC04DD41D3EC3C200AF9086 /* RemixerExampleUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemixerExampleUITests.m; sourceTree = "<group>"; };
 		5DC6686C1CF378780021C595 /* RemixerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemixerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,9 +82,13 @@
 		6DCB8C397A34842E2A86B6C8 /* libPods-TransmogrifierExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransmogrifierExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAA9C743FD4A8D454DA0E8D /* libPods-RemixExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82266CB204667B9767A37E48 /* Pods-RemixerExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleUITests/Pods-RemixerExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9CC837901AB355C677764D3A /* Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleUITests/Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9E885EFEA1E78D06365E833C /* Pods-RemixerExample-RemixerExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleUITests/Pods-RemixerExample-RemixerExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A71E6E12CB7184D1B2F1A238 /* Pods-RemixerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample/Pods-RemixerExample.debug.xcconfig"; sourceTree = "<group>"; };
-		C33F1B69AE1F95496E8600D1 /* libPods-RemixerExampleUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixerExampleUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC313F3652A92D1176144A86 /* libPods-RemixerExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixerExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4F100C6B5469115EDDFDE8A /* Pods_RemixerExample_RemixerExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExample_RemixerExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E724FB0E2FE6C25DDF473F /* Pods_RemixerExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76EED002938B8D091261204 /* Pods_RemixerExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8D495C64FB292C584D42398 /* Pods_RemixerExample_RemixerExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExample_RemixerExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8051A4E8459A4C91846B06A /* libPods-RemixerExample.a in Frameworks */,
+				FDD7D89D9E50647FC560FA5D /* Pods_RemixerExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFE54E8DC3102636B1D40D3D /* libPods-RemixerExampleTests.a in Frameworks */,
+				143817059966983CBE40C479 /* Pods_RemixerExampleTests.framework in Frameworks */,
+				EB785A13A952A7D290FD27B4 /* Pods_RemixerExample_RemixerExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				798E3D54D56EF3A4679478DD /* libPods-RemixerExampleUITests.a in Frameworks */,
+				F4059DF2F03134784270081D /* Pods_RemixerExampleUITests.framework in Frameworks */,
+				566C21F5F221D094E8686D7C /* Pods_RemixerExample_RemixerExampleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				5DC04DCE1D3EC3B800AF9086 /* Info.plist */,
-				5DC04DCF1D3EC3B800AF9086 /* RemixerExampleTests.m */,
+				5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */,
 			);
 			path = RemixerExampleTests;
 			sourceTree = "<group>";
@@ -181,6 +191,10 @@
 				0634F336DF5196E800539DE5 /* Pods-RemixerExampleTests.release.xcconfig */,
 				29440DF2C10561369F324C53 /* Pods-RemixerExampleUITests.debug.xcconfig */,
 				82266CB204667B9767A37E48 /* Pods-RemixerExampleUITests.release.xcconfig */,
+				21384605EC9673BF230374A7 /* Pods-RemixerExample-RemixerExampleTests.debug.xcconfig */,
+				25AB123AB846D218D5C02B43 /* Pods-RemixerExample-RemixerExampleTests.release.xcconfig */,
+				9CC837901AB355C677764D3A /* Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig */,
+				9E885EFEA1E78D06365E833C /* Pods-RemixerExample-RemixerExampleUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -197,9 +211,11 @@
 				7DAA9C743FD4A8D454DA0E8D /* libPods-RemixExample.a */,
 				04B9B4B1957F9CBD8513506F /* libPods-RemixExampleTests.a */,
 				08756CFBFC50C7320DDF4980 /* libPods-RemixExampleUITests.a */,
-				DC313F3652A92D1176144A86 /* libPods-RemixerExample.a */,
-				3493DFBE32A0FB9E92AE862E /* libPods-RemixerExampleTests.a */,
-				C33F1B69AE1F95496E8600D1 /* libPods-RemixerExampleUITests.a */,
+				5AE964335280F9B0FC29C4FE /* Pods_RemixerExample.framework */,
+				E76EED002938B8D091261204 /* Pods_RemixerExampleTests.framework */,
+				C4E724FB0E2FE6C25DDF473F /* Pods_RemixerExampleUITests.framework */,
+				E8D495C64FB292C584D42398 /* Pods_RemixerExample_RemixerExampleTests.framework */,
+				B4F100C6B5469115EDDFDE8A /* Pods_RemixerExample_RemixerExampleUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -257,6 +273,7 @@
 				5DC668901CF378780021C595 /* Frameworks */,
 				5DC668911CF378780021C595 /* Resources */,
 				0ADCB6BBABC6A6148898B0D3 /* [CP] Copy Pods Resources */,
+				9181BEACD77B75D81A0372D2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -351,7 +368,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerExampleUITests/Pods-RemixerExampleUITests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerExample-RemixerExampleUITests/Pods-RemixerExample-RemixerExampleUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2EC2B2A1BA644FF1BA93486F /* [CP] Embed Pods Frameworks */ = {
@@ -381,7 +398,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		569E90F7BE191D442824E043 /* [CP] Copy Pods Resources */ = {
@@ -396,7 +413,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerExampleTests/Pods-RemixerExampleTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerExample-RemixerExampleTests/Pods-RemixerExample-RemixerExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		630D4F2100679264A174D558 /* [CP] Check Pods Manifest.lock */ = {
@@ -411,7 +428,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		86DBA49CBC9FA3EFCF0DAAB6 /* [CP] Embed Pods Frameworks */ = {
@@ -426,7 +443,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerExampleTests/Pods-RemixerExampleTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerExample-RemixerExampleTests/Pods-RemixerExample-RemixerExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8B80DA1536D790290B3FDD90 /* [CP] Check Pods Manifest.lock */ = {
@@ -441,7 +458,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9181BEACD77B75D81A0372D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RemixerExample-RemixerExampleUITests/Pods-RemixerExample-RemixerExampleUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D9DE758C43636DE61E270800 /* [CP] Copy Pods Resources */ = {
@@ -479,7 +511,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DC04DD11D3EC3B800AF9086 /* RemixerExampleTests.m in Sources */,
+				5DC04DD11D3EC3B800AF9086 /* LocalStorageControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +639,7 @@
 			baseConfigurationReference = A71E6E12CB7184D1B2F1A238 /* Pods-RemixerExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RemixerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.RemixerExample;
@@ -619,6 +652,7 @@
 			baseConfigurationReference = 449AF8AEF74887CF91C736D5 /* Pods-RemixerExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RemixerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.RemixerExample;
@@ -628,7 +662,7 @@
 		};
 		5DC668A01CF378780021C595 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3134430C033C24A67CFC3963 /* Pods-RemixerExampleTests.debug.xcconfig */;
+			baseConfigurationReference = 21384605EC9673BF230374A7 /* Pods-RemixerExample-RemixerExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RemixerExampleTests/Info.plist;
@@ -641,7 +675,7 @@
 		};
 		5DC668A11CF378780021C595 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0634F336DF5196E800539DE5 /* Pods-RemixerExampleTests.release.xcconfig */;
+			baseConfigurationReference = 25AB123AB846D218D5C02B43 /* Pods-RemixerExample-RemixerExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RemixerExampleTests/Info.plist;
@@ -654,7 +688,7 @@
 		};
 		5DC668A31CF378780021C595 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29440DF2C10561369F324C53 /* Pods-RemixerExampleUITests.debug.xcconfig */;
+			baseConfigurationReference = 9CC837901AB355C677764D3A /* Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = RemixerExampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -666,7 +700,7 @@
 		};
 		5DC668A41CF378780021C595 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82266CB204667B9767A37E48 /* Pods-RemixerExampleUITests.release.xcconfig */;
+			baseConfigurationReference = 9E885EFEA1E78D06365E833C /* Pods-RemixerExample-RemixerExampleUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = RemixerExampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
