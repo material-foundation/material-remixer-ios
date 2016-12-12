@@ -17,25 +17,17 @@
 #import "RMXLocalStorageController.h"
 
 #import "RMXVariable.h"
-#import "RMXVariableFactory.h"
 
 @implementation RMXLocalStorageController
 
-- (void)setup {
-  // No-op.
+- (id)selectedValueForVariableKey:(NSString *)variableKey {
+  return [[NSUserDefaults standardUserDefaults] objectForKey:variableKey];
 }
 
-- (void)startObservingUpdates {
-  // No-op.
-}
-
-- (RMXVariable *)variableForKey:(NSString *)key {
-  NSDictionary *json = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-  return [RMXVariableFactory variableFromJSONDictionary:json];
-}
-
-- (void)saveVariable:(RMXVariable *)variable {
-  [[NSUserDefaults standardUserDefaults] setObject:[variable toJSON] forKey:variable.key];
+- (void)saveSelectedValueOfVariable:(RMXVariable *)variable {
+  NSDictionary *jsonDictionary = [variable toJSON];
+  id selectedValue = [jsonDictionary objectForKey:RMXDictionaryKeySelectedValue];
+  [[NSUserDefaults standardUserDefaults] setObject:selectedValue forKey:variable.key];
 }
 
 @end

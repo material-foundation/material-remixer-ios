@@ -20,8 +20,6 @@
 
 @class RMXOverlayWindow;
 
-typedef NS_ENUM(NSInteger, RMXStorageMode) { RMXStorageModeLocal = 0, RMXStorageModeCloud = 1 };
-
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -31,13 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMXRemixer : NSObject
 
 /** Starts Remixer */
-+ (void)startInMode:(RMXStorageMode)mode;
++ (void)start;
 
 /** Stops the current Remixer session. */
 + (void)stop;
-
-/** Sends an invitation to the web dashboard. */
-+ (void)sendEmailInvite;
 
 /** A unique session id. */
 + (NSString *)sessionId;
@@ -82,11 +77,17 @@ NS_ASSUME_NONNULL_BEGIN
 /** Removes all Variables and empties the dictionary of Variables. */
 + (void)removeAllVariables;
 
-/** Saves the Variable using one of the storage options. */
+/**
+ Saves the Variable using one of the storage options.
+ @param variable The variable to save.
+ */
 + (void)saveVariable:(RMXVariable *)variable;
 
-/** Update an existing Variable using a version from one of our storage sources. */
-+ (void)updateVariable:(RMXVariable *)variable usingStoredVariable:(RMXVariable *)storedVariable;
+/**
+ Sets and saves the updated selectedValue and triggers a notification to update the control.
+ @param value The new value that the variable should be set to.
+ */
++ (void)updateVariable:(RMXVariable *)variable fromRemoteControllerToValue:(id)value;
 
 @end
 

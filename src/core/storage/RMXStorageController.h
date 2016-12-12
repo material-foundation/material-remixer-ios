@@ -18,31 +18,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/** Interface for they different types of storage supported by Remixer. */
+/** Interface for the different types of storage options supported by Remixer. */
 @protocol RMXStorageController <NSObject>
 
 @required
+
 /**
- Retrieves a saved Variable using its key.
- @return A Variable or nil if not found.
+ Retrieves the saved value for a variable's key
+ @param key The variable's key
  */
-- (nullable RMXVariable *)variableForKey:(NSString *)key;
+- (nullable id)selectedValueForVariableKey:(NSString *)key;
 
-/** Saves a Variable */
-- (void)saveVariable:(RMXVariable *)variable;
-
-@optional
-/** Called during initialization to give the controller a chance to set itself up. */
-- (void)setup;
-
-/** Called by Remixer when it wants to start receiving updates (if supported). */
-- (void)startObservingUpdates;
-
-/** Called by Remixer when it wants to stop receiving updates (if supported). */
-- (void)stopObservingUpdates;
-
-/** Called when Remixer is shutting down. */
-- (void)shutDown;
+/**
+ Saves the selected value of the variable
+ @param variable The variable whos selected value we want to save
+ */
+- (void)saveSelectedValueOfVariable:(RMXVariable *)variable;
 
 @end
 

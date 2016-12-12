@@ -34,15 +34,7 @@ typedef void (^RMXStringUpdateBlock)(RMXStringVariable *variable, NSString *sele
 /** Designated initializer. */
 + (instancetype)stringVariableWithKey:(NSString *)key
                          defaultValue:(NSString *)defaultValue
-                       possibleValues:(NSArray<NSString *> *)possibleValues
-                          updateBlock:(RMXStringUpdateBlock)updateBlock;
-
-/**
- * Convenience initializer for when this Variable isn't limited to a set of possible values or when
- * those values are defined in the cloud.
- */
-+ (instancetype)stringVariableWithKey:(NSString *)key
-                         defaultValue:(NSString *)defaultValue
+                       possibleValues:(nullable NSArray<NSString *> *)possibleValues
                           updateBlock:(RMXStringUpdateBlock)updateBlock;
 
 @end

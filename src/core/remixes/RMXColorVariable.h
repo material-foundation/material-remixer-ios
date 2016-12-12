@@ -36,15 +36,7 @@ typedef void (^RMXColorUpdateBlock)(RMXColorVariable *variable, UIColor *selecte
 /** Designated initializer. */
 + (instancetype)colorVariableWithKey:(NSString *)key
                         defaultValue:(UIColor *)defaultValue
-                      possibleValues:(NSArray<UIColor *> *)possibleValues
-                         updateBlock:(RMXColorUpdateBlock)updateBlock;
-
-/**
- * Convenience initializer for when this Variable isn't limited to a set of possible values or when
- * those values are defined in the cloud.
- */
-+ (instancetype)colorVariableWithKey:(NSString *)key
-                        defaultValue:(UIColor *)defaultValue
+                      possibleValues:(nullable NSArray<UIColor *> *)possibleValues
                          updateBlock:(RMXColorUpdateBlock)updateBlock;
 
 @end

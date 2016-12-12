@@ -35,41 +35,6 @@
   return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)rangeVariableWithKey:(NSString *)key
-                        defaultValue:(CGFloat)defaultValue
-                         updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  // These default values are just temporary. We change them to the right values as soon as we
-  // get the data from the cloud service.
-  RMXRangeVariable *variable = [[self alloc] initWithKey:key
-                                            defaultValue:defaultValue
-                                                minValue:defaultValue
-                                                maxValue:defaultValue
-                                               increment:0
-                                             updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
-}
-
-+ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
-  NSString *key = [dictionary objectForKey:RMXDictionaryKeyKey];
-  CGFloat selectedValue = [[dictionary objectForKey:RMXDictionaryKeySelectedValue] floatValue];
-  CGFloat minValue = [[dictionary objectForKey:RMXDictionaryKeyMinValue] floatValue];
-  CGFloat maxValue = [[dictionary objectForKey:RMXDictionaryKeyMaxValue] floatValue];
-  CGFloat increment = [[dictionary objectForKey:RMXDictionaryKeyIncrement] floatValue];
-  return [[self alloc] initWithKey:key
-                      defaultValue:selectedValue
-                          minValue:minValue
-                          maxValue:maxValue
-                         increment:increment
-                       updateBlock:nil];
-}
-
-- (void)updateToStoredVariable:(RMXRangeVariable *)storedVariable {
-  self.minimumValue = storedVariable.minimumValue;
-  self.maximumValue = storedVariable.maximumValue;
-  self.increment = storedVariable.increment;
-  [super updateToStoredVariable:storedVariable];
-}
-
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = @(self.selectedFloatValue);

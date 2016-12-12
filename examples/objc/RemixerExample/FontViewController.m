@@ -37,6 +37,7 @@
 
   [RMXStringVariable stringVariableWithKey:@"labelText"
                               defaultValue:@"This is a customizable label"
+                            possibleValues:nil
                                updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
                                  _fontLabel.text = selectedValue;
                                  [self.view setNeedsLayout];

@@ -34,23 +34,6 @@
   return [RMXRemixer addVariable:variable];
 }
 
-+ (instancetype)stringVariableWithKey:(NSString *)key
-                         defaultValue:(NSString *)defaultValue
-                          updateBlock:(RMXStringUpdateBlock)updateBlock {
-  RMXStringVariable *variable = [[self alloc] initWithKey:key
-                                             defaultValue:defaultValue
-                                           possibleValues:nil
-                                              updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
-}
-
-+ (instancetype)variableFromDictionary:(NSDictionary *)dictionary {
-  return [[self alloc] initWithKey:[dictionary objectForKey:RMXDictionaryKeyKey]
-                      defaultValue:[dictionary objectForKey:RMXDictionaryKeySelectedValue]
-                    possibleValues:[dictionary objectForKey:RMXDictionaryKeyPossibleValues]
-                       updateBlock:nil];
-}
-
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = self.selectedValue;
