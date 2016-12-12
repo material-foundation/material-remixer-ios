@@ -34,9 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** Stops the current Remixer session. */
 + (void)stop;
 
-/** Sends an invitation to the web dashboard. */
-+ (void)sendEmailInvite;
-
 /** A unique session id. */
 + (NSString *)sessionId;
 

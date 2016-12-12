@@ -91,9 +91,6 @@ static CGFloat kInitialSpeed = 0.4f;
   [(UIButton *)item.leftBarButtonItem.customView addTarget:self
                                                     action:@selector(dismissOverlay:)
                                           forControlEvents:UIControlEventTouchUpInside];
-  [(UIButton *)item.rightBarButtonItem.customView addTarget:self
-                                                     action:@selector(sendEmailInvite:)
-                                           forControlEvents:UIControlEventTouchUpInside];
   _panGestureRecognizer =
       [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
   _panGestureRecognizer.delegate = self;
@@ -226,10 +223,6 @@ static CGFloat kInitialSpeed = 0.4f;
 - (void)reloadData {
   _content = [RMXRemixer allVariables];
   [self.view.tableView reloadData];
-}
-
-- (void)sendEmailInvite:(id)sender {
-  [RMXRemixer sendEmailInvite];
 }
 
 #pragma mark - UITableViewDataSource
