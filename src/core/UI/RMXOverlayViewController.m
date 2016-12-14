@@ -267,23 +267,24 @@ static CGFloat kInitialSpeed = 0.4f;
 #pragma mark - Private
 
 - (Class)cellClassForVariable:(RMXVariable *)variable {
-  if (variable.controlType == RMXControlTypeButton) {
+  // TODO(chuga): This is probably not very fast. We should revisit it.
+  if ([variable.controlType isEqualToString:RMXControlTypeButton]) {
     return [RMXCellButton class];
-  } else if (variable.controlType == RMXControlTypeColorList) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeColorList]) {
     return [RMXCellColorList class];
-  } else if (variable.controlType == RMXControlTypeColorPicker) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeColorPicker]) {
     return [RMXCellColorPicker class];
-  } else if (variable.controlType == RMXControlTypeSegmented) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeSegmented]) {
     return [RMXCellSegmented class];
-  } else if (variable.controlType == RMXControlTypeSlider) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeSlider]) {
     return [RMXCellSlider class];
-  } else if (variable.controlType == RMXControlTypeStepper) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeStepper]) {
     return [RMXCellStepper class];
-  } else if (variable.controlType == RMXControlTypeSwitch) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeSwitch]) {
     return [RMXCellSwitch class];
-  } else if (variable.controlType == RMXControlTypeTextPicker) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeTextPicker]) {
     return [RMXCellTextPicker class];
-  } else if (variable.controlType == RMXControlTypeTextInput) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeTextInput]) {
     return [RMXCellTextInput class];
   }
   return nil;
