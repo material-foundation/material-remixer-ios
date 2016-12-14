@@ -34,9 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** Stops the current Remixer session. */
 + (void)stop;
 
-/** A unique session id. */
-+ (NSString *)sessionId;
-
 /**
  Getter for the UIWindow used by the overlay.
  @return The UIWindow.
@@ -88,6 +85,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param value The new value that the variable should be set to.
  */
 + (void)updateVariable:(RMXVariable *)variable fromRemoteControllerToValue:(id)value;
+
+/** A unique session id. This is used for generating a URL for the remote controllers. */
++ (NSString *)sessionId;
 
 @end
 

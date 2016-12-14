@@ -27,7 +27,7 @@
 static NSString *const kFirebasePath = @"Remixer";
 
 @implementation RMXFirebaseRemoteController {
-  NSString *_deviceKey;
+  NSString *_identifier;
   FIRDatabaseReference *_ref;
   NSMutableDictionary<NSString *, RMXVariable *> *_storedVariables;
 }
@@ -42,14 +42,13 @@ static NSString *const kFirebasePath = @"Remixer";
 }
 
 - (void)startObservingUpdates {
-  // TODO(chuga): Revisit this device ID generation.
-  _deviceKey = [[[NSUUID UUID] UUIDString] substringToIndex:8];
+  _identifier = [RMXRemixer sessionId];
 
   [FIRApp configure];
   _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
   _storedVariables = [NSMutableDictionary dictionary];
 
-  [[_ref child:_deviceKey]
+  [[_ref child:_identifier]
        observeEventType:FIRDataEventTypeChildChanged
        withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
          NSDictionary *jsonDictionary = snapshot.value;
@@ -62,23 +61,23 @@ static NSString *const kFirebasePath = @"Remixer";
 }
 
 - (void)stopObservingUpdates {
-  [[_ref child:_deviceKey] removeAllObservers];
+  [[_ref child:_identifier] removeAllObservers];
 }
 
 - (void)addVariable:(RMXVariable *)variable {
-  [[[_ref child:_deviceKey] child:variable.key] setValue:[variable toJSON]];
+  [[[_ref child:_identifier] child:variable.key] setValue:[variable toJSON]];
 }
 
 - (void)updateVariable:(RMXVariable *)variable {
-  [[[_ref child:_deviceKey] child:variable.key] setValue:[variable toJSON]];
+  [[[_ref child:_identifier] child:variable.key] setValue:[variable toJSON]];
 }
 
 - (void)removeVariable:(RMXVariable *)variable {
-  [[[_ref child:_deviceKey] child:variable.key] removeValue];
+  [[[_ref child:_identifier] child:variable.key] removeValue];
 }
 
 - (void)removeAllVariables {
-  [[_ref child:_deviceKey] removeValue];
+  [[_ref child:_identifier] removeValue];
 }
 
 @end
