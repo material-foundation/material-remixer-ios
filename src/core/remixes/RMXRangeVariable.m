@@ -53,7 +53,7 @@
                   increment:(CGFloat)increment
                 updateBlock:(RMXNumberUpdateBlock)updateBlock {
   self = [super initWithKey:key
-             typeIdentifier:RMXTypeRange
+                   dataType:RMXDataTypeNumber
                defaultValue:@(defaultValue)
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);

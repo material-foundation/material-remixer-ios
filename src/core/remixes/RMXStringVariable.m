@@ -50,7 +50,7 @@
              possibleValues:(NSArray<NSString *> *)possibleValues
                 updateBlock:(RMXStringUpdateBlock)updateBlock {
   self = [super initWithKey:key
-             typeIdentifier:RMXTypeString
+                   dataType:RMXDataTypeString
                defaultValue:defaultValue
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock((RMXStringVariable *)variable, selectedValue);

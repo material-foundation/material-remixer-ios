@@ -66,7 +66,7 @@ NSString *const RMXColorKeyAlpha = @"a";
              possibleValues:(NSArray<UIColor *> *)possibleValues
                 updateBlock:(RMXColorUpdateBlock)updateBlock {
   self = [super initWithKey:key
-             typeIdentifier:RMXTypeColor
+                   dataType:RMXDataTypeColor
                defaultValue:defaultValue
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock((RMXColorVariable *)variable, selectedValue);
