@@ -29,13 +29,13 @@
 @implementation RMXVariable
 
 - (instancetype)initWithKey:(NSString *)key
-             typeIdentifier:(NSString *)typeIdentifier
+                   dataType:(NSString *)dataType
                defaultValue:(nullable id)defaultValue
                 updateBlock:(nullable RMXUpdateBlock)updateBlock {
   self = [super init];
   if (self) {
     _key = key;
-    _typeIdentifier = typeIdentifier;
+    _dataType = dataType;
     _selectedValue = defaultValue;
     if (updateBlock) {
       _updateBlocks = [NSMutableArray arrayWithObject:updateBlock];
@@ -77,8 +77,8 @@
 - (NSMutableDictionary *)toJSON {
   NSMutableDictionary *json = [NSMutableDictionary dictionary];
   json[RMXDictionaryKeyKey] = self.key;
-  json[RMXDictionaryKeyTypeIdentifier] = self.typeIdentifier;
-  json[RMXDictionaryKeyControlType] = @(self.controlType);
+  json[RMXDictionaryKeyDataType] = self.dataType;
+  json[RMXDictionaryKeyControlType] = self.controlType;
   json[RMXDictionaryKeyTitle] = self.title;
   return json;
 }

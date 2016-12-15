@@ -18,7 +18,7 @@
 #error "This file requires ARC support."
 #endif
 
-#import "RMXCellTextPicker.h"
+#import "RMXCellTextList.h"
 
 #import "RMXOverlayWindow.h"
 #import "RMXRemixer.h"
@@ -29,10 +29,10 @@ NSString *const kAlertStringPadding = @"\n\n\n\n\n\n\n\n\n\n";
 static CGFloat kPickerPadding = 20.0f;
 static CGFloat kPickerheight = 200.0f;
 
-@interface RMXCellTextPicker () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface RMXCellTextList () <UIPickerViewDelegate, UIPickerViewDataSource>
 @end
 
-@implementation RMXCellTextPicker {
+@implementation RMXCellTextList {
   UIButton *_pickerButton;
   UIView *_bottomBorder;
   UIAlertController *_alertController;

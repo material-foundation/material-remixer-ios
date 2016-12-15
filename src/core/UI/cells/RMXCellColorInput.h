@@ -21,7 +21,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /** Provides a table view cell that has a color picker control. */
-@interface RMXCellColorPicker : RMXCell
+@interface RMXCellColorInput : RMXCell
 
 @property(nonatomic, weak) RMXColorVariable *variable;
 

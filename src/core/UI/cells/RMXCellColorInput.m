@@ -18,7 +18,7 @@
 #error "This file requires ARC support."
 #endif
 
-#import "RMXCellColorPicker.h"
+#import "RMXCellColorInput.h"
 
 #import "RMXOverlayWindow.h"
 #import "RMXRemixer.h"
@@ -28,7 +28,7 @@ static CGFloat kTextPaddingTop = 11.0f;
 static CGFloat kColorPreviewWidth = 10.0f;
 static CGFloat kButtonTopOffset = -12.0f;
 
-@implementation RMXCellColorPicker {
+@implementation RMXCellColorInput {
   UIView *_colorPreview;
   UIButton *_button;
 }

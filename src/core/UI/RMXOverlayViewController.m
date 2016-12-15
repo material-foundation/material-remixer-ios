@@ -21,14 +21,14 @@
 #import "RMXOverlayViewController.h"
 
 #import "RMXCellButton.h"
+#import "RMXCellColorInput.h"
 #import "RMXCellColorList.h"
-#import "RMXCellColorPicker.h"
 #import "RMXCellSegmented.h"
 #import "RMXCellSlider.h"
 #import "RMXCellStepper.h"
 #import "RMXCellSwitch.h"
 #import "RMXCellTextInput.h"
-#import "RMXCellTextPicker.h"
+#import "RMXCellTextList.h"
 #import "RMXOverlayNavigationBar.h"
 #import "RMXOverlayView.h"
 #import "RMXRemixer.h"
@@ -72,8 +72,8 @@ static CGFloat kInitialSpeed = 0.4f;
               forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
   [self.view.tableView registerClass:[RMXCellColorList class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellColorList class])];
-  [self.view.tableView registerClass:[RMXCellColorPicker class]
-              forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
+  [self.view.tableView registerClass:[RMXCellColorInput class]
+              forCellReuseIdentifier:NSStringFromClass([RMXCellColorInput class])];
   [self.view.tableView registerClass:[RMXCellSegmented class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
   [self.view.tableView registerClass:[RMXCellSlider class]
@@ -82,8 +82,8 @@ static CGFloat kInitialSpeed = 0.4f;
               forCellReuseIdentifier:NSStringFromClass([RMXCellStepper class])];
   [self.view.tableView registerClass:[RMXCellSwitch class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellSwitch class])];
-  [self.view.tableView registerClass:[RMXCellTextPicker class]
-              forCellReuseIdentifier:NSStringFromClass([RMXCellTextPicker class])];
+  [self.view.tableView registerClass:[RMXCellTextList class]
+              forCellReuseIdentifier:NSStringFromClass([RMXCellTextList class])];
   [self.view.tableView registerClass:[RMXCellTextInput class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellTextInput class])];
 
@@ -267,23 +267,24 @@ static CGFloat kInitialSpeed = 0.4f;
 #pragma mark - Private
 
 - (Class)cellClassForVariable:(RMXVariable *)variable {
-  if (variable.controlType == RMXControlTypeButton) {
+  // TODO(chuga): This is probably not very fast. We should revisit it.
+  if ([variable.controlType isEqualToString:RMXControlTypeButton]) {
     return [RMXCellButton class];
-  } else if (variable.controlType == RMXControlTypeColorList) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeColorList]) {
     return [RMXCellColorList class];
-  } else if (variable.controlType == RMXControlTypeColorPicker) {
-    return [RMXCellColorPicker class];
-  } else if (variable.controlType == RMXControlTypeSegmented) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeColorInput]) {
+    return [RMXCellColorInput class];
+  } else if ([variable.controlType isEqualToString:RMXControlTypeSegmented]) {
     return [RMXCellSegmented class];
-  } else if (variable.controlType == RMXControlTypeSlider) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeSlider]) {
     return [RMXCellSlider class];
-  } else if (variable.controlType == RMXControlTypeStepper) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeStepper]) {
     return [RMXCellStepper class];
-  } else if (variable.controlType == RMXControlTypeSwitch) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeSwitch]) {
     return [RMXCellSwitch class];
-  } else if (variable.controlType == RMXControlTypeTextPicker) {
-    return [RMXCellTextPicker class];
-  } else if (variable.controlType == RMXControlTypeTextInput) {
+  } else if ([variable.controlType isEqualToString:RMXControlTypeTextList]) {
+    return [RMXCellTextList class];
+  } else if ([variable.controlType isEqualToString:RMXControlTypeTextInput]) {
     return [RMXCellTextInput class];
   }
   return nil;

@@ -40,7 +40,7 @@
                defaultValue:(BOOL)defaultValue
                 updateBlock:(RMXBooleanUpdateBlock)updateBlock {
   self = [super initWithKey:key
-             typeIdentifier:RMXTypeBoolean
+                   dataType:RMXDataTypeBoolean
                defaultValue:@(defaultValue)
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock((RMXBooleanVariable *)variable, [selectedValue boolValue]);

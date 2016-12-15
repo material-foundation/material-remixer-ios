@@ -50,13 +50,13 @@
              possibleValues:(NSArray<NSString *> *)possibleValues
                 updateBlock:(RMXStringUpdateBlock)updateBlock {
   self = [super initWithKey:key
-             typeIdentifier:RMXTypeString
+                   dataType:RMXDataTypeString
                defaultValue:defaultValue
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock((RMXStringVariable *)variable, selectedValue);
                 }];
   self.possibleValues = possibleValues;
-  self.controlType = possibleValues.count > 0 ? RMXControlTypeTextPicker : RMXControlTypeTextInput;
+  self.controlType = possibleValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;
   return self;
 }
 
