@@ -34,10 +34,17 @@
   self.window.rootViewController = nav;
   [self.window makeKeyAndVisible];
 
-  // Start Remixer.
-  [RMXRemixer start];
+  [RMXRemixer applicationDidFinishLaunching];
 
   return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [RMXRemixer applicationDidBecomeActive];
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+  [RMXRemixer applicationWillResignActive];
 }
 
 @end
