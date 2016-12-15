@@ -23,12 +23,12 @@ static NSString *const RMXDataTypeString = @"__DataTypeString__";
 /** Identifiers for the different types of controls Variables can have. */
 static NSString *const RMXControlTypeButton = @"__ControlTypeButton__";
 static NSString *const RMXControlTypeColorList = @"__ControlTypeColorList__";
-static NSString *const RMXControlTypeColorPicker = @"__ControlTypeColorPicker__";
+static NSString *const RMXControlTypeColorInput = @"__ControlTypeColorInput__";
 static NSString *const RMXControlTypeSegmented = @"__ControlTypeSegmented__";
 static NSString *const RMXControlTypeSlider = @"__ControlTypeSlider__";
 static NSString *const RMXControlTypeStepper = @"__ControlTypeStepper__";
 static NSString *const RMXControlTypeSwitch = @"__ControlTypeSwitch__";
-static NSString *const RMXControlTypeTextPicker = @"__ControlTypeTextPicker__";
+static NSString *const RMXControlTypeTextList = @"__ControlTypeTextList__";
 static NSString *const RMXControlTypeTextInput = @"__ControlTypeTextInput__";
 
 /** Keys for the JSON dictionary that contains the data for a Variable. */

@@ -21,14 +21,14 @@
 #import "RMXOverlayViewController.h"
 
 #import "RMXCellButton.h"
+#import "RMXCellColorInput.h"
 #import "RMXCellColorList.h"
-#import "RMXCellColorPicker.h"
 #import "RMXCellSegmented.h"
 #import "RMXCellSlider.h"
 #import "RMXCellStepper.h"
 #import "RMXCellSwitch.h"
 #import "RMXCellTextInput.h"
-#import "RMXCellTextPicker.h"
+#import "RMXCellTextList.h"
 #import "RMXOverlayNavigationBar.h"
 #import "RMXOverlayView.h"
 #import "RMXRemixer.h"
@@ -72,8 +72,8 @@ static CGFloat kInitialSpeed = 0.4f;
               forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
   [self.view.tableView registerClass:[RMXCellColorList class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellColorList class])];
-  [self.view.tableView registerClass:[RMXCellColorPicker class]
-              forCellReuseIdentifier:NSStringFromClass([RMXCellColorPicker class])];
+  [self.view.tableView registerClass:[RMXCellColorInput class]
+              forCellReuseIdentifier:NSStringFromClass([RMXCellColorInput class])];
   [self.view.tableView registerClass:[RMXCellSegmented class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellSegmented class])];
   [self.view.tableView registerClass:[RMXCellSlider class]
@@ -82,8 +82,8 @@ static CGFloat kInitialSpeed = 0.4f;
               forCellReuseIdentifier:NSStringFromClass([RMXCellStepper class])];
   [self.view.tableView registerClass:[RMXCellSwitch class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellSwitch class])];
-  [self.view.tableView registerClass:[RMXCellTextPicker class]
-              forCellReuseIdentifier:NSStringFromClass([RMXCellTextPicker class])];
+  [self.view.tableView registerClass:[RMXCellTextList class]
+              forCellReuseIdentifier:NSStringFromClass([RMXCellTextList class])];
   [self.view.tableView registerClass:[RMXCellTextInput class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellTextInput class])];
 
@@ -272,8 +272,8 @@ static CGFloat kInitialSpeed = 0.4f;
     return [RMXCellButton class];
   } else if ([variable.controlType isEqualToString:RMXControlTypeColorList]) {
     return [RMXCellColorList class];
-  } else if ([variable.controlType isEqualToString:RMXControlTypeColorPicker]) {
-    return [RMXCellColorPicker class];
+  } else if ([variable.controlType isEqualToString:RMXControlTypeColorInput]) {
+    return [RMXCellColorInput class];
   } else if ([variable.controlType isEqualToString:RMXControlTypeSegmented]) {
     return [RMXCellSegmented class];
   } else if ([variable.controlType isEqualToString:RMXControlTypeSlider]) {
@@ -282,8 +282,8 @@ static CGFloat kInitialSpeed = 0.4f;
     return [RMXCellStepper class];
   } else if ([variable.controlType isEqualToString:RMXControlTypeSwitch]) {
     return [RMXCellSwitch class];
-  } else if ([variable.controlType isEqualToString:RMXControlTypeTextPicker]) {
-    return [RMXCellTextPicker class];
+  } else if ([variable.controlType isEqualToString:RMXControlTypeTextList]) {
+    return [RMXCellTextList class];
   } else if ([variable.controlType isEqualToString:RMXControlTypeTextInput]) {
     return [RMXCellTextInput class];
   }

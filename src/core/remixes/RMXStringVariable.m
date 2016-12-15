@@ -56,7 +56,7 @@
                   updateBlock((RMXStringVariable *)variable, selectedValue);
                 }];
   self.possibleValues = possibleValues;
-  self.controlType = possibleValues.count > 0 ? RMXControlTypeTextPicker : RMXControlTypeTextInput;
+  self.controlType = possibleValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;
   return self;
 }
 
