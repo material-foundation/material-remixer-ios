@@ -27,7 +27,7 @@
 static NSString *const kFirebasePath = @"Remixer";
 
 @implementation RMXFirebaseRemoteController {
-  NSString *_identifier;
+  NSString *_deviceKey;
   FIRDatabaseReference *_ref;
   NSMutableDictionary<NSString *, RMXVariable *> *_storedVariables;
 }
@@ -66,23 +66,23 @@ static NSString *const kFirebasePath = @"Remixer";
 }
 
 - (void)stopObservingUpdates {
-  [[_ref child:_identifier] removeAllObservers];
+  [[_ref child:_deviceKey] removeAllObservers];
 }
 
 - (void)addVariable:(RMXVariable *)variable {
-  [[[_ref child:_identifier] child:variable.key] setValue:[variable toJSON]];
+  [[[_ref child:_deviceKey] child:variable.key] setValue:[variable toJSON]];
 }
 
 - (void)updateVariable:(RMXVariable *)variable {
-  [[[_ref child:_identifier] child:variable.key] setValue:[variable toJSON]];
+  [[[_ref child:_deviceKey] child:variable.key] setValue:[variable toJSON]];
 }
 
 - (void)removeVariable:(RMXVariable *)variable {
-  [[[_ref child:_identifier] child:variable.key] removeValue];
+  [[[_ref child:_deviceKey] child:variable.key] removeValue];
 }
 
 - (void)removeAllVariables {
-  [[_ref child:_identifier] removeValue];
+  [[_ref child:_deviceKey] removeValue];
 }
 
 @end

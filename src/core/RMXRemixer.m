@@ -92,6 +92,7 @@
 
 + (void)applicationDidBecomeActive {
 #ifdef REMIXER_CLOUD_FIREBASE
+  [[[self sharedInstance] remoteController] removeAllVariables];
   for (RMXVariable *variable in [self allVariables]) {
     [[[self sharedInstance] remoteController] addVariable:variable];
   }
