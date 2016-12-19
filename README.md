@@ -84,6 +84,7 @@ Now you’re ready to add Remixer to your app! Begin by importing the Remixer he
   return YES;
 }
 
+// Make sure you propagate these two events if you're using the Remote Controllers / Firebase option
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [RMXRemixer applicationDidBecomeActive];
 }
