@@ -47,6 +47,7 @@ static NSString *const kFirebasePath = @"Remixer";
     _identifier = [RMXRemixer sessionId];
     [FIRApp configure];
     _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
+    [[_ref child:_identifier] onDisconnectRemoveValue];
     _storedVariables = [NSMutableDictionary dictionary];
   }
   return self;
