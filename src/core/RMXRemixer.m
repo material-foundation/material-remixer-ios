@@ -64,7 +64,7 @@
   return sharedInstance;
 }
 
-+ (void)start {
++ (void)applicationDidFinishLaunching {
   UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
   if (!keyWindow) {
     // Get window if using storyboard.
@@ -87,12 +87,22 @@
 
 #ifdef REMIXER_CLOUD_FIREBASE
   instance.remoteController = [[RMXFirebaseRemoteController alloc] init];
-  [instance.remoteController startObservingUpdates];
 #endif
 }
 
-+ (void)stop {
++ (void)applicationDidBecomeActive {
 #ifdef REMIXER_CLOUD_FIREBASE
+  [[[self sharedInstance] remoteController] removeAllVariables];
+  for (RMXVariable *variable in [self allVariables]) {
+    [[[self sharedInstance] remoteController] addVariable:variable];
+  }
+  [[[self sharedInstance] remoteController] startObservingUpdates];
+#endif
+}
+
++ (void)applicationWillResignActive {
+#ifdef REMIXER_CLOUD_FIREBASE
+  [[[self sharedInstance] remoteController] removeAllVariables];
   [[[self sharedInstance] remoteController] stopObservingUpdates];
 #endif
 }

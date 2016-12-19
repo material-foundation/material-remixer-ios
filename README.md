@@ -61,10 +61,7 @@ Now you're ready to get started in Xcode.
 
 ### 4. Add variables
 
-Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and call the
-shared start method in your AppDelegate class.
-
-Note that we currently support only RMXStorageModeLocal as RMXStorageModeCloud is still in development.
+Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and forward these three AppDelegate's events:
 
 ~~~ objc
 #import "Remixer.h"
@@ -77,14 +74,23 @@ Note that we currently support only RMXStorageModeLocal as RMXStorageModeCloud i
   // Create the window
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-  // Start Remixer
-  [RMXRemixer startInMode:RMXStorageModeLocal];
+  // Let Remixer know that the app finished launching.
+  [RMXRemixer applicationDidFinishLaunching];
 
   // Create the root view controller and set it in the window
   self.window.rootViewController = [[UIViewController alloc] init];
   [self.window makeKeyAndVisible];
 
   return YES;
+}
+
+// Make sure you propagate these two events if you're using the Remote Controllers / Firebase option
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [RMXRemixer applicationDidBecomeActive];
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+  [RMXRemixer applicationWillResignActive];
 }
 
 @end
@@ -111,6 +117,7 @@ Now you can add Remixer variables in your view controller classes as follows:
   [RMXColorVariable
       colorVariableWithKey:@"boxBgColor"
               defaultValue:_box.backgroundColor
+            possibleValues:nil
                updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];

@@ -28,11 +28,23 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RMXRemixer : NSObject
 
-/** Starts Remixer */
-+ (void)start;
+/**
+ To be called from the AppDelegate to let Remixer know that the app finished launching.
+ Here we do the initial setup.
+ */
++ (void)applicationDidFinishLaunching;
 
-/** Stops the current Remixer session. */
-+ (void)stop;
+/**
+ To be called from the AppDelegate to let Remixer know that the became active.
+ Here we start communicating with Remote Controllers (if enabled).
+ */
++ (void)applicationDidBecomeActive;
+
+/**
+ To be called from the AppDelegate to let Remixer know that the app will be backgrounded or closed.
+ Here we clean up the data stored for Remote Controllers (if enabled).
+ */
++ (void)applicationWillResignActive;
 
 /**
  Getter for the UIWindow used by the overlay.

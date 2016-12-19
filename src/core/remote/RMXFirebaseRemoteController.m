@@ -41,13 +41,19 @@ static NSString *const kFirebasePath = @"Remixer";
   return sharedInstance;
 }
 
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    _identifier = [RMXRemixer sessionId];
+    [FIRApp configure];
+    _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
+    [[_ref child:_identifier] onDisconnectRemoveValue];
+    _storedVariables = [NSMutableDictionary dictionary];
+  }
+  return self;
+}
+
 - (void)startObservingUpdates {
-  _identifier = [RMXRemixer sessionId];
-
-  [FIRApp configure];
-  _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
-  _storedVariables = [NSMutableDictionary dictionary];
-
   [[_ref child:_identifier]
        observeEventType:FIRDataEventTypeChildChanged
        withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
