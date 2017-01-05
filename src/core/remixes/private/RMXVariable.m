@@ -34,7 +34,7 @@
                 updateBlock:(nullable RMXUpdateBlock)updateBlock {
   self = [super init];
   if (self) {
-    _key = key;
+    _key = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     _dataType = dataType;
     _selectedValue = defaultValue;
     if (updateBlock) {
@@ -51,6 +51,14 @@
     return _title;
   } else {
     return _key;
+  }
+}
+
+- (NSString *)constraintType {
+  if (_possibleValues.count > 0) {
+    return RMXConstraintTypeList;
+  } else {
+    return RMXConstraintTypeNone;
   }
 }
 

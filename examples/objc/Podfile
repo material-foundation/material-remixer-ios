@@ -2,12 +2,12 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'RemixerExample' do
-	pod 'Remixer/Firebase', :path => '../../'
+  pod 'Remixer', :path => '../../'
 
   target 'RemixerExampleTests' do
+    pod 'OCMock'
   end
 
   target 'RemixerExampleUITests' do
   end
-
 end

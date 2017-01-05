@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		143817059966983CBE40C479 /* Pods_RemixerExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76EED002938B8D091261204 /* Pods_RemixerExampleTests.framework */; };
 		566C21F5F221D094E8686D7C /* Pods_RemixerExample_RemixerExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F100C6B5469115EDDFDE8A /* Pods_RemixerExample_RemixerExampleUITests.framework */; };
 		5DC04DC41D3EC39800AF9086 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DB61D3EC39800AF9086 /* AppDelegate.m */; };
 		5DC04DC51D3EC39800AF9086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DB71D3EC39800AF9086 /* Assets.xcassets */; };
@@ -21,8 +20,10 @@
 		5DC04DD11D3EC3B800AF9086 /* LocalStorageControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */; };
 		5DC04DD51D3EC3C200AF9086 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DD31D3EC3C200AF9086 /* Info.plist */; };
 		5DC04DD61D3EC3C200AF9086 /* RemixerExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DD41D3EC3C200AF9086 /* RemixerExampleUITests.m */; };
+		B1974B7F1E1EB6AB00DF986F /* RangeVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */; };
+		B1974B811E1ED5ED00DF986F /* VariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B801E1ED5ED00DF986F /* VariableTests.m */; };
+		B1974B831E1EDB6600DF986F /* BooleanVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */; };
 		EB785A13A952A7D290FD27B4 /* Pods_RemixerExample_RemixerExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D495C64FB292C584D42398 /* Pods_RemixerExample_RemixerExampleTests.framework */; };
-		F4059DF2F03134784270081D /* Pods_RemixerExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E724FB0E2FE6C25DDF473F /* Pods_RemixerExampleUITests.framework */; };
 		FDD7D89D9E50647FC560FA5D /* Pods_RemixerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE964335280F9B0FC29C4FE /* Pods_RemixerExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,12 +47,9 @@
 /* Begin PBXFileReference section */
 		00F471A85F1D86114EA4AA6B /* libPods-TransmogrifierExampleUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransmogrifierExampleUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B9B4B1957F9CBD8513506F /* libPods-RemixExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0634F336DF5196E800539DE5 /* Pods-RemixerExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleTests/Pods-RemixerExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		08756CFBFC50C7320DDF4980 /* libPods-RemixExampleUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixExampleUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21384605EC9673BF230374A7 /* Pods-RemixerExample-RemixerExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleTests/Pods-RemixerExample-RemixerExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		25AB123AB846D218D5C02B43 /* Pods-RemixerExample-RemixerExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleTests/Pods-RemixerExample-RemixerExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		29440DF2C10561369F324C53 /* Pods-RemixerExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleUITests/Pods-RemixerExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		3134430C033C24A67CFC3963 /* Pods-RemixerExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleTests/Pods-RemixerExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		449AF8AEF74887CF91C736D5 /* Pods-RemixerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample/Pods-RemixerExample.release.xcconfig"; sourceTree = "<group>"; };
 		5AE964335280F9B0FC29C4FE /* Pods_RemixerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D5848311CFF3EC300A8870F /* dylib1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = dylib1.o; path = usr/lib/dylib1.o; sourceTree = SDKROOT; };
@@ -81,10 +79,12 @@
 		61EA9C0D5B73A8EA7D2A9CE7 /* libPods-TransmogrifierExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransmogrifierExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DCB8C397A34842E2A86B6C8 /* libPods-TransmogrifierExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TransmogrifierExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DAA9C743FD4A8D454DA0E8D /* libPods-RemixExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RemixExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		82266CB204667B9767A37E48 /* Pods-RemixerExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExampleUITests/Pods-RemixerExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9CC837901AB355C677764D3A /* Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleUITests/Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E885EFEA1E78D06365E833C /* Pods-RemixerExample-RemixerExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleUITests/Pods-RemixerExample-RemixerExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A71E6E12CB7184D1B2F1A238 /* Pods-RemixerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample/Pods-RemixerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeVariableTests.m; sourceTree = "<group>"; };
+		B1974B801E1ED5ED00DF986F /* VariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableTests.m; sourceTree = "<group>"; };
+		B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanVariableTests.m; sourceTree = "<group>"; };
 		B4F100C6B5469115EDDFDE8A /* Pods_RemixerExample_RemixerExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExample_RemixerExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E724FB0E2FE6C25DDF473F /* Pods_RemixerExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76EED002938B8D091261204 /* Pods_RemixerExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +104,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				143817059966983CBE40C479 /* Pods_RemixerExampleTests.framework in Frameworks */,
 				EB785A13A952A7D290FD27B4 /* Pods_RemixerExample_RemixerExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4059DF2F03134784270081D /* Pods_RemixerExampleUITests.framework in Frameworks */,
 				566C21F5F221D094E8686D7C /* Pods_RemixerExample_RemixerExampleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				5DC04DCE1D3EC3B800AF9086 /* Info.plist */,
+				B1974B801E1ED5ED00DF986F /* VariableTests.m */,
+				B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */,
+				B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */,
 				5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */,
 			);
 			path = RemixerExampleTests;
@@ -187,10 +188,6 @@
 			children = (
 				A71E6E12CB7184D1B2F1A238 /* Pods-RemixerExample.debug.xcconfig */,
 				449AF8AEF74887CF91C736D5 /* Pods-RemixerExample.release.xcconfig */,
-				3134430C033C24A67CFC3963 /* Pods-RemixerExampleTests.debug.xcconfig */,
-				0634F336DF5196E800539DE5 /* Pods-RemixerExampleTests.release.xcconfig */,
-				29440DF2C10561369F324C53 /* Pods-RemixerExampleUITests.debug.xcconfig */,
-				82266CB204667B9767A37E48 /* Pods-RemixerExampleUITests.release.xcconfig */,
 				21384605EC9673BF230374A7 /* Pods-RemixerExample-RemixerExampleTests.debug.xcconfig */,
 				25AB123AB846D218D5C02B43 /* Pods-RemixerExample-RemixerExampleTests.release.xcconfig */,
 				9CC837901AB355C677764D3A /* Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig */,
@@ -511,6 +508,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1974B7F1E1EB6AB00DF986F /* RangeVariableTests.m in Sources */,
+				B1974B831E1EDB6600DF986F /* BooleanVariableTests.m in Sources */,
+				B1974B811E1ED5ED00DF986F /* VariableTests.m in Sources */,
 				5DC04DD11D3EC3B800AF9086 /* LocalStorageControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

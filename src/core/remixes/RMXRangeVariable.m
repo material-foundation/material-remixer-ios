@@ -35,6 +35,10 @@
   return [RMXRemixer addVariable:variable];
 }
 
+- (NSString *)constraintType {
+  return RMXConstraintTypeRange;
+}
+
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = @(self.selectedFloatValue);
@@ -42,6 +46,10 @@
   json[RMXDictionaryKeyMaxValue] = @(self.maximumValue);
   json[RMXDictionaryKeyIncrement] = @(self.increment);
   return json;
+}
+
+- (void)setPossibleValues:(NSArray<NSNumber *> *)possibleValues {
+  NSAssert(possibleValues.count == 0, @"RMXRangeVariable doesn't support setting possibleValues");
 }
 
 #pragma mark - Private
