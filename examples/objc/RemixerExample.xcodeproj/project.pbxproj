@@ -23,6 +23,7 @@
 		B1974B7F1E1EB6AB00DF986F /* RangeVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */; };
 		B1974B811E1ED5ED00DF986F /* VariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B801E1ED5ED00DF986F /* VariableTests.m */; };
 		B1974B831E1EDB6600DF986F /* BooleanVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */; };
+		B1974B851E20042E00DF986F /* StringVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B841E20042E00DF986F /* StringVariableTests.m */; };
 		EB785A13A952A7D290FD27B4 /* Pods_RemixerExample_RemixerExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D495C64FB292C584D42398 /* Pods_RemixerExample_RemixerExampleTests.framework */; };
 		FDD7D89D9E50647FC560FA5D /* Pods_RemixerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE964335280F9B0FC29C4FE /* Pods_RemixerExample.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeVariableTests.m; sourceTree = "<group>"; };
 		B1974B801E1ED5ED00DF986F /* VariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableTests.m; sourceTree = "<group>"; };
 		B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanVariableTests.m; sourceTree = "<group>"; };
+		B1974B841E20042E00DF986F /* StringVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringVariableTests.m; sourceTree = "<group>"; };
 		B4F100C6B5469115EDDFDE8A /* Pods_RemixerExample_RemixerExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExample_RemixerExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E724FB0E2FE6C25DDF473F /* Pods_RemixerExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76EED002938B8D091261204 /* Pods_RemixerExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemixerExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				B1974B801E1ED5ED00DF986F /* VariableTests.m */,
 				B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */,
 				B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */,
+				B1974B841E20042E00DF986F /* StringVariableTests.m */,
 				5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */,
 			);
 			path = RemixerExampleTests;
@@ -510,6 +513,7 @@
 			files = (
 				B1974B7F1E1EB6AB00DF986F /* RangeVariableTests.m in Sources */,
 				B1974B831E1EDB6600DF986F /* BooleanVariableTests.m in Sources */,
+				B1974B851E20042E00DF986F /* StringVariableTests.m in Sources */,
 				B1974B811E1ED5ED00DF986F /* VariableTests.m in Sources */,
 				5DC04DD11D3EC3B800AF9086 /* LocalStorageControllerTests.m in Sources */,
 			);

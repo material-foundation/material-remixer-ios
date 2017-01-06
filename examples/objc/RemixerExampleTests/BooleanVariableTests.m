@@ -65,6 +65,10 @@
   XCTAssertTrue([[booleanVariable dataType] isEqualToString:RMXDataTypeBoolean]);
 }
 
+- (void)testControlType {
+  XCTAssertTrue([[booleanVariable controlType] isEqualToString:RMXControlTypeSwitch]);
+}
+
 #pragma mark - Private
 
 - (id)returnArgument:(id)argument {

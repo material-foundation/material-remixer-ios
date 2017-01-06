@@ -29,49 +29,64 @@
 @end
 
 @implementation RangeVariableTests {
-  id remixerClassMock;
-  RMXRangeVariable *rangeVariable;
+  id _remixerClassMock;
+  RMXRangeVariable *_rangeVariable;
 }
 
 - (void)setUp {
   [super setUp];
-  remixerClassMock = OCMClassMock([RMXRemixer class]);
-  OCMStub([remixerClassMock addVariable:[OCMArg any]]).andCall(self, @selector(returnArgument:));
-  rangeVariable = [RMXRangeVariable rangeVariableWithKey:@"key"
-                                            defaultValue:0
-                                                minValue:0
-                                                maxValue:1
-                                               increment:0
-                                             updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
-                                               // No-op.
-                                             }];
+  _remixerClassMock = OCMClassMock([RMXRemixer class]);
+  OCMStub([_remixerClassMock addVariable:[OCMArg any]]).andCall(self, @selector(returnArgument:));
+  _rangeVariable =
+      [RMXRangeVariable rangeVariableWithKey:@"key"
+                                defaultValue:0
+                                    minValue:0
+                                    maxValue:1
+                                   increment:0
+                                 updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
+                                   // No-op.
+                                 }];
 }
 
 - (void)tearDown {
-  rangeVariable = nil;
+  _rangeVariable = nil;
   [super tearDown];
 }
 
 - (void)testInitializerAddsVariable {
-  OCMVerify([remixerClassMock addVariable:[OCMArg isNotNil]]);
+  OCMVerify([_remixerClassMock addVariable:[OCMArg isNotNil]]);
 }
 
 - (void)testSelectedValue {
-  [rangeVariable setSelectedValue:@(1)];
-  XCTAssertEqual([rangeVariable selectedFloatValue], 1);
+  [_rangeVariable setSelectedValue:@(1)];
+  XCTAssertEqual([_rangeVariable selectedFloatValue], 1);
 }
 
 - (void)testDataType {
-  XCTAssertTrue([[rangeVariable dataType] isEqualToString:RMXDataTypeNumber]);
+  XCTAssertTrue([[_rangeVariable dataType] isEqualToString:RMXDataTypeNumber]);
 }
 
 - (void)testConstraintType {
-  XCTAssertTrue([[rangeVariable constraintType] isEqualToString:RMXConstraintTypeRange]);
+  XCTAssertTrue([[_rangeVariable constraintType] isEqualToString:RMXConstraintTypeRange]);
+}
+
+- (void)testControlType {
+  XCTAssertTrue([[_rangeVariable controlType] isEqualToString:RMXControlTypeSlider]);
+  _rangeVariable =
+      [RMXRangeVariable rangeVariableWithKey:@"another key"
+                                defaultValue:0
+                                    minValue:0
+                                    maxValue:1
+                                   increment:0.1
+                                 updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
+                                   // No-op.
+                                 }];
+  XCTAssertTrue([[_rangeVariable controlType] isEqualToString:RMXControlTypeStepper]);
 }
 
 - (void)testSettingPossibleValuesThrowsException {
   NSArray *possibleValues = @[@0, @1];
-  XCTAssertThrows([rangeVariable setPossibleValues:possibleValues]);
+  XCTAssertThrows([_rangeVariable setPossibleValues:possibleValues]);
 }
 
 #pragma mark - Private
