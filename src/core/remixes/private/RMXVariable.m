@@ -34,7 +34,7 @@
                 updateBlock:(nullable RMXUpdateBlock)updateBlock {
   self = [super init];
   if (self) {
-    _key = [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    _key = [self sanitizeKey:key];
     _dataType = dataType;
     _selectedValue = defaultValue;
     if (updateBlock) {
@@ -89,6 +89,12 @@
   json[RMXDictionaryKeyControlType] = self.controlType;
   json[RMXDictionaryKeyTitle] = self.title;
   return json;
+}
+
+#pragma mark - Private
+
+- (NSString *)sanitizeKey:(NSString *)key {
+  return [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
 }
 
 @end
