@@ -65,16 +65,21 @@
 }
 
 - (void)testSettingSelectedValueCallsBlock {
-  __block NSString *updateBlockTestString = @"block not executed";
+  XCTestExpectation *expectation = [self expectationWithDescription:@"Update block"];
   variable = [[RMXVariable alloc] initWithKey:@"a key"
                                      dataType:RMXDataTypeString
                                  defaultValue:@"default value"
-                                  updateBlock:^(RMXVariable *variable, id selectedValue) {
-                                    updateBlockTestString = selectedValue;
+                                  updateBlock:^(RMXVariable *var, id selectedValue) {
+                                    XCTAssertNotNil(var);
+                                    XCTAssertNotNil(selectedValue);
+                                    [expectation fulfill];
                                   }];
-  XCTAssertTrue([updateBlockTestString isEqualToString:@"block not executed"]);
-  variable.selectedValue = @"block executed";
-  XCTAssertTrue([updateBlockTestString isEqualToString:variable.selectedValue]);
+  variable.selectedValue = @"new value";
+  [self waitForExpectationsWithTimeout:0.1 handler:^(NSError *error) {
+    if (error != nil) {
+      NSLog(@"Error: %@", error.localizedDescription);
+    }
+  }];
 }
 
 @end
