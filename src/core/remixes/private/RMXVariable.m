@@ -34,7 +34,7 @@
                 updateBlock:(nullable RMXUpdateBlock)updateBlock {
   self = [super init];
   if (self) {
-    _key = key;
+    _key = [self sanitizeKey:key];
     _dataType = dataType;
     _selectedValue = defaultValue;
     if (updateBlock) {
@@ -51,6 +51,14 @@
     return _title;
   } else {
     return _key;
+  }
+}
+
+- (NSString *)constraintType {
+  if (_possibleValues.count > 0) {
+    return RMXConstraintTypeList;
+  } else {
+    return RMXConstraintTypeNone;
   }
 }
 
@@ -81,6 +89,12 @@
   json[RMXDictionaryKeyControlType] = self.controlType;
   json[RMXDictionaryKeyTitle] = self.title;
   return json;
+}
+
+#pragma mark - Private
+
+- (NSString *)sanitizeKey:(NSString *)key {
+  return [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
 }
 
 @end

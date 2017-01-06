@@ -43,17 +43,20 @@ typedef void (^RMXUpdateBlock)(RMXVariable *variable, id selectedValue);
 /** If set, these are the only values this Variable can take. */
 @property(nonatomic, strong) NSArray<id> *possibleValues;
 
-/** The type of data this Variable holds. See RMXRemixConstants for possible values. */
+/** The type of data this Variable holds. See RMXVariableConstants for possible values. */
 @property(nonatomic, readonly) NSString *dataType;
+
+/** The data constraint type for this Variable. See RMXVariableConstants for possible values. */
+@property(nonatomic, readonly) NSString *constraintType;
+
+/** The type of control to be used in the in-app overlay. */
+@property(nonatomic, assign) NSString *controlType;
 
 /** The update blocks associated with this Variable. */
 @property(nonatomic, readonly) NSArray *updateBlocks;
 
 /** The title associated with this Variable. The default value is the Variable's key. */
 @property(nonatomic, copy) NSString *title;
-
-/** The type of control to be used in the in-app overlay. */
-@property(nonatomic, assign) NSString *controlType;
 
 /** Designated initializer. */
 - (instancetype)initWithKey:(NSString *)key
