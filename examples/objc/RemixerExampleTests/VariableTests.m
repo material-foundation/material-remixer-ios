@@ -28,7 +28,6 @@
 @end
 
 @implementation VariableTests {
-  id remixerClassMock;
   RMXVariable *variable;
 }
 
