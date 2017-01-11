@@ -64,10 +64,6 @@
   XCTAssertTrue([[_numberVariable dataType] isEqualToString:RMXDataTypeNumber]);
 }
 
-- (void)testConstraintType {
-  XCTAssertTrue([[_numberVariable constraintType] isEqualToString:RMXConstraintTypeNone]);
-}
-
 - (void)testControlType {
   XCTAssertTrue([[_numberVariable controlType] isEqualToString:RMXControlTypeTextInput]);
   _numberVariable =

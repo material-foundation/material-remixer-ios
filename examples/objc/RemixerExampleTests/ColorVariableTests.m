@@ -64,10 +64,6 @@
   XCTAssertTrue([[_colorVariable dataType] isEqualToString:RMXDataTypeColor]);
 }
 
-- (void)testConstraintType {
-  XCTAssertTrue([[_colorVariable constraintType] isEqualToString:RMXConstraintTypeNone]);
-}
-
 - (void)testControlType {
   XCTAssertTrue([[_colorVariable controlType] isEqualToString:RMXControlTypeColorInput]);
   _colorVariable =
