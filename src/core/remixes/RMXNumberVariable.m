@@ -56,7 +56,7 @@
                 }];
   if (self) {
     self.possibleValues = possibleValues;
-    self.controlType = RMXControlTypeStepper;
+    self.controlType = possibleValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;
   }
   return self;
 }
