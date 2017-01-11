@@ -37,7 +37,7 @@
 
   [RMXStringVariable stringVariableWithKey:@"labelText"
                               defaultValue:@"This is a customizable label"
-                            possibleValues:nil
+                           limitedToValues:nil
                                updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
                                  _fontLabel.text = selectedValue;
                                  [self.view setNeedsLayout];
@@ -50,7 +50,7 @@
   [RMXStringVariable
       stringVariableWithKey:@"labelFont"
                defaultValue:fontNames[1]
-             possibleValues:fontNames
+            limitedToValues:fontNames
                 updateBlock:^(RMXStringVariable *variable, NSString *selectedFontName) {
                   _fontLabel.font =
                       [UIFont fontWithName:selectedFontName size:_fontLabel.font.pointSize];

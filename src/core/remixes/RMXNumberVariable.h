@@ -32,12 +32,12 @@ typedef void (^RMXNumberUpdateBlock)(RMXNumberVariable *variable, CGFloat select
 @property(nonatomic, assign) CGFloat selectedFloatValue;
 
 /** If set, these are the only values this Variable can take. */
-@property(nonatomic, strong) NSArray<NSNumber *> *possibleValues;
+@property(nonatomic, strong) NSArray<NSNumber *> *limitedToValues;
 
 /** Designated initializer. */
 + (instancetype)numberVariableWithKey:(NSString *)key
                          defaultValue:(CGFloat)defaultValue
-                       possibleValues:(nullable NSArray<NSNumber *> *)possibleValues
+                      limitedToValues:(nullable NSArray<NSNumber *> *)limitedToValues
                           updateBlock:(RMXNumberUpdateBlock)updateBlock;
 
 @end

@@ -38,7 +38,7 @@
   [RMXColorVariable
       colorVariableWithKey:@"boxBgColor"
               defaultValue:[UIColor redColor]
-            possibleValues:@[ [UIColor redColor], [UIColor blueColor], [UIColor greenColor] ]
+           limitedToValues:@[ [UIColor redColor], [UIColor blueColor], [UIColor greenColor] ]
                updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];
@@ -48,7 +48,7 @@
   RMXStringVariable *themeVariable = [RMXStringVariable
       stringVariableWithKey:@"theme"
                defaultValue:themesOptions[0]
-             possibleValues:themesOptions
+            limitedToValues:themesOptions
                 updateBlock:^(RMXStringVariable *_Nonnull variable, NSString *selectedValue) {
                   self.view.backgroundColor = ([selectedValue isEqualToString:@"Light"])
                                                   ? [UIColor whiteColor]

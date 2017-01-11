@@ -40,7 +40,7 @@
   _stringVariable =
       [RMXStringVariable stringVariableWithKey:@"key"
                                   defaultValue:@"default value"
-                                possibleValues:nil
+                               limitedToValues:nil
                                    updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
                                      // No-op.
                                    }];
@@ -64,7 +64,7 @@
   _stringVariable =
       [RMXStringVariable stringVariableWithKey:@"another key"
                                   defaultValue:@"default value"
-                                possibleValues:@[@"option 1", @"option 2"]
+                               limitedToValues:@[@"option 1", @"option 2"]
                                    updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
                                      // No-op.
                                    }];

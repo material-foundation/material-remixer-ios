@@ -55,7 +55,7 @@
 }
 
 - (NSString *)constraintType {
-  if (_possibleValues.count > 0) {
+  if (_limitedToValues.count > 0) {
     return RMXConstraintTypeList;
   } else {
     return RMXConstraintTypeNone;
