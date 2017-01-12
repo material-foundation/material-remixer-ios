@@ -49,11 +49,11 @@ static CGFloat kMinLuminenceForLightColor = 0.5;
 
   _swatchesContainer = [[UIView alloc] initWithFrame:CGRectZero];
   _swatchButtons = [NSMutableArray array];
-  for (UIColor *color in variable.possibleValues) {
+  for (UIColor *color in variable.limitedToValues) {
     [self addButtonForColor:color];
   }
   NSUInteger selectedIndex =
-      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
+      [self.variable.limitedToValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex == NSNotFound) {
     UIColor *color = self.variable.selectedValue;
     [self addButtonForColor:color];
@@ -109,11 +109,11 @@ static CGFloat kMinLuminenceForLightColor = 0.5;
 
 - (void)updateSelectedIndicator {
   NSUInteger selectedIndex =
-      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
+      [self.variable.limitedToValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     [self selectIndex:selectedIndex];
   } else {
-    // If it's not in the possibleValues array then it's the extra one we added for selectedValue.
+    // If it's not in the limitedToValues array then it's the extra one we added for selectedValue.
     [self selectIndex:_swatchButtons.count - 1];
   }
 }

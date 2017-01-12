@@ -39,8 +39,9 @@ static NSString *const RMXControlTypeTextInput = @"__ControlTypeTextInput__";
 /** Keys for the JSON dictionary that contains the data for a Variable. */
 static NSString *const RMXDictionaryKeyKey = @"key";
 static NSString *const RMXDictionaryKeySelectedValue = @"selectedValue";
-static NSString *const RMXDictionaryKeyPossibleValues = @"possibleValues";
+static NSString *const RMXDictionaryKeyLimitedToValues = @"limitedToValues";
 static NSString *const RMXDictionaryKeyDataType = @"dataType";
+static NSString *const RMXDictionaryKeyConstraintType = @"constraintType";
 static NSString *const RMXDictionaryKeyControlType = @"controlType";
 static NSString *const RMXDictionaryKeyTitle = @"title";
 static NSString *const RMXDictionaryKeyMinValue = @"minimumValue";

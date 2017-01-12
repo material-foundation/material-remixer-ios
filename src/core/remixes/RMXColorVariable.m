@@ -29,15 +29,15 @@ NSString *const RMXColorKeyAlpha = @"a";
 @implementation RMXColorVariable
 
 @dynamic selectedValue;
-@dynamic possibleValues;
+@dynamic limitedToValues;
 
 + (instancetype)colorVariableWithKey:(NSString *)key
                         defaultValue:(UIColor *)defaultValue
-                      possibleValues:(NSArray<UIColor *> *)possibleValues
+                     limitedToValues:(NSArray<UIColor *> *)limitedToValues
                          updateBlock:(RMXColorUpdateBlock)updateBlock {
   RMXColorVariable *variable = [[self alloc] initWithKey:key
                                             defaultValue:defaultValue
-                                          possibleValues:possibleValues
+                                         limitedToValues:limitedToValues
                                              updateBlock:updateBlock];
   [RMXRemixer addVariable:variable];
   return variable;
@@ -46,8 +46,8 @@ NSString *const RMXColorKeyAlpha = @"a";
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = [[self class] rgbaDictionaryFromColor:self.selectedValue];
-  if (self.possibleValues.count > 0) {
-    json[RMXDictionaryKeyPossibleValues] = [self colorsToJSON];
+  if (self.limitedToValues.count > 0) {
+    json[RMXDictionaryKeyLimitedToValues] = [self colorsToJSON];
   }
   return json;
 }
@@ -63,7 +63,7 @@ NSString *const RMXColorKeyAlpha = @"a";
 
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(UIColor *)defaultValue
-             possibleValues:(NSArray<UIColor *> *)possibleValues
+            limitedToValues:(NSArray<UIColor *> *)limitedToValues
                 updateBlock:(RMXColorUpdateBlock)updateBlock {
   self = [super initWithKey:key
                    dataType:RMXDataTypeColor
@@ -71,17 +71,17 @@ NSString *const RMXColorKeyAlpha = @"a";
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock((RMXColorVariable *)variable, selectedValue);
                 }];
-  self.possibleValues = possibleValues;
+  self.limitedToValues = limitedToValues;
   // TODO(chuga): Implement a color picker control for color variables that don't have a pre-defined
   // list of possible values.
   self.controlType =
-      self.possibleValues.count > 0 ? RMXControlTypeColorList : RMXControlTypeColorInput;
+      self.limitedToValues.count > 0 ? RMXControlTypeColorList : RMXControlTypeColorInput;
   return self;
 }
 
 - (NSArray *)colorsToJSON {
   NSMutableArray<NSDictionary *> *rgbaColors = [NSMutableArray array];
-  for (UIColor *color in self.possibleValues) {
+  for (UIColor *color in self.limitedToValues) {
     [rgbaColors addObject:[[self class] rgbaDictionaryFromColor:color]];
   }
   return rgbaColors;

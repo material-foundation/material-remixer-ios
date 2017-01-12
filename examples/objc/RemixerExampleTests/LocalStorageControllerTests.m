@@ -55,7 +55,7 @@
   RMXColorVariable *colorVariable =
       [RMXColorVariable colorVariableWithKey:@"rmxtest_colorVariableKey"
                                 defaultValue:[UIColor redColor]
-                              possibleValues:nil
+                             limitedToValues:nil
                                  updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                                    // No - op.
                                  }];

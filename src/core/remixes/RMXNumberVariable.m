@@ -20,15 +20,15 @@
 
 @implementation RMXNumberVariable
 
-@dynamic possibleValues;
+@dynamic limitedToValues;
 
 + (instancetype)numberVariableWithKey:(NSString *)key
                          defaultValue:(CGFloat)defaultValue
-                       possibleValues:(NSArray<NSNumber *> *)possibleValues
+                      limitedToValues:(NSArray<NSNumber *> *)limitedToValues
                           updateBlock:(RMXNumberUpdateBlock)updateBlock {
   RMXNumberVariable *variable = [[self alloc] initWithKey:key
                                              defaultValue:defaultValue
-                                           possibleValues:possibleValues
+                                          limitedToValues:limitedToValues
                                               updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
@@ -36,8 +36,8 @@
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = @(self.selectedFloatValue);
-  if (self.possibleValues.count > 0) {
-    json[RMXDictionaryKeyPossibleValues] = self.possibleValues;
+  if (self.limitedToValues.count > 0) {
+    json[RMXDictionaryKeyLimitedToValues] = self.limitedToValues;
   }
   return json;
 }
@@ -46,7 +46,7 @@
 
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(CGFloat)defaultValue
-             possibleValues:(NSArray<NSNumber *> *)possibleValues
+            limitedToValues:(NSArray<NSNumber *> *)limitedToValues
                 updateBlock:(RMXNumberUpdateBlock)updateBlock {
   self = [super initWithKey:key
                    dataType:RMXDataTypeNumber
@@ -55,8 +55,8 @@
                   updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
                 }];
   if (self) {
-    self.possibleValues = possibleValues;
-    self.controlType = possibleValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;
+    self.limitedToValues = limitedToValues;
+    self.controlType = limitedToValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;
   }
   return self;
 }

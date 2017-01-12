@@ -55,7 +55,7 @@
 }
 
 - (NSString *)constraintType {
-  if (_possibleValues.count > 0) {
+  if (_limitedToValues.count > 0) {
     return RMXConstraintTypeList;
   } else {
     return RMXConstraintTypeNone;
@@ -86,6 +86,7 @@
   NSMutableDictionary *json = [NSMutableDictionary dictionary];
   json[RMXDictionaryKeyKey] = self.key;
   json[RMXDictionaryKeyDataType] = self.dataType;
+  json[RMXDictionaryKeyConstraintType] = self.constraintType;
   json[RMXDictionaryKeyControlType] = self.controlType;
   json[RMXDictionaryKeyTitle] = self.title;
   return json;

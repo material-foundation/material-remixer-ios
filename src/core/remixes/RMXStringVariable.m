@@ -21,15 +21,15 @@
 @implementation RMXStringVariable
 
 @dynamic selectedValue;
-@dynamic possibleValues;
+@dynamic limitedToValues;
 
 + (instancetype)stringVariableWithKey:(NSString *)key
                          defaultValue:(NSString *)defaultValue
-                       possibleValues:(NSArray<NSString *> *)possibleValues
+                      limitedToValues:(NSArray<NSString *> *)limitedToValues
                           updateBlock:(RMXStringUpdateBlock)updateBlock {
   RMXStringVariable *variable = [[self alloc] initWithKey:key
                                              defaultValue:defaultValue
-                                           possibleValues:possibleValues
+                                          limitedToValues:limitedToValues
                                               updateBlock:updateBlock];
   return [RMXRemixer addVariable:variable];
 }
@@ -37,8 +37,8 @@
 - (NSDictionary *)toJSON {
   NSMutableDictionary *json = [super toJSON];
   json[RMXDictionaryKeySelectedValue] = self.selectedValue;
-  if (self.possibleValues.count > 0) {
-    json[RMXDictionaryKeyPossibleValues] = self.possibleValues;
+  if (self.limitedToValues.count > 0) {
+    json[RMXDictionaryKeyLimitedToValues] = self.limitedToValues;
   }
   return json;
 }
@@ -47,7 +47,7 @@
 
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(NSString *)defaultValue
-             possibleValues:(NSArray<NSString *> *)possibleValues
+            limitedToValues:(NSArray<NSString *> *)limitedToValues
                 updateBlock:(RMXStringUpdateBlock)updateBlock {
   self = [super initWithKey:key
                    dataType:RMXDataTypeString
@@ -55,8 +55,8 @@
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
                   updateBlock((RMXStringVariable *)variable, selectedValue);
                 }];
-  self.possibleValues = possibleValues;
-  self.controlType = possibleValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;
+  self.limitedToValues = limitedToValues;
+  self.controlType = limitedToValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;
   return self;
 }
 
