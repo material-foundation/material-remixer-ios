@@ -103,9 +103,9 @@ static CGFloat kPickerheight = 200.0f;
   picker.dataSource = self;
   picker.delegate = self;
   NSInteger selectedIndex =
-      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
+      [self.variable.limitedToValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex == NSNotFound) {
-    selectedIndex = self.variable.possibleValues.count;
+    selectedIndex = self.variable.limitedToValues.count;
   }
   [picker selectRow:selectedIndex inComponent:0 animated:NO];
   [_alertController.view addSubview:picker];
@@ -124,11 +124,11 @@ static CGFloat kPickerheight = 200.0f;
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
   NSUInteger selectedIndex =
-      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
+      [self.variable.limitedToValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
-    return self.variable.possibleValues.count;
+    return self.variable.limitedToValues.count;
   }
-  return self.variable.possibleValues.count + 1;
+  return self.variable.limitedToValues.count + 1;
 }
 
 #pragma mark - <UIPickerViewDelegate>
@@ -136,18 +136,18 @@ static CGFloat kPickerheight = 200.0f;
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component {
-  if ((NSUInteger)row == self.variable.possibleValues.count) {
+  if ((NSUInteger)row == self.variable.limitedToValues.count) {
     return self.variable.selectedValue;
   } else {
-    return [self.variable.possibleValues objectAtIndex:row];
+    return [self.variable.limitedToValues objectAtIndex:row];
   }
 }
 
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
-  if ((NSUInteger)row < self.variable.possibleValues.count) {
-    [self.variable setSelectedValue:[self.variable.possibleValues objectAtIndex:row]];
+  if ((NSUInteger)row < self.variable.limitedToValues.count) {
+    [self.variable setSelectedValue:[self.variable.limitedToValues objectAtIndex:row]];
     [self.variable save];
   }
   [self updateSelectedIndicator];

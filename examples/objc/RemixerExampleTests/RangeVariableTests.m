@@ -84,9 +84,9 @@
   XCTAssertTrue([[_rangeVariable controlType] isEqualToString:RMXControlTypeStepper]);
 }
 
-- (void)testSettingPossibleValuesThrowsException {
-  NSArray *possibleValues = @[@0, @1];
-  XCTAssertThrows([_rangeVariable setPossibleValues:possibleValues]);
+- (void)testSettingLimitedToValuesThrowsException {
+  NSArray *limitedToValues = @[@0, @1];
+  XCTAssertThrows([_rangeVariable setLimitedToValues:limitedToValues]);
 }
 
 #pragma mark - Private

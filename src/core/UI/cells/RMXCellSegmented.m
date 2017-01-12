@@ -41,11 +41,11 @@
     return;
   }
 
-  NSUInteger selectedIndex = [variable.possibleValues indexOfObject:variable.selectedValue];
+  NSUInteger selectedIndex = [variable.limitedToValues indexOfObject:variable.selectedValue];
   if (selectedIndex != NSNotFound) {
-    _segmentControl = [[UISegmentedControl alloc] initWithItems:variable.possibleValues];
+    _segmentControl = [[UISegmentedControl alloc] initWithItems:variable.limitedToValues];
   } else {
-    NSMutableArray *allValues = [variable.possibleValues mutableCopy];
+    NSMutableArray *allValues = [variable.limitedToValues mutableCopy];
     [allValues addObject:variable.selectedValue];
     _segmentControl = [[UISegmentedControl alloc] initWithItems:allValues];
   }
@@ -67,7 +67,7 @@
 #pragma mark - Control Events
 
 - (void)segmentUpdated:(UISegmentedControl *)segmentControl {
-  id newValue = [self.variable.possibleValues objectAtIndex:segmentControl.selectedSegmentIndex];
+  id newValue = [self.variable.limitedToValues objectAtIndex:segmentControl.selectedSegmentIndex];
   [self.variable setSelectedValue:newValue];
   [self.variable save];
   [self updateSelectedIndicator];
@@ -77,11 +77,11 @@
 
 - (void)updateSelectedIndicator {
   NSUInteger selectedIndex =
-      [self.variable.possibleValues indexOfObject:self.variable.selectedValue];
+      [self.variable.limitedToValues indexOfObject:self.variable.selectedValue];
   if (selectedIndex != NSNotFound) {
     _segmentControl.selectedSegmentIndex = selectedIndex;
   } else {
-    _segmentControl.selectedSegmentIndex = self.variable.possibleValues.count;
+    _segmentControl.selectedSegmentIndex = self.variable.limitedToValues.count;
   }
 }
 

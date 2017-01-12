@@ -41,7 +41,7 @@ typedef void (^RMXUpdateBlock)(RMXVariable *variable, id selectedValue);
 @property(nonatomic, strong) id selectedValue;
 
 /** If set, these are the only values this Variable can take. */
-@property(nonatomic, strong) NSArray<id> *possibleValues;
+@property(nonatomic, strong) NSArray<id> *limitedToValues;
 
 /** The type of data this Variable holds. See RMXVariableConstants for possible values. */
 @property(nonatomic, readonly) NSString *dataType;

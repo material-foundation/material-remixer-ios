@@ -48,8 +48,8 @@
   return json;
 }
 
-- (void)setPossibleValues:(NSArray<NSNumber *> *)possibleValues {
-  NSAssert(possibleValues.count == 0, @"RMXRangeVariable doesn't support setting possibleValues");
+- (void)setLimitedToValues:(NSArray<NSNumber *> *)limitedToValues {
+  NSAssert(limitedToValues.count == 0, @"RMXRangeVariable doesn't support setting limitedToValues");
 }
 
 #pragma mark - Private

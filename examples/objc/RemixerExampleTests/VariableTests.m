@@ -58,9 +58,9 @@
 }
 
 - (void)testConstraintType {
-  variable.possibleValues = @[];
+  variable.limitedToValues = @[];
   XCTAssertTrue([[variable constraintType] isEqualToString:RMXConstraintTypeNone]);
-  variable.possibleValues = @[@"onlyOption"];
+  variable.limitedToValues = @[@"onlyOption"];
   XCTAssertTrue([[variable constraintType] isEqualToString:RMXConstraintTypeList]);
 }
 
