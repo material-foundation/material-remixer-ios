@@ -56,7 +56,7 @@
                 }];
   if (self) {
     self.limitedToValues = limitedToValues;
-    self.controlType = RMXControlTypeStepper;
+    self.controlType = limitedToValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;
   }
   return self;
 }
