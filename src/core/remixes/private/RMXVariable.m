@@ -86,6 +86,7 @@
   NSMutableDictionary *json = [NSMutableDictionary dictionary];
   json[RMXDictionaryKeyKey] = self.key;
   json[RMXDictionaryKeyDataType] = self.dataType;
+  json[RMXDictionaryKeyConstraintType] = self.constraintType;
   json[RMXDictionaryKeyControlType] = self.controlType;
   json[RMXDictionaryKeyTitle] = self.title;
   return json;
