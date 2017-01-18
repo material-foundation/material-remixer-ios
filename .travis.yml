@@ -5,9 +5,10 @@ notifications:
   email: false
 before_install:
   - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+  - cd examples/objc
   - pod install
 script:
   - set -o pipefail
-  - xcodebuild build -workspace RemixerExample.xcworkspace -scheme Catalog -sdk "iphonesimulator10.0" -destination "name=iPhone 6s,OS=10.0" ONLY_ACTIVE_ARCH=YES | xcpretty -c;
+  - xcodebuild build -workspace RemixerExample.xcworkspace -scheme RemixerExample -sdk "iphonesimulator10.0" -destination "name=iPhone 6s,OS=10.0" ONLY_ACTIVE_ARCH=YES | xcpretty -c;
 after_success:
   - bash <(curl -s https://codecov.io/bash)
