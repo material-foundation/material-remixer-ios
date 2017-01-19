@@ -40,7 +40,7 @@
   _colorVariable =
       [RMXColorVariable colorVariableWithKey:@"key"
                                 defaultValue:[UIColor redColor]
-                              possibleValues:nil
+                             limitedToValues:nil
                                  updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                                    //
                                  }];
@@ -69,7 +69,7 @@
   _colorVariable =
       [RMXColorVariable colorVariableWithKey:@"another key"
                                 defaultValue:[UIColor redColor]
-                              possibleValues:@[[UIColor redColor], [UIColor yellowColor]]
+                             limitedToValues:@[[UIColor redColor], [UIColor yellowColor]]
                                  updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                                    //
                                  }];

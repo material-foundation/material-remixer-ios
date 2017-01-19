@@ -40,7 +40,7 @@
   _numberVariable =
       [RMXNumberVariable numberVariableWithKey:@"key"
                                   defaultValue:1
-                                possibleValues:nil
+                               limitedToValues:nil
                                    updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
                                      // No-op.
                                    }];
@@ -69,7 +69,7 @@
   _numberVariable =
       [RMXNumberVariable numberVariableWithKey:@"another key"
                                   defaultValue:1
-                                possibleValues:@[@(1), @(2)]
+                               limitedToValues:@[@(1), @(2)]
                                    updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
                                      // No-op.
                                    }];
