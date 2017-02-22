@@ -38,6 +38,7 @@ static CGFloat kContainerPaddingEdges = 16.0f;
   if (self) {
     self.textLabel.textColor = [UIColor colorWithWhite:0 alpha:kTextAplha];
     self.detailTextLabel.textColor = [UIColor colorWithWhite:0 alpha:kTextAplha];
+    self.backgroundColor = [UIColor clearColor];
   }
   return self;
 }

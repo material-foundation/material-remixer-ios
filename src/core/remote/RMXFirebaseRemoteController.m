@@ -16,15 +16,16 @@
 
 #import "RMXFirebaseRemoteController.h"
 
-#ifdef REMIXER_CLOUD_FIREBASE
-
 @import Firebase;
 
 #import "RMXBooleanVariable.h"
 #import "RMXRangeVariable.h"
 #import "RMXRemixer.h"
 
-static NSString *const kFirebasePath = @"Remixer";
+static NSString *const kFirebasePath = @"remixer";
+static NSString *const kSharingUserDefaultKey = @"remixerSharingBool";
+static NSString *const kFirebaseDatabaseDomain = @"firebaseio";
+static NSString *const kFirebaseAppDomain = @"firebaseapp";
 
 @implementation RMXFirebaseRemoteController {
   NSString *_identifier;
@@ -32,42 +33,51 @@ static NSString *const kFirebasePath = @"Remixer";
   NSMutableDictionary<NSString *, RMXVariable *> *_storedVariables;
 }
 
-+ (instancetype)sharedInstance {
-  static id sharedInstance;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    sharedInstance = [[self alloc] init];
-  });
-  return sharedInstance;
-}
+@synthesize sharing = _sharing;
 
 - (instancetype)init {
   self = [super init];
   if (self) {
     _identifier = [RMXRemixer sessionId];
-    [FIRApp configure];
-    _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
-    [[_ref child:_identifier] onDisconnectRemoveValue];
     _storedVariables = [NSMutableDictionary dictionary];
+    [FIRApp configure];
+    self.sharing =
+        [[[NSUserDefaults standardUserDefaults] objectForKey:kSharingUserDefaultKey] boolValue];
   }
   return self;
 }
 
-- (void)startObservingUpdates {
-  [[_ref child:_identifier]
-       observeEventType:FIRDataEventTypeChildChanged
-       withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
-         NSDictionary *jsonDictionary = snapshot.value;
-         RMXVariable *variable = [RMXRemixer variableForKey:snapshot.key];
-         if (variable) {
-           id value = [jsonDictionary objectForKey:RMXDictionaryKeySelectedValue];
-           [RMXRemixer updateVariable:variable fromRemoteControllerToValue:value];
-         }
-   }];
+- (void)setSharing:(BOOL)sharing {
+  _sharing = sharing;
+  if (_sharing) {
+    [self restartConnection];
+  } else {
+    [self pauseConnection];
+  }
+  [[NSUserDefaults standardUserDefaults] setObject:@(_sharing) forKey:kSharingUserDefaultKey];
 }
 
-- (void)stopObservingUpdates {
-  [[_ref child:_identifier] removeAllObservers];
+- (void)restartConnection{
+  if (!_sharing) {
+    return;
+  }
+  _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
+  [[_ref child:_identifier] onDisconnectRemoveValue];
+  [self removeAllVariables];
+  [self saveAllVariables];
+  [self startObservingUpdates];
+}
+
+- (void)pauseConnection {
+  [self removeAllVariables];
+  [self stopObservingUpdates];
+  _ref = nil;
+}
+
+- (void)saveAllVariables {
+  for (RMXVariable *variable in [RMXRemixer allVariables]) {
+    [self addVariable:variable];
+  }
 }
 
 - (void)addVariable:(RMXVariable *)variable {
@@ -86,6 +96,33 @@ static NSString *const kFirebasePath = @"Remixer";
   [[_ref child:_identifier] removeValue];
 }
 
-@end
+- (NSURL *)remoteControllerURL {
+  FIROptions *options = [[FIRApp defaultApp] options];
+  NSString *baseURL =
+      [options.databaseURL stringByReplacingOccurrencesOfString:kFirebaseDatabaseDomain
+                                                     withString:kFirebaseAppDomain];
+  NSString *fullURL =
+      [NSString stringWithFormat:@"%@%@%@", baseURL, @"/", [RMXRemixer sessionId]];
+  return [NSURL URLWithString:fullURL];
+}
 
-#endif
+#pragma mark - Private
+
+- (void)startObservingUpdates {
+  [[_ref child:_identifier]
+   observeEventType:FIRDataEventTypeChildChanged
+   withBlock:^(FIRDataSnapshot *_Nonnull snapshot) {
+     NSDictionary *jsonDictionary = snapshot.value;
+     RMXVariable *variable = [RMXRemixer variableForKey:snapshot.key];
+     if (variable) {
+       id value = [jsonDictionary objectForKey:RMXDictionaryKeySelectedValue];
+       [RMXRemixer updateVariable:variable fromRemoteControllerToValue:value];
+     }
+   }];
+}
+
+- (void)stopObservingUpdates {
+  [[_ref child:_identifier] removeAllObservers];
+}
+
+@end

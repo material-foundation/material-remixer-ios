@@ -23,11 +23,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 
-/** Called when Remixer is ready to start receiving updates from remote controllers */
-- (void)startObservingUpdates;
+/** Whether Remixer should be sharing or not. This is set by the user through the overlay UI. */
+@property(nonatomic, assign, getter=isSharing) BOOL sharing;
 
-/** Called when Remixer wants to stop receiving updates from remote controllers */
-- (void)stopObservingUpdates;
+/**
+ Called when Remixer is ready to start receiving updates from remote controllers (for example, when
+ the app comes back from the background). This does not set sharing to YES, and won't do anything
+ if it's set to NO.
+ */
+- (void)restartConnection;
+
+/**
+ Called when Remixer wants to stop receiving updates from remote controllers (for example, when
+ the app goes into the background).
+ */
+- (void)pauseConnection;
 
 /** Adds a variable to the remote controllers */
 - (void)addVariable:(RMXVariable *)variable;
@@ -40,6 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Removes all variables from the remote controllers */
 - (void)removeAllVariables;
+
+/** The URL of the remote controller */
+- (NSURL *)remoteControllerURL;
 
 @end
 

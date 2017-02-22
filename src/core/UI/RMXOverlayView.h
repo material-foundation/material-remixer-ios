@@ -16,25 +16,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class RMXOverlayNavigationBar;
-
-static const CGFloat RMXOverlayNavbarHeight = 60.0f;
-
-@protocol RMXOverlayViewDelegate <NSObject>
-
-@optional
-
-/** Notifies the delegate when a touch was detected anywhere in this view. */
-- (void)touchStartedAtPoint:(CGPoint)point withEvent:(UIEvent *)event;
-
-/**
- Asks the delegate if this view should capture a touch event that happened at a point that is
- outside of the overlay panel.
- @return Whether to capture the touch event.
- */
-- (BOOL)shouldCapturePointOutsidePanel:(CGPoint)point;
-
-@end
+@class RMXOverlayTopBarView;
 
 /** The view of the RMXOverlayViewController. It contains the overlay's panel. */
 @interface RMXOverlayView : UIView
@@ -42,23 +24,29 @@ static const CGFloat RMXOverlayNavbarHeight = 60.0f;
 /** A view that acts as a container for all the subviews of the panel. */
 @property(nonatomic, readonly) UIView *panelContainerView;
 
-/** A custom navigation bar for the overlay. */
-@property(nonatomic, readonly) RMXOverlayNavigationBar *navigationBar;
+/** The top bar of the overlay. */
+@property(nonatomic, readonly) RMXOverlayTopBarView *topBar;
 
-/** A table view that contains the Remixer controls. */
+/** The button that closes the overlay. */
+@property(nonatomic, readonly) UIButton *closeButton;
+
+/** The button that opens and closes the sharing drawer. */
+@property(nonatomic, readonly) UIButton *drawerButton;
+
+/** Whether the sharing drawer is open. */
+@property(nonatomic, readonly) BOOL isDrawerOpen;
+
+/** The table displayed when the sharing drawer is opened. */
+@property(nonatomic, readonly) UITableView *drawerTable;
+
+/** A table view that contains the Remixer controls for the current variables. */
 @property(nonatomic, readonly) UITableView *tableView;
-
-/** A toolbar that sits at the bottom of the table view. */
-@property(nonatomic, readonly) UIToolbar *bottomToolbar;
 
 /**
  The current height of the panel.
  Setting this to a different value changes the size of the panel.
  */
 @property(nonatomic, assign) CGFloat panelHeight;
-
-/** The view's delegate */
-@property(nonatomic, weak) id<RMXOverlayViewDelegate> delegate;
 
 /** Hides the panel completely. Not animated. */
 - (void)hidePanel;
@@ -71,5 +59,8 @@ static const CGFloat RMXOverlayNavbarHeight = 60.0f;
 
 /** Shows the panel at a pre-defined height. Not animated. */
 - (void)showAtDefaultHeight;
+
+/** Toggles the state of the sharing drawer (opened or closed). */
+- (void)toggleDrawer;
 
 @end

@@ -16,7 +16,21 @@
 
 #import <UIKit/UIKit.h>
 
-/** A custom UINavigationBar used inside of the overlay. */
-@interface RMXOverlayNavigationBar : UINavigationBar
+NS_ASSUME_NONNULL_BEGIN
+
+@protocol RMXShareLinkCellDelegate<NSObject>
+
+- (void)linkButtonWasTapped:(UIButton *)linkButton;
+- (void)shareButtonWasTapped:(UIButton *)shareButton;
 
 @end
+
+/** A cell that has options for sharing the remote controller's URL. */
+@interface RMXShareLinkCell : UITableViewCell
+
+/** The delegate for this cell */
+@property(nonatomic, weak) id<RMXShareLinkCellDelegate> delegate;
+
+@end
+
+NS_ASSUME_NONNULL_END

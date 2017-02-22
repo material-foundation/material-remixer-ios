@@ -91,20 +91,15 @@
 }
 
 + (void)applicationDidBecomeActive {
-#ifdef REMIXER_CLOUD_FIREBASE
-  [[[self sharedInstance] remoteController] removeAllVariables];
-  for (RMXVariable *variable in [self allVariables]) {
-    [[[self sharedInstance] remoteController] addVariable:variable];
+  if ([[[self sharedInstance] remoteController] isSharing]) {
+    [[[self sharedInstance] remoteController] restartConnection];
   }
-  [[[self sharedInstance] remoteController] startObservingUpdates];
-#endif
 }
 
 + (void)applicationWillResignActive {
-#ifdef REMIXER_CLOUD_FIREBASE
-  [[[self sharedInstance] remoteController] removeAllVariables];
-  [[[self sharedInstance] remoteController] stopObservingUpdates];
-#endif
+  if ([[[self sharedInstance] remoteController] isSharing]) {
+    [[[self sharedInstance] remoteController] pauseConnection];
+  }
 }
 
 + (NSString *)sessionId {
@@ -200,6 +195,23 @@
                                                         object:variable];
     [[[self sharedInstance] storage] saveSelectedValueOfVariable:variable];
   }
+}
+
+#pragma mark - Remote controller
+
++ (nullable NSURL *)remoteControllerURL {
+  return [[[self sharedInstance] remoteController] remoteControllerURL];
+}
+
++ (BOOL)isSharing {
+  if (![[self sharedInstance] remoteController]) {
+    return NO;
+  }
+  return [[[self sharedInstance] remoteController] isSharing];
+}
+
++ (void)setSharing:(BOOL)sharing {
+  [[[self sharedInstance] remoteController] setSharing:sharing];
 }
 
 @end

@@ -34,9 +34,8 @@
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
   BOOL pointInside = NO;
   if (self.rootViewController.presentedViewController) {
-    UIView *presentedView = self.rootViewController.presentedViewController.view;
-    CGPoint adjustedPoint = [presentedView convertPoint:point fromView:self];
-    pointInside = [presentedView pointInside:adjustedPoint withEvent:event];
+    // For now, let's capture all taps if there's something being presented.
+    return YES;
   } else {
     pointInside = [self.rootViewController.view pointInside:point withEvent:event];
   }

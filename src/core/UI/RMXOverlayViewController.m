@@ -29,9 +29,12 @@
 #import "RMXCellSwitch.h"
 #import "RMXCellTextInput.h"
 #import "RMXCellTextList.h"
-#import "RMXOverlayNavigationBar.h"
+#import "RMXOverlayTopBarView.h"
 #import "RMXOverlayView.h"
+#import "RMXOverlayWindow.h"
 #import "RMXRemixer.h"
+#import "RMXShareLinkCell.h"
+#import "RMXShareSwitchCell.h"
 
 static CGFloat kPanelHeightThreshold = 500.0f;
 static CGFloat kAnimationDuration = 0.3f;
@@ -41,8 +44,9 @@ static CGFloat kInitialSpeed = 0.4f;
 @interface RMXOverlayViewController () <UITableViewDataSource,
                                         UITableViewDelegate,
                                         UIGestureRecognizerDelegate,
-                                        RMXOverlayViewDelegate,
-                                        RMXCellDelegate>
+                                        RMXCellDelegate,
+                                        RMXShareLinkCellDelegate,
+                                        RMXShareSwitchCellDelegate>
 @property(nonatomic, strong) RMXOverlayView *view;
 @end
 
@@ -58,16 +62,17 @@ static CGFloat kInitialSpeed = 0.4f;
   self.view =
       [[RMXOverlayView alloc] initWithFrame:[[UIApplication sharedApplication] keyWindow].frame];
   [self.view hidePanel];
-  self.view.delegate = self;
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  self.view.topBar.shareLinkCellDelegate = self;
+  self.view.topBar.shareSwitchCellDelegate = self;
+
   self.view.tableView.dataSource = self;
   self.view.tableView.delegate = self;
   self.view.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-
   [self.view.tableView registerClass:[RMXCellButton class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellButton class])];
   [self.view.tableView registerClass:[RMXCellColorList class]
@@ -87,14 +92,23 @@ static CGFloat kInitialSpeed = 0.4f;
   [self.view.tableView registerClass:[RMXCellTextInput class]
               forCellReuseIdentifier:NSStringFromClass([RMXCellTextInput class])];
 
-  UINavigationItem *item = self.view.navigationBar.topItem;
-  [(UIButton *)item.leftBarButtonItem.customView addTarget:self
-                                                    action:@selector(dismissOverlay:)
-                                          forControlEvents:UIControlEventTouchUpInside];
+  [self.view.closeButton addTarget:self
+                            action:@selector(dismissOverlay:)
+                  forControlEvents:UIControlEventTouchUpInside];
+  [self.view.drawerButton addTarget:self
+                             action:@selector(toggleDrawer:)
+                   forControlEvents:UIControlEventTouchUpInside];
   _panGestureRecognizer =
       [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
   _panGestureRecognizer.delegate = self;
-  [self.view.navigationBar addGestureRecognizer:_panGestureRecognizer];
+  [self.view.topBar addGestureRecognizer:_panGestureRecognizer];
+
+  if (![RMXRemixer remoteControllerURL]) {
+    self.view.drawerButton.hidden = YES;
+    self.view.drawerTable.hidden = YES;
+  } else {
+    [self.view.topBar displaySharing:[RMXRemixer isSharing]];
+  }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -154,9 +168,9 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)didPan:(UIPanGestureRecognizer *)recognizer {
   if (recognizer.state == UIGestureRecognizerStateBegan) {
-    _gestureInitialDelta = [recognizer locationInView:self.view.navigationBar].y;
+    _gestureInitialDelta = [recognizer locationInView:self.view.topBar].y;
   } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-    if (self.view.panelHeight <= 2 * RMXOverlayNavbarHeight) {
+    if (self.view.panelHeight <= 2 * RMXOverlayTopBarClosedHeight) {
       [recognizer velocityInView:self.view].y >= 0 ? [self minimizePanel] : [self maximizePanel];
     } else if ([recognizer velocityInView:self.view].y > kPanelHeightThreshold) {
       [self minimizePanel];
@@ -169,7 +183,7 @@ static CGFloat kInitialSpeed = 0.4f;
   }
   self.view.panelHeight = MAX(CGRectGetHeight(self.view.frame) -
                                   [recognizer locationInView:self.view].y + _gestureInitialDelta,
-                              RMXOverlayNavbarHeight);
+                              RMXOverlayTopBarClosedHeight);
   [self.view setNeedsLayout];
 }
 
@@ -207,7 +221,7 @@ static CGFloat kInitialSpeed = 0.4f;
 
 - (void)dismissOverlayWithCompletion:(void (^)(BOOL finished))completion {
   [self.view endEditing:YES];
-  [UIView animateWithDuration:0.2
+  [UIView animateWithDuration:kAnimationDuration
       animations:^{
         [self.view hidePanel];
         [self.view layoutSubviews];
@@ -223,6 +237,18 @@ static CGFloat kInitialSpeed = 0.4f;
 - (void)reloadData {
   _content = [RMXRemixer allVariables];
   [self.view.tableView reloadData];
+}
+
+- (void)toggleDrawer:(id)sender {
+  [UIView animateWithDuration:RMXOverlayDrawerAnimationDuration
+                        delay:0
+                      options:UIViewAnimationOptionCurveEaseInOut
+                   animations:^{
+                     [self.view toggleDrawer];
+                     [self.view layoutSubviews];
+                   }
+                   completion:^(BOOL finished){
+                   }];
 }
 
 #pragma mark - UITableViewDataSource
@@ -248,20 +274,57 @@ static CGFloat kInitialSpeed = 0.4f;
   return [[self cellClassForVariable:variable] cellHeight];
 }
 
-#pragma mark - RMXOverlayViewDelegate
-
-- (void)touchStartedAtPoint:(CGPoint)point withEvent:(UIEvent *)event {
-  // No-op.
-}
-
-- (BOOL)shouldCapturePointOutsidePanel:(CGPoint)point {
-  return self.presentedViewController != nil;
-}
-
 #pragma mark - RMXCellDelegate
 
 - (void)cellRequestedFullScreenOverlay:(RMXCell *)cell {
   [self maximizePanel];
+}
+
+#pragma mark - RMXShareLinkCellDelegate
+
+- (void)linkButtonWasTapped:(UIButton *)linkButton {
+  NSURL *inputURL = [RMXRemixer remoteControllerURL];
+  // Check if Chrome is installed
+  if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"googlechrome://"]]) {
+    NSString *scheme = inputURL.scheme;
+    NSString *chromeScheme = nil;
+    if ([scheme isEqualToString:@"http"]) {
+      chromeScheme = @"googlechrome";
+    } else if ([scheme isEqualToString:@"https"]) {
+      chromeScheme = @"googlechromes";
+    }
+    if (chromeScheme) {
+      NSString *absoluteString = [inputURL absoluteString];
+      NSRange rangeForScheme = [absoluteString rangeOfString:@":"];
+      NSString *urlNoScheme =
+          [absoluteString substringFromIndex:rangeForScheme.location];
+      NSString *chromeURLString =
+          [chromeScheme stringByAppendingString:urlNoScheme];
+      NSURL *chromeURL = [NSURL URLWithString:chromeURLString];
+      [[UIApplication sharedApplication] openURL:chromeURL];
+    } else {
+      [[UIApplication sharedApplication] openURL:inputURL];
+    }
+  } else {
+    [[UIApplication sharedApplication] openURL:inputURL];
+  }
+}
+
+- (void)shareButtonWasTapped:(UIButton *)shareButton {
+  // TODO(chuga): Set the right message for sharing.
+  UIActivityViewController *activityViewController =
+      [[UIActivityViewController alloc] initWithActivityItems:@[[RMXRemixer remoteControllerURL]]
+                                        applicationActivities:nil];
+  [[[RMXRemixer overlayWindow] rootViewController] presentViewController:activityViewController
+                                                                animated:YES
+                                                              completion:nil];
+}
+
+#pragma mark - RMXShareSwitchCellDelegate
+
+- (void)switchControlWasUpdated:(UISwitch *)switchControl {
+  [RMXRemixer setSharing:switchControl.isOn];
+  [self.view.topBar displaySharing:switchControl.isOn];
 }
 
 #pragma mark - Private

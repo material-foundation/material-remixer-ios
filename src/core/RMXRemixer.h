@@ -98,8 +98,30 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)updateVariable:(RMXVariable *)variable fromRemoteControllerToValue:(id)value;
 
-/** A unique session id. This is used for generating a URL for the remote controllers. */
+/**
+ A unique session id. This is used for generating a URL for the remote controllers.
+ @return The current session id.
+ */
 + (NSString *)sessionId;
+
+/**
+ If you're using the Firebase version of Remixer, this URL points to the remote controller.
+ Otherwise this returns null.
+ @return The remote controller's URL.
+ */
++ (nullable NSURL *)remoteControllerURL;
+
+/**
+ When set to YES, Remixer sends and receives updates from the remote controller.
+ @param sharing Whether Remixer should be sharing variables through the remote controller.
+ */
++ (void)setSharing:(BOOL)sharing;
+
+/**
+ Getter for the sharing property. YES means Remixer is sharing variables with the remote controller.
+ @return Whether or not Remixer is currently sharing.
+ */
++ (BOOL)isSharing;
 
 @end
 
