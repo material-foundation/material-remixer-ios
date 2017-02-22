@@ -16,6 +16,8 @@
 
 #import "RMXFirebaseRemoteController.h"
 
+#ifdef REMIXER_CLOUD_FIREBASE
+
 @import Firebase;
 
 #import "RMXBooleanVariable.h"
@@ -126,3 +128,5 @@ static NSString *const kFirebaseAppDomain = @"firebaseapp";
 }
 
 @end
+
+#endif
