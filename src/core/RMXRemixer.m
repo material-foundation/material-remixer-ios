@@ -91,13 +91,13 @@
 }
 
 + (void)applicationDidBecomeActive {
-  if ([[[self sharedInstance] remoteController] isSharing]) {
+  if ([self isSharing]) {
     [[[self sharedInstance] remoteController] restartConnection];
   }
 }
 
 + (void)applicationWillResignActive {
-  if ([[[self sharedInstance] remoteController] isSharing]) {
+  if ([self isSharing]) {
     [[[self sharedInstance] remoteController] pauseConnection];
   }
 }
@@ -204,9 +204,6 @@
 }
 
 + (BOOL)isSharing {
-  if (![[self sharedInstance] remoteController]) {
-    return NO;
-  }
   return [[[self sharedInstance] remoteController] isSharing];
 }
 
