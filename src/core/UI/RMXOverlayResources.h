@@ -24,9 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 /** Icon resources. */
 OBJC_EXTERN NSString *const RMXIconCheck;
 OBJC_EXTERN NSString *const RMXIconClose;
+OBJC_EXTERN NSString *const RMXIconArrowDown;
 OBJC_EXTERN NSString *const RMXIconDropDown;
 OBJC_EXTERN NSString *const RMXIconLaunch;
 OBJC_EXTERN NSString *const RMXIconRestore;
+OBJC_EXTERN NSString *const RMXIconShare;
 OBJC_EXTERN NSString *const RMXIconWifi;
 
 /** Icon resources that are used for the overlay controller. */

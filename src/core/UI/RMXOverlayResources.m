@@ -26,9 +26,11 @@ static NSString *const kBundleName = @"Remixer.bundle";
 // Icons.
 NSString *const RMXIconCheck = @"ic_check";
 NSString *const RMXIconClose = @"ic_close";
+NSString *const RMXIconArrowDown = @"ic_arrow_down";
 NSString *const RMXIconDropDown = @"ic_arrow_drop_down";
 NSString *const RMXIconLaunch = @"ic_launch";
 NSString *const RMXIconRestore = @"ic_restore";
+NSString *const RMXIconShare = @"ic_share";
 NSString *const RMXIconWifi = @"ic_wifi_tethering";
 
 @implementation RMXOverlayResources
