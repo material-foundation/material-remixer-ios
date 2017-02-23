@@ -11,11 +11,8 @@
 		5DC04DC41D3EC39800AF9086 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DB61D3EC39800AF9086 /* AppDelegate.m */; };
 		5DC04DC51D3EC39800AF9086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DB71D3EC39800AF9086 /* Assets.xcassets */; };
 		5DC04DC61D3EC39800AF9086 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DB81D3EC39800AF9086 /* LaunchScreen.storyboard */; };
-		5DC04DC71D3EC39800AF9086 /* ColorDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DBB1D3EC39800AF9086 /* ColorDemoViewController.m */; };
-		5DC04DC81D3EC39800AF9086 /* FontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DBD1D3EC39800AF9086 /* FontViewController.m */; };
 		5DC04DCA1D3EC39800AF9086 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DBF1D3EC39800AF9086 /* main.m */; };
 		5DC04DCB1D3EC39800AF9086 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DC11D3EC39800AF9086 /* MainViewController.m */; };
-		5DC04DCC1D3EC39800AF9086 /* SpinningBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DC31D3EC39800AF9086 /* SpinningBoxViewController.m */; };
 		5DC04DD01D3EC3B800AF9086 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DCE1D3EC3B800AF9086 /* Info.plist */; };
 		5DC04DD11D3EC3B800AF9086 /* LocalStorageControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */; };
 		5DC04DD51D3EC3C200AF9086 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DD31D3EC3C200AF9086 /* Info.plist */; };
@@ -62,16 +59,10 @@
 		5DC04DB61D3EC39800AF9086 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5DC04DB71D3EC39800AF9086 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DC04DB91D3EC39800AF9086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5DC04DBA1D3EC39800AF9086 /* ColorDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDemoViewController.h; sourceTree = "<group>"; };
-		5DC04DBB1D3EC39800AF9086 /* ColorDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorDemoViewController.m; sourceTree = "<group>"; };
-		5DC04DBC1D3EC39800AF9086 /* FontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontViewController.h; sourceTree = "<group>"; };
-		5DC04DBD1D3EC39800AF9086 /* FontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontViewController.m; sourceTree = "<group>"; };
 		5DC04DBE1D3EC39800AF9086 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC04DBF1D3EC39800AF9086 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5DC04DC01D3EC39800AF9086 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		5DC04DC11D3EC39800AF9086 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		5DC04DC21D3EC39800AF9086 /* SpinningBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinningBoxViewController.h; sourceTree = "<group>"; };
-		5DC04DC31D3EC39800AF9086 /* SpinningBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinningBoxViewController.m; sourceTree = "<group>"; };
 		5DC04DCE1D3EC3B800AF9086 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorageControllerTests.m; sourceTree = "<group>"; };
 		5DC04DD31D3EC3C200AF9086 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,16 +123,10 @@
 				5DC04DB61D3EC39800AF9086 /* AppDelegate.m */,
 				5DC04DB71D3EC39800AF9086 /* Assets.xcassets */,
 				5DC04DB81D3EC39800AF9086 /* LaunchScreen.storyboard */,
-				5DC04DBA1D3EC39800AF9086 /* ColorDemoViewController.h */,
-				5DC04DBB1D3EC39800AF9086 /* ColorDemoViewController.m */,
-				5DC04DBC1D3EC39800AF9086 /* FontViewController.h */,
-				5DC04DBD1D3EC39800AF9086 /* FontViewController.m */,
 				5DC04DBE1D3EC39800AF9086 /* Info.plist */,
 				5DC04DBF1D3EC39800AF9086 /* main.m */,
 				5DC04DC01D3EC39800AF9086 /* MainViewController.h */,
 				5DC04DC11D3EC39800AF9086 /* MainViewController.m */,
-				5DC04DC21D3EC39800AF9086 /* SpinningBoxViewController.h */,
-				5DC04DC31D3EC39800AF9086 /* SpinningBoxViewController.m */,
 			);
 			path = RemixerExample;
 			sourceTree = "<group>";
@@ -506,10 +491,7 @@
 			files = (
 				5DC04DCB1D3EC39800AF9086 /* MainViewController.m in Sources */,
 				5DC04DCA1D3EC39800AF9086 /* main.m in Sources */,
-				5DC04DC81D3EC39800AF9086 /* FontViewController.m in Sources */,
-				5DC04DCC1D3EC39800AF9086 /* SpinningBoxViewController.m in Sources */,
 				5DC04DC41D3EC39800AF9086 /* AppDelegate.m in Sources */,
-				5DC04DC71D3EC39800AF9086 /* ColorDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

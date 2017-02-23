@@ -21,27 +21,54 @@
 #import "MainViewController.h"
 
 #import "Remixer.h"
-#import "SpinningBoxViewController.h"
 
 @implementation MainViewController {
+  UICollectionViewFlowLayout *_layout;
   NSArray *_content;
 }
 
-- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout{
-  self = [super initWithCollectionViewLayout:layout];
+- (instancetype)init {
+  _layout = [[UICollectionViewFlowLayout alloc] init];
+  self = [super initWithCollectionViewLayout:_layout];
   if (self) {
-    self.collectionView =
-        [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    self.title = @"Transactions";
+
     self.collectionView.backgroundColor = [UIColor whiteColor];
 
-    self.title = @"Transactions";
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.collectionView registerClass:[UICollectionReusableView class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:@"header"];
   }
   return self;
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
+  _layout.itemSize = CGSizeMake(self.view.bounds.size.width, 60);
+  _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 100);
 }
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+  return 10;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+  UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+  cell.contentView.backgroundColor = [UIColor colorWithWhite:(100.0 / (indexPath.row + 2.0)) / 100.0 alpha:1];
+  return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+  UICollectionReusableView *header = [self.collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                             withReuseIdentifier:@"header"
+                                                                                    forIndexPath:indexPath];
+  header.backgroundColor = [UIColor redColor];
+  return header;
+}
+
+#pragma mark - UICollectionViewDelegate
 
 @end
