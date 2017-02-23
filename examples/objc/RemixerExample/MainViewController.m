@@ -27,39 +27,21 @@
   NSArray *_content;
 }
 
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout{
+  self = [super initWithCollectionViewLayout:layout];
+  if (self) {
+    self.collectionView =
+        [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+
+    self.title = @"Transactions";
+  }
+  return self;
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.title = @"Remixer Examples";
-
-  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-
-  _content = @[
-    @[ @"Spinning Box Demo", @"SpinningBoxViewController" ],
-    @[ @"Color Demo", @"ColorDemoViewController" ], @[ @"Font Demo", @"FontViewController" ]
-  ];
-}
-
-#pragma mark - <UITableViewDataSource>
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return _content.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell =
-      [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-  cell.textLabel.text = _content[indexPath.row][0];
-  return cell;
-}
-
-#pragma mark - <UITableViewDelegate>
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  Class class = NSClassFromString(_content[indexPath.row][1]);
-  UIViewController *vc = [[class alloc] init];
-  [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

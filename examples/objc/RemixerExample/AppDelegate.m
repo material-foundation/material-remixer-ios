@@ -27,7 +27,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  MainViewController *main = [[MainViewController alloc] initWithNibName:nil bundle:nil];
+  MainViewController *main = [[MainViewController alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

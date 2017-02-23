@@ -16,5 +16,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UITableViewController
+@interface MainViewController : UICollectionViewController
 @end
