@@ -27,8 +27,13 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  MainViewController *main = [[MainViewController alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+  MainViewController *main = [[MainViewController alloc] init];
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
+  [nav.navigationBar setBackgroundImage:[UIImage new]
+                          forBarMetrics:UIBarMetricsDefault];
+  nav.navigationBar.shadowImage = [UIImage new];
+  nav.navigationBar.translucent = YES;
+
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.rootViewController = nav;
