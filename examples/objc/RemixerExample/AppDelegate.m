@@ -33,6 +33,10 @@
                           forBarMetrics:UIBarMetricsDefault];
   nav.navigationBar.shadowImage = [UIImage new];
   nav.navigationBar.translucent = YES;
+  nav.navigationBar.titleTextAttributes = @{
+    NSFontAttributeName: [UIFont systemFontOfSize:20.0],
+    NSForegroundColorAttributeName: [UIColor whiteColor]
+  };
 
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
