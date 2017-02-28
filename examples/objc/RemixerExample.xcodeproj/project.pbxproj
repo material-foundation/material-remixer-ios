@@ -119,6 +119,7 @@
 		5DC04DB41D3EC39800AF9086 /* RemixerExample */ = {
 			isa = PBXGroup;
 			children = (
+				B10E22D81E65DCAF009B9C72 /* cells */,
 				5DC04DB51D3EC39800AF9086 /* AppDelegate.h */,
 				5DC04DB61D3EC39800AF9086 /* AppDelegate.m */,
 				5DC04DB71D3EC39800AF9086 /* Assets.xcassets */,
@@ -175,6 +176,13 @@
 				5DC668931CF378780021C595 /* RemixerExample.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B10E22D81E65DCAF009B9C72 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = cells;
 			sourceTree = "<group>";
 		};
 		B2BD7D55ABCFF4A6A2574C32 /* Pods */ = {

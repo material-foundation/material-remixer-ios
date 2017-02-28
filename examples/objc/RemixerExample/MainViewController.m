@@ -29,13 +29,16 @@
 
 - (instancetype)init {
   _layout = [[UICollectionViewFlowLayout alloc] init];
+  _layout.minimumLineSpacing = 0;
   self = [super initWithCollectionViewLayout:_layout];
   if (self) {
     self.title = @"Transactions";
 
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.collectionView.backgroundColor = [UIColor whiteColor];
 
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.collectionView registerClass:[UICollectionViewCell class]
+            forCellWithReuseIdentifier:@"cell"];
     [self.collectionView registerClass:[UICollectionReusableView class]
             forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                    withReuseIdentifier:@"header"];
@@ -46,26 +49,32 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   _layout.itemSize = CGSizeMake(self.view.bounds.size.width, 60);
-  _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 100);
+  _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 176);
 }
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
   return 10;
 }
 
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-  cell.contentView.backgroundColor = [UIColor colorWithWhite:(100.0 / (indexPath.row + 2.0)) / 100.0 alpha:1];
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                           cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+  UICollectionViewCell *cell =
+      [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+  cell.contentView.backgroundColor =
+      [UIColor colorWithWhite:(100.0 / (indexPath.row + 2.0)) / 100.0 alpha:1];
   return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-  UICollectionReusableView *header = [self.collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                             withReuseIdentifier:@"header"
-                                                                                    forIndexPath:indexPath];
-  header.backgroundColor = [UIColor redColor];
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+  UICollectionReusableView *header =
+      [self.collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                              withReuseIdentifier:@"header"
+                                                     forIndexPath:indexPath];
+  header.backgroundColor = [UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1];
   return header;
 }
 
