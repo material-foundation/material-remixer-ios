@@ -12,11 +12,13 @@
 		5DC04DC51D3EC39800AF9086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DB71D3EC39800AF9086 /* Assets.xcassets */; };
 		5DC04DC61D3EC39800AF9086 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DB81D3EC39800AF9086 /* LaunchScreen.storyboard */; };
 		5DC04DCA1D3EC39800AF9086 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DBF1D3EC39800AF9086 /* main.m */; };
-		5DC04DCB1D3EC39800AF9086 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DC11D3EC39800AF9086 /* MainViewController.m */; };
 		5DC04DD01D3EC3B800AF9086 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DCE1D3EC3B800AF9086 /* Info.plist */; };
 		5DC04DD11D3EC3B800AF9086 /* LocalStorageControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */; };
 		5DC04DD51D3EC3C200AF9086 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DC04DD31D3EC3C200AF9086 /* Info.plist */; };
 		5DC04DD61D3EC3C200AF9086 /* RemixerExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC04DD41D3EC3C200AF9086 /* RemixerExampleUITests.m */; };
+		B10E22DB1E6899D5009B9C72 /* TransactionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22DA1E6899D5009B9C72 /* TransactionsListViewController.m */; };
+		B10E22DE1E689D0E009B9C72 /* TransactionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22DD1E689D0E009B9C72 /* TransactionCollectionViewCell.m */; };
+		B10E22E11E68A620009B9C72 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22E01E68A620009B9C72 /* SectionHeaderView.m */; };
 		B1974B7F1E1EB6AB00DF986F /* RangeVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */; };
 		B1974B811E1ED5ED00DF986F /* VariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B801E1ED5ED00DF986F /* VariableTests.m */; };
 		B1974B831E1EDB6600DF986F /* BooleanVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */; };
@@ -61,8 +63,6 @@
 		5DC04DB91D3EC39800AF9086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DC04DBE1D3EC39800AF9086 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC04DBF1D3EC39800AF9086 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5DC04DC01D3EC39800AF9086 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		5DC04DC11D3EC39800AF9086 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		5DC04DCE1D3EC3B800AF9086 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC04DCF1D3EC3B800AF9086 /* LocalStorageControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStorageControllerTests.m; sourceTree = "<group>"; };
 		5DC04DD31D3EC3C200AF9086 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +76,12 @@
 		9CC837901AB355C677764D3A /* Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleUITests/Pods-RemixerExample-RemixerExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9E885EFEA1E78D06365E833C /* Pods-RemixerExample-RemixerExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample-RemixerExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample-RemixerExampleUITests/Pods-RemixerExample-RemixerExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A71E6E12CB7184D1B2F1A238 /* Pods-RemixerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemixerExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemixerExample/Pods-RemixerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		B10E22D91E6899D5009B9C72 /* TransactionsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionsListViewController.h; sourceTree = "<group>"; };
+		B10E22DA1E6899D5009B9C72 /* TransactionsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionsListViewController.m; sourceTree = "<group>"; };
+		B10E22DC1E689D0E009B9C72 /* TransactionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionCollectionViewCell.h; path = cells/TransactionCollectionViewCell.h; sourceTree = "<group>"; };
+		B10E22DD1E689D0E009B9C72 /* TransactionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionCollectionViewCell.m; path = cells/TransactionCollectionViewCell.m; sourceTree = "<group>"; };
+		B10E22DF1E68A620009B9C72 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionHeaderView.h; path = cells/SectionHeaderView.h; sourceTree = "<group>"; };
+		B10E22E01E68A620009B9C72 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionHeaderView.m; path = cells/SectionHeaderView.m; sourceTree = "<group>"; };
 		B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeVariableTests.m; sourceTree = "<group>"; };
 		B1974B801E1ED5ED00DF986F /* VariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableTests.m; sourceTree = "<group>"; };
 		B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanVariableTests.m; sourceTree = "<group>"; };
@@ -119,15 +125,15 @@
 		5DC04DB41D3EC39800AF9086 /* RemixerExample */ = {
 			isa = PBXGroup;
 			children = (
-				B10E22D81E65DCAF009B9C72 /* cells */,
 				5DC04DB51D3EC39800AF9086 /* AppDelegate.h */,
 				5DC04DB61D3EC39800AF9086 /* AppDelegate.m */,
 				5DC04DB71D3EC39800AF9086 /* Assets.xcassets */,
 				5DC04DB81D3EC39800AF9086 /* LaunchScreen.storyboard */,
 				5DC04DBE1D3EC39800AF9086 /* Info.plist */,
 				5DC04DBF1D3EC39800AF9086 /* main.m */,
-				5DC04DC01D3EC39800AF9086 /* MainViewController.h */,
-				5DC04DC11D3EC39800AF9086 /* MainViewController.m */,
+				B10E22D91E6899D5009B9C72 /* TransactionsListViewController.h */,
+				B10E22DA1E6899D5009B9C72 /* TransactionsListViewController.m */,
+				B10E22D81E65DCAF009B9C72 /* cells */,
 			);
 			path = RemixerExample;
 			sourceTree = "<group>";
@@ -181,6 +187,10 @@
 		B10E22D81E65DCAF009B9C72 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				B10E22DC1E689D0E009B9C72 /* TransactionCollectionViewCell.h */,
+				B10E22DD1E689D0E009B9C72 /* TransactionCollectionViewCell.m */,
+				B10E22DF1E68A620009B9C72 /* SectionHeaderView.h */,
+				B10E22E01E68A620009B9C72 /* SectionHeaderView.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -497,9 +507,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DC04DCB1D3EC39800AF9086 /* MainViewController.m in Sources */,
+				B10E22E11E68A620009B9C72 /* SectionHeaderView.m in Sources */,
 				5DC04DCA1D3EC39800AF9086 /* main.m in Sources */,
+				B10E22DB1E6899D5009B9C72 /* TransactionsListViewController.m in Sources */,
 				5DC04DC41D3EC39800AF9086 /* AppDelegate.m in Sources */,
+				B10E22DE1E689D0E009B9C72 /* TransactionCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

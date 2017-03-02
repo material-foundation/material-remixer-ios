@@ -14,20 +14,16 @@
  limitations under the License.
  */
 
-#if !defined(__has_feature) || !__has_feature(objc_arc)
-#error "This file requires ARC support."
-#endif
-
 #import "AppDelegate.h"
 
-#import "MainViewController.h"
+#import "TransactionsListViewController.h"
 #import "Remixer.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  MainViewController *main = [[MainViewController alloc] init];
+  TransactionsListViewController *main = [[TransactionsListViewController alloc] init];
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
   [nav.navigationBar setBackgroundImage:[UIImage new]
                           forBarMetrics:UIBarMetricsDefault];

@@ -16,5 +16,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UICollectionViewController
+@interface SectionHeaderView : UICollectionReusableView
+
 @end
