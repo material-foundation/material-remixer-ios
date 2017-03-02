@@ -18,6 +18,7 @@
 
 #import "SectionHeaderView.h"
 #import "TransactionCollectionViewCell.h"
+#import "UIView+RemixerColor.h"
 
 @interface TransactionsListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 

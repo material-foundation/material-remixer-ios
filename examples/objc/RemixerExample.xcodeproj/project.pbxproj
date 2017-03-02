@@ -19,6 +19,8 @@
 		B10E22DB1E6899D5009B9C72 /* TransactionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22DA1E6899D5009B9C72 /* TransactionsListViewController.m */; };
 		B10E22DE1E689D0E009B9C72 /* TransactionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22DD1E689D0E009B9C72 /* TransactionCollectionViewCell.m */; };
 		B10E22E11E68A620009B9C72 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22E01E68A620009B9C72 /* SectionHeaderView.m */; };
+		B10E22E41E68C879009B9C72 /* ColorThemeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22E31E68C879009B9C72 /* ColorThemeController.m */; };
+		B10E22E71E68CA43009B9C72 /* UIView+RemixerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22E61E68CA43009B9C72 /* UIView+RemixerColor.m */; };
 		B1974B7F1E1EB6AB00DF986F /* RangeVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */; };
 		B1974B811E1ED5ED00DF986F /* VariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B801E1ED5ED00DF986F /* VariableTests.m */; };
 		B1974B831E1EDB6600DF986F /* BooleanVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */; };
@@ -82,6 +84,10 @@
 		B10E22DD1E689D0E009B9C72 /* TransactionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionCollectionViewCell.m; path = cells/TransactionCollectionViewCell.m; sourceTree = "<group>"; };
 		B10E22DF1E68A620009B9C72 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionHeaderView.h; path = cells/SectionHeaderView.h; sourceTree = "<group>"; };
 		B10E22E01E68A620009B9C72 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionHeaderView.m; path = cells/SectionHeaderView.m; sourceTree = "<group>"; };
+		B10E22E21E68C879009B9C72 /* ColorThemeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorThemeController.h; sourceTree = "<group>"; };
+		B10E22E31E68C879009B9C72 /* ColorThemeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorThemeController.m; sourceTree = "<group>"; };
+		B10E22E51E68CA43009B9C72 /* UIView+RemixerColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RemixerColor.h"; sourceTree = "<group>"; };
+		B10E22E61E68CA43009B9C72 /* UIView+RemixerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RemixerColor.m"; sourceTree = "<group>"; };
 		B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeVariableTests.m; sourceTree = "<group>"; };
 		B1974B801E1ED5ED00DF986F /* VariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableTests.m; sourceTree = "<group>"; };
 		B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanVariableTests.m; sourceTree = "<group>"; };
@@ -125,6 +131,8 @@
 		5DC04DB41D3EC39800AF9086 /* RemixerExample */ = {
 			isa = PBXGroup;
 			children = (
+				B10E22E21E68C879009B9C72 /* ColorThemeController.h */,
+				B10E22E31E68C879009B9C72 /* ColorThemeController.m */,
 				5DC04DB51D3EC39800AF9086 /* AppDelegate.h */,
 				5DC04DB61D3EC39800AF9086 /* AppDelegate.m */,
 				5DC04DB71D3EC39800AF9086 /* Assets.xcassets */,
@@ -134,6 +142,8 @@
 				B10E22D91E6899D5009B9C72 /* TransactionsListViewController.h */,
 				B10E22DA1E6899D5009B9C72 /* TransactionsListViewController.m */,
 				B10E22D81E65DCAF009B9C72 /* cells */,
+				B10E22E51E68CA43009B9C72 /* UIView+RemixerColor.h */,
+				B10E22E61E68CA43009B9C72 /* UIView+RemixerColor.m */,
 			);
 			path = RemixerExample;
 			sourceTree = "<group>";
@@ -305,6 +315,7 @@
 				TargetAttributes = {
 					5DC6686B1CF378780021C595 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EQHXZ8M8AV;
 					};
 					5DC668871CF378780021C595 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -508,9 +519,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B10E22E11E68A620009B9C72 /* SectionHeaderView.m in Sources */,
+				B10E22E41E68C879009B9C72 /* ColorThemeController.m in Sources */,
 				5DC04DCA1D3EC39800AF9086 /* main.m in Sources */,
 				B10E22DB1E6899D5009B9C72 /* TransactionsListViewController.m in Sources */,
 				5DC04DC41D3EC39800AF9086 /* AppDelegate.m in Sources */,
+				B10E22E71E68CA43009B9C72 /* UIView+RemixerColor.m in Sources */,
 				B10E22DE1E689D0E009B9C72 /* TransactionCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,7 +666,7 @@
 			baseConfigurationReference = A71E6E12CB7184D1B2F1A238 /* Pods-RemixerExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = EQHXZ8M8AV;
 				INFOPLIST_FILE = RemixerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.RemixerExample;
@@ -666,7 +679,7 @@
 			baseConfigurationReference = 449AF8AEF74887CF91C736D5 /* Pods-RemixerExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = EQHXZ8M8AV;
 				INFOPLIST_FILE = RemixerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.ios.RemixerExample;

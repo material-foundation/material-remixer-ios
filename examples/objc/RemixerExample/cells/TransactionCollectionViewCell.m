@@ -49,7 +49,7 @@
     [self.contentView addSubview:_dateLabel];
 
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_priceLabel setFont:[UIFont systemFontOfSize:18.0]];
+    [_priceLabel setFont:[UIFont systemFontOfSize:17.0]];
     [_priceLabel setTextColor:[UIColor colorWithWhite:0.231 alpha:1]];
     [self.contentView addSubview:_priceLabel];
 
@@ -74,7 +74,7 @@
                                  self.bounds.size.height / 2.0 - _priceLabel.frame.size.height / 2.0,
                                  _priceLabel.frame.size.width, _priceLabel.frame.size.height);
 
-  _iconView.frame = CGRectMake(16, self.bounds.size.height / 2.0 - _iconView.bounds.size.height / 2.0,
+  _iconView.frame = CGRectMake(20, self.bounds.size.height / 2.0 - _iconView.bounds.size.height / 2.0,
                                _iconView.bounds.size.width, _iconView.bounds.size.height);
 }
 
