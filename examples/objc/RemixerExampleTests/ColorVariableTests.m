@@ -76,6 +76,26 @@
   XCTAssertTrue([[_colorVariable controlType] isEqualToString:RMXControlTypeColorList]);
 }
 
+- (void)testSerialization {
+  _colorVariable.selectedValue = [UIColor colorWithRed:0.6 green:0.4 blue:0.2 alpha:0.5];
+  NSDictionary *json = [_colorVariable toJSON];
+  NSDictionary *colorJSON = json[RMXDictionaryKeySelectedValue];
+  XCTAssertTrue([[colorJSON objectForKey:@"r"] integerValue] == 153);
+  XCTAssertTrue([[colorJSON objectForKey:@"g"] integerValue] == 102);
+  XCTAssertTrue([[colorJSON objectForKey:@"b"] integerValue] == 51);
+  XCTAssertTrue([[colorJSON objectForKey:@"a"] integerValue] == 128);  // round up
+}
+
+- (void)testParsingFromDictionary {
+  [(RMXVariable *)_colorVariable setSelectedValue:@{@"r": @(153), @"g": @(102), @"b": @(51), @"a": @(128)}];
+  CGFloat r, g, b, a;
+  [_colorVariable.selectedValue getRed:&r green:&g blue:&b alpha:&a];
+  XCTAssertTrue(r == 153/255.0);
+  XCTAssertTrue(g == 102/255.0);
+  XCTAssertTrue(b == 51/255.0);
+  XCTAssertTrue(a == 128/255.0);
+}
+
 #pragma mark - Private
 
 - (id)returnArgument:(id)argument {
