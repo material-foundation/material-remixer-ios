@@ -86,6 +86,16 @@
   XCTAssertTrue([[colorJSON objectForKey:@"a"] integerValue] == 128);  // round up
 }
 
+- (void)testParsingFromDictionary {
+  [(RMXVariable *)_colorVariable setSelectedValue:@{@"r": @(153), @"g": @(102), @"b": @(51), @"a": @(128)}];
+  CGFloat r, g, b, a;
+  [_colorVariable.selectedValue getRed:&r green:&g blue:&b alpha:&a];
+  XCTAssertTrue(r == 153/255.0);
+  XCTAssertTrue(g == 102/255.0);
+  XCTAssertTrue(b == 51/255.0);
+  XCTAssertTrue(a == 128/255.0);
+}
+
 #pragma mark - Private
 
 - (id)returnArgument:(id)argument {
