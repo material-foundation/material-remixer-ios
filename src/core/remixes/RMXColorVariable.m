@@ -97,7 +97,7 @@ NSString *const RMXColorKeyAlpha = @"a";
     RMXColorKeyRed : @(round(r * 255)),
     RMXColorKeyGreen : @(round(g * 255)),
     RMXColorKeyBlue : @(round(b * 255)),
-    RMXColorKeyAlpha : @(round(a * 100))
+    RMXColorKeyAlpha : @(round(a * 255))
   };
 }
 
@@ -105,7 +105,7 @@ NSString *const RMXColorKeyAlpha = @"a";
   CGFloat red = [[dictionary objectForKey:RMXColorKeyRed] integerValue] / 255.0;
   CGFloat green = [[dictionary objectForKey:RMXColorKeyGreen] integerValue] / 255.0;
   CGFloat blue = [[dictionary objectForKey:RMXColorKeyBlue] integerValue] / 255.0;
-  CGFloat alpha = [[dictionary objectForKey:RMXColorKeyAlpha] integerValue] / 100.0;
+  CGFloat alpha = [[dictionary objectForKey:RMXColorKeyAlpha] integerValue] / 255.0;
   return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
