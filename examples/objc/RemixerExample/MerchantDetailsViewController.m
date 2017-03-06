@@ -14,55 +14,46 @@
  limitations under the License.
  */
 
-#import "TransactionsListViewController.h"
+#import "MerchantDetailsViewController.h"
 
 #import "SectionHeaderView.h"
 #import "TransactionCell.h"
-#import "UIView+RemixerColor.h"
+#import "TransactionDetailsCell.h"
 
-@interface TransactionsListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MerchantDetailsViewController ()<UICollectionViewDelegate,
+                                            UICollectionViewDataSource,
+                                            UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, strong) UIView *headerView;
-@property(nonatomic, strong) UILabel *totalLabel;
-@property(nonatomic, strong) UILabel *timePeriodLabel;
 
 @property(nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property(nonatomic, strong) UICollectionView *collectionView;
 
 @end
 
-@implementation TransactionsListViewController
+@implementation MerchantDetailsViewController
 
 - (instancetype)init {
   self = [super init];
   if (self) {
-    self.title = @"Transactions";
+    self.title = @"Merchant Name";
 
     _headerView = [[UIView alloc] initWithFrame:CGRectZero];
     _headerView.backgroundColor =
         [UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1];
-    _totalLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_totalLabel setFont:[UIFont systemFontOfSize:42.0]];
-    [_totalLabel setTextColor:[UIColor colorWithWhite:1 alpha:1]];
-    [_totalLabel setText:@"$2,301.99"];
-    [_headerView addSubview:_totalLabel];
-    _timePeriodLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_timePeriodLabel setFont:[UIFont systemFontOfSize:11.0]];
-    [_timePeriodLabel setTextColor:[UIColor colorWithWhite:1 alpha:1]];
-    [_timePeriodLabel setText:@"THIS MONTH"];
-    [_headerView addSubview:_timePeriodLabel];
 
     _layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.minimumLineSpacing = 0;
-    _layout.sectionInset = UIEdgeInsetsMake(10, 0, 10, 0);
     _layout.sectionHeadersPinToVisibleBounds = YES;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                          collectionViewLayout:_layout];
-    _collectionView.backgroundColor = [UIColor whiteColor];
+    _collectionView.backgroundColor = [UIColor colorWithWhite:0.92 alpha:1];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView registerClass:[TransactionCell class]
         forCellWithReuseIdentifier:@"cell"];
+    [_collectionView registerClass:[TransactionDetailsCell class]
+        forCellWithReuseIdentifier:@"detailsCell"];
     [_collectionView registerClass:[SectionHeaderView class]
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:@"header"];
@@ -77,43 +68,63 @@
 }
 
 - (void)viewDidLayoutSubviews {
-  _headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 176);
-  [_totalLabel sizeToFit];
-  _totalLabel.center = CGPointMake(_headerView.bounds.size.width / 2.0,
-                                   _headerView.bounds.size.height / 2.0 + 8);
-  [_timePeriodLabel sizeToFit];
-  _timePeriodLabel.center =
-      CGPointMake(_totalLabel.center.x,
-                  CGRectGetMaxY(_totalLabel.frame) + 4 + _timePeriodLabel.bounds.size.height / 2.0);
-
-  _collectionView.frame = CGRectMake(0, 176,
+  _headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 144);
+  _collectionView.frame = CGRectMake(0, 144,
                                      self.view.bounds.size.width,
-                                     self.view.bounds.size.height - 176);
-  _layout.itemSize = CGSizeMake(self.view.bounds.size.width, 60);
+                                     self.view.bounds.size.height - 144);
   _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 48);
 }
 
 #pragma mark - UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+  return 2;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-  return 10;
+  return section == 0 ? 1 : 10;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                            cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  TransactionCell *cell =
-      [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-  return cell;
+  if (indexPath.section == 0) {
+    TransactionDetailsCell *cell =
+        [self.collectionView dequeueReusableCellWithReuseIdentifier:@"detailsCell"
+                                                       forIndexPath:indexPath];
+    return cell;
+  } else {
+    TransactionCell *cell =
+        [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.iconVisible = NO;
+    cell.backgroundColor = [UIColor colorWithWhite:0.92 alpha:1];
+    cell.primaryLabel.text = @"Saturday, Dec 25";
+    cell.secondaryLabel.text = @"Posted";
+    return cell;
+  }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-  UICollectionReusableView *header =
+  SectionHeaderView *header =
       [self.collectionView dequeueReusableSupplementaryViewOfKind:kind
                                               withReuseIdentifier:@"header"
                                                      forIndexPath:indexPath];
+  header.titleLabel.text = indexPath.section == 0 ? @"Transaction Details" : @"Other Transactions";
   return header;
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                    layout:(UICollectionViewLayout*)collectionViewLayout
+    sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+  return CGSizeMake(self.view.bounds.size.width, indexPath.section == 0 ? 160 : 60);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+  CGFloat verticalInset = section == 0 ? 0 : 10;
+  return UIEdgeInsetsMake(verticalInset, 0, verticalInset, 0);
 }
 
 @end
