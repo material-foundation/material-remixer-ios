@@ -16,12 +16,6 @@
 
 #import "SectionHeaderView.h"
 
-@interface SectionHeaderView ()
-
-@property(nonatomic, strong) UILabel *titleLabel;
-
-@end
-
 @implementation SectionHeaderView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -31,7 +25,6 @@
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [_titleLabel setFont:[UIFont systemFontOfSize:16.0 weight:UIFontWeightUltraLight]];
     [_titleLabel setTextColor:[UIColor colorWithWhite:0.5 alpha:1]];
-    [_titleLabel setText:@"Recent Transactions"];
     [self addSubview:_titleLabel];
   }
   return self;

@@ -16,8 +16,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SectionHeaderView : UICollectionReusableView
+@interface TransactionDetailsCell : UICollectionViewCell
 
-@property(nonatomic, strong, readonly) UILabel *titleLabel;
+@property(nonatomic, strong, readonly) UILabel *amountValueLabel;
+@property(nonatomic, strong, readonly) UILabel *dateValueLabel;
+@property(nonatomic, strong, readonly) UILabel *statusValueLabel;
 
 @end

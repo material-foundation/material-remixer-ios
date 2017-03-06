@@ -16,8 +16,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SectionHeaderView : UICollectionReusableView
+@interface TransactionCell : UICollectionViewCell
 
-@property(nonatomic, strong, readonly) UILabel *titleLabel;
+@property(nonatomic, strong, readonly) UIImageView *iconView;
+@property(nonatomic, strong, readonly) UILabel *primaryLabel;
+@property(nonatomic, strong, readonly) UILabel *secondaryLabel;
+@property(nonatomic, strong, readonly) UILabel *priceLabel;
+
+@property(nonatomic, assign) BOOL iconVisible;
 
 @end

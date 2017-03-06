@@ -16,6 +16,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TransactionCollectionViewCell : UICollectionViewCell
+@interface MerchantDetailsViewController : UIViewController
 
 @end

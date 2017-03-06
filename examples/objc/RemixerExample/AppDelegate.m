@@ -16,6 +16,7 @@
 
 #import "AppDelegate.h"
 
+#import "MerchantDetailsViewController.h"
 #import "TransactionsListViewController.h"
 #import "Remixer.h"
 
@@ -23,7 +24,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  TransactionsListViewController *main = [[TransactionsListViewController alloc] init];
+  MerchantDetailsViewController *main = [[MerchantDetailsViewController alloc] init];
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
   [nav.navigationBar setBackgroundImage:[UIImage new]
                           forBarMetrics:UIBarMetricsDefault];
