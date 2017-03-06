@@ -77,7 +77,7 @@
 }
 
 - (void)testSerialization {
-  _colorVariable.selectedValue = [[UIColor brownColor] colorWithAlphaComponent:0.5];
+  _colorVariable.selectedValue = [UIColor colorWithRed:0.6 green:0.4 blue:0.2 alpha:0.5];
   NSDictionary *json = [_colorVariable toJSON];
   NSDictionary *colorJSON = json[RMXDictionaryKeySelectedValue];
   XCTAssertTrue([[colorJSON objectForKey:@"r"] integerValue] == 153);
