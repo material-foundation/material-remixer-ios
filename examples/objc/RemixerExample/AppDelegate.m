@@ -16,7 +16,6 @@
 
 #import "AppDelegate.h"
 
-#import "MerchantDetailsViewController.h"
 #import "TransactionsListViewController.h"
 #import "Remixer.h"
 
@@ -24,12 +23,13 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  MerchantDetailsViewController *main = [[MerchantDetailsViewController alloc] init];
+  TransactionsListViewController *main = [[TransactionsListViewController alloc] init];
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
   [nav.navigationBar setBackgroundImage:[UIImage new]
                           forBarMetrics:UIBarMetricsDefault];
   nav.navigationBar.shadowImage = [UIImage new];
   nav.navigationBar.translucent = YES;
+  nav.navigationBar.tintColor = [UIColor whiteColor];
   nav.navigationBar.titleTextAttributes = @{
     NSFontAttributeName: [UIFont systemFontOfSize:20.0],
     NSForegroundColorAttributeName: [UIColor whiteColor]

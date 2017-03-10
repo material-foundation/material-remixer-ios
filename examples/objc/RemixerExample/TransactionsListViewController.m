@@ -16,15 +16,15 @@
 
 #import "TransactionsListViewController.h"
 
+#import "HeaderStatsView.h"
+#import "MerchantDetailsViewController.h"
 #import "SectionHeaderView.h"
 #import "TransactionCell.h"
-#import "UIView+RemixerColor.h"
 
 @interface TransactionsListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property(nonatomic, strong) UIView *headerView;
-@property(nonatomic, strong) UILabel *totalLabel;
-@property(nonatomic, strong) UILabel *timePeriodLabel;
+@property(nonatomic, strong) HeaderStatsView *stats;
 
 @property(nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property(nonatomic, strong) UICollectionView *collectionView;
@@ -37,20 +37,19 @@
   self = [super init];
   if (self) {
     self.title = @"Transactions";
+    self.navigationItem.backBarButtonItem =
+        [[UIBarButtonItem alloc] initWithTitle:@""
+                                         style:UIBarButtonItemStylePlain
+                                        target:nil
+                                        action:nil];
 
     _headerView = [[UIView alloc] initWithFrame:CGRectZero];
     _headerView.backgroundColor =
         [UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1];
-    _totalLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_totalLabel setFont:[UIFont systemFontOfSize:42.0]];
-    [_totalLabel setTextColor:[UIColor colorWithWhite:1 alpha:1]];
-    [_totalLabel setText:@"$2,301.99"];
-    [_headerView addSubview:_totalLabel];
-    _timePeriodLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_timePeriodLabel setFont:[UIFont systemFontOfSize:11.0]];
-    [_timePeriodLabel setTextColor:[UIColor colorWithWhite:1 alpha:1]];
-    [_timePeriodLabel setText:@"THIS MONTH"];
-    [_headerView addSubview:_timePeriodLabel];
+    _stats = [[HeaderStatsView alloc] initWithFrame:CGRectZero];
+    _stats.timePeriod = @"THIS MONTH";
+    _stats.amountValue = @"$3,201.99";
+    [_headerView addSubview:_stats];
 
     _layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.minimumLineSpacing = 0;
@@ -78,19 +77,24 @@
 
 - (void)viewDidLayoutSubviews {
   _headerView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 176);
-  [_totalLabel sizeToFit];
-  _totalLabel.center = CGPointMake(_headerView.bounds.size.width / 2.0,
-                                   _headerView.bounds.size.height / 2.0 + 8);
-  [_timePeriodLabel sizeToFit];
-  _timePeriodLabel.center =
-      CGPointMake(_totalLabel.center.x,
-                  CGRectGetMaxY(_totalLabel.frame) + 4 + _timePeriodLabel.bounds.size.height / 2.0);
+  _stats.frame = CGRectMake(0,
+                            54,
+                            self.view.bounds.size.width,
+                            _headerView.bounds.size.height - 54);
 
   _collectionView.frame = CGRectMake(0, 176,
                                      self.view.bounds.size.width,
                                      self.view.bounds.size.height - 176);
   _layout.itemSize = CGSizeMake(self.view.bounds.size.width, 60);
   _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 48);
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView
+    didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  [self.navigationController pushViewController:[[MerchantDetailsViewController alloc] init]
+                                       animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -109,10 +113,11 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-  UICollectionReusableView *header =
+  SectionHeaderView *header =
       [self.collectionView dequeueReusableSupplementaryViewOfKind:kind
                                               withReuseIdentifier:@"header"
                                                      forIndexPath:indexPath];
+  header.titleLabel.text = @"Recent Transactions";
   return header;
 }
 

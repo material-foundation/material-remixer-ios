@@ -18,8 +18,9 @@
 
 @interface TransactionDetailsCell : UICollectionViewCell
 
-@property(nonatomic, strong, readonly) UILabel *amountValueLabel;
-@property(nonatomic, strong, readonly) UILabel *dateValueLabel;
-@property(nonatomic, strong, readonly) UILabel *statusValueLabel;
+
+@property(nonatomic, strong) NSString *amount;
+
+
 
 @end
