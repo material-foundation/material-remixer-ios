@@ -16,6 +16,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ColorThemeController : NSObject
+@interface HeaderStatsView : UIView
+
+@property(nonatomic, copy) NSString *amountValue;
+@property(nonatomic, copy) NSString *timePeriod;
 
 @end

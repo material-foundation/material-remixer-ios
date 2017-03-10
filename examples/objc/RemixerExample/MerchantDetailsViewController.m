@@ -16,16 +16,49 @@
 
 #import "MerchantDetailsViewController.h"
 
+#import "HeaderStatsView.h"
 #import "SectionHeaderView.h"
 #import "TransactionCell.h"
 #import "TransactionDetailsCell.h"
+
+@interface MerchantDetailsHeaderView : UIView
+
+@property(nonatomic, strong) HeaderStatsView *thisMonthStats;
+@property(nonatomic, strong) HeaderStatsView *thisYearStats;
+
+@end
+
+@implementation MerchantDetailsHeaderView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+  self = [super initWithFrame:frame];
+  if (self) {
+    self.backgroundColor =
+        [UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1];
+    _thisMonthStats = [[HeaderStatsView alloc] initWithFrame:CGRectZero];
+    _thisMonthStats.timePeriod = @"THIS MONTH";
+    _thisMonthStats.amountValue = @"$201.99";
+    [self addSubview:_thisMonthStats];
+    _thisYearStats = [[HeaderStatsView alloc] initWithFrame:CGRectZero];
+    _thisYearStats.timePeriod = @"THIS YEAR";
+    _thisYearStats.amountValue = @"$1,092.32";
+    [self addSubview:_thisYearStats];
+  }
+  return self;
+}
+
+- (void)layoutSubviews {
+  _thisMonthStats.frame = CGRectMake(0, 54, self.bounds.size.width / 2.0, self.bounds.size.height - 54);
+  _thisYearStats.frame = CGRectMake(self.bounds.size.width / 2.0, 54, self.bounds.size.width / 2.0, self.bounds.size.height - 54);
+}
+
+@end
 
 @interface MerchantDetailsViewController ()<UICollectionViewDelegate,
                                             UICollectionViewDataSource,
                                             UICollectionViewDelegateFlowLayout>
 
-@property(nonatomic, strong) UIView *headerView;
-
+@property(nonatomic, strong) MerchantDetailsHeaderView *headerView;
 @property(nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property(nonatomic, strong) UICollectionView *collectionView;
 
@@ -38,9 +71,7 @@
   if (self) {
     self.title = @"Merchant Name";
 
-    _headerView = [[UIView alloc] initWithFrame:CGRectZero];
-    _headerView.backgroundColor =
-        [UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1];
+    _headerView = [[MerchantDetailsHeaderView alloc] initWithFrame:CGRectZero];
 
     _layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.minimumLineSpacing = 0;
@@ -122,7 +153,9 @@
   return CGSizeMake(self.view.bounds.size.width, indexPath.section == 0 ? 160 : 60);
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout*)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section {
   CGFloat verticalInset = section == 0 ? 0 : 10;
   return UIEdgeInsetsMake(verticalInset, 0, verticalInset, 0);
 }

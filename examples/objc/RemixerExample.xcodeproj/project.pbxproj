@@ -19,10 +19,9 @@
 		B10E22DB1E6899D5009B9C72 /* TransactionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22DA1E6899D5009B9C72 /* TransactionsListViewController.m */; };
 		B10E22DE1E689D0E009B9C72 /* TransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22DD1E689D0E009B9C72 /* TransactionCell.m */; };
 		B10E22E11E68A620009B9C72 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22E01E68A620009B9C72 /* SectionHeaderView.m */; };
-		B10E22E41E68C879009B9C72 /* ColorThemeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22E31E68C879009B9C72 /* ColorThemeController.m */; };
-		B10E22E71E68CA43009B9C72 /* UIView+RemixerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22E61E68CA43009B9C72 /* UIView+RemixerColor.m */; };
 		B10E22EA1E6DC589009B9C72 /* MerchantDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22E91E6DC589009B9C72 /* MerchantDetailsViewController.m */; };
 		B10E22ED1E6DDEF5009B9C72 /* TransactionDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22EC1E6DDEF5009B9C72 /* TransactionDetailsCell.m */; };
+		B10E22F01E73389E009B9C72 /* HeaderStatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22EF1E73389E009B9C72 /* HeaderStatsView.m */; };
 		B1974B7F1E1EB6AB00DF986F /* RangeVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */; };
 		B1974B811E1ED5ED00DF986F /* VariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B801E1ED5ED00DF986F /* VariableTests.m */; };
 		B1974B831E1EDB6600DF986F /* BooleanVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */; };
@@ -86,14 +85,12 @@
 		B10E22DD1E689D0E009B9C72 /* TransactionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionCell.m; path = cells/TransactionCell.m; sourceTree = "<group>"; };
 		B10E22DF1E68A620009B9C72 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionHeaderView.h; path = cells/SectionHeaderView.h; sourceTree = "<group>"; };
 		B10E22E01E68A620009B9C72 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionHeaderView.m; path = cells/SectionHeaderView.m; sourceTree = "<group>"; };
-		B10E22E21E68C879009B9C72 /* ColorThemeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorThemeController.h; sourceTree = "<group>"; };
-		B10E22E31E68C879009B9C72 /* ColorThemeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorThemeController.m; sourceTree = "<group>"; };
-		B10E22E51E68CA43009B9C72 /* UIView+RemixerColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RemixerColor.h"; sourceTree = "<group>"; };
-		B10E22E61E68CA43009B9C72 /* UIView+RemixerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RemixerColor.m"; sourceTree = "<group>"; };
 		B10E22E81E6DC589009B9C72 /* MerchantDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantDetailsViewController.h; sourceTree = "<group>"; };
 		B10E22E91E6DC589009B9C72 /* MerchantDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantDetailsViewController.m; sourceTree = "<group>"; };
 		B10E22EB1E6DDEF5009B9C72 /* TransactionDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionDetailsCell.h; path = cells/TransactionDetailsCell.h; sourceTree = "<group>"; };
 		B10E22EC1E6DDEF5009B9C72 /* TransactionDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionDetailsCell.m; path = cells/TransactionDetailsCell.m; sourceTree = "<group>"; };
+		B10E22EE1E73389E009B9C72 /* HeaderStatsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderStatsView.h; sourceTree = "<group>"; };
+		B10E22EF1E73389E009B9C72 /* HeaderStatsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderStatsView.m; sourceTree = "<group>"; };
 		B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeVariableTests.m; sourceTree = "<group>"; };
 		B1974B801E1ED5ED00DF986F /* VariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableTests.m; sourceTree = "<group>"; };
 		B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanVariableTests.m; sourceTree = "<group>"; };
@@ -137,8 +134,6 @@
 		5DC04DB41D3EC39800AF9086 /* RemixerExample */ = {
 			isa = PBXGroup;
 			children = (
-				B10E22E21E68C879009B9C72 /* ColorThemeController.h */,
-				B10E22E31E68C879009B9C72 /* ColorThemeController.m */,
 				5DC04DB51D3EC39800AF9086 /* AppDelegate.h */,
 				5DC04DB61D3EC39800AF9086 /* AppDelegate.m */,
 				5DC04DB71D3EC39800AF9086 /* Assets.xcassets */,
@@ -149,9 +144,9 @@
 				B10E22DA1E6899D5009B9C72 /* TransactionsListViewController.m */,
 				B10E22E81E6DC589009B9C72 /* MerchantDetailsViewController.h */,
 				B10E22E91E6DC589009B9C72 /* MerchantDetailsViewController.m */,
+				B10E22EE1E73389E009B9C72 /* HeaderStatsView.h */,
+				B10E22EF1E73389E009B9C72 /* HeaderStatsView.m */,
 				B10E22D81E65DCAF009B9C72 /* cells */,
-				B10E22E51E68CA43009B9C72 /* UIView+RemixerColor.h */,
-				B10E22E61E68CA43009B9C72 /* UIView+RemixerColor.m */,
 			);
 			path = RemixerExample;
 			sourceTree = "<group>";
@@ -530,12 +525,11 @@
 			files = (
 				B10E22E11E68A620009B9C72 /* SectionHeaderView.m in Sources */,
 				B10E22EA1E6DC589009B9C72 /* MerchantDetailsViewController.m in Sources */,
-				B10E22E41E68C879009B9C72 /* ColorThemeController.m in Sources */,
 				5DC04DCA1D3EC39800AF9086 /* main.m in Sources */,
 				B10E22DB1E6899D5009B9C72 /* TransactionsListViewController.m in Sources */,
 				5DC04DC41D3EC39800AF9086 /* AppDelegate.m in Sources */,
 				B10E22ED1E6DDEF5009B9C72 /* TransactionDetailsCell.m in Sources */,
-				B10E22E71E68CA43009B9C72 /* UIView+RemixerColor.m in Sources */,
+				B10E22F01E73389E009B9C72 /* HeaderStatsView.m in Sources */,
 				B10E22DE1E689D0E009B9C72 /* TransactionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
