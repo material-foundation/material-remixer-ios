@@ -16,6 +16,8 @@
 
 #import "TransactionsListViewController.h"
 
+#import "Remixer.h"
+
 #import "HeaderStatsView.h"
 #import "MerchantDetailsViewController.h"
 #import "SectionHeaderView.h"
@@ -44,8 +46,6 @@
                                         action:nil];
 
     _headerView = [[UIView alloc] initWithFrame:CGRectZero];
-    _headerView.backgroundColor =
-        [UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1];
     _stats = [[HeaderStatsView alloc] initWithFrame:CGRectZero];
     _stats.timePeriod = @"THIS MONTH";
     _stats.amountValue = @"$3,201.99";
@@ -65,6 +65,13 @@
     [_collectionView registerClass:[SectionHeaderView class]
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:@"header"];
+
+    [RMXColorVariable colorVariableWithKey:@"appTintColor"
+                              defaultValue:[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1]
+                           limitedToValues:nil
+                               updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
+                             self.headerView.backgroundColor = selectedValue;
+                           }];
   }
   return self;
 }
