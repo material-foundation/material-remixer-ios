@@ -16,6 +16,8 @@
 
 #import "TransactionCell.h"
 
+#import "Remixer.h"
+
 @implementation TransactionCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -48,6 +50,19 @@
     [_primaryLabel setText:@"Merchant Name"];
     [_secondaryLabel setText:@"Saturday"];
     [_priceLabel setText:@"$10.99"];
+
+    [RMXColorVariable colorVariableWithKey:@"appTintColor"
+                              defaultValue:[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1]
+                           limitedToValues:nil
+                               updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
+                                 self.iconView.tintColor = selectedValue;
+                               }];
+    [RMXBooleanVariable booleanVariableWithKey:@"iconVisible"
+                                  defaultValue:YES
+                                   updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
+                                     self.iconVisible = selectedValue;
+                                     [self setNeedsLayout];
+                                   }];
   }
   return self;
 }
@@ -58,10 +73,7 @@
   [_priceLabel sizeToFit];
 
   if (_iconVisible) {
-    _iconView.frame = CGRectMake(20,
-                                 self.bounds.size.height / 2.0 - _iconView.bounds.size.height / 2.0,
-                                 _iconView.bounds.size.width,
-                                 _iconView.bounds.size.height);
+    _iconView.frame = CGRectMake(20, self.bounds.size.height / 2.0 - 12, 24, 24);
   } else {
     _iconView.frame = CGRectZero;
   }
