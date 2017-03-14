@@ -1,4 +1,4 @@
-![remixer](https://cdn.rawgit.com/material-foundation/material-remixer/master/docs/assets/lockup_remixer_icon_horizontal_dark_small.svg)
+# ![remixer](https://cdn.rawgit.com/material-foundation/material-remixer-ios/readme-updates/docs/logo_remixer_48dp.svg) Remixer for iOS
 
 [![Build Status](https://travis-ci.org/material-foundation/material-remixer-ios.svg?branch=develop)](https://travis-ci.org/material-foundation/material-remixer-ios)
 [![codecov](https://codecov.io/gh/material-foundation/material-remixer-ios/branch/develop/graph/badge.svg)](https://codecov.io/gh/material-foundation/material-remixer-ios)
@@ -8,9 +8,7 @@ Remixer is a framework to iterate quickly on UI changes by allowing you to adjus
 
 If you are interested in using Remixer in another platform, you may want to check out the [Android](https://github.com/material-foundation/material-remixer-android) and [Javascript](https://github.com/material-foundation/material-remixer-js) repos. With any of the three platforms you can use the [Remote Controller](https://github.com/material-foundation/material-remixer-remote-web).
 
-- - -
-
-## Installation
+## Using Remixer in your app
 
 ### Requirements
 
@@ -24,7 +22,7 @@ If you are interested in using Remixer in another platform, you may want to chec
 [CocoaPods](https://cocoapods.org/) is the easiest way to get started. If you're new to CocoaPods,
 check out their [getting started documentation](https://guides.cocoapods.org/using/getting-started.html).
 
-To install CocoaPods, run the following commands:
+To install CocoaPods, run the following command:
 
 ~~~ bash
 sudo gem install cocoapods
@@ -59,8 +57,6 @@ Then run the command:
 pod install
 open your-project.xcworkspace
 ~~~
-
-Now you're ready to get started in Xcode.
 
 ### 4. Add variables
 
@@ -132,8 +128,6 @@ Make sure you keep a reference to the variables you create, otherwise they will 
 ### 5. Refine their values
 
 Run the app and swipe up with 3 fingers (or 2 if you're using the simulator). This will trigger the Remixer overlay. From here you can see the variables your app is using, and refine their values.
-
-![screenshot](demo_screenshot.png)
 
 ## Is material-foundation affiliated with Google?
 
