@@ -4,11 +4,10 @@
 [![codecov](https://codecov.io/gh/material-foundation/material-remixer-ios/branch/develop/graph/badge.svg)](https://codecov.io/gh/material-foundation/material-remixer-ios)
 [![CocoaPods](https://img.shields.io/cocoapods/v/Remixer.svg)]()
 
-Remixer helps teams use and refine design specs by providing an abstraction for these values that is accessible and configurable from both inside and outside the app itself.
+Remixer is a framework to iterate quickly on UI changes by allowing you to adjust UI variables without needing to rebuild (or even restart) your app. You can adjust Numbers, Colors, Booleans, and Strings. To see it in action check out the [example app](https://github.com/material-foundation/material-remixer-ios/tree/develop/examples/objc).
 
-This SDK for iOS is currently in development.
+If you are interested in using Remixer in another platform, you may want to check out the [Android](https://github.com/material-foundation/material-remixer-android) and [Javascript](https://github.com/material-foundation/material-remixer-js) repos. With any of the three platforms you can use the [Remote Controller](https://github.com/material-foundation/material-remixer-remote-web).
 
-**New to Remixer?** Visit our [main repo](https://github.com/material-foundation/material-remixer) to get a full description of what it is and how it works.
 - - -
 
 ## Installation
@@ -16,7 +15,7 @@ This SDK for iOS is currently in development.
 ### Requirements
 
 - Xcode 7.0 or higher.
-- iOS SDK version 8.0 or higher.
+- iOS 8.0 or higher.
 
 ## Quickstart
 
@@ -140,25 +139,6 @@ Now you can add Remixer variables in your view controller classes as follows:
 Run the app and swipe up with 3 fingers (or 2 if you're using the simulator). This will trigger the Remixer overlay. From here you can see the variables your app is using, and refine their values.
 
 ![screenshot](demo_screenshot.png)
-
-## Example App
-
-- [Objective-C example app](examples/objc)
-
-## State of development
-
-Visit our [State of Development](https://github.com/material-foundation/material-remixer/wiki/State-of-Development) wiki for the current roadmap and status of development for each platform.
-
-## Other Repositories
-
-The main Remixer GitHub repo for documentation, project tracking, and general information:
-- [Remixer docs](https://github.com/material-foundation/material-remixer)
-
-Other platform specific libraries and tools can be found in the following GitHub repos:
-
-- [Android](https://github.com/material-foundation/material-remixer-android) - Remixer for Android.
-- [Web](https://github.com/material-foundation/material-remixer-web) - Remixer for Web.
-- [Web Remote](https://github.com/material-foundation/material-remixer-remote-web) - Remixer web remote controller for all platforms.
 
 ## Is material-foundation affiliated with Google?
 
