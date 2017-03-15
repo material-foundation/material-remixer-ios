@@ -64,7 +64,13 @@
 
 - (void)setSelectedValue:(id)selectedValue {
   _selectedValue = selectedValue;
+  [self triggerCellUpdateNotification];
   [self executeUpdateBlocks];
+}
+
+- (void)setLimitedToValues:(NSArray<id> *)limitedToValues {
+  _limitedToValues = limitedToValues;
+  [self triggerCellUpdateNotification];
 }
 
 - (void)save {
@@ -96,6 +102,11 @@
 
 - (NSString *)sanitizeKey:(NSString *)key {
   return [key stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+}
+
+- (void)triggerCellUpdateNotification {
+  [[NSNotificationCenter defaultCenter] postNotificationName:RMXVariableUpdateNotification
+                                                      object:self];
 }
 
 @end
