@@ -72,22 +72,19 @@ Now you’re ready to add Remixer to your app! Begin by importing the Remixer he
 
   // Create the window
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-  // Let Remixer know that the app finished launching.
-  [RMXRemixer applicationDidFinishLaunching];
-
-  // Create the root view controller and set it in the window
   self.window.rootViewController = [[UIViewController alloc] init];
   [self.window makeKeyAndVisible];
+  
+  // Let Remixer know that the app finished launching.
+  [RMXRemixer applicationDidFinishLaunching];
 
   return YES;
 }
 
-// Make sure you propagate these two events if you're using the Remote Controllers / Firebase option
+// OPTIONAL: Make sure you propagate these two events if you're using Remote Controllers.
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [RMXRemixer applicationDidBecomeActive];
 }
-
 - (void)applicationWillResignActive:(UIApplication *)application {
   [RMXRemixer applicationWillResignActive];
 }
@@ -108,16 +105,14 @@ Now you can add Remixer variables in your view controller classes as follows:
   [super viewDidLoad];
 
   _box = [[UIView alloc] initWithFrame:CGRectMake(50, 150, 80, 80)];
-  _box.backgroundColor = [UIColor redColor];
   [self.view addSubview:_box];
 
   // Add a color variable to control the background color.
-  // Note: You can set possibleValues to limit it to certain colors.
   [RMXColorVariable
       colorVariableWithKey:@"boxBgColor"
-              defaultValue:_box.backgroundColor
-            possibleValues:nil
-               updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
+              defaultValue:[UIColor redColor]
+           limitedToValues:@[@[UIColor redColor], [UIColor blueColor], @[UIColor yellowColor]]
+               updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];
 }
@@ -134,13 +129,13 @@ Now you can add Remixer variables in your view controller classes as follows:
 
 Run the app and swipe up with 3 fingers (or 2 if you're using the simulator). This will trigger the Remixer overlay. From here you can see the variables your app is using, and refine their values.
 
-## Is material-foundation affiliated with Google?
-
-Yes, the [material-foundation](https://github.com/material-foundation) organization is one of Google's new homes for tools and frameworks related to our [Material Design](https://material.io) system. Please check out our blog post [Design is Never Done](https://design.google.com/articles/design-is-never-done/) for more information regarding Material Design and how Remixer integrates with the system.
-
 ## Contributing
 
 We gladly welcome contributions! If you have found a bug, have questions, or wish to contribute, please follow our [Contributing Guidelines](https://github.com/material-foundation/material-remixer-ios/blob/develop/CONTRIBUTING.md).
+
+## Is material-foundation affiliated with Google?
+
+Yes, the [material-foundation](https://github.com/material-foundation) organization is one of Google's new homes for tools and frameworks related to our [Material Design](https://material.io) system. Please check out our blog post [Design is Never Done](https://design.google.com/articles/design-is-never-done/) for more information regarding Material Design and how Remixer integrates with the system.
 
 ## License
 
