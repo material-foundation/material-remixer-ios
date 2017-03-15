@@ -64,8 +64,8 @@
 
 - (void)setSelectedValue:(id)selectedValue {
   _selectedValue = selectedValue;
-  [self triggerCellUpdateNotification];
   [self executeUpdateBlocks];
+  [self triggerCellUpdateNotification];
 }
 
 - (void)setLimitedToValues:(NSArray<id> *)limitedToValues {

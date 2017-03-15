@@ -126,7 +126,19 @@ static CGFloat kInitialSpeed = 0.4f;
 }
 
 - (void)variableUpdateNotification:(NSNotification *)notification {
-  [self reloadData];
+  RMXCell *cellForVariable;
+  RMXVariable *variable = notification.object;
+  if (variable) {
+    NSUInteger *index = [_content indexOfObject:variable];
+    NSIndexPath *cellIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    cellForVariable = [self.view.tableView cellForRowAtIndexPath:cellIndexPath];
+  }
+  if (cellForVariable) {
+    [cellForVariable setVariable:variable];
+  } else {
+    // If we couldn't find the cell we revert back to reloading the data and the table view.
+    [self reloadData];
+  }
 }
 
 #pragma mark - Public

@@ -54,6 +54,7 @@ static CGFloat kContainerPaddingEdges = 16.0f;
     _controlViewWrapper = [[UIView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:_controlViewWrapper];
   }
+  [self setNeedsLayout];
 }
 
 #pragma mark - Layout
