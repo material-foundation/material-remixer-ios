@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'Remixer'
-  s.version      = '0.9.1'
+  s.version      = '0.9.2'
   s.author       = 'Google Inc.'
   s.summary      = 'Remixer is a set of libraries and protocols to allow live adjustment of apps and prototypes during the development process.'
   s.homepage     = 'https://github.com/material-foundation/material-remixer-ios'
