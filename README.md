@@ -111,7 +111,7 @@ Now you can add Remixer variables in your view controller classes as follows:
   [RMXColorVariable
       colorVariableWithKey:@"boxBgColor"
               defaultValue:[UIColor redColor]
-           limitedToValues:@[@[UIColor redColor], [UIColor blueColor], @[UIColor yellowColor]]
+           limitedToValues:@[@[UIColor redColor], @[UIColor blueColor], @[UIColor yellowColor]]
                updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                  _box.backgroundColor = selectedValue;
                }];
