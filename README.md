@@ -109,7 +109,7 @@ Now you can add Remixer variables in your view controllers as follows:
       [RMXColorVariable
           colorVariableWithKey:@"boxBgColor"
                   defaultValue:[UIColor redColor]
-               limitedToValues:nil
+               limitedToValues:@[[UIColor redColor], [UIColor blueColor], [UIColor yellowColor]]
                    updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                      weakSelf.box.backgroundColor = selectedValue;
                    }];
