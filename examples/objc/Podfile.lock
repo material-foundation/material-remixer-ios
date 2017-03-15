@@ -1,8 +1,8 @@
 PODS:
   - OCMock (3.3.1)
-  - Remixer (0.6.1):
-    - Remixer/Core (= 0.6.1)
-  - Remixer/Core (0.6.1)
+  - Remixer (0.9.0):
+    - Remixer/Core (= 0.9.0)
+  - Remixer/Core (0.9.0)
 
 DEPENDENCIES:
   - OCMock
@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
-  Remixer: 860983264d893db5144b236a66f00228af6f94dd
+  Remixer: a549fef4b73d4b7b1dd233f5ba44b77c67ae8f84
 
 PODFILE CHECKSUM: 9dd893d252e51ee3ffe11297ad8d2b671a26d909
 
