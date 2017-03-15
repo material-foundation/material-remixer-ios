@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
     ss.dependency 'Firebase/Core', '~> 3.8'
     ss.dependency 'Firebase/Database', '~> 3.1'
     ss.xcconfig = {
-      'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/FirebaseCore/Frameworks/frameworks" "$(PODS_ROOT)/FirebaseAnalytics/Frameworks/frameworks" "$(PODS_ROOT)/FirebaseDatabase/Frameworks" "$(PODS_ROOT)/GoogleInterchangeUtilities/Frameworks/frameworks" "$(PODS_ROOT)/GoogleSymbolUtilities/Frameworks/frameworks"',
+      'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/FirebaseCore/Frameworks" "$(PODS_ROOT)/FirebaseAnalytics/Frameworks" "$(PODS_ROOT)/FirebaseDatabase/Frameworks" "$(PODS_ROOT)/GoogleInterchangeUtilities/Frameworks/frameworks" "$(PODS_ROOT)/GoogleSymbolUtilities/Frameworks/frameworks"',
       'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/Firebase/Core/Sources',
       'GCC_PREPROCESSOR_DEFINITIONS' => 'REMIXER_CLOUD_FIREBASE=1'
     }
