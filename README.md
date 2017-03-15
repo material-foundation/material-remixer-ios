@@ -80,11 +80,10 @@ Now you’re ready to add Remixer to your app! Begin by importing the Remixer he
   return YES;
 }
 
-// OPTIONAL: Make sure you propagate these two events if you're using the Remote Controllers / Firebase option
+// OPTIONAL: Make sure you propagate these two events if you're using Remote Controllers.
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [RMXRemixer applicationDidBecomeActive];
 }
-
 - (void)applicationWillResignActive:(UIApplication *)application {
   [RMXRemixer applicationWillResignActive];
 }
@@ -109,7 +108,7 @@ Now you can add Remixer variables in your view controllers as follows:
   _bgColorVariable =
       [RMXColorVariable
           colorVariableWithKey:@"boxBgColor"
-                  defaultValue:_box.backgroundColor
+                  defaultValue:[UIColor redColor]
                limitedToValues:nil
                    updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                      weakSelf.box.backgroundColor = selectedValue;
@@ -129,13 +128,13 @@ Make sure you keep a reference to the variables you create, otherwise they will 
 
 Run the app and swipe up with 3 fingers (or 2 if you're using the simulator). This will trigger the Remixer overlay. From here you can see the variables your app is using, and refine their values.
 
-## Is material-foundation affiliated with Google?
-
-Yes, the [material-foundation](https://github.com/material-foundation) organization is one of Google's new homes for tools and frameworks related to our [Material Design](https://material.io) system. Please check out our blog post [Design is Never Done](https://design.google.com/articles/design-is-never-done/) for more information regarding Material Design and how Remixer integrates with the system.
-
 ## Contributing
 
 We gladly welcome contributions! If you have found a bug, have questions, or wish to contribute, please follow our [Contributing Guidelines](https://github.com/material-foundation/material-remixer-ios/blob/develop/CONTRIBUTING.md).
+
+## Is material-foundation affiliated with Google?
+
+Yes, the [material-foundation](https://github.com/material-foundation) organization is one of Google's new homes for tools and frameworks related to our [Material Design](https://material.io) system. Please check out our blog post [Design is Never Done](https://design.google.com/articles/design-is-never-done/) for more information regarding Material Design and how Remixer integrates with the system.
 
 ## License
 
