@@ -129,7 +129,7 @@ static CGFloat kInitialSpeed = 0.4f;
   RMXCell *cellForVariable;
   RMXVariable *variable = notification.object;
   if (variable) {
-    NSUInteger *index = [_content indexOfObject:variable];
+    NSUInteger index = [_content indexOfObject:variable];
     NSIndexPath *cellIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     cellForVariable = [self.view.tableView cellForRowAtIndexPath:cellIndexPath];
   }
