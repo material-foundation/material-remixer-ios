@@ -191,8 +191,6 @@
   // TODO(chuga): Improve this check for equality.
   if (![variable.selectedValue isEqual:value]) {
     [variable setSelectedValue:value];
-    [[NSNotificationCenter defaultCenter] postNotificationName:RMXVariableUpdateNotification
-                                                        object:variable];
     [[[self sharedInstance] storage] saveSelectedValueOfVariable:variable];
   }
 }
