@@ -35,12 +35,11 @@
     NSForegroundColorAttributeName: [UIColor whiteColor]
   };
 
-
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.rootViewController = nav;
   [self.window makeKeyAndVisible];
 
-  [RMXRemixer applicationDidFinishLaunching];
+  [RMXRemixer attachToWindow];
 
   return YES;
 }

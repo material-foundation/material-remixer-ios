@@ -29,10 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMXRemixer : NSObject
 
 /**
- To be called from the AppDelegate to let Remixer know that the app finished launching.
- Here we do the initial setup.
+ To be called from the AppDelegate to let Remixer know that the app has already set up the main window.
+ Here we add the overlay and the gestures to trigger it.
  */
-+ (void)applicationDidFinishLaunching;
++ (void)attachToWindow;
 
 /**
  To be called from the AppDelegate to let Remixer know that the became active.
