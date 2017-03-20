@@ -56,15 +56,19 @@
 }
 
 + (instancetype)sharedInstance {
-  static id sharedInstance;
+  static RMXRemixer *sharedInstance;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     sharedInstance = [[self alloc] init];
+    sharedInstance.storage = [[RMXLocalStorageController alloc] init];
+#ifdef REMIXER_CLOUD_FIREBASE
+    sharedInstance.remoteController = [[RMXFirebaseRemoteController alloc] init];
+#endif
   });
   return sharedInstance;
 }
 
-+ (void)applicationDidFinishLaunching {
++ (void)attachToWindow {
   UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
   if (!keyWindow) {
     // Get window if using storyboard.
@@ -82,12 +86,6 @@
   instance.overlayWindow = [[RMXOverlayWindow alloc] initWithFrame:keyWindow.frame];
   instance.overlayController = [[RMXOverlayViewController alloc] init];
   instance.overlayWindow.rootViewController = instance.overlayController;
-
-  instance.storage = [[RMXLocalStorageController alloc] init];
-
-#ifdef REMIXER_CLOUD_FIREBASE
-  instance.remoteController = [[RMXFirebaseRemoteController alloc] init];
-#endif
 }
 
 + (void)applicationDidBecomeActive {

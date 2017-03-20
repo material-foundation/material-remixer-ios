@@ -88,7 +88,7 @@
     _layout.sectionHeadersPinToVisibleBounds = YES;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                          collectionViewLayout:_layout];
-    _collectionView.backgroundColor = [UIColor colorWithWhite:0.92 alpha:1];
+    _collectionView.backgroundColor = [UIColor colorWithWhite:0.91 alpha:1];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView registerClass:[TransactionCell class]
@@ -152,7 +152,7 @@
     TransactionCell *cell =
         [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.iconVisible = NO;
-    cell.backgroundColor = [UIColor colorWithWhite:0.92 alpha:1];
+    cell.backgroundColor = _collectionView.backgroundColor;
     cell.primaryLabel.text = @"Saturday, Dec 25";
     cell.secondaryLabel.text = @"Posted";
     return cell;
