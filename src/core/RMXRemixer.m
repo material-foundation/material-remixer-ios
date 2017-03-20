@@ -60,12 +60,16 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     sharedInstance = [[self alloc] init];
-    sharedInstance.storage = [[RMXLocalStorageController alloc] init];
-#ifdef REMIXER_CLOUD_FIREBASE
-    sharedInstance.remoteController = [[RMXFirebaseRemoteController alloc] init];
-#endif
+    [sharedInstance initialSetup];
   });
   return sharedInstance;
+}
+
+- (void)initialSetup {
+  self.storage = [[RMXLocalStorageController alloc] init];
+#ifdef REMIXER_CLOUD_FIREBASE
+  self.remoteController = [[RMXFirebaseRemoteController alloc] init];
+#endif
 }
 
 + (void)attachToWindow {
