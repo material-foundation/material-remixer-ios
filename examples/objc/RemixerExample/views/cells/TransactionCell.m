@@ -50,19 +50,6 @@
     [_primaryLabel setText:@"Merchant Name"];
     [_secondaryLabel setText:@"Saturday"];
     [_priceLabel setText:@"$10.99"];
-
-    [RMXColorVariable colorVariableWithKey:@"appTintColor"
-                              defaultValue:[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1]
-                           limitedToValues:nil
-                               updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
-                                 self.iconView.tintColor = selectedValue;
-                               }];
-    [RMXBooleanVariable booleanVariableWithKey:@"iconVisible"
-                                  defaultValue:YES
-                                   updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
-                                     self.iconVisible = selectedValue;
-                                     [self setNeedsLayout];
-                                   }];
   }
   return self;
 }
@@ -93,6 +80,24 @@
 }
 
 - (void)prepareForReuse {
+
+}
+
+- (void)setColorVariable:(RMXColorVariable *)colorVariable {
+  _colorVariable = colorVariable;
+  __weak TransactionCell *weakSelf = self;
+  [_colorVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+    weakSelf.iconView.tintColor = selectedValue;
+  }];
+}
+
+- (void)setIconVisibilityVariable:(RMXBooleanVariable *)iconVisibilityVariable {
+  _iconVisibilityVariable = iconVisibilityVariable;
+  __weak TransactionCell *weakSelf = self;
+  [_iconVisibilityVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+    weakSelf.iconVisible = [selectedValue boolValue];
+    [weakSelf setNeedsLayout];
+  }];
 
 }
 
