@@ -33,7 +33,10 @@
 
 @end
 
-@implementation TransactionsListViewController
+@implementation TransactionsListViewController {
+  RMXColorVariable *_appColorVariable;
+  RMXBooleanVariable *_iconVisibilityVariable;
+}
 
 - (instancetype)init {
   self = [super init];
@@ -66,12 +69,26 @@
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:@"header"];
 
-    [RMXColorVariable colorVariableWithKey:@"appTintColor"
-                              defaultValue:[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1]
-                           limitedToValues:nil
-                               updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
-                             self.headerView.backgroundColor = selectedValue;
+    NSArray<UIColor *> *colorPalette =
+        @[[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1],
+          [UIColor colorWithRed:33/255.0 green:173/255.0 blue:0/255.0 alpha:1],
+          [UIColor colorWithRed:234/255.0 green:0/255.0 blue:0/255.0 alpha:1],
+          [UIColor colorWithRed:127/255.0 green:0/255.0 blue:234/255.0 alpha:1]];
+    __weak TransactionsListViewController *weakSelf = self;
+    _appColorVariable =
+        [RMXColorVariable colorVariableWithKey:@"appTintColor"
+                                  defaultValue:colorPalette[0]
+                               limitedToValues:colorPalette
+                                   updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
+                                     weakSelf.headerView.backgroundColor = selectedValue;
                            }];
+    _iconVisibilityVariable =
+        [RMXBooleanVariable booleanVariableWithKey:@"iconVisible"
+                                      defaultValue:YES
+                                       updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
+                                         // No-op here.
+                                       }];
+
   }
   return self;
 }
@@ -100,7 +117,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  [self.navigationController pushViewController:[[MerchantDetailsViewController alloc] init]
+  MerchantDetailsViewController *vc = [[MerchantDetailsViewController alloc] initWithMerchantData:nil];
+  [self.navigationController pushViewController:vc
                                        animated:YES];
 }
 
@@ -115,6 +133,8 @@
                            cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   TransactionCell *cell =
       [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+  cell.colorVariable = _appColorVariable;
+  cell.iconVisibilityVariable = _iconVisibilityVariable;
   return cell;
 }
 

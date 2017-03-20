@@ -16,6 +16,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class RMXBooleanVariable;
+@class RMXColorVariable;
+
 @interface TransactionCell : UICollectionViewCell
 
 @property(nonatomic, strong, readonly) UIImageView *iconView;
@@ -24,5 +27,7 @@
 @property(nonatomic, strong, readonly) UILabel *priceLabel;
 
 @property(nonatomic, assign) BOOL iconVisible;
+@property(nonatomic, strong) RMXColorVariable *colorVariable;
+@property(nonatomic, strong) RMXBooleanVariable *iconVisibilityVariable;
 
 @end

@@ -16,6 +16,8 @@
 
 #import "HeaderStatsView.h"
 
+#import "Remixer.h"
+
 @interface HeaderStatsView ()
 
 @property(nonatomic, strong) UILabel *amountLabel;
@@ -23,7 +25,9 @@
 
 @end
 
-@implementation HeaderStatsView
+@implementation HeaderStatsView {
+  RMXRangeVariable *_sizeMultiplierVariable;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
@@ -38,23 +42,35 @@
     [_timePeriodLabel setTextColor:[UIColor colorWithWhite:1 alpha:1]];
     [_timePeriodLabel setText:@"THIS MONTH"];
     [self addSubview:_timePeriodLabel];
+
+    __weak HeaderStatsView *weakSelf = self;
+    _sizeMultiplierVariable =
+        [RMXRangeVariable rangeVariableWithKey:@"headerFontSizeMultiplier"
+                                  defaultValue:1
+                                      minValue:0.5
+                                      maxValue:1.5
+                                     increment:0
+                                   updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
+                                     [weakSelf setNeedsLayout];
+    }];
   }
   return self;
 }
 
 - (void)layoutSubviews {
-  [_amountLabel setFont:[UIFont systemFontOfSize:round(self.bounds.size.height / 4)]];
+  CGFloat fontSize = round(self.bounds.size.height * _sizeMultiplierVariable.selectedFloatValue / 4);
+  [_amountLabel setFont:[UIFont systemFontOfSize:fontSize]];
 
   [_amountLabel sizeToFit];
   [_timePeriodLabel sizeToFit];
 
   CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
   _amountLabel.frame = CGRectMake(center.x - _amountLabel.bounds.size.width / 2.0,
-                                  center.y -_amountLabel.bounds.size.height,
+                                  center.y -_amountLabel.bounds.size.height + _sizeMultiplierVariable.selectedFloatValue * 6.0,
                                   _amountLabel.bounds.size.width,
                                   _amountLabel.bounds.size.height);
   _timePeriodLabel.frame = CGRectMake(center.x - _timePeriodLabel.bounds.size.width / 2.0,
-                                      center.y + 2,
+                                      CGRectGetMaxY(_amountLabel.frame) + 2,
                                       _timePeriodLabel.bounds.size.width,
                                       _timePeriodLabel.bounds.size.height);
 }

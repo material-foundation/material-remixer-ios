@@ -18,4 +18,6 @@
 
 @interface MerchantDetailsViewController : UIViewController
 
+- (instancetype)initWithMerchantData:(NSObject *)data;
+
 @end

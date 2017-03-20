@@ -16,6 +16,8 @@
 
 #import "MerchantDetailsViewController.h"
 
+#import "Remixer.h"
+
 #import "HeaderStatsView.h"
 #import "SectionHeaderView.h"
 #import "TransactionCell.h"
@@ -48,8 +50,14 @@
 }
 
 - (void)layoutSubviews {
-  _thisMonthStats.frame = CGRectMake(0, 54, self.bounds.size.width / 2.0, self.bounds.size.height - 54);
-  _thisYearStats.frame = CGRectMake(self.bounds.size.width / 2.0, 54, self.bounds.size.width / 2.0, self.bounds.size.height - 54);
+  _thisMonthStats.frame = CGRectMake(0,
+                                     54,
+                                     self.bounds.size.width / 2.0,
+                                     self.bounds.size.height - 54);
+  _thisYearStats.frame = CGRectMake(self.bounds.size.width / 2.0,
+                                    54,
+                                    self.bounds.size.width / 2.0,
+                                    self.bounds.size.height - 54);
 }
 
 @end
@@ -64,9 +72,11 @@
 
 @end
 
-@implementation MerchantDetailsViewController
+@implementation MerchantDetailsViewController {
+  RMXColorVariable *_appColorVariable;
+}
 
-- (instancetype)init {
+- (instancetype)initWithMerchantData:(NSObject *)data {
   self = [super init];
   if (self) {
     self.title = @"Merchant Name";
@@ -88,6 +98,20 @@
     [_collectionView registerClass:[SectionHeaderView class]
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:@"header"];
+
+    NSArray<UIColor *> *colorPalette =
+    @[[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1],
+      [UIColor colorWithRed:33/255.0 green:173/255.0 blue:0/255.0 alpha:1],
+      [UIColor colorWithRed:234/255.0 green:0/255.0 blue:0/255.0 alpha:1],
+      [UIColor colorWithRed:127/255.0 green:0/255.0 blue:234/255.0 alpha:1]];
+    __weak MerchantDetailsViewController *weakSelf = self;
+    _appColorVariable =
+        [RMXColorVariable colorVariableWithKey:@"appTintColor"
+                                  defaultValue:colorPalette[0]
+                               limitedToValues:nil
+                                   updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
+                                     weakSelf.headerView.backgroundColor = selectedValue;
+                                   }];
   }
   return self;
 }
