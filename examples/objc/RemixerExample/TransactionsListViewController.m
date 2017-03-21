@@ -79,13 +79,6 @@
                                    updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                                      weakSelf.headerView.backgroundColor = selectedValue;
                            }];
-    _iconVisibilityVariable =
-        [RMXBooleanVariable booleanVariableWithKey:@"cellIconVisible"
-                                      defaultValue:YES
-                                       updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
-                                         // No-op here.
-                                       }];
-
   }
   return self;
 }
@@ -94,6 +87,20 @@
   [super viewDidLoad];
   [self.view addSubview:_headerView];
   [self.view addSubview:_collectionView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  _iconVisibilityVariable = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  _iconVisibilityVariable =
+      [RMXBooleanVariable booleanVariableWithKey:@"cellIconVisible"
+                                    defaultValue:YES
+                                     updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
+                                       // No-op here.
+                                     }];
+  [self.collectionView reloadData];
 }
 
 - (void)viewDidLayoutSubviews {
