@@ -30,7 +30,7 @@
 @dynamic variable;
 
 + (CGFloat)cellHeight {
-  return RMXCellHeightLarge;
+  return RMXCellHeightMinimal;
 }
 
 - (void)setVariable:(RMXStringVariable *)variable {

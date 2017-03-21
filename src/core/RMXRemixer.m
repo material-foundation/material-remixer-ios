@@ -37,7 +37,7 @@
 #endif
 
 @interface RMXRemixer () <UIGestureRecognizerDelegate>
-@property(nonatomic, strong) NSMutableDictionary *variables;
+@property(nonatomic, strong) NSMapTable *variables;
 @property(nonatomic, strong) id<RMXStorageController> storage;
 @property(nonatomic, strong) id<RMXRemoteController> remoteController;
 @property(nonatomic, strong) RMXOverlayViewController *overlayController;
@@ -50,7 +50,8 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
-    _variables = [NSMutableDictionary dictionary];
+    _variables = [NSMapTable mapTableWithKeyOptions:NSMapTableCopyIn
+                                       valueOptions:NSMapTableWeakMemory];
   }
   return self;
 }
@@ -72,7 +73,7 @@
 #endif
 }
 
-+ (void)attachToWindow {
++ (void)attachToKeyWindow {
   UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
   if (!keyWindow) {
     // Get window if using storyboard.
@@ -174,14 +175,18 @@
   [[[self sharedInstance] remoteController] removeVariable:variable];
 }
 
++ (void)reloadOverlay {
+  [[[self sharedInstance] overlayController] reloadData];
+}
+
 + (void)removeAllVariables {
   [[[self sharedInstance] variables] removeAllObjects];
   [[[self sharedInstance] overlayController] reloadData];
   [[[self sharedInstance] remoteController] removeAllVariables];
 }
 
-+ (NSArray<RMXVariable *> *)allVariables {
-  return [[[self sharedInstance] variables] allValues];
++ (NSMapTable *)allVariables {
+  return [[self sharedInstance] variables];
 }
 
 + (void)saveVariable:(RMXVariable *)variable {

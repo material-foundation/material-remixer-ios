@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
  To be called from the AppDelegate to let Remixer know that the app has already set up the main window.
  Here we add the overlay and the gestures to trigger it.
  */
-+ (void)attachToWindow;
++ (void)attachToKeyWindow;
 
 /**
  To be called from the AppDelegate to let Remixer know that the became active.
@@ -51,6 +51,8 @@ NS_ASSUME_NONNULL_BEGIN
  @return The UIWindow.
  */
 + (RMXOverlayWindow *)overlayWindow;
+
++ (void)reloadOverlay;
 
 /**
  Returns a Variable with the given key from the dictionary of Variables.
@@ -79,9 +81,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Returns all Variables.
- @return An array of all current Variables.
+ @return All current Variables.
  */
-+ (NSArray<RMXVariable *> *)allVariables;
++ (NSMapTable *)allVariables;
 
 /** Removes all Variables and empties the dictionary of Variables. */
 + (void)removeAllVariables;
