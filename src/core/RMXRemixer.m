@@ -119,6 +119,10 @@
   return [[self sharedInstance] overlayWindow];
 }
 
++ (void)reloadOverlay {
+  [[[self sharedInstance] overlayController] reloadData];
+}
+
 #pragma mark - Swipe gesture
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
@@ -172,11 +176,6 @@
 + (void)removeVariableWithKey:(NSString *)key {
   RMXVariable *variable = [self variableForKey:key];
   [[self sharedInstance] removeVariable:variable];
-  [[[self sharedInstance] remoteController] removeVariable:variable];
-}
-
-+ (void)reloadOverlay {
-  [[[self sharedInstance] overlayController] reloadData];
 }
 
 + (void)removeAllVariables {

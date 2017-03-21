@@ -47,14 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)applicationWillResignActive;
 
 /**
- Getter for the UIWindow used by the overlay.
- @return The UIWindow.
- */
-+ (RMXOverlayWindow *)overlayWindow;
-
-+ (void)reloadOverlay;
-
-/**
  Returns a Variable with the given key from the dictionary of Variables.
  @param key The key of the Variable.
  @return A Variable from the dictionary of Variables.
@@ -99,6 +91,17 @@ NS_ASSUME_NONNULL_BEGIN
  @param value The new value that the variable should be set to.
  */
 + (void)updateVariable:(RMXVariable *)variable fromRemoteControllerToValue:(id)value;
+
+/**
+ Getter for the UIWindow used by the overlay.
+ @return The UIWindow.
+ */
++ (RMXOverlayWindow *)overlayWindow;
+
+/**
+ Refreshes the content of the overlay panel.
+ */
++ (void)reloadOverlayContent;
 
 /**
  A unique session id. This is used for generating a URL for the remote controllers.
