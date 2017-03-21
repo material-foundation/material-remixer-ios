@@ -14,8 +14,12 @@
  limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
+@class UIColor;
 
-/** An example view controller showing various Remixer implementations. */
-@interface FontViewController : UIViewController
+#import <Foundation/Foundation.h>
+
+@interface ColorUtils : NSObject
+
++ (NSArray<UIColor *>*)appColorOptions;
+
 @end

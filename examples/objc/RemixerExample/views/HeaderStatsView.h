@@ -16,6 +16,9 @@
 
 #import <UIKit/UIKit.h>
 
-/** An example view controller showing various Remixer implementations. */
-@interface ColorDemoViewController : UIViewController
+@interface HeaderStatsView : UIView
+
+@property(nonatomic, copy) NSString *amountValue;
+@property(nonatomic, copy) NSString *timePeriod;
+
 @end

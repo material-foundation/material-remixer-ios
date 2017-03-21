@@ -16,6 +16,11 @@
 
 #import <UIKit/UIKit.h>
 
-/** An example view controller showing various Remixer implementations. */
-@interface SpinningBoxViewController : UIViewController
+@class HeaderStatsView;
+
+@interface MerchantDetailsHeaderView : UIView
+
+@property(nonatomic, strong) HeaderStatsView *thisMonthStats;
+@property(nonatomic, strong) HeaderStatsView *thisYearStats;
+
 @end
