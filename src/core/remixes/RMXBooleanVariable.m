@@ -30,7 +30,7 @@
         updateBlock((RMXBooleanVariable *)variable, [selectedValue boolValue]);
       }
     }];
-    return existingVariable;
+    return (RMXBooleanVariable *)existingVariable;
   } else {
     RMXBooleanVariable *variable =
         [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];

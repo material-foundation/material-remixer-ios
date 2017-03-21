@@ -34,7 +34,7 @@
         updateBlock((RMXStringVariable *)variable, selectedValue);
       }
     }];
-    return existingVariable;
+    return (RMXStringVariable *)existingVariable;
   } else {
     RMXStringVariable *variable = [[self alloc] initWithKey:key
                                                defaultValue:defaultValue
