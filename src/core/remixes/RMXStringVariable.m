@@ -27,11 +27,20 @@
                          defaultValue:(NSString *)defaultValue
                       limitedToValues:(NSArray<NSString *> *)limitedToValues
                           updateBlock:(RMXStringUpdateBlock)updateBlock {
-  RMXStringVariable *variable = [[self alloc] initWithKey:key
-                                             defaultValue:defaultValue
-                                          limitedToValues:limitedToValues
-                                              updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
+  RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
+  if (existingVariable) {
+    [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+      updateBlock((RMXStringVariable *)variable, selectedValue);
+    }];
+    return existingVariable;
+  } else {
+    RMXStringVariable *variable = [[self alloc] initWithKey:key
+                                               defaultValue:defaultValue
+                                            limitedToValues:limitedToValues
+                                                updateBlock:updateBlock];
+    [RMXRemixer addVariable:variable];
+    return variable;
+  }
 }
 
 - (NSDictionary *)toJSON {

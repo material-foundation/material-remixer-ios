@@ -26,13 +26,22 @@
                             maxValue:(CGFloat)maxValue
                            increment:(CGFloat)increment
                          updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  RMXRangeVariable *variable = [[self alloc] initWithKey:key
-                                            defaultValue:defaultValue
-                                                minValue:minValue
-                                                maxValue:maxValue
-                                               increment:increment
-                                             updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
+  RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
+  if (existingVariable) {
+    [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+      updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+    }];
+    return existingVariable;
+  } else {
+    RMXRangeVariable *variable = [[self alloc] initWithKey:key
+                                              defaultValue:defaultValue
+                                                  minValue:minValue
+                                                  maxValue:maxValue
+                                                 increment:increment
+                                               updateBlock:updateBlock];
+    [RMXRemixer addVariable:variable];
+    return variable;
+  }
 }
 
 - (NSString *)constraintType {

@@ -35,12 +35,20 @@ NSString *const RMXColorKeyAlpha = @"a";
                         defaultValue:(UIColor *)defaultValue
                      limitedToValues:(NSArray<UIColor *> *)limitedToValues
                          updateBlock:(RMXColorUpdateBlock)updateBlock {
-  RMXColorVariable *variable = [[self alloc] initWithKey:key
-                                            defaultValue:defaultValue
-                                         limitedToValues:limitedToValues
-                                             updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+  RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
+  if (existingVariable) {
+    [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+      updateBlock((RMXColorVariable *)variable, selectedValue);
+    }];
+    return existingVariable;
+  } else {
+    RMXColorVariable *variable = [[self alloc] initWithKey:key
+                                              defaultValue:defaultValue
+                                           limitedToValues:limitedToValues
+                                               updateBlock:updateBlock];
+    [RMXRemixer addVariable:variable];
+    return variable;
+  }
 }
 
 - (NSDictionary *)toJSON {

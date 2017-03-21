@@ -26,11 +26,20 @@
                          defaultValue:(CGFloat)defaultValue
                       limitedToValues:(NSArray<NSNumber *> *)limitedToValues
                           updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  RMXNumberVariable *variable = [[self alloc] initWithKey:key
-                                             defaultValue:defaultValue
-                                          limitedToValues:limitedToValues
-                                              updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
+  RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
+  if (existingVariable) {
+    [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+      updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+    }];
+    return existingVariable;
+  } else {
+    RMXNumberVariable *variable = [[self alloc] initWithKey:key
+                                               defaultValue:defaultValue
+                                            limitedToValues:limitedToValues
+                                                updateBlock:updateBlock];
+    [RMXRemixer addVariable:variable];
+    return variable;
+  }
 }
 
 - (NSDictionary *)toJSON {

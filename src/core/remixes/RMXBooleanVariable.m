@@ -23,9 +23,18 @@
 + (instancetype)booleanVariableWithKey:(NSString *)key
                           defaultValue:(BOOL)defaultValue
                            updateBlock:(RMXBooleanUpdateBlock)updateBlock {
-  RMXBooleanVariable *variable =
-      [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
+  RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
+  if (existingVariable) {
+    [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+      updateBlock((RMXBooleanVariable *)variable, [selectedValue boolValue]);
+    }];
+    return existingVariable;
+  } else {
+    RMXBooleanVariable *variable =
+        [[self alloc] initWithKey:key defaultValue:defaultValue updateBlock:updateBlock];
+    [RMXRemixer addVariable:variable];
+    return variable;
+  }
 }
 
 - (NSDictionary *)toJSON {
