@@ -22,6 +22,8 @@
 		B10E23011E804C2C009B9C72 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22FC1E804C2C009B9C72 /* SectionHeaderView.m */; };
 		B10E23021E804C2C009B9C72 /* TransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E22FE1E804C2C009B9C72 /* TransactionCell.m */; };
 		B10E23031E804C2C009B9C72 /* TransactionDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E23001E804C2C009B9C72 /* TransactionDetailsCell.m */; };
+		B10E23071E817AED009B9C72 /* ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E23061E817AED009B9C72 /* ColorUtils.m */; };
+		B10E230A1E817C23009B9C72 /* MerchantDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10E23091E817C23009B9C72 /* MerchantDetailsHeaderView.m */; };
 		B1974B7F1E1EB6AB00DF986F /* RangeVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */; };
 		B1974B811E1ED5ED00DF986F /* VariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B801E1ED5ED00DF986F /* VariableTests.m */; };
 		B1974B831E1EDB6600DF986F /* BooleanVariableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */; };
@@ -91,6 +93,10 @@
 		B10E22FE1E804C2C009B9C72 /* TransactionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionCell.m; path = views/cells/TransactionCell.m; sourceTree = "<group>"; };
 		B10E22FF1E804C2C009B9C72 /* TransactionDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionDetailsCell.h; path = views/cells/TransactionDetailsCell.h; sourceTree = "<group>"; };
 		B10E23001E804C2C009B9C72 /* TransactionDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionDetailsCell.m; path = views/cells/TransactionDetailsCell.m; sourceTree = "<group>"; };
+		B10E23051E817AED009B9C72 /* ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorUtils.h; path = utils/ColorUtils.h; sourceTree = "<group>"; };
+		B10E23061E817AED009B9C72 /* ColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorUtils.m; path = utils/ColorUtils.m; sourceTree = "<group>"; };
+		B10E23081E817C23009B9C72 /* MerchantDetailsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MerchantDetailsHeaderView.h; path = views/MerchantDetailsHeaderView.h; sourceTree = "<group>"; };
+		B10E23091E817C23009B9C72 /* MerchantDetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MerchantDetailsHeaderView.m; path = views/MerchantDetailsHeaderView.m; sourceTree = "<group>"; };
 		B1974B7E1E1EB6AB00DF986F /* RangeVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangeVariableTests.m; sourceTree = "<group>"; };
 		B1974B801E1ED5ED00DF986F /* VariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableTests.m; sourceTree = "<group>"; };
 		B1974B821E1EDB6600DF986F /* BooleanVariableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanVariableTests.m; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 				B10E22E81E6DC589009B9C72 /* MerchantDetailsViewController.h */,
 				B10E22E91E6DC589009B9C72 /* MerchantDetailsViewController.m */,
 				B10E22F61E804C13009B9C72 /* views */,
+				B10E23041E817AAE009B9C72 /* utils */,
 			);
 			path = RemixerExample;
 			sourceTree = "<group>";
@@ -200,6 +207,8 @@
 			children = (
 				B10E22F81E804C23009B9C72 /* HeaderStatsView.h */,
 				B10E22F91E804C23009B9C72 /* HeaderStatsView.m */,
+				B10E23081E817C23009B9C72 /* MerchantDetailsHeaderView.h */,
+				B10E23091E817C23009B9C72 /* MerchantDetailsHeaderView.m */,
 				B10E22F71E804C19009B9C72 /* cells */,
 			);
 			name = views;
@@ -216,6 +225,15 @@
 				B10E23001E804C2C009B9C72 /* TransactionDetailsCell.m */,
 			);
 			name = cells;
+			sourceTree = "<group>";
+		};
+		B10E23041E817AAE009B9C72 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				B10E23051E817AED009B9C72 /* ColorUtils.h */,
+				B10E23061E817AED009B9C72 /* ColorUtils.m */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 		B2BD7D55ABCFF4A6A2574C32 /* Pods */ = {
@@ -531,9 +549,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B10E230A1E817C23009B9C72 /* MerchantDetailsHeaderView.m in Sources */,
 				B10E22EA1E6DC589009B9C72 /* MerchantDetailsViewController.m in Sources */,
 				B10E23011E804C2C009B9C72 /* SectionHeaderView.m in Sources */,
 				5DC04DCA1D3EC39800AF9086 /* main.m in Sources */,
+				B10E23071E817AED009B9C72 /* ColorUtils.m in Sources */,
 				B10E23021E804C2C009B9C72 /* TransactionCell.m in Sources */,
 				B10E22FA1E804C23009B9C72 /* HeaderStatsView.m in Sources */,
 				B10E22DB1E6899D5009B9C72 /* TransactionsListViewController.m in Sources */,

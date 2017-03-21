@@ -18,49 +18,12 @@
 
 #import "Remixer.h"
 
+#import "ColorUtils.h"
 #import "HeaderStatsView.h"
+#import "MerchantDetailsHeaderView.h"
 #import "SectionHeaderView.h"
 #import "TransactionCell.h"
 #import "TransactionDetailsCell.h"
-
-@interface MerchantDetailsHeaderView : UIView
-
-@property(nonatomic, strong) HeaderStatsView *thisMonthStats;
-@property(nonatomic, strong) HeaderStatsView *thisYearStats;
-
-@end
-
-@implementation MerchantDetailsHeaderView
-
-- (instancetype)initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
-  if (self) {
-    self.backgroundColor =
-        [UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1];
-    _thisMonthStats = [[HeaderStatsView alloc] initWithFrame:CGRectZero];
-    _thisMonthStats.timePeriod = @"THIS MONTH";
-    _thisMonthStats.amountValue = @"$201.99";
-    [self addSubview:_thisMonthStats];
-    _thisYearStats = [[HeaderStatsView alloc] initWithFrame:CGRectZero];
-    _thisYearStats.timePeriod = @"THIS YEAR";
-    _thisYearStats.amountValue = @"$1,092.32";
-    [self addSubview:_thisYearStats];
-  }
-  return self;
-}
-
-- (void)layoutSubviews {
-  _thisMonthStats.frame = CGRectMake(0,
-                                     54,
-                                     self.bounds.size.width / 2.0,
-                                     self.bounds.size.height - 54);
-  _thisYearStats.frame = CGRectMake(self.bounds.size.width / 2.0,
-                                    54,
-                                    self.bounds.size.width / 2.0,
-                                    self.bounds.size.height - 54);
-}
-
-@end
 
 @interface MerchantDetailsViewController ()<UICollectionViewDelegate,
                                             UICollectionViewDataSource,
@@ -74,6 +37,7 @@
 
 @implementation MerchantDetailsViewController {
   RMXColorVariable *_appColorVariable;
+  RMXStringVariable *_sectionTitleVariable;
 }
 
 - (instancetype)initWithMerchantData:(NSObject *)data {
@@ -99,19 +63,21 @@
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:@"header"];
 
-    NSArray<UIColor *> *colorPalette =
-    @[[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1],
-      [UIColor colorWithRed:33/255.0 green:173/255.0 blue:0/255.0 alpha:1],
-      [UIColor colorWithRed:234/255.0 green:0/255.0 blue:0/255.0 alpha:1],
-      [UIColor colorWithRed:127/255.0 green:0/255.0 blue:234/255.0 alpha:1]];
     __weak MerchantDetailsViewController *weakSelf = self;
     _appColorVariable =
         [RMXColorVariable colorVariableWithKey:@"appTintColor"
-                                  defaultValue:colorPalette[0]
-                               limitedToValues:nil
+                                  defaultValue:[ColorUtils appColorOptions][0]
+                               limitedToValues:[ColorUtils appColorOptions]
                                    updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                                      weakSelf.headerView.backgroundColor = selectedValue;
                                    }];
+    _sectionTitleVariable =
+        [RMXStringVariable stringVariableWithKey:@"sectionTitle"
+                                    defaultValue:@"Transaction Details"
+                                 limitedToValues:nil
+                                     updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
+                                       [weakSelf.collectionView reloadData];
+                                     }];
   }
   return self;
 }
@@ -165,7 +131,8 @@
       [self.collectionView dequeueReusableSupplementaryViewOfKind:kind
                                               withReuseIdentifier:@"header"
                                                      forIndexPath:indexPath];
-  header.titleLabel.text = indexPath.section == 0 ? @"Transaction Details" : @"Other Transactions";
+  header.titleLabel.text =
+      indexPath.section == 0 ? _sectionTitleVariable.selectedValue : @"Other Transactions";
   return header;
 }
 

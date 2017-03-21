@@ -16,6 +16,8 @@
 
 #import "TransactionDetailsCell.h"
 
+#import "Remixer.h"
+
 @interface TransactionDetailsCell ()
 
 @property(nonatomic, strong) UILabel *amountTitleLabel;

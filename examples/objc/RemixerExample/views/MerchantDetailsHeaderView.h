@@ -16,8 +16,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TransactionDetailsCell : UICollectionViewCell
+@class HeaderStatsView;
 
-@property(nonatomic, strong) NSString *amount;
+@interface MerchantDetailsHeaderView : UIView
+
+@property(nonatomic, strong) HeaderStatsView *thisMonthStats;
+@property(nonatomic, strong) HeaderStatsView *thisYearStats;
 
 @end
