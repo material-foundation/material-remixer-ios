@@ -14,10 +14,19 @@
  limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
+#import "ColorUtils.h"
 
-@interface TransactionDetailsCell : UICollectionViewCell
+#import <UIKit/UIColor.h>
 
-@property(nonatomic, strong) NSString *amount;
+@implementation ColorUtils
+
++ (NSArray<UIColor *>*)appColorOptions {
+  // TODO: Compute once
+  return  @[[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1],
+            [UIColor colorWithRed:33/255.0 green:173/255.0 blue:0/255.0 alpha:1],
+            [UIColor colorWithRed:234/255.0 green:0/255.0 blue:0/255.0 alpha:1],
+            [UIColor colorWithRed:127/255.0 green:0/255.0 blue:234/255.0 alpha:1]];
+}
+
 
 @end

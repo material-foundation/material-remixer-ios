@@ -14,10 +14,12 @@
  limitations under the License.
  */
 
-#import <UIKit/UIKit.h>
+@class UIColor;
 
-@interface TransactionDetailsCell : UICollectionViewCell
+#import <Foundation/Foundation.h>
 
-@property(nonatomic, strong) NSString *amount;
+@interface ColorUtils : NSObject
+
++ (NSArray<UIColor *>*)appColorOptions;
 
 @end

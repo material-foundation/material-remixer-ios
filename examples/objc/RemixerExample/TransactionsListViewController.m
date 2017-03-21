@@ -18,12 +18,14 @@
 
 #import "Remixer.h"
 
+#import "ColorUtils.h"
 #import "HeaderStatsView.h"
 #import "MerchantDetailsViewController.h"
 #import "SectionHeaderView.h"
 #import "TransactionCell.h"
 
-@interface TransactionsListViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface TransactionsListViewController ()<UICollectionViewDelegate,
+                                             UICollectionViewDataSource>
 
 @property(nonatomic, strong) UIView *headerView;
 @property(nonatomic, strong) HeaderStatsView *stats;
@@ -69,21 +71,16 @@
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:@"header"];
 
-    NSArray<UIColor *> *colorPalette =
-        @[[UIColor colorWithRed:18/255.0 green:121/255.0 blue:194/255.0 alpha:1],
-          [UIColor colorWithRed:33/255.0 green:173/255.0 blue:0/255.0 alpha:1],
-          [UIColor colorWithRed:234/255.0 green:0/255.0 blue:0/255.0 alpha:1],
-          [UIColor colorWithRed:127/255.0 green:0/255.0 blue:234/255.0 alpha:1]];
     __weak TransactionsListViewController *weakSelf = self;
     _appColorVariable =
         [RMXColorVariable colorVariableWithKey:@"appTintColor"
-                                  defaultValue:colorPalette[0]
-                               limitedToValues:colorPalette
+                                  defaultValue:[ColorUtils appColorOptions][0]
+                               limitedToValues:[ColorUtils appColorOptions]
                                    updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
                                      weakSelf.headerView.backgroundColor = selectedValue;
                            }];
     _iconVisibilityVariable =
-        [RMXBooleanVariable booleanVariableWithKey:@"iconVisible"
+        [RMXBooleanVariable booleanVariableWithKey:@"cellIconVisible"
                                       defaultValue:YES
                                        updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
                                          // No-op here.
