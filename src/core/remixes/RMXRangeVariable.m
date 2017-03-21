@@ -33,7 +33,7 @@
         updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
       }
     }];
-    return existingVariable;
+    return (RMXRangeVariable *)existingVariable;
   } else {
     RMXRangeVariable *variable = [[self alloc] initWithKey:key
                                               defaultValue:defaultValue

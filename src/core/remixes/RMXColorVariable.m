@@ -42,7 +42,7 @@ NSString *const RMXColorKeyAlpha = @"a";
         updateBlock((RMXColorVariable *)variable, selectedValue);
       }
     }];
-    return existingVariable;
+    return (RMXColorVariable *)existingVariable;
   } else {
     RMXColorVariable *variable = [[self alloc] initWithKey:key
                                               defaultValue:defaultValue
