@@ -63,7 +63,7 @@ Now you're ready to get started in Xcode.
 
 ### 4. Add variables
 
-Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and forward these three AppDelegate's events:
+Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and call |attachToKeyWindow| in your AppDelegate:
 
 ~~~ objc
 #import "Remixer.h"
@@ -73,20 +73,17 @@ Now you’re ready to add Remixer to your app! Begin by importing the Remixer he
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-  // Create the window
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-  // Let Remixer know that the app finished launching.
-  [RMXRemixer applicationDidFinishLaunching];
-
-  // Create the root view controller and set it in the window
   self.window.rootViewController = [[UIViewController alloc] init];
   [self.window makeKeyAndVisible];
+  
+  // Let Remixer know that it can attach to the window you just created
+  [RMXRemixer attachToKeyWindow];
 
   return YES;
 }
 
-// Make sure you propagate these two events if you're using the Remote Controllers / Firebase option
+// OPTIONAL: Make sure you propagate these two events if you're using the Remote Controllers / Firebase option
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [RMXRemixer applicationDidBecomeActive];
 }
@@ -98,39 +95,37 @@ Now you’re ready to add Remixer to your app! Begin by importing the Remixer he
 @end
 ~~~
 
-Now you can add Remixer variables in your view controller classes as follows:
+Now you can add Remixer variables in your view controllers as follows:
 
 ~~~ objc
 #import "Remixer.h"
 
 @implementation ExampleViewController {
   UIView *_box;
+  RMXColorVariable *_bgColorVariable;
 }
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-
-  _box = [[UIView alloc] initWithFrame:CGRectMake(50, 150, 80, 80)];
-  _box.backgroundColor = [UIColor redColor];
-  [self.view addSubview:_box];
-
-  // Add a color variable to control the background color.
-  // Note: You can set possibleValues to limit it to certain colors.
-  [RMXColorVariable
-      colorVariableWithKey:@"boxBgColor"
-              defaultValue:_box.backgroundColor
-            possibleValues:nil
-               updateBlock:^(RMXColorVariable *_Nonnull variable, UIColor *selectedValue) {
-                 _box.backgroundColor = selectedValue;
-               }];
+- (void)viewWillAppear {
+  // IMPORTANT: Create a weak reference to self to be used inside of the update block
+  __weak ExampleViewController *weakSelf = self;
+  // Add a color variable to control the background color of the box.  
+  _bgColorVariable =
+      [RMXColorVariable
+          colorVariableWithKey:@"boxBgColor"
+                  defaultValue:_box.backgroundColor
+               limitedToValues:nil
+                   updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
+                     weakSelf.box.backgroundColor = selectedValue;
+                   }];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-  [super viewWillDisappear:animated];
-  // This prevents the variables from showing up in the overlay once you leave
-  // this view controller.
-  [RMXRemixer removeAllVariables];
+- (void)viewWillDisappear {
+  // This is optional but it will make sure the variable is removed from the overlay when
+  // you push view controllers on top of this one.
+  _bgColorVariable = nil;
 }
+
+Make sure you keep a reference to the variables you create, otherwise they will get removed automatically.
 ~~~
 
 ### 5. Refine their values
