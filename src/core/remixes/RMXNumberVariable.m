@@ -25,11 +25,13 @@
 + (instancetype)numberVariableWithKey:(NSString *)key
                          defaultValue:(CGFloat)defaultValue
                       limitedToValues:(NSArray<NSNumber *> *)limitedToValues
-                          updateBlock:(RMXNumberUpdateBlock)updateBlock {
+                          updateBlock:(nullable RMXNumberUpdateBlock)updateBlock {
   RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
   if (existingVariable) {
     [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
-      updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+      if (updateBlock) {
+        updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+      }
     }];
     return existingVariable;
   } else {
@@ -56,12 +58,14 @@
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(CGFloat)defaultValue
             limitedToValues:(NSArray<NSNumber *> *)limitedToValues
-                updateBlock:(RMXNumberUpdateBlock)updateBlock {
+                updateBlock:(nullable RMXNumberUpdateBlock)updateBlock {
   self = [super initWithKey:key
                    dataType:RMXDataTypeNumber
                defaultValue:@(defaultValue)
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+                  if (updateBlock) {
+                    updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+                  }
                 }];
   if (self) {
     self.limitedToValues = limitedToValues;

@@ -32,7 +32,7 @@ typedef void (^RMXBooleanUpdateBlock)(RMXBooleanVariable *variable, BOOL selecte
 /** Designated initializer. */
 + (instancetype)booleanVariableWithKey:(NSString *)key
                           defaultValue:(BOOL)defaultValue
-                           updateBlock:(RMXBooleanUpdateBlock)updateBlock;
+                           updateBlock:(nullable RMXBooleanUpdateBlock)updateBlock;
 
 @end
 

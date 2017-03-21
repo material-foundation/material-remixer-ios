@@ -38,7 +38,7 @@ typedef void (^RMXNumberUpdateBlock)(RMXNumberVariable *variable, CGFloat select
 + (instancetype)numberVariableWithKey:(NSString *)key
                          defaultValue:(CGFloat)defaultValue
                       limitedToValues:(nullable NSArray<NSNumber *> *)limitedToValues
-                          updateBlock:(RMXNumberUpdateBlock)updateBlock;
+                          updateBlock:(nullable RMXNumberUpdateBlock)updateBlock;
 
 @end
 

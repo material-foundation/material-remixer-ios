@@ -37,7 +37,7 @@ typedef void (^RMXColorUpdateBlock)(RMXColorVariable *variable, UIColor *selecte
 + (instancetype)colorVariableWithKey:(NSString *)key
                         defaultValue:(UIColor *)defaultValue
                      limitedToValues:(nullable NSArray<UIColor *> *)limitedToValues
-                         updateBlock:(RMXColorUpdateBlock)updateBlock;
+                         updateBlock:(nullable RMXColorUpdateBlock)updateBlock;
 
 @end
 

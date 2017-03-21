@@ -22,11 +22,13 @@
 
 + (instancetype)booleanVariableWithKey:(NSString *)key
                           defaultValue:(BOOL)defaultValue
-                           updateBlock:(RMXBooleanUpdateBlock)updateBlock {
+                           updateBlock:(nullable RMXBooleanUpdateBlock)updateBlock {
   RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
   if (existingVariable) {
     [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
-      updateBlock((RMXBooleanVariable *)variable, [selectedValue boolValue]);
+      if (updateBlock) {
+        updateBlock((RMXBooleanVariable *)variable, [selectedValue boolValue]);
+      }
     }];
     return existingVariable;
   } else {
@@ -52,7 +54,9 @@
                    dataType:RMXDataTypeBoolean
                defaultValue:@(defaultValue)
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock((RMXBooleanVariable *)variable, [selectedValue boolValue]);
+                  if (updateBlock) {
+                    updateBlock((RMXBooleanVariable *)variable, [selectedValue boolValue]);
+                  }
                 }];
   self.controlType = RMXControlTypeSwitch;
   return self;

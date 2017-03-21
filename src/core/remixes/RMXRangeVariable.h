@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
                             minValue:(CGFloat)minValue
                             maxValue:(CGFloat)maxValue
                            increment:(CGFloat)increment
-                         updateBlock:(RMXNumberUpdateBlock)updateBlock;
+                         updateBlock:(nullable RMXNumberUpdateBlock)updateBlock;
 
 @end
 
