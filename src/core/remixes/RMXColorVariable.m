@@ -34,13 +34,23 @@ NSString *const RMXColorKeyAlpha = @"a";
 + (instancetype)colorVariableWithKey:(NSString *)key
                         defaultValue:(UIColor *)defaultValue
                      limitedToValues:(NSArray<UIColor *> *)limitedToValues
-                         updateBlock:(RMXColorUpdateBlock)updateBlock {
-  RMXColorVariable *variable = [[self alloc] initWithKey:key
-                                            defaultValue:defaultValue
-                                         limitedToValues:limitedToValues
-                                             updateBlock:updateBlock];
-  [RMXRemixer addVariable:variable];
-  return variable;
+                         updateBlock:(nullable RMXColorUpdateBlock)updateBlock {
+  RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
+  if (existingVariable) {
+    [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+      if (updateBlock) {
+        updateBlock((RMXColorVariable *)variable, selectedValue);
+      }
+    }];
+    return (RMXColorVariable *)existingVariable;
+  } else {
+    RMXColorVariable *variable = [[self alloc] initWithKey:key
+                                              defaultValue:defaultValue
+                                           limitedToValues:limitedToValues
+                                               updateBlock:updateBlock];
+    [RMXRemixer addVariable:variable];
+    return variable;
+  }
 }
 
 - (NSDictionary *)toJSON {
@@ -69,7 +79,9 @@ NSString *const RMXColorKeyAlpha = @"a";
                    dataType:RMXDataTypeColor
                defaultValue:defaultValue
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock((RMXColorVariable *)variable, selectedValue);
+                  if (updateBlock) {
+                    updateBlock((RMXColorVariable *)variable, selectedValue);
+                  }
                 }];
   self.limitedToValues = limitedToValues;
   // TODO(chuga): Implement a color picker control for color variables that don't have a pre-defined

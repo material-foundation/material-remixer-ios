@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
  To be called from the AppDelegate to let Remixer know that the app has already set up the main window.
  Here we add the overlay and the gestures to trigger it.
  */
-+ (void)attachToWindow;
++ (void)attachToKeyWindow;
 
 /**
  To be called from the AppDelegate to let Remixer know that the became active.
@@ -45,12 +45,6 @@ NS_ASSUME_NONNULL_BEGIN
  Here we clean up the data stored for Remote Controllers (if enabled).
  */
 + (void)applicationWillResignActive;
-
-/**
- Getter for the UIWindow used by the overlay.
- @return The UIWindow.
- */
-+ (RMXOverlayWindow *)overlayWindow;
 
 /**
  Returns a Variable with the given key from the dictionary of Variables.
@@ -79,9 +73,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Returns all Variables.
- @return An array of all current Variables.
+ @return All current Variables.
  */
-+ (NSArray<RMXVariable *> *)allVariables;
++ (NSMapTable *)allVariables;
 
 /** Removes all Variables and empties the dictionary of Variables. */
 + (void)removeAllVariables;
@@ -97,6 +91,17 @@ NS_ASSUME_NONNULL_BEGIN
  @param value The new value that the variable should be set to.
  */
 + (void)updateVariable:(RMXVariable *)variable fromRemoteControllerToValue:(id)value;
+
+/**
+ Getter for the UIWindow used by the overlay.
+ @return The UIWindow.
+ */
++ (RMXOverlayWindow *)overlayWindow;
+
+/**
+ Refreshes the content of the overlay panel.
+ */
++ (void)reloadOverlayContent;
 
 /**
  A unique session id. This is used for generating a URL for the remote controllers.

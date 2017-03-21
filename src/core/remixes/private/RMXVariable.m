@@ -46,6 +46,10 @@
   return self;
 }
 
+- (void)dealloc {
+  [RMXRemixer reloadOverlayContent];
+}
+
 - (NSString *)title {
   if (_title.length > 0) {
     return _title;

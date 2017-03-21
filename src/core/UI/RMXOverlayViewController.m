@@ -51,7 +51,6 @@ static CGFloat kInitialSpeed = 0.4f;
 @end
 
 @implementation RMXOverlayViewController {
-  NSArray<RMXVariable *> *_content;
   UIPanGestureRecognizer *_panGestureRecognizer;
   CGFloat _gestureInitialDelta;
 }
@@ -129,7 +128,8 @@ static CGFloat kInitialSpeed = 0.4f;
   RMXCell *cellForVariable;
   RMXVariable *variable = notification.object;
   if (variable) {
-    NSUInteger index = [_content indexOfObject:variable];
+    NSUInteger index =
+        [[[[RMXRemixer allVariables] objectEnumerator] allObjects] indexOfObject:variable];
     NSIndexPath *cellIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
     cellForVariable = [self.view.tableView cellForRowAtIndexPath:cellIndexPath];
   }
@@ -247,7 +247,6 @@ static CGFloat kInitialSpeed = 0.4f;
 }
 
 - (void)reloadData {
-  _content = [RMXRemixer allVariables];
   [self.view.tableView reloadData];
 }
 
@@ -266,12 +265,13 @@ static CGFloat kInitialSpeed = 0.4f;
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return [_content count];
+  // We use the objectEnumerator to leave out any variables that have been already dealloc'ed.
+  return [[[[RMXRemixer allVariables] objectEnumerator] allObjects] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  RMXVariable *variable = _content[indexPath.row];
+  RMXVariable *variable = [[[RMXRemixer allVariables] objectEnumerator] allObjects][indexPath.row];
   NSString *identifier = [self cellIdentifierForVariable:variable];
   RMXCell *cell = (RMXCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
   cell.variable = variable;
@@ -282,7 +282,7 @@ static CGFloat kInitialSpeed = 0.4f;
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  RMXVariable *variable = _content[indexPath.row];
+  RMXVariable *variable = [[[RMXRemixer allVariables] objectEnumerator] allObjects][indexPath.row];
   return [[self cellClassForVariable:variable] cellHeight];
 }
 

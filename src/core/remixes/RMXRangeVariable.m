@@ -25,14 +25,25 @@
                             minValue:(CGFloat)minValue
                             maxValue:(CGFloat)maxValue
                            increment:(CGFloat)increment
-                         updateBlock:(RMXNumberUpdateBlock)updateBlock {
-  RMXRangeVariable *variable = [[self alloc] initWithKey:key
-                                            defaultValue:defaultValue
-                                                minValue:minValue
-                                                maxValue:maxValue
-                                               increment:increment
-                                             updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
+                         updateBlock:(nullable RMXNumberUpdateBlock)updateBlock {
+  RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
+  if (existingVariable) {
+    [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+      if (updateBlock) {
+        updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+      }
+    }];
+    return (RMXRangeVariable *)existingVariable;
+  } else {
+    RMXRangeVariable *variable = [[self alloc] initWithKey:key
+                                              defaultValue:defaultValue
+                                                  minValue:minValue
+                                                  maxValue:maxValue
+                                                 increment:increment
+                                               updateBlock:updateBlock];
+    [RMXRemixer addVariable:variable];
+    return variable;
+  }
 }
 
 - (NSString *)constraintType {
@@ -59,12 +70,14 @@
                    minValue:(CGFloat)minValue
                    maxValue:(CGFloat)maxValue
                   increment:(CGFloat)increment
-                updateBlock:(RMXNumberUpdateBlock)updateBlock {
+                updateBlock:(nullable RMXNumberUpdateBlock)updateBlock {
   self = [super initWithKey:key
                    dataType:RMXDataTypeNumber
                defaultValue:@(defaultValue)
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+                  if (updateBlock) {
+                    updateBlock((RMXNumberVariable *)variable, [selectedValue floatValue]);
+                  }
                 }];
   if (self) {
     _minimumValue = minValue;

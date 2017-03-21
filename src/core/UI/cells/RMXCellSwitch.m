@@ -20,6 +20,8 @@
 
 #import "RMXCellSwitch.h"
 
+static CGFloat kTextPaddingTop = 10.0f;
+
 @implementation RMXCellSwitch {
   UISwitch *_switchControl;
 }
@@ -28,6 +30,15 @@
 
 + (CGFloat)cellHeight {
   return RMXCellHeightMinimal;
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style
+              reuseIdentifier:(NSString *)reuseIdentifier {
+  self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+  if (self) {
+    self.textLabel.textColor = [UIColor colorWithWhite:0 alpha:1];
+  }
+  return self;
 }
 
 - (void)prepareForReuse {
@@ -50,12 +61,22 @@
   }
 
   _switchControl.on = variable.selectedBooleanValue;
-  self.textLabel.text = variable.title;
+  self.textLabel.text = _switchControl.on ? @"ON" : @"OFF";
+  self.detailTextLabel.text = variable.title;
+}
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+
+  CGRect frame = self.textLabel.frame;
+  frame.origin.y += kTextPaddingTop;
+  self.textLabel.frame = frame;
 }
 
 #pragma mark - Control Events
 
 - (void)switchUpdated:(UISwitch *)switchControl {
+  self.textLabel.text = _switchControl.on ? @"ON" : @"OFF";
   [self.variable setSelectedBooleanValue:switchControl.isOn];
   [self.variable save];
 }

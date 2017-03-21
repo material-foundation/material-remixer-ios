@@ -26,12 +26,23 @@
 + (instancetype)stringVariableWithKey:(NSString *)key
                          defaultValue:(NSString *)defaultValue
                       limitedToValues:(NSArray<NSString *> *)limitedToValues
-                          updateBlock:(RMXStringUpdateBlock)updateBlock {
-  RMXStringVariable *variable = [[self alloc] initWithKey:key
-                                             defaultValue:defaultValue
-                                          limitedToValues:limitedToValues
-                                              updateBlock:updateBlock];
-  return [RMXRemixer addVariable:variable];
+                          updateBlock:(nullable RMXStringUpdateBlock)updateBlock {
+  RMXVariable *existingVariable = [RMXRemixer variableForKey:key];
+  if (existingVariable) {
+    [existingVariable addAndExecuteUpdateBlock:^(RMXVariable *variable, id selectedValue) {
+      if (updateBlock) {
+        updateBlock((RMXStringVariable *)variable, selectedValue);
+      }
+    }];
+    return (RMXStringVariable *)existingVariable;
+  } else {
+    RMXStringVariable *variable = [[self alloc] initWithKey:key
+                                               defaultValue:defaultValue
+                                            limitedToValues:limitedToValues
+                                                updateBlock:updateBlock];
+    [RMXRemixer addVariable:variable];
+    return variable;
+  }
 }
 
 - (NSDictionary *)toJSON {
@@ -48,12 +59,14 @@
 - (instancetype)initWithKey:(NSString *)key
                defaultValue:(NSString *)defaultValue
             limitedToValues:(NSArray<NSString *> *)limitedToValues
-                updateBlock:(RMXStringUpdateBlock)updateBlock {
+                updateBlock:(nullable RMXStringUpdateBlock)updateBlock {
   self = [super initWithKey:key
                    dataType:RMXDataTypeString
                defaultValue:defaultValue
                 updateBlock:^(RMXVariable *_Nonnull variable, id _Nonnull selectedValue) {
-                  updateBlock((RMXStringVariable *)variable, selectedValue);
+                  if (updateBlock) {
+                    updateBlock((RMXStringVariable *)variable, selectedValue);
+                  }
                 }];
   self.limitedToValues = limitedToValues;
   self.controlType = limitedToValues.count > 0 ? RMXControlTypeTextList : RMXControlTypeTextInput;

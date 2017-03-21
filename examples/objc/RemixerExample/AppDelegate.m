@@ -39,7 +39,7 @@
   self.window.rootViewController = nav;
   [self.window makeKeyAndVisible];
 
-  [RMXRemixer attachToWindow];
+  [RMXRemixer attachToKeyWindow];
 
   return YES;
 }

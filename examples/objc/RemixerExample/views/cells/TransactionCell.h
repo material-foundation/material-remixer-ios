@@ -27,7 +27,7 @@
 @property(nonatomic, strong, readonly) UILabel *priceLabel;
 
 @property(nonatomic, assign) BOOL iconVisible;
-@property(nonatomic, strong) RMXColorVariable *colorVariable;
-@property(nonatomic, strong) RMXBooleanVariable *iconVisibilityVariable;
+@property(nonatomic, weak) RMXColorVariable *colorVariable;
+@property(nonatomic, weak) RMXBooleanVariable *iconVisibilityVariable;
 
 @end

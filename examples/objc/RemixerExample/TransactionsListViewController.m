@@ -70,22 +70,6 @@
     [_collectionView registerClass:[SectionHeaderView class]
         forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                withReuseIdentifier:@"header"];
-
-    __weak TransactionsListViewController *weakSelf = self;
-    _appColorVariable =
-        [RMXColorVariable colorVariableWithKey:@"appTintColor"
-                                  defaultValue:[ColorUtils appColorOptions][0]
-                               limitedToValues:[ColorUtils appColorOptions]
-                                   updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
-                                     weakSelf.headerView.backgroundColor = selectedValue;
-                           }];
-    _iconVisibilityVariable =
-        [RMXBooleanVariable booleanVariableWithKey:@"cellIconVisible"
-                                      defaultValue:YES
-                                       updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
-                                         // No-op here.
-                                       }];
-
   }
   return self;
 }
@@ -94,6 +78,26 @@
   [super viewDidLoad];
   [self.view addSubview:_headerView];
   [self.view addSubview:_collectionView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  _appColorVariable = nil;
+  _iconVisibilityVariable = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  __weak TransactionsListViewController *weakSelf = self;
+  _appColorVariable =
+      [RMXColorVariable colorVariableWithKey:@"appTintColor"
+                                defaultValue:[ColorUtils appColorOptions][0]
+                             limitedToValues:[ColorUtils appColorOptions]
+                                 updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
+                                   weakSelf.headerView.backgroundColor = selectedValue;
+                                 }];
+  _iconVisibilityVariable = [RMXBooleanVariable booleanVariableWithKey:@"cellIconVisible"
+                                                          defaultValue:YES
+                                                           updateBlock:nil];
+  [self.collectionView reloadData];
 }
 
 - (void)viewDidLayoutSubviews {
