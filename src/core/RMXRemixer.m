@@ -119,7 +119,7 @@
   return [[self sharedInstance] overlayWindow];
 }
 
-+ (void)reloadOverlay {
++ (void)reloadOverlayContent {
   [[[self sharedInstance] overlayController] reloadData];
 }
 
