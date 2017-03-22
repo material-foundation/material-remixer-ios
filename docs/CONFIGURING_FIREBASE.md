@@ -19,4 +19,5 @@ This is out of the scope of this document, as it is properly documented [in the 
 More detail can be found in [the Firebase documentation](https://firebase.google.com/docs/ios/setup#manually_add_firebase).
 
 ## Step 3: 
-TODO
+Use `pod 'Remixer/Firebase'` in your Podfile. If you're already using Remixer you need to replace `pod 'Remixer'` with this.
+
