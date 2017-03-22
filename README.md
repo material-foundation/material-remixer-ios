@@ -60,9 +60,9 @@ pod install
 open your-project.xcworkspace
 ~~~
 
-### 4. Add variables
+### 4. Initialize Remixer and add variables
 
-Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and call |attachToKeyWindow| in your AppDelegate:
+Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and call `[RMXRemixer attachToKeyWindow]` in your AppDelegate:
 
 ~~~ objc
 #import "Remixer.h"
@@ -93,7 +93,7 @@ Now you’re ready to add Remixer to your app! Begin by importing the Remixer he
 @end
 ~~~
 
-Now you can add Remixer variables in your view controllers as follows:
+Now you can add Remixer variables in your views and view controllers as follows:
 
 ~~~ objc
 #import "Remixer.h"
