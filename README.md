@@ -122,9 +122,8 @@ Now you can add Remixer variables in your view controllers as follows:
   // you push view controllers on top of this one.
   _bgColorVariable = nil;
 }
-
-Make sure you keep a reference to the variables you create, otherwise they will get removed automatically.
 ~~~
+Make sure you keep a reference to the variables you create, otherwise they will get removed automatically.
 
 ### 5. Refine their values
 
