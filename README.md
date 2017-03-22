@@ -1,5 +1,7 @@
 # <img align="center" src="https://cdn.rawgit.com/material-foundation/material-remixer-ios/readme-updates/docs/logo_remixer_48dp.svg"> Remixer for iOS
 
+<img align="right" src="docs/remixerPreviewSmall.png" width="214px">
+
 [![Build Status](https://travis-ci.org/material-foundation/material-remixer-ios.svg?branch=develop)](https://travis-ci.org/material-foundation/material-remixer-ios)
 [![codecov](https://codecov.io/gh/material-foundation/material-remixer-ios/branch/develop/graph/badge.svg)](https://codecov.io/gh/material-foundation/material-remixer-ios)
 [![CocoaPods](https://img.shields.io/cocoapods/v/Remixer.svg)]()
