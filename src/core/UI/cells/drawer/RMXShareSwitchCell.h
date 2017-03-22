@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMXShareSwitchCell : UITableViewCell
 
 /** The switch to turn on or off sharing */
-@property(nonatomic, readonly) UISwitch *switchControl;
+@property(nonatomic, assign) BOOL sharing;
 
 /** The delegate for this cell */
 @property(nonatomic, weak) id<RMXShareSwitchCellDelegate> delegate;

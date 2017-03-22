@@ -39,6 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)pauseConnection;
 
+/** Refreshes the content that is displayed in the remote controller */
+- (void)reloadData;
+
 /** Adds a variable to the remote controllers */
 - (void)addVariable:(RMXVariable *)variable;
 

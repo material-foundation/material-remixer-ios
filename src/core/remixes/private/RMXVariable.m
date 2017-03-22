@@ -47,7 +47,7 @@
 }
 
 - (void)dealloc {
-  [RMXRemixer reloadOverlayContent];
+  [RMXRemixer reloadControllers];
 }
 
 - (NSString *)title {
