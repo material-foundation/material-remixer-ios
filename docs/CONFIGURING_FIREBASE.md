@@ -23,5 +23,5 @@ Use `pod 'Remixer/Firebase'` in your Podfile. If you're already using Remixer yo
 
 That's it! Remixer is now ready to start communicating with Remote Controllers.
 
-<img align="center" src="sharingDemo.gif">
+<img align="center" src="sharingDemo.gif" width="500px">
 
