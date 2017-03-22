@@ -164,7 +164,7 @@ NSString *const kSharingLabel = @"SHARING";
       NSString *identifier = NSStringFromClass([RMXShareSwitchCell class]);
       RMXShareSwitchCell *shareSwitchCell =
           (RMXShareSwitchCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
-      shareSwitchCell.switchControl.on = _sharing;
+      shareSwitchCell.sharing = _sharing;
       shareSwitchCell.delegate = _shareSwitchCellDelegate;
       cell = shareSwitchCell;
       break;

@@ -21,7 +21,9 @@ static NSString *const kDetailText = @"Values can be adjusted by anyone with the
 static NSString *const kSharingOnText = @"Sharing is on";
 static NSString *const kSharingOffText = @"Sharing is off";
 
-@implementation RMXShareSwitchCell
+@implementation RMXShareSwitchCell {
+  UISwitch *_switchControl;
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
               reuseIdentifier:(NSString *)reuseIdentifier {
@@ -41,6 +43,15 @@ static NSString *const kSharingOffText = @"Sharing is off";
     [self updateLabel];
   }
   return self;
+}
+
+- (void)setSharing:(BOOL)sharing {
+  _switchControl.on = sharing;
+  [self updateLabel];
+}
+
+- (BOOL)sharing {
+  return _switchControl.isOn;
 }
 
 - (void)switchUpdated:(UISwitch *)switchControl {

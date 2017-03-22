@@ -57,19 +57,19 @@
 }
 
 + (instancetype)sharedInstance {
-  static RMXRemixer *sharedInstance;
+  static id sharedInstance;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     sharedInstance = [[self alloc] init];
-    [sharedInstance initialSetup];
   });
   return sharedInstance;
 }
 
-- (void)initialSetup {
-  self.storage = [[RMXLocalStorageController alloc] init];
++ (void)initialize {
+  RMXRemixer *instance = [self sharedInstance];
+  instance.storage = [[RMXLocalStorageController alloc] init];
 #ifdef REMIXER_CLOUD_FIREBASE
-  self.remoteController = [[RMXFirebaseRemoteController alloc] init];
+  instance.remoteController = [[RMXFirebaseRemoteController alloc] init];
 #endif
 }
 
@@ -119,8 +119,9 @@
   return [[self sharedInstance] overlayWindow];
 }
 
-+ (void)reloadOverlayContent {
++ (void)reloadControllers {
   [[[self sharedInstance] overlayController] reloadData];
+  [[[self sharedInstance] remoteController] reloadData];
 }
 
 #pragma mark - Swipe gesture
@@ -170,6 +171,7 @@
 
 + (void)removeVariable:(RMXVariable *)variable {
   [[[self sharedInstance] variables] removeObjectForKey:variable.key];
+  [[[self sharedInstance] overlayController] reloadData];
   [[[self sharedInstance] remoteController] removeVariable:variable];
 }
 

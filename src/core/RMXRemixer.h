@@ -101,7 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Refreshes the content of the overlay panel.
  */
-+ (void)reloadOverlayContent;
++ (void)reloadControllers;
 
 /**
  A unique session id. This is used for generating a URL for the remote controllers.

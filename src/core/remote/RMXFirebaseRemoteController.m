@@ -65,8 +65,7 @@ static NSString *const kFirebaseAppDomain = @"firebaseapp";
   }
   _ref = [[FIRDatabase database] referenceWithPath:kFirebasePath];
   [[_ref child:_identifier] onDisconnectRemoveValue];
-  [self removeAllVariables];
-  [self saveAllVariables];
+  [self reloadData];
   [self startObservingUpdates];
 }
 
@@ -76,8 +75,13 @@ static NSString *const kFirebaseAppDomain = @"firebaseapp";
   _ref = nil;
 }
 
+- (void)reloadData {
+  [self removeAllVariables];
+  [self saveAllVariables];
+}
+
 - (void)saveAllVariables {
-  for (RMXVariable *variable in [RMXRemixer allVariables]) {
+  for (RMXVariable *variable in [[RMXRemixer allVariables] objectEnumerator]) {
     [self addVariable:variable];
   }
 }
