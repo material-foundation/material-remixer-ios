@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/material-foundation/material-remixer-ios.svg?branch=develop)](https://travis-ci.org/material-foundation/material-remixer-ios)
 [![codecov](https://codecov.io/gh/material-foundation/material-remixer-ios/branch/develop/graph/badge.svg)](https://codecov.io/gh/material-foundation/material-remixer-ios)
-[![CocoaPods](https://img.shields.io/cocoapods/v/Remixer.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/v/Remixer.svg)](https://cocoapods.org/pods/Remixer)
 
 Remixer is a framework to iterate quickly on UI changes by allowing you to adjust UI variables without needing to rebuild (or even restart) your app. You can adjust Numbers, Colors, Booleans, and Strings. To see it in action check out the [example app](https://github.com/material-foundation/material-remixer-ios/tree/develop/examples/objc).
 
