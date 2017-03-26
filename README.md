@@ -1,4 +1,4 @@
-# <img align="center" src="https://cdn.rawgit.com/material-foundation/material-remixer-ios/readme-updates/docs/logo_remixer_48dp.svg"> Remixer for iOS
+# <img align="center" src="https://cdn.rawgit.com/material-foundation/material-remixer-ios/develop/docs/logo_remixer_48dp.svg"> Remixer for iOS
 
 <img align="right" src="docs/remixerPreview.png" width="300px">
 
