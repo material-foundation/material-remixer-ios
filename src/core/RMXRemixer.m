@@ -105,14 +105,9 @@
   }
 }
 
-+ (NSString *)sessionId {
-  // Store unique session id if doesn't exist.
-  NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"];
-  if (!sessionId) {
-    sessionId = [[[NSUUID UUID] UUIDString] substringToIndex:8];
-    [[NSUserDefaults standardUserDefaults] setObject:sessionId forKey:@"sessionId"];
-  }
-  return sessionId;
++ (void)openPanel {
+  [[[self sharedInstance] overlayWindow] setHidden:NO];
+  [[[self sharedInstance] overlayController] showPanelAnimated:YES];
 }
 
 + (RMXOverlayWindow *)overlayWindow {
@@ -204,6 +199,16 @@
 }
 
 #pragma mark - Remote controller
+
++ (NSString *)sessionId {
+  // Store unique session id if doesn't exist.
+  NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"];
+  if (!sessionId) {
+    sessionId = [[[NSUUID UUID] UUIDString] substringToIndex:8];
+    [[NSUserDefaults standardUserDefaults] setObject:sessionId forKey:@"sessionId"];
+  }
+  return sessionId;
+}
 
 + (nullable NSURL *)remoteControllerURL {
   return [[[self sharedInstance] remoteController] remoteControllerURL];

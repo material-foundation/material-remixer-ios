@@ -46,6 +46,12 @@
   if (self) {
     self.title = @"Merchant Name";
 
+    self.navigationItem.rightBarButtonItem =
+        [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconSettings"]
+                                         style:UIBarButtonItemStylePlain
+                                        target:self
+                                        action:@selector(openRemixerPanel)];
+
     _headerView = [[MerchantDetailsHeaderView alloc] initWithFrame:CGRectZero];
 
     _layout = [[UICollectionViewFlowLayout alloc] init];
@@ -104,6 +110,10 @@
                                      self.view.bounds.size.width,
                                      self.view.bounds.size.height - 144);
   _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 48);
+}
+
+- (void)openRemixerPanel {
+  [RMXRemixer openPanel];
 }
 
 #pragma mark - UICollectionViewDataSource

@@ -16,7 +16,7 @@
 
 #import "RMXBooleanVariable.h"
 
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 
 @implementation RMXBooleanVariable
 

@@ -32,7 +32,7 @@
 #import "RMXOverlayTopBarView.h"
 #import "RMXOverlayView.h"
 #import "RMXOverlayWindow.h"
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 #import "RMXShareLinkCell.h"
 #import "RMXShareSwitchCell.h"
 

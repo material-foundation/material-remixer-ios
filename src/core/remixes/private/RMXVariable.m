@@ -20,7 +20,7 @@
 
 #import "RMXVariable.h"
 
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 
 @interface RMXVariable ()
 @property(nonatomic, strong) NSMutableArray *updateBlocks;
