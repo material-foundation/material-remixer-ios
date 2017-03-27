@@ -21,7 +21,7 @@
 #import "RMXCellTextList.h"
 
 #import "RMXOverlayWindow.h"
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 
 /** Provide return chars to force padding within UIAlertController. */
 NSString *const kAlertStringPadding = @"\n\n\n\n\n\n\n\n\n\n";

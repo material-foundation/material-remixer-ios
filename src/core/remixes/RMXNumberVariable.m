@@ -16,7 +16,7 @@
 
 #import "RMXNumberVariable.h"
 
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 
 @implementation RMXNumberVariable
 

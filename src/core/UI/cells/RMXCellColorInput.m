@@ -21,7 +21,7 @@
 #import "RMXCellColorInput.h"
 
 #import "RMXOverlayWindow.h"
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 
 static CGFloat kTextPaddingLeft = 18.0f;
 static CGFloat kTextPaddingTop = 11.0f;

@@ -16,7 +16,7 @@
 
 #import "RMXRangeVariable.h"
 
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 
 @implementation RMXRangeVariable
 

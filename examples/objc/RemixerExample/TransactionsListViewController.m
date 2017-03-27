@@ -50,6 +50,11 @@
                                          style:UIBarButtonItemStylePlain
                                         target:nil
                                         action:nil];
+    self.navigationItem.rightBarButtonItem =
+        [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconSettings"]
+                                         style:UIBarButtonItemStylePlain
+                                        target:self
+                                        action:@selector(openRemixerPanel)];
 
     _headerView = [[UIView alloc] initWithFrame:CGRectZero];
     _stats = [[HeaderStatsView alloc] initWithFrame:CGRectZero];
@@ -127,6 +132,10 @@
   _layout.itemSize =
       CGSizeMake(self.view.bounds.size.width, _cellHeightVariable.selectedFloatValue);
   _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 48);
+}
+
+- (void)openRemixerPanel {
+  [RMXRemixer openPanel];
 }
 
 #pragma mark - UICollectionViewDelegate

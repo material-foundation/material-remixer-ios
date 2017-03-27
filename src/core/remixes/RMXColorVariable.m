@@ -19,7 +19,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIColor.h>
 
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 
 NSString *const RMXColorKeyRed = @"r";
 NSString *const RMXColorKeyGreen = @"g";
