@@ -20,8 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol RMXShareLinkCellDelegate<NSObject>
 
-- (void)linkButtonWasTapped:(UIButton *)linkButton;
-- (void)shareButtonWasTapped:(UIButton *)shareButton;
+- (void)shareLinkButtonWasTapped:(UIButton *)linkButton;
 
 @end
 

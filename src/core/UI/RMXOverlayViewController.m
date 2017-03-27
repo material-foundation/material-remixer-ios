@@ -294,36 +294,7 @@ static CGFloat kInitialSpeed = 0.4f;
 
 #pragma mark - RMXShareLinkCellDelegate
 
-- (void)linkButtonWasTapped:(UIButton *)linkButton {
-  NSURL *inputURL = [RMXRemixer remoteControllerURL];
-  // Check if Chrome is installed
-  if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"googlechrome://"]]) {
-    NSString *scheme = inputURL.scheme;
-    NSString *chromeScheme = nil;
-    if ([scheme isEqualToString:@"http"]) {
-      chromeScheme = @"googlechrome";
-    } else if ([scheme isEqualToString:@"https"]) {
-      chromeScheme = @"googlechromes";
-    }
-    if (chromeScheme) {
-      NSString *absoluteString = [inputURL absoluteString];
-      NSRange rangeForScheme = [absoluteString rangeOfString:@":"];
-      NSString *urlNoScheme =
-          [absoluteString substringFromIndex:rangeForScheme.location];
-      NSString *chromeURLString =
-          [chromeScheme stringByAppendingString:urlNoScheme];
-      NSURL *chromeURL = [NSURL URLWithString:chromeURLString];
-      [[UIApplication sharedApplication] openURL:chromeURL];
-    } else {
-      [[UIApplication sharedApplication] openURL:inputURL];
-    }
-  } else {
-    [[UIApplication sharedApplication] openURL:inputURL];
-  }
-}
-
-- (void)shareButtonWasTapped:(UIButton *)shareButton {
-  // TODO(chuga): Set the right message for sharing.
+- (void)shareLinkButtonWasTapped:(UIButton *)linkButton {
   UIActivityViewController *activityViewController =
       [[UIActivityViewController alloc] initWithActivityItems:@[[RMXRemixer remoteControllerURL]]
                                         applicationActivities:nil];
