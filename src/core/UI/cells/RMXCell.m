@@ -20,10 +20,10 @@
 
 #import "RMXCell.h"
 
-const CGFloat RMXCellHeightMinimal = 54.0f;
-const CGFloat RMXCellHeightLarge = 76.0f;
+const CGFloat RMXCellHeightMinimal = 58.0f;
+const CGFloat RMXCellHeightLarge = 72.0f;
 
-static CGFloat kTextAplha = 0.5f;
+static CGFloat kTextAplha = 0.55f;
 static CGFloat kDetailTextPaddingTop = 4.0f;
 static CGFloat kContainerPaddingTop = 24.0f;
 static CGFloat kContainerPaddingEdges = 16.0f;

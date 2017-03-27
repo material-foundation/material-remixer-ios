@@ -39,12 +39,14 @@
     return;
   }
 
-  _textField = [[UITextField alloc] initWithFrame:CGRectZero];
-  _textField.text = self.variable.selectedValue;
-  _textField.returnKeyType = UIReturnKeyDone;
-  _textField.delegate = self;
-  [self.controlViewWrapper addSubview:_textField];
+  if (!_textField) {
+    _textField = [[UITextField alloc] initWithFrame:CGRectZero];
+    _textField.returnKeyType = UIReturnKeyDone;
+    _textField.delegate = self;
+    [self.controlViewWrapper addSubview:_textField];
+  }
 
+  _textField.text = self.variable.selectedValue;
   self.detailTextLabel.text = variable.title;
 }
 
@@ -72,7 +74,7 @@
       [textField.text stringByReplacingCharactersInRange:range withString:string];
   [self.variable setSelectedValue:currentValue];
   [self.variable save];
-  return YES;
+  return NO;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
