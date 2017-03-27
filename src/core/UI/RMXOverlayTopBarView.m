@@ -139,7 +139,7 @@ NSString *const kSharingLabel = @"SHARING";
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-  size.height = RMXOverlayTopBarClosedHeight + 2 * RMXCellHeightMinimal + 16;
+  size.height = RMXOverlayTopBarClosedHeight + 2 * RMXCellHeightMinimal + 8;
   return size;
 }
 
