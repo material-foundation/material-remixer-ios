@@ -38,6 +38,7 @@
 @implementation TransactionsListViewController {
   RMXColorVariable *_appColorVariable;
   RMXBooleanVariable *_iconVisibilityVariable;
+  RMXRangeVariable *_cellHeightVariable;
 }
 
 - (instancetype)init {
@@ -80,11 +81,6 @@
   [self.view addSubview:_collectionView];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-  _appColorVariable = nil;
-  _iconVisibilityVariable = nil;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
   __weak TransactionsListViewController *weakSelf = self;
   _appColorVariable =
@@ -97,7 +93,25 @@
   _iconVisibilityVariable = [RMXBooleanVariable booleanVariableWithKey:@"cellIconVisible"
                                                           defaultValue:YES
                                                            updateBlock:nil];
+
+  _cellHeightVariable =
+      [RMXRangeVariable rangeVariableWithKey:@"cellHeight"
+                                defaultValue:60.0
+                                    minValue:52.0
+                                    maxValue:68.0
+                                   increment:4.0
+                                 updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
+                                   weakSelf.layout.itemSize =
+                                       CGSizeMake(self.view.bounds.size.width, selectedValue);
+                                   [weakSelf.layout invalidateLayout];
+                                 }];
   [self.collectionView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  _appColorVariable = nil;
+  _iconVisibilityVariable = nil;
+  _cellHeightVariable = nil;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -110,7 +124,8 @@
   _collectionView.frame = CGRectMake(0, 176,
                                      self.view.bounds.size.width,
                                      self.view.bounds.size.height - 176);
-  _layout.itemSize = CGSizeMake(self.view.bounds.size.width, 60);
+  _layout.itemSize =
+      CGSizeMake(self.view.bounds.size.width, _cellHeightVariable.selectedFloatValue);
   _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 48);
 }
 
@@ -118,7 +133,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  MerchantDetailsViewController *vc = [[MerchantDetailsViewController alloc] initWithMerchantData:nil];
+  MerchantDetailsViewController *vc =
+      [[MerchantDetailsViewController alloc] initWithMerchantData:nil];
   [self.navigationController pushViewController:vc
                                        animated:YES];
 }

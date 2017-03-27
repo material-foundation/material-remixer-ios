@@ -38,6 +38,7 @@
 @implementation MerchantDetailsViewController {
   RMXColorVariable *_appColorVariable;
   RMXStringVariable *_sectionTitleVariable;
+  RMXRangeVariable *_cellHeightVariable;
 }
 
 - (instancetype)initWithMerchantData:(NSObject *)data {
@@ -78,6 +79,15 @@
                                      updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
                                        [weakSelf.collectionView reloadData];
                                      }];
+    _cellHeightVariable =
+        [RMXRangeVariable rangeVariableWithKey:@"cellHeight"
+                                  defaultValue:60.0
+                                      minValue:52.0
+                                      maxValue:68.0
+                                     increment:4.0
+                                   updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
+                                     [weakSelf.layout invalidateLayout];
+                                   }];
   }
   return self;
 }
@@ -141,7 +151,9 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView
                     layout:(UICollectionViewLayout*)collectionViewLayout
     sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  return CGSizeMake(self.view.bounds.size.width, indexPath.section == 0 ? 160 : 60);
+  CGFloat height = indexPath.section == 0 ? _cellHeightVariable.selectedFloatValue * 2.5 :
+      _cellHeightVariable.selectedFloatValue;
+  return CGSizeMake(self.view.bounds.size.width, height);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
