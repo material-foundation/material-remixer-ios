@@ -22,7 +22,7 @@
 #import <OCMock/OCMock.h>
 
 #import "RMXColorVariable.h"
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 #import "RMXVariableConstants.h"
 
 @interface ColorVariableTests : XCTestCase
