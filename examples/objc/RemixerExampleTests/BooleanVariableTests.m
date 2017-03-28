@@ -40,9 +40,7 @@
   booleanVariable =
       [RMXBooleanVariable booleanVariableWithKey:@"a key"
                                     defaultValue:YES
-                                     updateBlock:^(RMXBooleanVariable *variable, BOOL selectedValue) {
-                                       // No - op.
-                                     }];
+                                     updateBlock:nil];
 }
 
 - (void)tearDown {

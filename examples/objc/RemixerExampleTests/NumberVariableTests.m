@@ -41,9 +41,7 @@
       [RMXNumberVariable numberVariableWithKey:@"key"
                                   defaultValue:1
                                limitedToValues:nil
-                                   updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
-                                     // No-op.
-                                   }];
+                                   updateBlock:nil];
 }
 
 - (void)tearDown {
@@ -70,9 +68,7 @@
       [RMXNumberVariable numberVariableWithKey:@"another key"
                                   defaultValue:1
                                limitedToValues:@[@(1), @(2)]
-                                   updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
-                                     // No-op.
-                                   }];
+                                   updateBlock:nil];
   XCTAssertTrue([[_numberVariable controlType] isEqualToString:RMXControlTypeTextList]);
 }
 

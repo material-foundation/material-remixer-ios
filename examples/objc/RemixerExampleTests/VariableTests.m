@@ -36,9 +36,7 @@
   variable = [[RMXVariable alloc] initWithKey:@"a key"
                                      dataType:RMXDataTypeString
                                  defaultValue:@"default value"
-                                  updateBlock:^(RMXVariable *variable, id selectedValue) {
-                                    // no - op.
-                                  }];
+                                  updateBlock:nil];
 }
 
 - (void)tearDown {
