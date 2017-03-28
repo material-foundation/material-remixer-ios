@@ -43,9 +43,7 @@
                                     minValue:0
                                     maxValue:1
                                    increment:0
-                                 updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
-                                   // No-op.
-                                 }];
+                                 updateBlock:nil];
 }
 
 - (void)tearDown {
@@ -78,9 +76,7 @@
                                     minValue:0
                                     maxValue:1
                                    increment:0.1
-                                 updateBlock:^(RMXNumberVariable *variable, CGFloat selectedValue) {
-                                   // No-op.
-                                 }];
+                                 updateBlock:nil];
   XCTAssertTrue([[_rangeVariable controlType] isEqualToString:RMXControlTypeStepper]);
 }
 

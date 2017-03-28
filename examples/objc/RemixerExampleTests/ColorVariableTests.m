@@ -41,9 +41,7 @@
       [RMXColorVariable colorVariableWithKey:@"key"
                                 defaultValue:[UIColor redColor]
                              limitedToValues:nil
-                                 updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
-                                   //
-                                 }];
+                                 updateBlock:nil];
 }
 
 - (void)tearDown {
@@ -70,9 +68,7 @@
       [RMXColorVariable colorVariableWithKey:@"another key"
                                 defaultValue:[UIColor redColor]
                              limitedToValues:@[[UIColor redColor], [UIColor yellowColor]]
-                                 updateBlock:^(RMXColorVariable *variable, UIColor *selectedValue) {
-                                   //
-                                 }];
+                                 updateBlock:nil];
   XCTAssertTrue([[_colorVariable controlType] isEqualToString:RMXControlTypeColorList]);
 }
 

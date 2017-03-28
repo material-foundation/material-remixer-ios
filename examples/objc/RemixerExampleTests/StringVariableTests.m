@@ -41,9 +41,7 @@
       [RMXStringVariable stringVariableWithKey:@"key"
                                   defaultValue:@"default value"
                                limitedToValues:nil
-                                   updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
-                                     // No-op.
-                                   }];
+                                   updateBlock:nil];
 }
 
 - (void)tearDown {
@@ -65,9 +63,7 @@
       [RMXStringVariable stringVariableWithKey:@"another key"
                                   defaultValue:@"default value"
                                limitedToValues:@[@"option 1", @"option 2"]
-                                   updateBlock:^(RMXStringVariable *variable, NSString *selectedValue) {
-                                     // No-op.
-                                   }];
+                                   updateBlock:nil];
   XCTAssertTrue([[_stringVariable controlType] isEqualToString:RMXControlTypeTextList]);
 }
 
