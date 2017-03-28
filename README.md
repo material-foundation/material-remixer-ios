@@ -8,7 +8,7 @@
 
 Remixer is a framework to iterate quickly on UI changes by allowing you to adjust UI variables without needing to rebuild (or even restart) your app. You can adjust Numbers, Colors, Booleans, and Strings. To see it in action check out the [example app](https://github.com/material-foundation/material-remixer-ios/tree/develop/examples/objc).
 
-If you are interested in using Remixer in another platform, you may want to check out the [Android](https://github.com/material-foundation/material-remixer-android) and [Javascript](https://github.com/material-foundation/material-remixer-js) repos. With any of the three platforms you can use the [Remote Controller](https://github.com/material-foundation/material-remixer-remote-web).
+> If you are interested in using Remixer in another platform, you may want to check out the [Android](https://github.com/material-foundation/material-remixer-android) and [Javascript](https://github.com/material-foundation/material-remixer-js) repos. With any of the three platforms you can use the [Remote Controller](https://github.com/material-foundation/material-remixer-remote-web).
 
 ## Using Remixer in your app
 
@@ -137,6 +137,8 @@ To trigger the in-app Remixer panel run the app and swipe up with 3 fingers (or 
 
 > You can also trigger this overlay from code using `[RMXRemixer openPanel|`.
 
+Remixer remembers the refinaments you make to the variables. It does so by storing the latest selected value in `NSUserDefaults`.
+
 ## Contributing
 
 We gladly welcome contributions! If you have found a bug, have questions, or wish to contribute, please follow our [Contributing Guidelines](https://github.com/material-foundation/material-remixer-ios/blob/develop/CONTRIBUTING.md).
@@ -147,4 +149,4 @@ Yes, the [material-foundation](https://github.com/material-foundation) organizat
 
 ## License
 
-© Google, 2016. Licensed under an [Apache-2](https://github.com/material-foundation/material-remixer-ios/blob/develop/LICENSE) license.
+© Google, 2017. Licensed under an [Apache-2](https://github.com/material-foundation/material-remixer-ios/blob/develop/LICENSE) license.
