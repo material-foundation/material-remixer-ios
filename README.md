@@ -63,9 +63,9 @@ pod install
 open [your-project-name].xcworkspace
 ~~~
 
-### 4. Initialize Remixer and add variables
+### 4. Initialize Remixer
 
-Now you’re ready to add Remixer to your app! Begin by importing the Remixer header and call `[RMXRemixer attachToKeyWindow]` in your AppDelegate:
+Now you’re ready to add Remixer to your app! Begin by importing the Remixer header file and call `[RMXRemixer attachToKeyWindow]` in your AppDelegate's `didFinishLaunchingWithOptions`:
 
 ~~~ objc
 #import "Remixer.h"
@@ -96,7 +96,9 @@ Now you’re ready to add Remixer to your app! Begin by importing the Remixer he
 @end
 ~~~
 
-Now you can add Remixer variables in your views and view controllers as follows:
+### 5. Add variables
+To use Remixer variables in your code simply import `Remixer.h` and create as many as you want.
+Remember to hold on to the variables you create, otherwise they'll get discarded automatically.
 
 ~~~ objc
 #import "Remixer.h"
@@ -126,11 +128,12 @@ Now you can add Remixer variables in your views and view controllers as follows:
   _bgColorVariable = nil;
 }
 ~~~
-Make sure you hold on to the variables you create, otherwise they will get removed automatically.
 
-### 5. Refine their values
+Remember, the Remixer overlay displays all variables that are currently being used by your app. If you see variables that should've disappeared once you navigated somewhere else, check that you're only using a weak reference in your update blocks.
 
-Run the app and swipe up with 3 fingers (or 2 if you're using the simulator). This will trigger the Remixer overlay. From here you can see the variables your app is currently using, and the controls that let you refine their values.
+### 6. Refine their values
+
+To trigger the in-app Remixer panel run the app and swipe up with 3 fingers (or 2 if you're using the simulator). From here you can see the controls for the variables that are currently in use.
 
 > You can also trigger this overlay from code using `[RMXRemixer openPanel|`.
 
