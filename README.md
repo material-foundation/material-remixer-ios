@@ -53,11 +53,14 @@ target "MyApp" do
 end
 ~~~
 
-Then run the command:
+> If you want to use the [Remote Controller feature](https://github.com/material-foundation/material-remixer-remote-web) of Remixer, you need to use `pod 'Remixer/Firebase'` instead.
+> For a complete setup guide check out [this link](https://github.com/material-foundation/material-remixer-ios/blob/develop/docs/CONFIGURING_FIREBASE.md).
+
+Once you've added Remixer to your Podfile you need to run the following commands:
 
 ~~~ bash
 pod install
-open your-project.xcworkspace
+open [your-project-name].xcworkspace
 ~~~
 
 ### 4. Initialize Remixer and add variables
@@ -127,7 +130,9 @@ Make sure you hold on to the variables you create, otherwise they will get remov
 
 ### 5. Refine their values
 
-Run the app and swipe up with 3 fingers (or 2 if you're using the simulator). This will trigger the Remixer overlay. From here you can see the variables your app is using, and refine their values.
+Run the app and swipe up with 3 fingers (or 2 if you're using the simulator). This will trigger the Remixer overlay. From here you can see the variables your app is currently using, and the controls that let you refine their values.
+
+> You can also trigger this overlay from code using `[RMXRemixer openPanel|`.
 
 ## Contributing
 
