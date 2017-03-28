@@ -22,7 +22,7 @@
 
 #import "RMXBooleanVariable.h"
 #import "RMXRangeVariable.h"
-#import "RMXRemixer.h"
+#import "RMXRemixer+Private.h"
 
 static NSString *const kFirebasePath = @"remixer";
 static NSString *const kSharingUserDefaultKey = @"remixerSharingBool";
