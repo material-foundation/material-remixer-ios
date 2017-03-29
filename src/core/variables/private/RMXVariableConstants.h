@@ -21,9 +21,9 @@ static NSString *const RMXDataTypeNumber = @"__DataTypeNumber__";
 static NSString *const RMXDataTypeString = @"__DataTypeString__";
 
 /** Identifiers for the different types of constraints. */
-static NSString *const RMXConstraintTypeNone = @"__ConstratintTypeNone__";
-static NSString *const RMXConstraintTypeList = @"__ConstratintTypeList__";
-static NSString *const RMXConstraintTypeRange = @"__ConstratintTypeRange__";
+static NSString *const RMXConstraintTypeNone = @"__ConstraintTypeNone__";
+static NSString *const RMXConstraintTypeList = @"__ConstraintTypeList__";
+static NSString *const RMXConstraintTypeRange = @"__ConstraintTypeRange__";
 
 /** Identifiers for the different types of controls Variables can have. */
 static NSString *const RMXControlTypeButton = @"__ControlTypeButton__";
