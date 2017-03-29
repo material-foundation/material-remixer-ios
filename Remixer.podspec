@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
     ss.dependency 'Remixer/Core'
     ss.dependency 'Firebase/Core', '~> 3.8'
     ss.dependency 'Firebase/Database', '~> 3.1'
+    ss.source_files = 'src/core/remote/RMXFirebaseRemoteController.{h,m}'
     ss.xcconfig = {
       'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/FirebaseCore/Frameworks" "$(PODS_ROOT)/FirebaseAnalytics/Frameworks" "$(PODS_ROOT)/FirebaseDatabase/Frameworks"',
       'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/Firebase/Core/Sources',
