@@ -154,9 +154,9 @@ static CGFloat kButtonTopOffset = -12.0f;
   }
 
   // Convert range from [0, 1] to [0, 255].
-  unsigned long red = round(rgba[0] * 255.0);
-  unsigned long green = round(rgba[1] * 255.0);
-  unsigned long blue = round(rgba[2] * 255.0);
+  unsigned long red = lround(rgba[0] * 255.0);
+  unsigned long green = lround(rgba[1] * 255.0);
+  unsigned long blue = lround(rgba[2] * 255.0);
 
   return [[NSString stringWithFormat:@"#%02lx%02lx%02lx", red, green, blue] uppercaseString];
 }

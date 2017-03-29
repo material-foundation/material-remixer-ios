@@ -54,9 +54,9 @@
 
   _sliderControl.minimumValueImage = [self imageFromFloatValue:variable.minimumValue];
   _sliderControl.maximumValueImage = [self imageFromFloatValue:variable.maximumValue];
-  _sliderControl.minimumValue = variable.minimumValue;
-  _sliderControl.maximumValue = variable.maximumValue;
-  _sliderControl.value = variable.selectedFloatValue;
+  _sliderControl.minimumValue = (float)variable.minimumValue;
+  _sliderControl.maximumValue = (float)variable.maximumValue;
+  _sliderControl.value = (float)variable.selectedFloatValue;
 
   [self updateDetailLabel];
 }
