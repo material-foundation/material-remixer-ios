@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |ss|
     ss.source_files = 'src/core/**/*.{h,m}'
+    ss.exclude_files = 'src/core/remote/RMXFirebaseRemoteController.{h,m}'
     ss.resource_bundles = {
       'Remixer' => [ 'src/core/resources/Remixer.bundle/*' ]
     }
