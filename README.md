@@ -100,6 +100,8 @@ Now you’re ready to add Remixer to your app! Begin by importing the Remixer he
 To use Remixer variables in your code simply import `Remixer.h` and create as many as you want.
 Remember to hold on to the variables you create, otherwise they'll get discarded automatically.
 
+> IMPORTANT: Update blocks should always use a weak reference to self. 
+
 ~~~ objc
 #import "Remixer.h"
 
@@ -129,15 +131,16 @@ Remember to hold on to the variables you create, otherwise they'll get discarded
 }
 ~~~
 
-Remember, the Remixer overlay displays all variables that are currently being used by your app. If you see variables that should've disappeared once you navigated somewhere else, check that you're only using a weak reference in your update blocks.
+#### 5.1 Types of variables
+Remixer currently supports 5 types of variables: `[RMXColorVariable]`, `[RMXStringVariable]`, `[RMXBooleanVariable]`, `[RMXNumberVariable]` and `[RMXRangeVariable]`. Each one offers an initializer that takes a key, a default value, optional constraints (like `limitedToValues` or `minValue`) and an update block. All variables should be instantiated through these designated initializers.
 
 ### 6. Refine their values
 
-To trigger the in-app Remixer panel run the app and swipe up with 3 fingers (or 2 if you're using the simulator). From here you can see the controls for the variables that are currently in use.
+To trigger the in-app Remixer panel run the app and swipe up with 3 fingers (or 2 if you're using the simulator). From here you can see the controls for the variables that are currently in use. If you see variables that shouldn't be there, double check you're using weak references in your update blocks.
 
-> You can also trigger this overlay from code using `[RMXRemixer openPanel|`.
+> You can also trigger the overlay from code using `[RMXRemixer openPanel]`.
 
-Remixer remembers the refinaments you make to the variables. It does so by storing the latest selected value in `NSUserDefaults`.
+Remixer remembers the refinaments you make to the variables. It does so by storing the latest selected value in `NSUserDefaults`. To get rid of these refinaments you can delete and re-install your app.
 
 ## Contributing
 
